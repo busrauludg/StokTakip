@@ -21,6 +21,10 @@ public partial class Personel
 
     public DateTime KayitTarihi { get; set; }
 
+    public bool Rol { get; set; }
+
+    public string? YetkiliSifre { get; set; }
+
     public virtual ICollection<Proje> Projes { get; set; } = new List<Proje>();
 
     public virtual ICollection<SatinAlma> SatinAlmas { get; set; } = new List<SatinAlma>();

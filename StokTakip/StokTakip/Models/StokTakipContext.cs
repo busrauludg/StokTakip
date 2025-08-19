@@ -61,6 +61,8 @@ public partial class StokTakipContext : DbContext
             entity.Property(e => e.Sifre).HasMaxLength(100);
             entity.Property(e => e.Soyad).HasMaxLength(50);
             entity.Property(e => e.Telefon).HasMaxLength(20);
+            entity.Property(e => e.Rol).HasDefaultValue(false);//eğer kullanıcı rolü belirtmezse otomatik olarak false yani “Personel” olacak şekilde ayarlanıyor.
+            entity.Property(e => e.YetkiliSifre).HasMaxLength(100);
         });
 
         modelBuilder.Entity<Proje>(entity =>
