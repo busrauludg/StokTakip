@@ -44,6 +44,11 @@
             tBYetkiliSifre = new TextBox();
             lblYetkiliSifre = new Label();
             btnPersonelKayit = new Button();
+            tBPrsEposta = new TextBox();
+            tBPrsTelNo = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            lblYetkiliSİfre = new Label();
             SuspendLayout();
             // 
             // lblPrsAd
@@ -182,12 +187,60 @@
             btnPersonelKayit.TabIndex = 16;
             btnPersonelKayit.Text = "Kaydet";
             btnPersonelKayit.UseVisualStyleBackColor = true;
+            btnPersonelKayit.Click += btnPersonelKayit_Click;
+            // 
+            // tBPrsEposta
+            // 
+            tBPrsEposta.Location = new Point(706, 237);
+            tBPrsEposta.Name = "tBPrsEposta";
+            tBPrsEposta.Size = new Size(195, 27);
+            tBPrsEposta.TabIndex = 20;
+            // 
+            // tBPrsTelNo
+            // 
+            tBPrsTelNo.Location = new Point(778, 169);
+            tBPrsTelNo.Name = "tBPrsTelNo";
+            tBPrsTelNo.Size = new Size(195, 27);
+            tBPrsTelNo.TabIndex = 19;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(568, 244);
+            label1.Name = "label1";
+            label1.Size = new Size(132, 20);
+            label1.TabIndex = 18;
+            label1.Text = "Personel E-postası:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(568, 172);
+            label2.Name = "label2";
+            label2.Size = new Size(187, 20);
+            label2.TabIndex = 17;
+            label2.Text = "Personel Telefon Numarası:";
+            // 
+            // lblYetkiliSİfre
+            // 
+            lblYetkiliSİfre.AutoSize = true;
+            lblYetkiliSİfre.Location = new Point(936, 27);
+            lblYetkiliSİfre.Name = "lblYetkiliSİfre";
+            lblYetkiliSİfre.Size = new Size(82, 20);
+            lblYetkiliSİfre.TabIndex = 21;
+            lblYetkiliSİfre.Text = "Yetkili Şifre";
+            lblYetkiliSİfre.Click += lblYetkiliSİfre_Click;
             // 
             // PersonelEkle
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1102, 653);
+            ClientSize = new Size(1096, 653);
+            Controls.Add(lblYetkiliSİfre);
+            Controls.Add(tBPrsEposta);
+            Controls.Add(tBPrsTelNo);
+            Controls.Add(label1);
+            Controls.Add(label2);
             Controls.Add(btnPersonelKayit);
             Controls.Add(lblYetkiliSifre);
             Controls.Add(tBYetkiliSifre);
@@ -229,5 +282,10 @@
         private TextBox tBYetkiliSifre;
         private Label lblYetkiliSifre;
         private Button btnPersonelKayit;
+        private TextBox tBPrsEposta;
+        private TextBox tBPrsTelNo;
+        private Label label1;
+        private Label label2;
+        private Label lblYetkiliSİfre;
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using StokTakip.Models;
 
-namespace StokTakip.Models;
+namespace StokTakip.StokTakip.Data;
 
 public partial class StokTakipContext : DbContext
 {
