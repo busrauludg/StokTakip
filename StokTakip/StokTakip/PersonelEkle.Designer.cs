@@ -169,6 +169,7 @@
             tBYetkiliSifre.Name = "tBYetkiliSifre";
             tBYetkiliSifre.Size = new Size(204, 27);
             tBYetkiliSifre.TabIndex = 14;
+            tBYetkiliSifre.TextChanged += tBYetkiliSifre_TextChanged;
             // 
             // lblYetkiliSifre
             // 
@@ -229,7 +230,7 @@
             lblYetkiliSİfre.Size = new Size(82, 20);
             lblYetkiliSİfre.TabIndex = 21;
             lblYetkiliSİfre.Text = "Yetkili Şifre";
-            lblYetkiliSİfre.Click += lblYetkiliSİfre_Click;
+            lblYetkiliSİfre.Click += lblYetkiliSifre_Click;
             // 
             // PersonelEkle
             // 

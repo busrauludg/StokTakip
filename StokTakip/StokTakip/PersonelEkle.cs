@@ -1,4 +1,6 @@
-﻿using StokTakip.Data;
+﻿using Humanizer;
+using StokTakip.Data;
+using StokTakip.Helpers;
 using StokTakip.Services;
 using StokTakip.StokTakip.Data;
 using System;
@@ -8,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,8 +18,8 @@ namespace StokTakip
 {
     public partial class PersonelEkle : Form
     {
-        private string? _yetkiliSifrePlain = null;
         private readonly PersonelServices _personelService;
+       
         public PersonelEkle()
         {
             InitializeComponent();
@@ -26,18 +29,48 @@ namespace StokTakip
 
             // Service örneği
             _personelService = new PersonelServices(new PersonelRepository(new StokTakipContext()));
-
+            
         }
-
         private void rBPrsYetkili_CheckedChanged(object sender, EventArgs e)
         {
             tBYetkiliSifre.Visible = rBPrsYetkili.Checked;
             lblYetkiliSifre.Visible = rBPrsYetkili.Checked;
-
         }
+        // Yetkili şifreyi formdan al
+        private void lblYetkiliSifre_Click(object sender, EventArgs e)
+        {
+            if (!rBPrsYetkili.Checked)
+            {
+                MessageBox.Show("Önce Rol: Yetkili seçin.");
+                return;
+            }
 
+            YetkiliSifreForm yetkiliForm = new YetkiliSifreForm();
+            yetkiliForm.ShowDialog();
+        }
         private void btnPersonelKayit_Click(object sender, EventArgs e)
         {
+
+            bool rolYetkili = rBPrsYetkili.Checked;
+            string girdiSifre = tBYetkiliSifre.Text; // Yetkili seçilmişse girilen şifre
+
+            if(rolYetkili)
+            {
+                string? dbHash = _personelService.GetYetkiliSifreHash();
+                if(dbHash == null)
+                {
+                    MessageBox.Show("Sistem yetkili şifresi belirlenmemiş.");
+                    return;
+                }
+                if(HashHelper.HashSha256(girdiSifre)!=dbHash)
+                {
+                    MessageBox.Show("Yetkili şifre yanlış, personel yetkili olarak eklenemez.");
+                    return;
+                }
+
+            }
+
+            // DTO için temel bilgileri al
             var dto = new PersonelDto
             {
                 Ad = tBPrsAdi.Text,
@@ -46,33 +79,45 @@ namespace StokTakip
                 Telefon = tBPrsTelNo.Text,
                 Eposta = tBPrsEposta.Text,
                 Sifre = tBPrsSifre.Text,
-                Rol = rBPrsYetkili.Checked,
-                YetkiliSifre = rBPrsYetkili.Checked ? _yetkiliSifrePlain : null
+                Rol = rBPrsYetkili.Checked
             };
 
-            if (dto.Rol && string.IsNullOrWhiteSpace(dto.YetkiliSifre))
+            // E-posta kontrolü
+            if (_personelService.GetByEposta(dto.Eposta!) != null)
             {
-                MessageBox.Show("Yetkili için şifre belirleyin.");
+                MessageBox.Show("Bu e-posta zaten kayıtlı.");
                 return;
             }
 
+            // Şifre benzersiz kontrolü
+            if (_personelService.GetBySifre(dto.Sifre) != null)
+            {
+                MessageBox.Show("Bu şifre zaten kullanımda.");
+                return;
+            }
+
+            // Yetkili ise şifre kontrolü
+            if (rBPrsYetkili.Checked)
+            {
+                if (string.IsNullOrWhiteSpace(tBYetkiliSifre.Text))
+                {
+                    MessageBox.Show("Yetkili şifresi boş olamaz!");
+                    return;
+                }
+                
+            }
+
+            // Kayıt işlemi
             _personelService.Create(dto);
             MessageBox.Show("Personel başarıyla eklendi.");
         }
 
-        private void lblYetkiliSİfre_Click(object sender, EventArgs e)
+
+
+        private void tBYetkiliSifre_TextChanged(object sender, EventArgs e)
         {
-        
-            if (!rBPrsYetkili.Checked)
-            {
-                MessageBox.Show("Önce Rol: Yetkili seçin.");
-                return;
-            }
-
-            using var dlg = new YetkiliSifreForm();
-            if (dlg.ShowDialog() == DialogResult.OK)
-                _yetkiliSifrePlain = dlg.Sifre;
+            // Yetkili şifre eşleşme kontrolü
+            
         }
-
     }
 }
