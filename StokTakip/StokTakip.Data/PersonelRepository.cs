@@ -34,18 +34,6 @@ namespace StokTakip.Data
             _context.SaveChanges();
 
         }
-        //public void Update(Personel yetki)
-        //{
-        //   // Veritabanındaki ilk(veya tek) satırı alıyoruz
-        //    var personel = _context.Personels.FirstOrDefault();
-        //    if (personel != null)
-        //    {
-        //        personel.YetkiliSifre = yetki.YetkiliSifre; // textbox'tan gelen şifre
-        //        _context.SaveChanges();
-        //    }
-        //}
-
-
         public void Update(Personel yetki)
         {
             // Rol = 1 olan satırı bul
@@ -56,7 +44,11 @@ namespace StokTakip.Data
                 _context.SaveChanges();
             }
         }
-
+        //15.09.20025 personel giriş için 
+        public bool PersonelVarMi(string eposta,string sifre)
+        {
+            return _context.Personels.Any(p=>p.Eposta==eposta && p.Sifre==sifre);
+        }
 
         public string? GetYetkiliSifreHash()
         {
@@ -65,5 +57,6 @@ namespace StokTakip.Data
                            .Select(p => p.YetkiliSifre)
                            .FirstOrDefault();
         }
+
     }
 }

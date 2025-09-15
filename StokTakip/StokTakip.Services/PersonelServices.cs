@@ -53,18 +53,10 @@ namespace StokTakip.Services
             return _services.GetYetkiliSifreHash();
         }
 
-        // Yetkili şifreyi doğrulama 10.09.2025
-        //public bool VerifyYetkiliSifre(string girilenSifre)
-        //{
-        //    var sistemSifreHash = _services.GetSistemYetkiliSifre();
-
-        //    if (string.IsNullOrWhiteSpace(sistemSifreHash))
-        //        return true; // İlk yetkili için
-
-        //    Hash yardımıyla karşılaştır
-        //    return HashHelper.VerifyHash(girilenSifre.Trim(), sistemSifreHash);
-        //}
-
+        public bool PrsnlGirisKontrol(string eposta,string sifre)
+        {
+            return _services.PersonelVarMi(eposta, sifre);
+        }
 
 
 
