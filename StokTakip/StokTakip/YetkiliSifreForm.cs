@@ -5,6 +5,7 @@ using StokTakip.Helpers;
 using StokTakip.Models;
 using StokTakip.Services;
 using StokTakip.StokTakip.Data;
+using StokTakip.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

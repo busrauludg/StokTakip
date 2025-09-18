@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StokTakip.Services", "StokT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StokTakip.Helpers", "StokTakip.Helpers\StokTakip.Helpers.csproj", "{7E1D9416-B1AB-4BDC-AA85-4B10E7A66653}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StokTakip.Validations", "StokTakip.Validations\StokTakip.Validations.csproj", "{AC9AA85C-CB77-4B4A-A4EF-351A1E74D378}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StokTakip.Dto", "StokTakip.Dto\StokTakip.Dto.csproj", "{053127D8-9737-4C4A-BF2E-61E2155281C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{7E1D9416-B1AB-4BDC-AA85-4B10E7A66653}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E1D9416-B1AB-4BDC-AA85-4B10E7A66653}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E1D9416-B1AB-4BDC-AA85-4B10E7A66653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC9AA85C-CB77-4B4A-A4EF-351A1E74D378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC9AA85C-CB77-4B4A-A4EF-351A1E74D378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC9AA85C-CB77-4B4A-A4EF-351A1E74D378}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC9AA85C-CB77-4B4A-A4EF-351A1E74D378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053127D8-9737-4C4A-BF2E-61E2155281C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053127D8-9737-4C4A-BF2E-61E2155281C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053127D8-9737-4C4A-BF2E-61E2155281C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053127D8-9737-4C4A-BF2E-61E2155281C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

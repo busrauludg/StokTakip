@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StokTakip.Data
 {
-    public class PersonelRepository
+    public class PersonelRepository 
     {
         private readonly StokTakipContext _context;
         public PersonelRepository(StokTakipContext context) => _context = context;
@@ -28,13 +28,13 @@ namespace StokTakip.Data
         public Personel? GetYetkiliSifre(string yetkiliSifre) =>
             _context.Personels.FirstOrDefault(p => p.YetkiliSifre == yetkiliSifre);
 
-        public void Add(Personel p)
+        public void PrsnlKydt(Personel p)
         {
-            _context.Add(p);
+            _context.Personels.Add(p);
             _context.SaveChanges();
 
         }
-        public void Update(Personel yetki)
+        public void YetkiliEkle(Personel yetki)
         {
             // Rol = 1 olan satırı bul
             var personel = _context.Personels.FirstOrDefault(p => p.Rol == true);//bool oldugu için 1 yaparsan int değer vermekten hata alırsın 

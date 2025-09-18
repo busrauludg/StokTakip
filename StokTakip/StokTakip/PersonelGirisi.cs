@@ -44,14 +44,18 @@ namespace StokTakip
                 bolumForm.ShowDialog();
                 this.Hide();
             }
+
+            if(string.IsNullOrWhiteSpace(tBPrsnlEposta.Text)||string.IsNullOrWhiteSpace(tBPrsnlSifre.Text))
+            {
+                MessageBox.Show("Eposta ve sifre boş bırakılamaz","Uyarı",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
+
             else
             {
                 // Giriş başarısız → kullanıcıya mesaj göster ve PersonelEkle formuna yönlendir
-                MessageBox.Show("E-posta veya şifre bulunamadı. Personel ekle sayfasına yönlendiriliyorsunuz.");
+                MessageBox.Show("E-posta veya şifre bulunamadı.Şifre ve epostanızı kontrol ediniz.");
 
-                var ekleForm = new PersonelEkle();
-                ekleForm.Show();
-                this.Hide();
             }
 
         }

@@ -10,8 +10,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StokTakip.Data\StokTakip.Data.csproj" />
+    <ProjectReference Include="..\StokTakip.Dto\StokTakip.Dto.csproj" />
     <ProjectReference Include="..\StokTakip.Helpers\StokTakip.Helpers.csproj" />
     <ProjectReference Include="..\StokTakip.Models\StokTakip.Models.csproj" />
+    <ProjectReference Include="..\StokTakip.Validations\StokTakip.Validations.csproj" />
   </ItemGroup>
 
 </Project>

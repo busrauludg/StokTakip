@@ -3,6 +3,7 @@ using StokTakip.Data;
 using StokTakip.Helpers;
 using StokTakip.Services;
 using StokTakip.StokTakip.Data;
+using StokTakip.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,37 +80,47 @@ namespace StokTakip
                 Telefon = tBPrsTelNo.Text,
                 Eposta = tBPrsEposta.Text,
                 Sifre = tBPrsSifre.Text,
+                SifreTekrari= tBSifreTekrari.Text,
                 Rol = rBPrsYetkili.Checked
             };
-
-            // E-posta kontrolü
-            if (_personelService.GetByEposta(dto.Eposta!) != null)
+            try
             {
-                MessageBox.Show("Bu e-posta zaten kayıtlı.");
-                return;
-            }
 
-            // Şifre benzersiz kontrolü
-            if (_personelService.GetBySifre(dto.Sifre) != null)
-            {
-                MessageBox.Show("Bu şifre zaten kullanımda.");
-                return;
-            }
-
-            // Yetkili ise şifre kontrolü
-            if (rBPrsYetkili.Checked)
-            {
-                if (string.IsNullOrWhiteSpace(tBYetkiliSifre.Text))
+                // E-posta kontrolü
+                if (_personelService.GetByEposta(dto.Eposta!) != null)
                 {
-                    MessageBox.Show("Yetkili şifresi boş olamaz!");
+                    MessageBox.Show("Bu e-posta zaten kayıtlı.");
                     return;
                 }
-                
-            }
 
-            // Kayıt işlemi
-            _personelService.Create(dto);
-            MessageBox.Show("Personel başarıyla eklendi.");
+                // Şifre benzersiz kontrolü
+                if (_personelService.GetBySifre(dto.Sifre) != null)
+                {
+                    MessageBox.Show("Bu şifre zaten kullanımda.");
+                    return;
+                }
+
+                // Yetkili ise şifre kontrolü
+                if (rBPrsYetkili.Checked)
+                {
+                    if (string.IsNullOrWhiteSpace(tBYetkiliSifre.Text))
+                    {
+                        MessageBox.Show("Yetkili şifresi boş olamaz!");
+                        return;
+                    }
+
+                }
+
+                // Kayıt işlemi
+                _personelService.PrsnlEkle(dto);
+                MessageBox.Show("Personel başarıyla eklendi.");
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+                // Validator hatalarını göster
+            }
         }
 
 

@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StokTakip.Dto\StokTakip.Dto.csproj" />
     <ProjectReference Include="..\StokTakip.Services\StokTakip.Services.csproj" />
   </ItemGroup>
 
