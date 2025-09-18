@@ -32,6 +32,8 @@ public partial class StokKarti
     public string FirmaAdi { get; set; } = null!;
 
     public int PersonelId { get; set; }
+    //18.09
+    public int StokMiktari { get; set; }
 
     public virtual Gruplar Grup { get; set; } = null!;
 

@@ -43,6 +43,7 @@ namespace StokTakip
                 var bolumForm = new BolumSec();
                 bolumForm.ShowDialog();
                 this.Hide();
+                
             }
 
             if(string.IsNullOrWhiteSpace(tBPrsnlEposta.Text)||string.IsNullOrWhiteSpace(tBPrsnlSifre.Text))
@@ -55,7 +56,7 @@ namespace StokTakip
             {
                 // Giriş başarısız → kullanıcıya mesaj göster ve PersonelEkle formuna yönlendir
                 MessageBox.Show("E-posta veya şifre bulunamadı.Şifre ve epostanızı kontrol ediniz.");
-
+             
             }
 
         }
