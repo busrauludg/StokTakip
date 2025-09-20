@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StokTakip.Services;
+using StokTakip.StokTakip.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,17 @@ namespace StokTakip
 {
     public partial class ElektrikForm : Form
     {
+        private ElektrikServices elektrikServices;
         public ElektrikForm()
         {
             InitializeComponent();
+            elektrikServices = new ElektrikServices(new StokTakipContext());
+        }
+
+        private void ElektrikForm_Load(object sender, EventArgs e)
+        {
+            var liste = elektrikServices.GetStokKartiElektrik();
+            dGVElektrik.DataSource = liste;
         }
     }
 }

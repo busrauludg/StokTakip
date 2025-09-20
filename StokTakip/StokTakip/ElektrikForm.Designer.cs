@@ -28,12 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ElektrikForm";
+            dGVElektrik = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dGVElektrik).BeginInit();
+            SuspendLayout();
+            // 
+            // dGVElektrik
+            // 
+            dGVElektrik.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dGVElektrik.Dock = DockStyle.Fill;
+            dGVElektrik.Location = new Point(0, 0);
+            dGVElektrik.Name = "dGVElektrik";
+            dGVElektrik.RowHeadersWidth = 51;
+            dGVElektrik.Size = new Size(1313, 640);
+            dGVElektrik.TabIndex = 0;
+            // 
+            // ElektrikForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1313, 640);
+            Controls.Add(dGVElektrik);
+            Name = "ElektrikForm";
+            Text = "ElektrikForm";
+            Load += ElektrikForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dGVElektrik).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dGVElektrik;
     }
 }

@@ -35,17 +35,18 @@
             // dGVMekanik
             // 
             dGVMekanik.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVMekanik.Location = new Point(1, 7);
+            dGVMekanik.Dock = DockStyle.Fill;
+            dGVMekanik.Location = new Point(0, 0);
             dGVMekanik.Name = "dGVMekanik";
             dGVMekanik.RowHeadersWidth = 51;
-            dGVMekanik.Size = new Size(791, 423);
+            dGVMekanik.Size = new Size(1154, 594);
             dGVMekanik.TabIndex = 0;
             // 
             // MekanikForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(931, 515);
+            ClientSize = new Size(1154, 594);
             Controls.Add(dGVMekanik);
             Name = "MekanikForm";
             Text = "MekanikForm";
