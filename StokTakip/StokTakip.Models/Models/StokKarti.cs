@@ -37,6 +37,9 @@ public partial class StokKarti
 
     public virtual Gruplar Grup { get; set; } = null!;
 
+    //19.09 db kolon olarak eklenmez personel ile navigasyon üzerinden iletişim kuruar
+    public virtual Personel Personel { get; set; } = null!;
+   
     public virtual ICollection<ProjedeKullanilanUrunler> ProjedeKullanilanUrunlers { get; set; } = new List<ProjedeKullanilanUrunler>();
 
     public virtual ICollection<SatinAlma> SatinAlmas { get; set; } = new List<SatinAlma>();

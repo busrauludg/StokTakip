@@ -1,4 +1,5 @@
-﻿using StokTakip.StokTakip.Data;
+﻿using StokTakip.Services;
+using StokTakip.StokTakip.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,21 +14,17 @@ namespace StokTakip
 {
     public partial class MekanikForm : Form
     {
+        private MekanikServices mekanikServices;
         public MekanikForm()
         {
             InitializeComponent();
+            mekanikServices = new MekanikServices(new StokTakipContext());
         }
 
         private void MekanikForm_Load(object sender, EventArgs e)
         {
-            using (var mekanik = new StokTakipContext())
-            {
-                var mekanikUrunler = mekanik.StokKartis
-                    .Where(u => u.GrupId == 2)
-                    .ToList();
-
-                dGVMekanik.DataSource = mekanikUrunler;
-            }
+            var liste = mekanikServices.GetStokKartiListesi();
+            dGVMekanik.DataSource = liste;
         }
     }
 }

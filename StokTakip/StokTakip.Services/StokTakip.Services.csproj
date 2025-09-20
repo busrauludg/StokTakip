@@ -14,6 +14,7 @@
     <ProjectReference Include="..\StokTakip.Helpers\StokTakip.Helpers.csproj" />
     <ProjectReference Include="..\StokTakip.Models\StokTakip.Models.csproj" />
     <ProjectReference Include="..\StokTakip.Validations\StokTakip.Validations.csproj" />
+    <ProjectReference Include="..\StokTakip.ViewModels\StokTakip.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
