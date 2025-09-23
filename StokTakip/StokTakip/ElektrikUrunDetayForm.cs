@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace StokTakip
 {
-    public partial class ElektrikForm : Form
+    public partial class ElektrikUrunDetayForm : Form
     {
         private ElektrikServices elektrikServices;
-        public ElektrikForm()
+        public ElektrikUrunDetayForm()
         {
             InitializeComponent();
             elektrikServices = new ElektrikServices(new StokTakipContext());

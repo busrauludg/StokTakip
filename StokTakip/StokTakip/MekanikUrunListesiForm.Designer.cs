@@ -1,6 +1,6 @@
 ﻿namespace StokTakip
 {
-    partial class ElektrikForm
+    partial class MekanikUrunListesiForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dGVElektrik = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dGVElektrik).BeginInit();
+            dGVMekanikListesi = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dGVMekanikListesi).BeginInit();
             SuspendLayout();
             // 
-            // dGVElektrik
+            // dGVMekanikListesi
             // 
-            dGVElektrik.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVElektrik.Dock = DockStyle.Fill;
-            dGVElektrik.Location = new Point(0, 0);
-            dGVElektrik.Name = "dGVElektrik";
-            dGVElektrik.RowHeadersWidth = 51;
-            dGVElektrik.Size = new Size(1313, 640);
-            dGVElektrik.TabIndex = 0;
+            dGVMekanikListesi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dGVMekanikListesi.Location = new Point(91, 46);
+            dGVMekanikListesi.Name = "dGVMekanikListesi";
+            dGVMekanikListesi.RowHeadersWidth = 51;
+            dGVMekanikListesi.Size = new Size(530, 317);
+            dGVMekanikListesi.TabIndex = 0;
+            dGVMekanikListesi.CellContentClick += dGVMekanikListesi_CellContentClick;
             // 
-            // ElektrikForm
+            // MekanikUrunListesiForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1313, 640);
-            Controls.Add(dGVElektrik);
-            Name = "ElektrikForm";
-            Text = "ElektrikForm";
-            Load += ElektrikForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dGVElektrik).EndInit();
+            ClientSize = new Size(800, 450);
+            Controls.Add(dGVMekanikListesi);
+            Name = "MekanikUrunListesiForm";
+            Text = "MekanikUrunListesiForm";
+            Load += MekanikUrunListesiForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dGVMekanikListesi).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dGVElektrik;
+        private DataGridView dGVMekanikListesi;
     }
 }

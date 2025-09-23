@@ -12,13 +12,15 @@ using System.Windows.Forms;
 
 namespace StokTakip
 {
-    public partial class MekanikForm : Form
+    public partial class MekanikUrunDetayForm : Form
     {
         private MekanikServices mekanikServices;
-        public MekanikForm()
+       
+        public MekanikUrunDetayForm()
         {
             InitializeComponent();
             mekanikServices = new MekanikServices(new StokTakipContext());
+           
         }
 
         private void MekanikForm_Load(object sender, EventArgs e)

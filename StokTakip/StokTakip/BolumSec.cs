@@ -19,13 +19,13 @@ namespace StokTakip
 
         private void BtnMekanik_Click(object sender, EventArgs e)
         {
-            MekanikForm mekanikForm = new MekanikForm();
+            MekanikUrunListesiForm mekanikForm = new MekanikUrunListesiForm();
             mekanikForm.ShowDialog();
         }
 
         private void BtnElektirik_Click(object sender, EventArgs e)
         {
-            ElektrikForm elektrikForm = new ElektrikForm();
+            ElektrikUrunListesiForm elektrikForm = new ElektrikUrunListesiForm();
             elektrikForm.ShowDialog();
         }
 

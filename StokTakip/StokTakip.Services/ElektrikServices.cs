@@ -35,6 +35,7 @@ namespace StokTakip.Services
                     KayitTarihi = u.KayitTarihi,
                     FirmaAdi = u.FirmaAdi,
                     FirmaKodu = u.FirmaKodu,
+                    StokMiktari = u.StokMiktari,//22.09.20250
                     StokBirimi = u.StokBirimi,
                     PersonelAdi = u.Personel.Ad
                 })

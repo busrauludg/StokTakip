@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StokTakip.Models;
 using StokTakip.StokTakip.Data;
 using StokTakip.ViewModels;
 using System;
@@ -24,6 +25,7 @@ namespace StokTakip.Services
              .Where(u => u.GrupId == 2) // sabit mekanik grubu
              .Select(u => new StokKartiViewModel
              {
+                 
                  UrunAdi = u.UrunAdi,
                  StokKodu = u.StokKodu,
                  GrupAdi = u.Grup.GrupAdi,
@@ -35,6 +37,7 @@ namespace StokTakip.Services
                  KayitTarihi = u.KayitTarihi,
                  FirmaAdi = u.FirmaAdi,
                  FirmaKodu = u.FirmaKodu,
+                 StokMiktari=u.StokMiktari,//22.09.20250
                  StokBirimi = u.StokBirimi,
                  PersonelAdi = u.Personel.Ad
              })

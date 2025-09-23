@@ -49,7 +49,7 @@
             BtnElektirik.Name = "BtnElektirik";
             BtnElektirik.Size = new Size(178, 115);
             BtnElektirik.TabIndex = 1;
-            BtnElektirik.Text = "Elektirik";
+            BtnElektirik.Text = "Elektrik";
             BtnElektirik.UseVisualStyleBackColor = true;
             BtnElektirik.Click += BtnElektirik_Click;
             // 

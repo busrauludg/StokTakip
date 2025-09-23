@@ -1,6 +1,6 @@
 ﻿namespace StokTakip
 {
-    partial class MekanikForm
+    partial class ElektrikUrunDetayForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dGVMekanik = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dGVMekanik).BeginInit();
+            dGVElektrik = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dGVElektrik).BeginInit();
             SuspendLayout();
             // 
-            // dGVMekanik
+            // dGVElektrik
             // 
-            dGVMekanik.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVMekanik.Dock = DockStyle.Fill;
-            dGVMekanik.Location = new Point(0, 0);
-            dGVMekanik.Name = "dGVMekanik";
-            dGVMekanik.RowHeadersWidth = 51;
-            dGVMekanik.Size = new Size(1154, 594);
-            dGVMekanik.TabIndex = 0;
+            dGVElektrik.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dGVElektrik.Dock = DockStyle.Fill;
+            dGVElektrik.Location = new Point(0, 0);
+            dGVElektrik.Name = "dGVElektrik";
+            dGVElektrik.RowHeadersWidth = 51;
+            dGVElektrik.Size = new Size(1313, 640);
+            dGVElektrik.TabIndex = 0;
             // 
-            // MekanikForm
+            // ElektrikForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1154, 594);
-            Controls.Add(dGVMekanik);
-            Name = "MekanikForm";
-            Text = "MekanikForm";
-            Load += MekanikForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dGVMekanik).EndInit();
+            ClientSize = new Size(1313, 640);
+            Controls.Add(dGVElektrik);
+            Name = "ElektrikForm";
+            Text = "ElektrikForm";
+            Load += ElektrikForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dGVElektrik).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dGVMekanik;
+        private DataGridView dGVElektrik;
     }
 }
