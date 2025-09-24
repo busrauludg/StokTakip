@@ -40,6 +40,7 @@
             dGVElektrikListesi.RowHeadersWidth = 51;
             dGVElektrikListesi.Size = new Size(325, 219);
             dGVElektrikListesi.TabIndex = 0;
+            dGVElektrikListesi.CellClick += dGVElektrikListesi_CellClick;
             // 
             // ElektrikUrunListesiForm
             // 

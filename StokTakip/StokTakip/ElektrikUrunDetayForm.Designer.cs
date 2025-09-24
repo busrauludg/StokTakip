@@ -35,20 +35,19 @@
             // dGVElektrik
             // 
             dGVElektrik.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVElektrik.Dock = DockStyle.Fill;
             dGVElektrik.Location = new Point(0, 0);
             dGVElektrik.Name = "dGVElektrik";
             dGVElektrik.RowHeadersWidth = 51;
-            dGVElektrik.Size = new Size(1313, 640);
+            dGVElektrik.Size = new Size(1144, 527);
             dGVElektrik.TabIndex = 0;
             // 
-            // ElektrikForm
+            // ElektrikUrunDetayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1313, 640);
             Controls.Add(dGVElektrik);
-            Name = "ElektrikForm";
+            Name = "ElektrikUrunDetayForm";
             Text = "ElektrikForm";
             Load += ElektrikForm_Load;
             ((System.ComponentModel.ISupportInitialize)dGVElektrik).EndInit();

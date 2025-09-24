@@ -52,8 +52,8 @@ namespace StokTakip
             if (e.RowIndex >= 0)
             {
                 StokKarti secilen = (StokKarti)dGVMekanikListesi.Rows[e.RowIndex].DataBoundItem;
-               MekanikUrunDetayForm detayForm = new MekanikUrunDetayForm();
-               detayForm.SecilenUrun= secilen;              
+                MekanikUrunDetayForm detayForm = new MekanikUrunDetayForm();
+                detayForm.SecilenUrun= secilen;              
                 detayForm.ShowDialog();
             }
                 
