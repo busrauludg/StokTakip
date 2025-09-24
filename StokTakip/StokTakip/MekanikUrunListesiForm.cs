@@ -1,4 +1,5 @@
-﻿using StokTakip.StokTakip.Data;
+﻿using StokTakip.Models;
+using StokTakip.StokTakip.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,25 +26,37 @@ namespace StokTakip
             dGVMekanikListesi.AutoGenerateColumns = true;
             var urunler = _context.StokKartis
                 .Where(u => u.GrupId == 2)
-                .Select(u => new
-                {
+                //.Select(u => new
+                //{
                    
-                    ÜrünListesi = u.UrunAdi + "  (" + u.StokMiktari + ")"
-                })
+                //    ÜrünListesi = u.UrunAdi + "  (" + u.StokMiktari + ")"
+                //})
                 .ToList();
 
             dGVMekanikListesi.DataSource = urunler;
-            
+            // Sadece istediğin sütunları göster, diğerlerini gizle
+            foreach (DataGridViewColumn col in dGVMekanikListesi.Columns)
+            {
+                if (col.Name != "UrunAdi" && col.Name != "StokMiktari")
+                    col.Visible = false;
+            }
 
+            // Başlıkları özelleştir
+            dGVMekanikListesi.Columns["UrunAdi"].HeaderText = "Ürün Adı";
+            dGVMekanikListesi.Columns["StokMiktari"].HeaderText = "Stok Miktarı";
 
         }
 
         private void dGVMekanikListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
-
-                MekanikUrunDetayForm detayForm = new MekanikUrunDetayForm();
+            if (e.RowIndex >= 0)
+            {
+                StokKarti secilen = (StokKarti)dGVMekanikListesi.Rows[e.RowIndex].DataBoundItem;
+               MekanikUrunDetayForm detayForm = new MekanikUrunDetayForm();
+               detayForm.SecilenUrun= secilen;              
                 detayForm.ShowDialog();
+            }
+                
           
         }
     }
