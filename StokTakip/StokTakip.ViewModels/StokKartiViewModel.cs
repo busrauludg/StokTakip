@@ -10,7 +10,7 @@ namespace StokTakip.ViewModels
     {
         //Uı ile uyumlu olmak zorunda dto yada veritabanı ile değil 
 
-      
+        public int StokKartiId { get; set; }
         public string UrunAdi { get; set; }
         public string StokKodu { get; set; }
         public string GrupAdi { get; set; }//içinde bulundugu grup yazsın grupıd değil düzelt

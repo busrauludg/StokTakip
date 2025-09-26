@@ -40,7 +40,7 @@
             dGVMekanikListesi.RowHeadersWidth = 51;
             dGVMekanikListesi.Size = new Size(530, 317);
             dGVMekanikListesi.TabIndex = 0;
-            dGVMekanikListesi.CellContentClick += dGVMekanikListesi_CellContentClick;
+            dGVMekanikListesi.CellClick += dGVMekanikListesi_CellContentClick;
             // 
             // MekanikUrunListesiForm
             // 

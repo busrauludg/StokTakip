@@ -25,7 +25,7 @@ namespace StokTakip.Services
              .Where(u => u.GrupId == 2) // sabit mekanik grubu
              .Select(u => new StokKartiViewModel
              {
-                 
+                 StokKartiId=u.StokKartiId,
                  UrunAdi = u.UrunAdi,
                  StokKodu = u.StokKodu,
                  GrupAdi = u.Grup.GrupAdi,
@@ -45,6 +45,40 @@ namespace StokTakip.Services
 
             return liste;
         }
+        public StokDurumuViewModel GetStokDurumMekanik(int stokKartId)
+        {
+            return _context.StokDurumus
+                .Where(s => s.StokKartiId == stokKartId)
+                .Select(s => new StokDurumuViewModel
+                {
+                    StokKartId = s.StokKartiId,
+                    DepoAdi = s.DepoAdi,
+                    SerbestMiktar = s.SerbestMiktar,
+                    KaliteMiktar = s.KaliteMiktar,
+                    BlokeMiktar = s.BlokeMiktar.ToString()
+                })
+                .FirstOrDefault();
+        }
+        public SatinAlmaSiparisleriViewModel GetSatinAlmaMekanik(int StokKartId)
+        {
+            return _context.SatinAlmas
+                .Where(s=>s.StokKartiId==StokKartId)
+                .Select(s=>new SatinAlmaSiparisleriViewModel
+                {
+                    StokKartId=s.StokKartiId,
+                    SiparisTarihi = s.SiparisTarihi,
+                    Miktar=s.Miktar,
+                    CariAdi=s.CariAdi,
+                    GelenMiktar=s.GelenMiktar,
+                    BirimFiyat=s.BirimFiyat,
+                    Kur=s.Kur,
+                    ParaBirimi=s.ParaBirimi,
+                    Aciklama=s.Aciklama,
+                    PersonelId=s.PersonelId
 
+                })
+                .FirstOrDefault();
+
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using StokTakip.Models;
 using StokTakip.Services;
 using StokTakip.StokTakip.Data;
+using StokTakip.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,25 +16,21 @@ namespace StokTakip
 {
     public partial class ElektrikUrunDetayForm : Form
     {
-        private ElektrikServices elektrikServices;
-        private readonly StokTakipContext _context;
-        public StokKarti SecilenUrun { get; set; }
-        public ElektrikUrunDetayForm()
+        private StokKartiViewModel _secilenUrun;
+       
+        public ElektrikUrunDetayForm(StokKartiViewModel secilenUrun)
         {
             InitializeComponent();
-            elektrikServices = new ElektrikServices(new StokTakipContext());
-            _context= new StokTakipContext();       
+           _secilenUrun = secilenUrun;    
         }
 
         private void ElektrikForm_Load(object sender, EventArgs e)
         {
-           if(SecilenUrun != null)
-            {
-                var detaylar=_context.StokKartis
-                    .Where(s=>s.StokKartiId==SecilenUrun.StokKartiId)
-                    .ToList();
+           if(_secilenUrun != null)
+           {
+                var detaylar=new List<StokKartiViewModel> {_secilenUrun };
                 dGVElektrik.DataSource= detaylar;
-            }
+           }
         }
     }
 }
