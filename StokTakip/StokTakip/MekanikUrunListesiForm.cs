@@ -45,6 +45,8 @@ namespace StokTakip
             dGVMekanikListesi.Columns["UrunAdi"].HeaderText = "Ürün Adı";
             dGVMekanikListesi.Columns["StokMiktari"].HeaderText = "Stok Miktarı";
 
+          
+
         }
 
         private void dGVMekanikListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)

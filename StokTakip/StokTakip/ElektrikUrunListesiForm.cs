@@ -46,7 +46,9 @@ namespace StokTakip
             if(e.RowIndex >=0)
             {
                 StokKartiViewModel secilen = (StokKartiViewModel)dGVElektrikListesi.Rows[e.RowIndex].DataBoundItem;
-                ElektrikUrunDetayForm elektrikdform = new ElektrikUrunDetayForm(secilen);
+                SatinAlmaSiparisleriViewModel sipAlim = _services.GetSatinAlmaElektrik(secilen.StokKartiId);
+                StokDurumuViewModel stokDurum = _services.GetStokDurumElektrik(secilen.StokKartiId);
+                ElektrikUrunDetayForm elektrikdform = new ElektrikUrunDetayForm(secilen, sipAlim,stokDurum);
                 elektrikdform.ShowDialog();
             }
         }

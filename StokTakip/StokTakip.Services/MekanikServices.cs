@@ -70,11 +70,11 @@ namespace StokTakip.Services
                     Miktar=s.Miktar,
                     CariAdi=s.CariAdi,
                     GelenMiktar=s.GelenMiktar,
-                    BirimFiyat=s.BirimFiyat,
-                    Kur=s.Kur,
-                    ParaBirimi=s.ParaBirimi,
+                    //BirimFiyat=s.BirimFiyat,
+                    //Kur=s.Kur,
+                    //ParaBirimi=s.ParaBirimi,
                     Aciklama=s.Aciklama,
-                    PersonelId=s.PersonelId
+                   // PersonelId=s.PersonelId
 
                 })
                 .FirstOrDefault();

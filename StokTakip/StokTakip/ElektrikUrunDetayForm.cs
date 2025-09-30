@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,20 +18,49 @@ namespace StokTakip
     public partial class ElektrikUrunDetayForm : Form
     {
         private StokKartiViewModel _secilenUrun;
-       
-        public ElektrikUrunDetayForm(StokKartiViewModel secilenUrun)
+        private SatinAlmaSiparisleriViewModel _sipAlim;
+        private StokDurumuViewModel _stokDurum;
+
+        public ElektrikUrunDetayForm(StokKartiViewModel secilenUrun,
+            SatinAlmaSiparisleriViewModel sipAlim,
+            StokDurumuViewModel stokDurum)
         {
             InitializeComponent();
-           _secilenUrun = secilenUrun;    
+            _secilenUrun = secilenUrun;
+            _sipAlim = sipAlim;
+            _stokDurum=stokDurum;
         }
 
         private void ElektrikForm_Load(object sender, EventArgs e)
         {
-           if(_secilenUrun != null)
-           {
-                var detaylar=new List<StokKartiViewModel> {_secilenUrun };
-                dGVElektrik.DataSource= detaylar;
-           }
+            if (_secilenUrun != null)
+            {
+                txtStokKodu.Text = _secilenUrun.StokKodu;
+                txtFirmaSiparisKodu.Text = _secilenUrun.FirmaKodu;
+                txtStokBirimi.Text = _secilenUrun.StokBirimi;
+                txtDepoAdresi.Text = _secilenUrun.DepoAdresi;
+                txtMinStok.Text = _secilenUrun.MinStok.ToString();
+                txtMaxStok.Text = _secilenUrun.MaxStok.ToString();
+                txtGrupAdi.Text = _secilenUrun.GrupAdi;
+                txtFirmaAdi.Text = _secilenUrun.FirmaAdi;
+                txtPersonelAdi.Text = _secilenUrun.PersonelAdi;
+                txtAciklama.Text = _secilenUrun.Aciklama;
+            }
+            if (_sipAlim != null)
+            {
+
+                dTPElektrik.Value = _sipAlim.SiparisTarihi;           // DateTimePicker için Value kullan
+                txtMiktar.Text = _sipAlim.Miktar.ToString();
+                txtCari.Text = _sipAlim.CariAdi;
+                txtGlnMktr.Text = _sipAlim.GelenMiktar?.ToString() ?? ""; // nullable int için
+                txtSprsAciklama.Text = _sipAlim.Aciklama;
+            }
+            if(_stokDurum!=null)
+            {
+                var stkdurum=new List<StokDurumuViewModel> { _stokDurum};
+                dGVMekStokDurum.DataSource = stkdurum;
+            }
+
         }
     }
 }
