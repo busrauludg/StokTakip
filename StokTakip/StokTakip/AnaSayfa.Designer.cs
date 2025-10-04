@@ -33,7 +33,7 @@
             // 
             // stokUserControl1
             // 
-            stokUserControl1.Location = new Point(-3, -3);
+            stokUserControl1.Location = new Point(12, -4);
             stokUserControl1.Name = "stokUserControl1";
             stokUserControl1.Size = new Size(1509, 1022);
             stokUserControl1.TabIndex = 0;

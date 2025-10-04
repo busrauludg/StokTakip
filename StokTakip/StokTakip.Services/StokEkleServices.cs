@@ -48,13 +48,13 @@ namespace StokTakip.Services
             var stokHareketi = new StokHareketi
             {
                 //StokHarekti
-                //ProjeAdi = eklemodel.ProjeAdi,
                 ProjeId = eklemodel.ProjeId,
                 Tip = eklemodel.Tip,
                 Miktar = eklemodel.Miktar,
                 Tarih = DateTime.Now,
                 Aciklama = eklemodel.sHAciklama
             };
+            stokHareketi.PersonelId = eklemodel.PersonelIdSh;//kendi stokharekiti tablosunda normal personelıd oldugu için hata alıyor 
             _anasayfa.StokEkle(stokEkle, stokDurum, stokHareketi);
         }
     }

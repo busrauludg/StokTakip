@@ -114,6 +114,10 @@ namespace StokTakip
             int projeId = 0;
             int.TryParse(tBProjeId.Text, out projeId);
 
+            int prsonelIdSh;
+            int.TryParse(tBSHPersonelId.Text, out prsonelIdSh);
+
+
             var kaydet = new StokEkleViewModel
             {
                 UrunAdi = tBUrunAdi.Text,
@@ -137,12 +141,22 @@ namespace StokTakip
                 BlokeMiktar = tBBlokeM.Text,
 
                 ProjeId = projeId,
+                PersonelIdSh= prsonelIdSh,
                 Tip = rBTip.Checked ? "Girdi" : "Cikti",
                 Miktar = (int)nUDHareketM.Value,
                 Tarih = DateTime.Now,
                 sHAciklama = tBShAciklama.Text
             };
-            _stokEkleServices.StokEkle(kaydet);
+            try
+            {
+                _stokEkleServices.StokEkle(kaydet);
+                MessageBox.Show("Kayıt başarılı!");
+            }
+            catch
+            {
+                MessageBox.Show("Kayıt sırasında bir hata oluştu!");
+            }
+
 
         }
     }

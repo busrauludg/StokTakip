@@ -32,6 +32,7 @@ namespace StokTakip.ViewModels
         public string BlokeMiktar { get; set; }
 
         //Stok Hareket
+        public int PersonelIdSh { get; set; }
         public int ProjeId { get; set; }
         public string ProjeAdi { get; set; }
         public string Tip { get; set; }

@@ -83,6 +83,8 @@
             label10 = new Label();
             openFileDialog1 = new OpenFileDialog();
             btnStokEkle = new Button();
+            label16 = new Label();
+            tBSHPersonelId = new TextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nUDSMiktar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nUDMaxStok).BeginInit();
@@ -268,7 +270,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(19, 90);
+            label23.Location = new Point(17, 129);
             label23.Name = "label23";
             label23.Size = new Size(33, 20);
             label23.TabIndex = 22;
@@ -277,7 +279,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(19, 155);
+            label24.Location = new Point(17, 194);
             label24.Name = "label24";
             label24.Size = new Size(54, 20);
             label24.TabIndex = 23;
@@ -286,7 +288,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(19, 208);
+            label25.Location = new Point(17, 247);
             label25.Name = "label25";
             label25.Size = new Size(43, 20);
             label25.TabIndex = 24;
@@ -295,7 +297,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(19, 259);
+            label26.Location = new Point(17, 298);
             label26.Name = "label26";
             label26.Size = new Size(73, 20);
             label26.TabIndex = 25;
@@ -515,6 +517,8 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(tBSHPersonelId);
+            groupBox3.Controls.Add(label16);
             groupBox3.Controls.Add(tBShAciklama);
             groupBox3.Controls.Add(dateTimePicker2);
             groupBox3.Controls.Add(nUDHareketM);
@@ -528,14 +532,14 @@
             groupBox3.Controls.Add(label26);
             groupBox3.Location = new Point(717, 360);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(343, 355);
+            groupBox3.Size = new Size(343, 392);
             groupBox3.TabIndex = 32;
             groupBox3.TabStop = false;
             groupBox3.Text = "Stok Hareketi";
             // 
             // tBShAciklama
             // 
-            tBShAciklama.Location = new Point(98, 271);
+            tBShAciklama.Location = new Point(96, 310);
             tBShAciklama.Multiline = true;
             tBShAciklama.Name = "tBShAciklama";
             tBShAciklama.Size = new Size(190, 73);
@@ -543,14 +547,14 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(80, 204);
+            dateTimePicker2.Location = new Point(78, 243);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(208, 27);
             dateTimePicker2.TabIndex = 30;
             // 
             // nUDHareketM
             // 
-            nUDHareketM.Location = new Point(98, 148);
+            nUDHareketM.Location = new Point(96, 187);
             nUDHareketM.Name = "nUDHareketM";
             nUDHareketM.Size = new Size(57, 27);
             nUDHareketM.TabIndex = 30;
@@ -559,7 +563,7 @@
             // radioButton4
             // 
             radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(175, 102);
+            radioButton4.Location = new Point(174, 141);
             radioButton4.Name = "radioButton4";
             radioButton4.Size = new Size(59, 24);
             radioButton4.TabIndex = 31;
@@ -570,7 +574,7 @@
             // rBTip
             // 
             rBTip.AutoSize = true;
-            rBTip.Location = new Point(82, 102);
+            rBTip.Location = new Point(80, 141);
             rBTip.Name = "rBTip";
             rBTip.Size = new Size(62, 24);
             rBTip.TabIndex = 30;
@@ -601,13 +605,29 @@
             // 
             // btnStokEkle
             // 
-            btnStokEkle.Location = new Point(797, 735);
+            btnStokEkle.Location = new Point(797, 758);
             btnStokEkle.Name = "btnStokEkle";
             btnStokEkle.Size = new Size(122, 46);
             btnStokEkle.TabIndex = 35;
             btnStokEkle.Text = "Stok Kaydet ";
             btnStokEkle.UseVisualStyleBackColor = true;
             btnStokEkle.Click += btnStokEkle_Click;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(23, 82);
+            label16.Name = "label16";
+            label16.Size = new Size(99, 20);
+            label16.TabIndex = 33;
+            label16.Text = "SHPersonelId:";
+            // 
+            // tBSHPersonelId
+            // 
+            tBSHPersonelId.Location = new Point(135, 75);
+            tBSHPersonelId.Name = "tBSHPersonelId";
+            tBSHPersonelId.Size = new Size(125, 27);
+            tBSHPersonelId.TabIndex = 34;
             // 
             // StokUserControl
             // 
@@ -694,5 +714,7 @@
         private OpenFileDialog openFileDialog1;
         private TextBox tBBlokeM;
         private Button btnStokEkle;
+        private TextBox tBSHPersonelId;
+        private Label label16;
     }
 }
