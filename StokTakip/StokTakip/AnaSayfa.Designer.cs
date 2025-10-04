@@ -28,12 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "AnaSayfa";
+            stokUserControl1 = new StokUserControl();
+            SuspendLayout();
+            // 
+            // stokUserControl1
+            // 
+            stokUserControl1.Location = new Point(-3, -3);
+            stokUserControl1.Name = "stokUserControl1";
+            stokUserControl1.Size = new Size(1509, 1022);
+            stokUserControl1.TabIndex = 0;
+            // 
+            // AnaSayfa
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1346, 915);
+            Controls.Add(stokUserControl1);
+            Name = "AnaSayfa";
+            Text = "AnaSayfa";
+            Load += AnaSayfa_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private StokUserControl stokUserControl1;
     }
 }

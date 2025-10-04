@@ -16,5 +16,14 @@ namespace StokTakip
         {
             InitializeComponent();
         }
+
+        private void AnaSayfa_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void stokUserControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

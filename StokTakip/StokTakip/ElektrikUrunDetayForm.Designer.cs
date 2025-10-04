@@ -277,7 +277,7 @@
             panel2.Controls.Add(label14);
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label12);
-            panel2.Location = new Point(645, 32);
+            panel2.Location = new Point(759, 68);
             panel2.Name = "panel2";
             panel2.Size = new Size(481, 219);
             panel2.TabIndex = 4;
@@ -365,7 +365,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(656, 9);
+            label17.Location = new Point(978, 25);
             label17.Name = "label17";
             label17.Size = new Size(81, 20);
             label17.TabIndex = 5;
@@ -374,7 +374,7 @@
             // dGVMekStokDurum
             // 
             dGVMekStokDurum.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVMekStokDurum.Location = new Point(561, 295);
+            dGVMekStokDurum.Location = new Point(665, 353);
             dGVMekStokDurum.Name = "dGVMekStokDurum";
             dGVMekStokDurum.RowHeadersWidth = 51;
             dGVMekStokDurum.Size = new Size(711, 72);
@@ -383,7 +383,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(589, 267);
+            label18.Location = new Point(962, 320);
             label18.Name = "label18";
             label18.Size = new Size(98, 20);
             label18.TabIndex = 7;
@@ -393,7 +393,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1313, 640);
+            ClientSize = new Size(1398, 640);
             Controls.Add(label18);
             Controls.Add(dGVMekStokDurum);
             Controls.Add(label17);

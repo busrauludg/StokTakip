@@ -1,0 +1,698 @@
+﻿namespace StokTakip
+{
+    partial class StokUserControl
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            label17 = new Label();
+            label18 = new Label();
+            label19 = new Label();
+            label20 = new Label();
+            label22 = new Label();
+            label23 = new Label();
+            label24 = new Label();
+            label25 = new Label();
+            label26 = new Label();
+            groupBox1 = new GroupBox();
+            btnGozAta = new Button();
+            tBPersonelId = new TextBox();
+            tBAciklama = new TextBox();
+            tBFirmaKodu = new TextBox();
+            tBFirmaAdi = new TextBox();
+            dateTimePicker1 = new DateTimePicker();
+            tBResimYolu = new TextBox();
+            tBDepoAdresi = new TextBox();
+            nUDSMiktar = new NumericUpDown();
+            nUDMaxStok = new NumericUpDown();
+            nUDMinStok = new NumericUpDown();
+            tBStokBirimi = new TextBox();
+            rBMekanik = new RadioButton();
+            rBElektrik = new RadioButton();
+            tBStokKodu = new TextBox();
+            tBUrunAdi = new TextBox();
+            groupBox2 = new GroupBox();
+            tBBlokeM = new TextBox();
+            tBDepoAdi = new TextBox();
+            nUDKM = new NumericUpDown();
+            nUDSerbestM = new NumericUpDown();
+            groupBox3 = new GroupBox();
+            tBShAciklama = new TextBox();
+            dateTimePicker2 = new DateTimePicker();
+            nUDHareketM = new NumericUpDown();
+            radioButton4 = new RadioButton();
+            rBTip = new RadioButton();
+            tBProjeId = new TextBox();
+            label10 = new Label();
+            openFileDialog1 = new OpenFileDialog();
+            btnStokEkle = new Button();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nUDSMiktar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nUDMaxStok).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nUDMinStok).BeginInit();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nUDKM).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nUDSerbestM).BeginInit();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nUDHareketM).BeginInit();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(16, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(70, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Ürün Adı:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(10, 102);
+            label2.Name = "label2";
+            label2.Size = new Size(80, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Stok Kodu:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(11, 164);
+            label3.Name = "label3";
+            label3.Size = new Size(71, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Grup Adı:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(11, 259);
+            label4.Name = "label4";
+            label4.Size = new Size(84, 20);
+            label4.TabIndex = 3;
+            label4.Text = "Stok Birimi:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(16, 324);
+            label5.Name = "label5";
+            label5.Size = new Size(70, 20);
+            label5.TabIndex = 4;
+            label5.Text = "Min Stok:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(16, 395);
+            label6.Name = "label6";
+            label6.Size = new Size(73, 20);
+            label6.TabIndex = 5;
+            label6.Text = "Max Stok:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(16, 460);
+            label7.Name = "label7";
+            label7.Size = new Size(95, 20);
+            label7.TabIndex = 6;
+            label7.Text = "Stok Miktarı: ";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(16, 531);
+            label8.Name = "label8";
+            label8.Size = new Size(95, 20);
+            label8.TabIndex = 7;
+            label8.Text = "Depo Adresi:";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(11, 598);
+            label9.Name = "label9";
+            label9.Size = new Size(84, 20);
+            label9.TabIndex = 8;
+            label9.Text = "Resim Yolu:";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(355, 233);
+            label11.Name = "label11";
+            label11.Size = new Size(73, 20);
+            label11.TabIndex = 10;
+            label11.Text = "Açıklama:";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(16, 666);
+            label12.Name = "label12";
+            label12.Size = new Size(84, 20);
+            label12.TabIndex = 11;
+            label12.Text = "Kayıt Tarihi:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(352, 23);
+            label13.Name = "label13";
+            label13.Size = new Size(76, 20);
+            label13.TabIndex = 12;
+            label13.Text = "Firma Adı:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(352, 93);
+            label14.Name = "label14";
+            label14.Size = new Size(88, 20);
+            label14.TabIndex = 13;
+            label14.Text = "Firma Kodu:";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(352, 164);
+            label15.Name = "label15";
+            label15.Size = new Size(94, 20);
+            label15.TabIndex = 14;
+            label15.Text = "Personel Adı:";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(19, 35);
+            label17.Name = "label17";
+            label17.Size = new Size(76, 20);
+            label17.TabIndex = 16;
+            label17.Text = "Depo Adı:";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(18, 98);
+            label18.Name = "label18";
+            label18.Size = new Size(111, 20);
+            label18.TabIndex = 17;
+            label18.Text = "Serbest Miktar: ";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(18, 162);
+            label19.Name = "label19";
+            label19.Size = new Size(96, 20);
+            label19.TabIndex = 18;
+            label19.Text = "Kalite Miktar:";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(19, 219);
+            label20.Name = "label20";
+            label20.Size = new Size(95, 20);
+            label20.TabIndex = 19;
+            label20.Text = "Bloke Miktar:";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(19, 33);
+            label22.Name = "label22";
+            label22.Size = new Size(73, 20);
+            label22.TabIndex = 21;
+            label22.Text = "Proje Adı:";
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(19, 90);
+            label23.Name = "label23";
+            label23.Size = new Size(33, 20);
+            label23.TabIndex = 22;
+            label23.Text = "Tip:";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(19, 155);
+            label24.Name = "label24";
+            label24.Size = new Size(54, 20);
+            label24.TabIndex = 23;
+            label24.Text = "Miktar:";
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(19, 208);
+            label25.Name = "label25";
+            label25.Size = new Size(43, 20);
+            label25.TabIndex = 24;
+            label25.Text = "Tarih:";
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Location = new Point(19, 259);
+            label26.Name = "label26";
+            label26.Size = new Size(73, 20);
+            label26.TabIndex = 25;
+            label26.Text = "Açıklama:";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(btnGozAta);
+            groupBox1.Controls.Add(tBPersonelId);
+            groupBox1.Controls.Add(tBAciklama);
+            groupBox1.Controls.Add(tBFirmaKodu);
+            groupBox1.Controls.Add(tBFirmaAdi);
+            groupBox1.Controls.Add(dateTimePicker1);
+            groupBox1.Controls.Add(tBResimYolu);
+            groupBox1.Controls.Add(tBDepoAdresi);
+            groupBox1.Controls.Add(nUDSMiktar);
+            groupBox1.Controls.Add(nUDMaxStok);
+            groupBox1.Controls.Add(nUDMinStok);
+            groupBox1.Controls.Add(tBStokBirimi);
+            groupBox1.Controls.Add(rBMekanik);
+            groupBox1.Controls.Add(rBElektrik);
+            groupBox1.Controls.Add(tBStokKodu);
+            groupBox1.Controls.Add(tBUrunAdi);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(label11);
+            groupBox1.Controls.Add(label12);
+            groupBox1.Controls.Add(label13);
+            groupBox1.Controls.Add(label14);
+            groupBox1.Controls.Add(label15);
+            groupBox1.Location = new Point(3, 69);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(678, 712);
+            groupBox1.TabIndex = 30;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Stok Kartı Bilgisi";
+            // 
+            // btnGozAta
+            // 
+            btnGozAta.Location = new Point(346, 589);
+            btnGozAta.Name = "btnGozAta";
+            btnGozAta.Size = new Size(94, 29);
+            btnGozAta.TabIndex = 30;
+            btnGozAta.Text = "Göz At ";
+            btnGozAta.UseVisualStyleBackColor = true;
+            // 
+            // tBPersonelId
+            // 
+            tBPersonelId.Location = new Point(452, 157);
+            tBPersonelId.Name = "tBPersonelId";
+            tBPersonelId.Size = new Size(190, 27);
+            tBPersonelId.TabIndex = 29;
+            // 
+            // tBAciklama
+            // 
+            tBAciklama.Location = new Point(434, 226);
+            tBAciklama.Multiline = true;
+            tBAciklama.Name = "tBAciklama";
+            tBAciklama.Size = new Size(190, 189);
+            tBAciklama.TabIndex = 28;
+            // 
+            // tBFirmaKodu
+            // 
+            tBFirmaKodu.Location = new Point(446, 90);
+            tBFirmaKodu.Name = "tBFirmaKodu";
+            tBFirmaKodu.Size = new Size(190, 27);
+            tBFirmaKodu.TabIndex = 27;
+            // 
+            // tBFirmaAdi
+            // 
+            tBFirmaAdi.Location = new Point(446, 16);
+            tBFirmaAdi.Name = "tBFirmaAdi";
+            tBFirmaAdi.Size = new Size(190, 27);
+            tBFirmaAdi.TabIndex = 26;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(106, 659);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(208, 27);
+            dateTimePicker1.TabIndex = 25;
+            // 
+            // tBResimYolu
+            // 
+            tBResimYolu.Location = new Point(117, 591);
+            tBResimYolu.Name = "tBResimYolu";
+            tBResimYolu.Size = new Size(190, 27);
+            tBResimYolu.TabIndex = 24;
+            // 
+            // tBDepoAdresi
+            // 
+            tBDepoAdresi.Location = new Point(117, 524);
+            tBDepoAdresi.Name = "tBDepoAdresi";
+            tBDepoAdresi.Size = new Size(190, 27);
+            tBDepoAdresi.TabIndex = 23;
+            // 
+            // nUDSMiktar
+            // 
+            nUDSMiktar.Location = new Point(115, 453);
+            nUDSMiktar.Name = "nUDSMiktar";
+            nUDSMiktar.Size = new Size(57, 27);
+            nUDSMiktar.TabIndex = 22;
+            nUDSMiktar.ValueChanged += nUDSMiktar_ValueChanged;
+            // 
+            // nUDMaxStok
+            // 
+            nUDMaxStok.Location = new Point(115, 388);
+            nUDMaxStok.Name = "nUDMaxStok";
+            nUDMaxStok.Size = new Size(57, 27);
+            nUDMaxStok.TabIndex = 21;
+            nUDMaxStok.ValueChanged += nUDMaxStok_ValueChanged;
+            // 
+            // nUDMinStok
+            // 
+            nUDMinStok.Location = new Point(115, 322);
+            nUDMinStok.Name = "nUDMinStok";
+            nUDMinStok.Size = new Size(52, 27);
+            nUDMinStok.TabIndex = 20;
+            nUDMinStok.ValueChanged += nUDMinStok_ValueChanged;
+            // 
+            // tBStokBirimi
+            // 
+            tBStokBirimi.Location = new Point(104, 252);
+            tBStokBirimi.Name = "tBStokBirimi";
+            tBStokBirimi.Size = new Size(190, 27);
+            tBStokBirimi.TabIndex = 19;
+            // 
+            // rBMekanik
+            // 
+            rBMekanik.AutoSize = true;
+            rBMekanik.Location = new Point(205, 204);
+            rBMekanik.Name = "rBMekanik";
+            rBMekanik.Size = new Size(85, 24);
+            rBMekanik.TabIndex = 18;
+            rBMekanik.TabStop = true;
+            rBMekanik.Text = "Mekanik";
+            rBMekanik.UseVisualStyleBackColor = true;
+            // 
+            // rBElektrik
+            // 
+            rBElektrik.AutoSize = true;
+            rBElektrik.Location = new Point(43, 204);
+            rBElektrik.Name = "rBElektrik";
+            rBElektrik.Size = new Size(78, 24);
+            rBElektrik.TabIndex = 17;
+            rBElektrik.TabStop = true;
+            rBElektrik.Text = "Elektrik";
+            rBElektrik.UseVisualStyleBackColor = true;
+            // 
+            // tBStokKodu
+            // 
+            tBStokKodu.Location = new Point(104, 90);
+            tBStokKodu.Name = "tBStokKodu";
+            tBStokKodu.Size = new Size(190, 27);
+            tBStokKodu.TabIndex = 16;
+            // 
+            // tBUrunAdi
+            // 
+            tBUrunAdi.Location = new Point(104, 26);
+            tBUrunAdi.Name = "tBUrunAdi";
+            tBUrunAdi.Size = new Size(190, 27);
+            tBUrunAdi.TabIndex = 15;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(tBBlokeM);
+            groupBox2.Controls.Add(tBDepoAdi);
+            groupBox2.Controls.Add(nUDKM);
+            groupBox2.Controls.Add(label17);
+            groupBox2.Controls.Add(nUDSerbestM);
+            groupBox2.Controls.Add(label18);
+            groupBox2.Controls.Add(label19);
+            groupBox2.Controls.Add(label20);
+            groupBox2.Location = new Point(717, 69);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(310, 270);
+            groupBox2.TabIndex = 31;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Stok Durumu";
+            // 
+            // tBBlokeM
+            // 
+            tBBlokeM.Location = new Point(135, 212);
+            tBBlokeM.Name = "tBBlokeM";
+            tBBlokeM.Size = new Size(125, 27);
+            tBBlokeM.TabIndex = 32;
+            // 
+            // tBDepoAdi
+            // 
+            tBDepoAdi.Location = new Point(98, 32);
+            tBDepoAdi.Name = "tBDepoAdi";
+            tBDepoAdi.Size = new Size(190, 27);
+            tBDepoAdi.TabIndex = 30;
+            // 
+            // nUDKM
+            // 
+            nUDKM.Location = new Point(135, 157);
+            nUDKM.Name = "nUDKM";
+            nUDKM.Size = new Size(57, 27);
+            nUDKM.TabIndex = 31;
+            nUDKM.ValueChanged += nUDKM_ValueChanged;
+            // 
+            // nUDSerbestM
+            // 
+            nUDSerbestM.Location = new Point(135, 91);
+            nUDSerbestM.Name = "nUDSerbestM";
+            nUDSerbestM.Size = new Size(52, 27);
+            nUDSerbestM.TabIndex = 30;
+            nUDSerbestM.ValueChanged += nUDSerbestM_ValueChanged;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(tBShAciklama);
+            groupBox3.Controls.Add(dateTimePicker2);
+            groupBox3.Controls.Add(nUDHareketM);
+            groupBox3.Controls.Add(radioButton4);
+            groupBox3.Controls.Add(rBTip);
+            groupBox3.Controls.Add(tBProjeId);
+            groupBox3.Controls.Add(label22);
+            groupBox3.Controls.Add(label23);
+            groupBox3.Controls.Add(label24);
+            groupBox3.Controls.Add(label25);
+            groupBox3.Controls.Add(label26);
+            groupBox3.Location = new Point(717, 360);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(343, 355);
+            groupBox3.TabIndex = 32;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Stok Hareketi";
+            // 
+            // tBShAciklama
+            // 
+            tBShAciklama.Location = new Point(98, 271);
+            tBShAciklama.Multiline = true;
+            tBShAciklama.Name = "tBShAciklama";
+            tBShAciklama.Size = new Size(190, 73);
+            tBShAciklama.TabIndex = 32;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(80, 204);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(208, 27);
+            dateTimePicker2.TabIndex = 30;
+            // 
+            // nUDHareketM
+            // 
+            nUDHareketM.Location = new Point(98, 148);
+            nUDHareketM.Name = "nUDHareketM";
+            nUDHareketM.Size = new Size(57, 27);
+            nUDHareketM.TabIndex = 30;
+            nUDHareketM.ValueChanged += nUDHareketM_ValueChanged;
+            // 
+            // radioButton4
+            // 
+            radioButton4.AutoSize = true;
+            radioButton4.Location = new Point(175, 102);
+            radioButton4.Name = "radioButton4";
+            radioButton4.Size = new Size(59, 24);
+            radioButton4.TabIndex = 31;
+            radioButton4.TabStop = true;
+            radioButton4.Text = "Çıktı";
+            radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // rBTip
+            // 
+            rBTip.AutoSize = true;
+            rBTip.Location = new Point(82, 102);
+            rBTip.Name = "rBTip";
+            rBTip.Size = new Size(62, 24);
+            rBTip.TabIndex = 30;
+            rBTip.TabStop = true;
+            rBTip.Text = "Girdi";
+            rBTip.UseVisualStyleBackColor = true;
+            // 
+            // tBProjeId
+            // 
+            tBProjeId.Location = new Point(98, 26);
+            tBProjeId.Name = "tBProjeId";
+            tBProjeId.Size = new Size(190, 27);
+            tBProjeId.TabIndex = 30;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 15F);
+            label10.Location = new Point(465, 17);
+            label10.Name = "label10";
+            label10.Size = new Size(238, 35);
+            label10.TabIndex = 34;
+            label10.Text = "Stok Ekleme Sayfası ";
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnStokEkle
+            // 
+            btnStokEkle.Location = new Point(797, 735);
+            btnStokEkle.Name = "btnStokEkle";
+            btnStokEkle.Size = new Size(122, 46);
+            btnStokEkle.TabIndex = 35;
+            btnStokEkle.Text = "Stok Kaydet ";
+            btnStokEkle.UseVisualStyleBackColor = true;
+            btnStokEkle.Click += btnStokEkle_Click;
+            // 
+            // StokUserControl
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnStokEkle);
+            Controls.Add(label10);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Name = "StokUserControl";
+            Size = new Size(1207, 818);
+            Load += StokUserControl_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nUDSMiktar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nUDMaxStok).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nUDMinStok).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nUDKM).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nUDSerbestM).EndInit();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nUDHareketM).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private Label label17;
+        private Label label18;
+        private Label label19;
+        private Label label20;
+        private Label label22;
+        private Label label23;
+        private Label label24;
+        private Label label25;
+        private Label label26;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private GroupBox groupBox3;
+        private Label label10;
+        private TextBox tBUrunAdi;
+        private TextBox tBStokBirimi;
+        private RadioButton rBMekanik;
+        private RadioButton rBElektrik;
+        private TextBox tBStokKodu;
+        private DateTimePicker dateTimePicker1;
+        private TextBox tBResimYolu;
+        private TextBox tBDepoAdresi;
+        private NumericUpDown nUDSMiktar;
+        private NumericUpDown nUDMaxStok;
+        private NumericUpDown nUDMinStok;
+        private TextBox tBPersonelId;
+        private TextBox tBAciklama;
+        private TextBox tBFirmaKodu;
+        private TextBox tBFirmaAdi;
+        private TextBox tBShAciklama;
+        private DateTimePicker dateTimePicker2;
+        private NumericUpDown nUDHareketM;
+        private RadioButton radioButton4;
+        private RadioButton rBTip;
+        private TextBox tBProjeId;
+        private TextBox tBDepoAdi;
+        private NumericUpDown nUDKM;
+        private NumericUpDown nUDSerbestM;
+        private Button btnGozAta;
+        private OpenFileDialog openFileDialog1;
+        private TextBox tBBlokeM;
+        private Button btnStokEkle;
+    }
+}
