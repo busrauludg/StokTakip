@@ -14,35 +14,36 @@ namespace StokTakip.Data
         private readonly StokTakipContext _context;
         public AnaSayfaRepository(StokTakipContext context) => _context = context;
         
-        public void StokEkle(StokKarti stokKarti,StokDurumu stokDurumu,StokHareketi stokHareketi)
+        public void StokEkle(StokKarti stokKarti,StokDurumu stokDurumu,StokHareketi stokHareketi,SatinAlma satinAlma)
         {
-            // 1. StokKarti'yi kaydet
-            _context.StokKartis.Add(stokKarti);
-            _context.SaveChanges(); // Bu satırdan sonra stokKarti.Id oluşur
+        //    // 1. StokKarti'yi kaydet
+        //    _context.StokKartis.Add(stokKarti);
+        //    _context.SaveChanges(); // Bu satırdan sonra stokKarti.Id oluşur
 
-            // 2. StokHareketi ve StokDurumu'na stokKarti.Id ataması yap
+        //    // 2. StokHareketi ve StokDurumu'na stokKarti.Id ataması yap
+        //    stokHareketi.StokKartiId = stokKarti.StokKartiId;
+        //    stokDurumu.StokKartiId = stokKarti.StokKartiId;
+
+        //    // 3. Kaydet
+        //    _context.StokHareketis.Add(stokHareketi);
+        //    _context.StokDurumus.Add(stokDurumu);
+        //    _context.SaveChanges();
+
+        // 1. StokKarti kaydet
+            _context.StokKartis.Add(stokKarti);
+            _context.SaveChanges(); // Burada stokKarti.StokKartiId oluşur
+
+            // 2. SatinAlma'ya ID ver
+            satinAlma.StokKartiId = stokKarti.StokKartiId;
+            _context.SatinAlmas.Add(satinAlma);
+
+            // 3. Diğer tablolar
             stokHareketi.StokKartiId = stokKarti.StokKartiId;
             stokDurumu.StokKartiId = stokKarti.StokKartiId;
 
-            // 3. Kaydet
             _context.StokHareketis.Add(stokHareketi);
             _context.StokDurumus.Add(stokDurumu);
             _context.SaveChanges();
-
-            //_context.StokKartis.Add(stokKarti);
-            //_context.SaveChanges();
-
-            //_context.StokHareketis.Add(stokHareketi);
-            //_context.SaveChanges();
-
-            //_context.StokDurumus.Add(stokDurumu);
-            //_context.SaveChanges();
-
-
-            //_context.StokKartis.Add(stokKarti);
-            //_context.StokDurumus.Add(stokDurumu);
-            //_context.StokHareketis.Add(stokHareketi);
-            //_context.SaveChanges(); // Tek seferde kaydet
 
         }
 

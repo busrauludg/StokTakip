@@ -60,54 +60,9 @@ namespace StokTakip
             nUDKM.Maximum = 10000;
         }
 
-
-
-        private void StokUserControl_Load(object sender, EventArgs e)
-        {
-
-        }
+       
         private void btnStokEkle_Click(object sender, EventArgs e)
         {
-            //int personelId = 0;
-            //int.TryParse(tBPersonelId.Text, out personelId);
-
-            //int projeId = 0;
-            //int.TryParse(tBProjeId.Text, out projeId);
-
-            //var kaydet = new StokEkleViewModel
-            //{//stokkarti
-            //    UrunAdi = tBUrunAdi.Text,
-            //    StokKodu = tBStokKodu.Text,
-            //    GrupId = rBElektrik.Checked ? 1 : 2,
-            //   // GrupAdi = rBElektrik.Checked ? "Elektrik" : "Mekanik",
-            //    StokBirimi = tBStokBirimi.Text,
-            //    MinStok = (int)nUDMinStok.Value,
-            //    MaxStok = (int)nUDMaxStok.Value,
-            //    StokMiktari = (int)nUDSMiktar.Value,
-            //    DepoAdresi = tBDepoAdresi.Text,
-            //    ResimYolu = tBResimYolu.Text,
-            //    KayitTarihi = DateTime.Now,
-            //    FirmaAdi = tBFirmaAdi.Text,
-            //    FirmaKodu = tBFirmaKodu.Text,
-            //    PersonelId = tBPersonelId,
-            //    Aciklama = tBAciklama.Text,
-
-            //    //stok durumu
-            //    DepoAdi = tBDepoAdi.Text,
-            //    SerbestMiktar = (int)nUDSerbestM.Value,
-            //    KaliteMiktar = (int)nUDKM.Value,
-            //    BlokeMiktar = tBBlokeM.Text,
-
-            //    //StokHarekti
-            //   // ProjeAdi = tBProjeId.Text,
-            //    ProjeId=tBProjeId,
-            //    Tip = rBTip.Checked ? "Girdi" : "Cikti",
-            //    Miktar = (int)nUDHareketM.Value,
-            //    Tarih = DateTime.Now,
-            //    sHAciklama = tBShAciklama.Text
-            //};
-            //_stokEkleServices.StokEkle(kaydet);
-
             int personelId = 0;
             int.TryParse(tBPersonelId.Text, out personelId);
 
@@ -116,6 +71,19 @@ namespace StokTakip
 
             int prsonelIdSh;
             int.TryParse(tBSHPersonelId.Text, out prsonelIdSh);
+
+
+            int satinalmaMiktari = 0;
+            int.TryParse(tBStnAlMiktar.Text, out satinalmaMiktari);
+
+            int gelenMiktar = 0;
+            int.TryParse(tBStnAlmaGelen.Text, out gelenMiktar);
+
+            int birimFiyat = 0;
+            int.TryParse(tBStnAlmaBirim.Text, out birimFiyat);
+
+            int kur = 0;
+            int.TryParse(tBStnAlmaKur.Text, out kur);
 
 
             var kaydet = new StokEkleViewModel
@@ -145,7 +113,21 @@ namespace StokTakip
                 Tip = rBTip.Checked ? "Girdi" : "Cikti",
                 Miktar = (int)nUDHareketM.Value,
                 Tarih = DateTime.Now,
-                sHAciklama = tBShAciklama.Text
+                sHAciklama = tBShAciklama.Text,
+
+                //Satın Alma
+                //StokKaritId= tBSKId.Text,// bunu hatası stokekle ile aynı yerde ekliyoruz buun stokkartınıeklerkenıd de ekliyor ama bu satınalmayıda aynı tabloda eklemem lazım napıcaz
+                SiparisTarihi = DateTime.Now,
+                StnAlmaMiktar = satinalmaMiktari, //int parse yap
+                CariAdi = tBStnAlmaCari.Text,
+                GelenMiktar = gelenMiktar,
+                BirimFiyat = birimFiyat,
+                Kur = kur,
+                ParaBirimi = tBStnAlmaParaBirm.Text,
+                StnAlmaAciklama = tBStnAlmaAciklama.Text,
+                StnAlmaPersonelId = personelId,
+
+
             };
             try
             {

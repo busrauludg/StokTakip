@@ -54,8 +54,21 @@ namespace StokTakip.Services
                 Tarih = DateTime.Now,
                 Aciklama = eklemodel.sHAciklama
             };
+            var satinAlma = new SatinAlma
+            {
+                //sol taraftakiler entetiy(model)alanlar
+                SiparisTarihi = DateTime.Now,
+                Miktar = eklemodel.StnAlmaMiktar, //int parse yap
+                CariAdi = eklemodel.CariAdi,
+                GelenMiktar = eklemodel.GelenMiktar,
+                BirimFiyat = eklemodel.BirimFiyat,
+                Kur = eklemodel.Kur,
+                ParaBirimi = eklemodel.ParaBirimi,
+                Aciklama = eklemodel.Aciklama,
+                PersonelId = eklemodel.PersonelId,
+            };
             stokHareketi.PersonelId = eklemodel.PersonelIdSh;//kendi stokharekiti tablosunda normal personelıd oldugu için hata alıyor 
-            _anasayfa.StokEkle(stokEkle, stokDurum, stokHareketi);
+            _anasayfa.StokEkle(stokEkle, stokDurum, stokHareketi, satinAlma);
         }
     }
 }
