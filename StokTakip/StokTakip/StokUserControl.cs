@@ -60,7 +60,7 @@ namespace StokTakip
             nUDKM.Maximum = 10000;
         }
 
-       
+
         private void btnStokEkle_Click(object sender, EventArgs e)
         {
             int personelId = 0;
@@ -109,7 +109,7 @@ namespace StokTakip
                 BlokeMiktar = tBBlokeM.Text,
 
                 ProjeId = projeId,
-                PersonelIdSh= prsonelIdSh,
+                PersonelIdSh = prsonelIdSh,
                 Tip = rBTip.Checked ? "Girdi" : "Cikti",
                 Miktar = (int)nUDHareketM.Value,
                 Tarih = DateTime.Now,
@@ -140,6 +140,17 @@ namespace StokTakip
             }
 
 
+        }
+
+        private void btnGozAta_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Resim Dosyaları|*.jpg;*.jpeg;*.png;*.bmp";
+            if(ofd.ShowDialog()==DialogResult.OK)
+            {
+                tBResimYolu.Text = ofd.FileName;
+               // PictureBox1.Image = Image.FromFile(ofd.FileName);
+            }
         }
     }
 }

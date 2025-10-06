@@ -64,9 +64,11 @@
             label17 = new Label();
             dGVMekStokDurum = new DataGridView();
             label18 = new Label();
+            pBElektrikResim = new PictureBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dGVMekStokDurum).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pBElektrikResim).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -277,7 +279,7 @@
             panel2.Controls.Add(label14);
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label12);
-            panel2.Location = new Point(759, 68);
+            panel2.Location = new Point(557, 68);
             panel2.Name = "panel2";
             panel2.Size = new Size(481, 219);
             panel2.TabIndex = 4;
@@ -365,7 +367,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(978, 25);
+            label17.Location = new Point(561, 25);
             label17.Name = "label17";
             label17.Size = new Size(81, 20);
             label17.TabIndex = 5;
@@ -374,7 +376,7 @@
             // dGVMekStokDurum
             // 
             dGVMekStokDurum.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVMekStokDurum.Location = new Point(665, 353);
+            dGVMekStokDurum.Location = new Point(518, 339);
             dGVMekStokDurum.Name = "dGVMekStokDurum";
             dGVMekStokDurum.RowHeadersWidth = 51;
             dGVMekStokDurum.Size = new Size(711, 72);
@@ -383,17 +385,26 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(962, 320);
+            label18.Location = new Point(815, 306);
             label18.Name = "label18";
             label18.Size = new Size(98, 20);
             label18.TabIndex = 7;
             label18.Text = "Stok Durumu:";
             // 
+            // pBElektrikResim
+            // 
+            pBElektrikResim.Location = new Point(1162, 58);
+            pBElektrikResim.Name = "pBElektrikResim";
+            pBElektrikResim.Size = new Size(283, 229);
+            pBElektrikResim.TabIndex = 8;
+            pBElektrikResim.TabStop = false;
+            // 
             // ElektrikUrunDetayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1398, 640);
+            ClientSize = new Size(1645, 640);
+            Controls.Add(pBElektrikResim);
             Controls.Add(label18);
             Controls.Add(dGVMekStokDurum);
             Controls.Add(label17);
@@ -408,6 +419,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dGVMekStokDurum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pBElektrikResim).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -449,5 +461,6 @@
         private Label label17;
         private DataGridView dGVMekStokDurum;
         private Label label18;
+        private PictureBox pBElektrikResim;
     }
 }

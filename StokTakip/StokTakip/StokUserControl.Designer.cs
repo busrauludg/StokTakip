@@ -370,6 +370,7 @@
             btnGozAta.TabIndex = 30;
             btnGozAta.Text = "Göz At ";
             btnGozAta.UseVisualStyleBackColor = true;
+            btnGozAta.Click += btnGozAta_Click;
             // 
             // tBPersonelId
             // 

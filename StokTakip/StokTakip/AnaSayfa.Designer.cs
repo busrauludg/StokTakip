@@ -28,30 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            stokUserControl1 = new StokUserControl();
+            pAnaSayfa = new Panel();
+            StkEkle = new Button();
+            pAnaSayfa.SuspendLayout();
             SuspendLayout();
             // 
-            // stokUserControl1
+            // pAnaSayfa
             // 
-            stokUserControl1.Location = new Point(12, -4);
-            stokUserControl1.Name = "stokUserControl1";
-            stokUserControl1.Size = new Size(1509, 1022);
-            stokUserControl1.TabIndex = 0;
+            pAnaSayfa.Controls.Add(StkEkle);
+            pAnaSayfa.Dock = DockStyle.Fill;
+            pAnaSayfa.Location = new Point(0, 0);
+            pAnaSayfa.Name = "pAnaSayfa";
+            pAnaSayfa.Size = new Size(1346, 915);
+            pAnaSayfa.TabIndex = 0;
+            // 
+            // StkEkle
+            // 
+            StkEkle.Location = new Point(139, 372);
+            StkEkle.Name = "StkEkle";
+            StkEkle.Size = new Size(230, 99);
+            StkEkle.TabIndex = 0;
+            StkEkle.Text = "Stok Ekle";
+            StkEkle.UseVisualStyleBackColor = true;
+            StkEkle.Click += StkEkle_Click;
             // 
             // AnaSayfa
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1346, 915);
-            Controls.Add(stokUserControl1);
+            Controls.Add(pAnaSayfa);
             Name = "AnaSayfa";
             Text = "AnaSayfa";
             Load += AnaSayfa_Load;
+            pAnaSayfa.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private StokUserControl stokUserControl1;
+        private Panel pAnaSayfa;
+        private Button StkEkle;
     }
 }

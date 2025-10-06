@@ -35,10 +35,11 @@
             // dGVMekanikListesi
             // 
             dGVMekanikListesi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVMekanikListesi.Location = new Point(91, 46);
+            dGVMekanikListesi.Dock = DockStyle.Fill;
+            dGVMekanikListesi.Location = new Point(0, 0);
             dGVMekanikListesi.Name = "dGVMekanikListesi";
             dGVMekanikListesi.RowHeadersWidth = 51;
-            dGVMekanikListesi.Size = new Size(530, 317);
+            dGVMekanikListesi.Size = new Size(800, 450);
             dGVMekanikListesi.TabIndex = 0;
             dGVMekanikListesi.CellClick += dGVMekanikListesi_CellContentClick;
             // 

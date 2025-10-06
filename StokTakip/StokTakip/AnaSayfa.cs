@@ -21,9 +21,14 @@ namespace StokTakip
         {
         }
 
-        private void stokUserControl1_Load(object sender, EventArgs e)
-        {
+        
 
+        private void StkEkle_Click(object sender, EventArgs e)
+        {
+            pAnaSayfa.Controls.Clear();
+            StokUserControl uc = new StokUserControl();
+            uc.Dock = DockStyle.Fill;                  // paneli doldur
+            pAnaSayfa.Controls.Add(uc);   
         }
     }
 }

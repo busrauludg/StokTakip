@@ -64,9 +64,11 @@
             label14 = new Label();
             label17 = new Label();
             label18 = new Label();
+            pBMekanikResim = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dGVMknStkDurum).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pBMekanikResim).BeginInit();
             SuspendLayout();
             // 
             // dGVMknStkDurum
@@ -389,11 +391,20 @@
             label18.TabIndex = 0;
             label18.Text = "Sipariş Tarihi:";
             // 
+            // pBMekanikResim
+            // 
+            pBMekanikResim.Location = new Point(1284, 45);
+            pBMekanikResim.Name = "pBMekanikResim";
+            pBMekanikResim.Size = new Size(232, 231);
+            pBMekanikResim.TabIndex = 8;
+            pBMekanikResim.TabStop = false;
+            // 
             // MekanikUrunDetayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1739, 663);
+            Controls.Add(pBMekanikResim);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(label3);
@@ -408,6 +419,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pBMekanikResim).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -449,5 +461,6 @@
         private Label label14;
         private Label label17;
         private Label label18;
+        private PictureBox pBMekanikResim;
     }
 }

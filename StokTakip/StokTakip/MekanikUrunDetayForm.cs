@@ -63,6 +63,18 @@ namespace StokTakip
                 var mdurum = new List<StokDurumuViewModel> { _durum };
                 dGVMknStkDurum.DataSource = mdurum;
             }
+            //picturebox
+            if (_secilenUrun != null)
+            {
+                // diğer alanlar
+                if (File.Exists(_secilenUrun.ResimYolu))
+                {
+                    pBMekanikResim.Image = Image.FromFile(_secilenUrun.ResimYolu);
+                    pBMekanikResim.SizeMode = PictureBoxSizeMode.Zoom; // buraya
+                }
+            }
+
+
         }
     }
 }
