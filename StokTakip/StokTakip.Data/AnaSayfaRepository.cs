@@ -16,20 +16,7 @@ namespace StokTakip.Data
         
         public void StokEkle(StokKarti stokKarti,StokDurumu stokDurumu,StokHareketi stokHareketi,SatinAlma satinAlma)
         {
-        //    // 1. StokKarti'yi kaydet
-        //    _context.StokKartis.Add(stokKarti);
-        //    _context.SaveChanges(); // Bu satırdan sonra stokKarti.Id oluşur
-
-        //    // 2. StokHareketi ve StokDurumu'na stokKarti.Id ataması yap
-        //    stokHareketi.StokKartiId = stokKarti.StokKartiId;
-        //    stokDurumu.StokKartiId = stokKarti.StokKartiId;
-
-        //    // 3. Kaydet
-        //    _context.StokHareketis.Add(stokHareketi);
-        //    _context.StokDurumus.Add(stokDurumu);
-        //    _context.SaveChanges();
-
-        // 1. StokKarti kaydet
+            // 1. StokKarti kaydet
             _context.StokKartis.Add(stokKarti);
             _context.SaveChanges(); // Burada stokKarti.StokKartiId oluşur
 
@@ -46,7 +33,21 @@ namespace StokTakip.Data
             _context.SaveChanges();
 
         }
-
+        public void ProjeEkle(Proje proje)
+        {
+            _context.Add(proje);
+            _context.SaveChanges();
+        }
+        //public void ProjeKullanilanUrunEkle(ProjedeKullanilanUrunler aktifPrjEkle)
+        //{
+        //    _context.ProjedeKullanilanUrunlers.Add(aktifPrjEkle);
+        //    _context.SaveChanges();
+        ////}
+        //public void ProjeKullanilanUrunEkle(ProjedeKullanilanUrunler projeKullanilan)
+        //{
+        //    _context.ProjedeKullanilanUrunlers.Add(projeKullanilan);
+        //    _context.SaveChanges();
+        //}
 
     }
 }

@@ -20,7 +20,7 @@ namespace StokTakip
     public partial class PersonelEkle : Form
     {
         private readonly PersonelServices _personelService;
-       
+
         public PersonelEkle()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace StokTakip
 
             // Service örneği
             _personelService = new PersonelServices(new PersonelRepository(new StokTakipContext()));
-            
+
         }
         private void rBPrsYetkili_CheckedChanged(object sender, EventArgs e)
         {
@@ -55,15 +55,15 @@ namespace StokTakip
             bool rolYetkili = rBPrsYetkili.Checked;
             string girdiSifre = tBYetkiliSifre.Text; // Yetkili seçilmişse girilen şifre
 
-            if(rolYetkili)
+            if (rolYetkili)
             {
                 string? dbHash = _personelService.GetYetkiliSifreHash();
-                if(dbHash == null)
+                if (dbHash == null)
                 {
                     MessageBox.Show("Sistem yetkili şifresi belirlenmemiş.");
                     return;
                 }
-                if(HashHelper.HashSha256(girdiSifre)!=dbHash)
+                if (HashHelper.HashSha256(girdiSifre) != dbHash)
                 {
                     MessageBox.Show("Yetkili şifre yanlış, personel yetkili olarak eklenemez.");
                     return;
@@ -80,7 +80,7 @@ namespace StokTakip
                 Telefon = tBPrsTelNo.Text,
                 Eposta = tBPrsEposta.Text,
                 Sifre = tBPrsSifre.Text,
-                SifreTekrari= tBSifreTekrari.Text,
+                SifreTekrari = tBSifreTekrari.Text,
                 Rol = rBPrsYetkili.Checked
             };
             try
@@ -128,7 +128,12 @@ namespace StokTakip
         private void tBYetkiliSifre_TextChanged(object sender, EventArgs e)
         {
             // Yetkili şifre eşleşme kontrolü
-            
+
+        }
+
+        private void PersonelEkle_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -260,6 +260,7 @@
             Controls.Add(lblPrsAd);
             Name = "PersonelEkle";
             Text = "PersonelEkle";
+            Load += PersonelEkle_Load;
             ResumeLayout(false);
             PerformLayout();
         }

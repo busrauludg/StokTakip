@@ -65,6 +65,11 @@
             label17 = new Label();
             label18 = new Label();
             pBMekanikResim = new PictureBox();
+            label19 = new Label();
+            label20 = new Label();
+            lVAktifProje = new ListView();
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dGVMknStkDurum).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -74,10 +79,10 @@
             // dGVMknStkDurum
             // 
             dGVMknStkDurum.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVMknStkDurum.Location = new Point(675, 459);
+            dGVMknStkDurum.Location = new Point(516, 342);
             dGVMknStkDurum.Name = "dGVMknStkDurum";
             dGVMknStkDurum.RowHeadersWidth = 51;
-            dGVMknStkDurum.Size = new Size(710, 74);
+            dGVMknStkDurum.Size = new Size(669, 74);
             dGVMknStkDurum.TabIndex = 1;
             // 
             // label1
@@ -92,7 +97,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(1017, 414);
+            label2.Location = new Point(546, 310);
             label2.Name = "label2";
             label2.Size = new Size(95, 20);
             label2.TabIndex = 4;
@@ -101,7 +106,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(750, 24);
+            label3.Location = new Point(564, 14);
             label3.Name = "label3";
             label3.Size = new Size(77, 20);
             label3.TabIndex = 5;
@@ -306,7 +311,7 @@
             panel2.Controls.Add(label14);
             panel2.Controls.Add(label17);
             panel2.Controls.Add(label18);
-            panel2.Location = new Point(727, 55);
+            panel2.Location = new Point(541, 45);
             panel2.Name = "panel2";
             panel2.Size = new Size(481, 219);
             panel2.TabIndex = 7;
@@ -393,17 +398,66 @@
             // 
             // pBMekanikResim
             // 
-            pBMekanikResim.Location = new Point(1284, 45);
+            pBMekanikResim.Location = new Point(1121, 50);
             pBMekanikResim.Name = "pBMekanikResim";
             pBMekanikResim.Size = new Size(232, 231);
             pBMekanikResim.TabIndex = 8;
             pBMekanikResim.TabStop = false;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(1103, 14);
+            label19.Name = "label19";
+            label19.Size = new Size(49, 20);
+            label19.TabIndex = 9;
+            label19.Text = "Resim";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(1263, 325);
+            label20.Name = "label20";
+            label20.Size = new Size(146, 20);
+            label20.TabIndex = 10;
+            label20.Text = "Aktif Proje İhtiyacları";
+            // 
+            // lVAktifProje
+            // 
+            lVAktifProje.Location = new Point(1263, 368);
+            lVAktifProje.Name = "lVAktifProje";
+            lVAktifProje.Size = new Size(438, 283);
+            lVAktifProje.TabIndex = 12;
+            lVAktifProje.UseCompatibleStateImageBehavior = false;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(622, 531);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 13;
+            button1.Text = "Stok Arttır";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(836, 531);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 14;
+            button2.Text = "Stok Cıkışı";
+            button2.UseVisualStyleBackColor = true;
             // 
             // MekanikUrunDetayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1739, 663);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(lVAktifProje);
+            Controls.Add(label20);
+            Controls.Add(label19);
             Controls.Add(pBMekanikResim);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -462,5 +516,10 @@
         private Label label17;
         private Label label18;
         private PictureBox pBMekanikResim;
+        private Label label19;
+        private Label label20;
+        private ListView lVAktifProje;
+        private Button button1;
+        private Button button2;
     }
 }

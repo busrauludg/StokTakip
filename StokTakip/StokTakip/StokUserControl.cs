@@ -146,11 +146,16 @@ namespace StokTakip
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Resim Dosyaları|*.jpg;*.jpeg;*.png;*.bmp";
-            if(ofd.ShowDialog()==DialogResult.OK)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
                 tBResimYolu.Text = ofd.FileName;
-               // PictureBox1.Image = Image.FromFile(ofd.FileName);
+                // PictureBox1.Image = Image.FromFile(ofd.FileName);
             }
+        }
+
+        private void StokUserControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -65,6 +65,8 @@
             dGVMekStokDurum = new DataGridView();
             label18 = new Label();
             pBElektrikResim = new PictureBox();
+            lVAktifProje = new ListView();
+            label20 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dGVMekStokDurum).BeginInit();
@@ -399,11 +401,30 @@
             pBElektrikResim.TabIndex = 8;
             pBElektrikResim.TabStop = false;
             // 
+            // lVAktifProje
+            // 
+            lVAktifProje.Location = new Point(577, 496);
+            lVAktifProje.Name = "lVAktifProje";
+            lVAktifProje.Size = new Size(438, 283);
+            lVAktifProje.TabIndex = 14;
+            lVAktifProje.UseCompatibleStateImageBehavior = false;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(577, 453);
+            label20.Name = "label20";
+            label20.Size = new Size(146, 20);
+            label20.TabIndex = 13;
+            label20.Text = "Aktif Proje İhtiyacları";
+            // 
             // ElektrikUrunDetayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1645, 640);
+            ClientSize = new Size(1645, 830);
+            Controls.Add(lVAktifProje);
+            Controls.Add(label20);
             Controls.Add(pBElektrikResim);
             Controls.Add(label18);
             Controls.Add(dGVMekStokDurum);
@@ -462,5 +483,7 @@
         private DataGridView dGVMekStokDurum;
         private Label label18;
         private PictureBox pBElektrikResim;
+        private ListView lVAktifProje;
+        private Label label20;
     }
 }

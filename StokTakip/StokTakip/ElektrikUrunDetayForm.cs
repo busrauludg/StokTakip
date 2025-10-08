@@ -69,6 +69,31 @@ namespace StokTakip
                     pBElektrikResim.SizeMode = PictureBoxSizeMode.Zoom; // buraya
                 }
             }
+            lVAktifProje.View = View.Details;
+            lVAktifProje.Columns.Add("Ürün Adı", 150);
+            lVAktifProje.Columns.Add("Miktar", 70);
+            if (_secilenUrun != null)
+            {
+                using (var context = new StokTakipContext())
+                {
+                    var liste = context.ProjedeKullanilanUrunlers
+                        .Where(p => p.StokKartiId == _secilenUrun.StokKartiId) // seçilen ürün
+                        .Select(p => new
+                        {
+                            p.Proje.ProjeAdi,
+                            p.Miktar
+                        }).ToList();
+
+                    lVAktifProje.Items.Clear();
+                    foreach (var item in liste)
+                    {
+                        var lvi = new ListViewItem(item.ProjeAdi);
+                        lvi.SubItems.Add(item.Miktar.ToString());
+                        lVAktifProje.Items.Add(lvi);
+                    }
+                }
+
+            }
 
         }
     }

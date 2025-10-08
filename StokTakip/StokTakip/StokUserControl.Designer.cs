@@ -833,6 +833,7 @@
             Controls.Add(groupBox1);
             Name = "StokUserControl";
             Size = new Size(1684, 818);
+            Load += StokUserControl_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nUDSMiktar).EndInit();
