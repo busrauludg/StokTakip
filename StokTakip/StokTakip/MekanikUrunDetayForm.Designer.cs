@@ -56,11 +56,9 @@
             panel2 = new Panel();
             dTPMekanik = new DateTimePicker();
             txtMSprsAciklama = new TextBox();
-            txtMGlnMktr = new TextBox();
             txtMCari = new TextBox();
             txtMMiktar = new TextBox();
             label16 = new Label();
-            label15 = new Label();
             label14 = new Label();
             label17 = new Label();
             label18 = new Label();
@@ -70,6 +68,8 @@
             lVAktifProje = new ListView();
             button1 = new Button();
             button2 = new Button();
+            label15 = new Label();
+            txtMGlnMktr = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dGVMknStkDurum).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -330,13 +330,6 @@
             txtMSprsAciklama.Size = new Size(125, 27);
             txtMSprsAciklama.TabIndex = 8;
             // 
-            // txtMGlnMktr
-            // 
-            txtMGlnMktr.Location = new Point(219, 127);
-            txtMGlnMktr.Name = "txtMGlnMktr";
-            txtMGlnMktr.Size = new Size(125, 27);
-            txtMGlnMktr.TabIndex = 7;
-            // 
             // txtMCari
             // 
             txtMCari.Location = new Point(219, 88);
@@ -359,15 +352,6 @@
             label16.Size = new Size(121, 20);
             label16.TabIndex = 4;
             label16.Text = "Sipariş Açıklama:";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(20, 127);
-            label15.Name = "label15";
-            label15.Size = new Size(96, 20);
-            label15.TabIndex = 3;
-            label15.Text = "Gelen Miktar:";
             // 
             // label14
             // 
@@ -448,6 +432,22 @@
             button2.Text = "Stok Cıkışı";
             button2.UseVisualStyleBackColor = true;
             // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(20, 127);
+            label15.Name = "label15";
+            label15.Size = new Size(96, 20);
+            label15.TabIndex = 3;
+            label15.Text = "Gelen Miktar:";
+            // 
+            // txtMGlnMktr
+            // 
+            txtMGlnMktr.Location = new Point(219, 127);
+            txtMGlnMktr.Name = "txtMGlnMktr";
+            txtMGlnMktr.Size = new Size(125, 27);
+            txtMGlnMktr.TabIndex = 7;
+            // 
             // MekanikUrunDetayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -507,11 +507,9 @@
         private Panel panel2;
         private DateTimePicker dTPMekanik;
         private TextBox txtMSprsAciklama;
-        private TextBox txtMGlnMktr;
         private TextBox txtMCari;
         private TextBox txtMMiktar;
         private Label label16;
-        private Label label15;
         private Label label14;
         private Label label17;
         private Label label18;
@@ -521,5 +519,7 @@
         private ListView lVAktifProje;
         private Button button1;
         private Button button2;
+        private TextBox txtMGlnMktr;
+        private Label label15;
     }
 }

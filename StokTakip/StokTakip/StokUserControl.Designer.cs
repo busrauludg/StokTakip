@@ -86,8 +86,6 @@
             openFileDialog1 = new OpenFileDialog();
             btnStokEkle = new Button();
             groupBox4 = new GroupBox();
-            tBStnAlmaGelen = new TextBox();
-            label35 = new Label();
             dTPStnAlma = new DateTimePicker();
             tBStnAlmaPersonelId = new TextBox();
             tBStnAlmaAciklama = new TextBox();
@@ -652,8 +650,6 @@
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(tBStnAlmaGelen);
-            groupBox4.Controls.Add(label35);
             groupBox4.Controls.Add(dTPStnAlma);
             groupBox4.Controls.Add(tBStnAlmaPersonelId);
             groupBox4.Controls.Add(tBStnAlmaAciklama);
@@ -677,22 +673,6 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Satın Alma";
             // 
-            // tBStnAlmaGelen
-            // 
-            tBStnAlmaGelen.Location = new Point(130, 230);
-            tBStnAlmaGelen.Name = "tBStnAlmaGelen";
-            tBStnAlmaGelen.Size = new Size(125, 27);
-            tBStnAlmaGelen.TabIndex = 20;
-            // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.Location = new Point(0, 237);
-            label35.Name = "label35";
-            label35.Size = new Size(96, 20);
-            label35.TabIndex = 19;
-            label35.Text = "Gelen Miktar:";
-            // 
             // dTPStnAlma
             // 
             dTPStnAlma.Location = new Point(115, 56);
@@ -702,49 +682,49 @@
             // 
             // tBStnAlmaPersonelId
             // 
-            tBStnAlmaPersonelId.Location = new Point(130, 486);
+            tBStnAlmaPersonelId.Location = new Point(165, 431);
             tBStnAlmaPersonelId.Name = "tBStnAlmaPersonelId";
             tBStnAlmaPersonelId.Size = new Size(125, 27);
             tBStnAlmaPersonelId.TabIndex = 17;
             // 
             // tBStnAlmaAciklama
             // 
-            tBStnAlmaAciklama.Location = new Point(130, 432);
+            tBStnAlmaAciklama.Location = new Point(165, 385);
             tBStnAlmaAciklama.Name = "tBStnAlmaAciklama";
             tBStnAlmaAciklama.Size = new Size(125, 27);
             tBStnAlmaAciklama.TabIndex = 16;
             // 
             // tBStnAlmaParaBirm
             // 
-            tBStnAlmaParaBirm.Location = new Point(130, 390);
+            tBStnAlmaParaBirm.Location = new Point(165, 336);
             tBStnAlmaParaBirm.Name = "tBStnAlmaParaBirm";
             tBStnAlmaParaBirm.Size = new Size(125, 27);
             tBStnAlmaParaBirm.TabIndex = 15;
             // 
             // tBStnAlmaKur
             // 
-            tBStnAlmaKur.Location = new Point(130, 341);
+            tBStnAlmaKur.Location = new Point(165, 290);
             tBStnAlmaKur.Name = "tBStnAlmaKur";
             tBStnAlmaKur.Size = new Size(125, 27);
             tBStnAlmaKur.TabIndex = 14;
             // 
             // tBStnAlmaBirim
             // 
-            tBStnAlmaBirim.Location = new Point(130, 284);
+            tBStnAlmaBirim.Location = new Point(165, 233);
             tBStnAlmaBirim.Name = "tBStnAlmaBirim";
             tBStnAlmaBirim.Size = new Size(125, 27);
             tBStnAlmaBirim.TabIndex = 13;
             // 
             // tBStnAlmaCari
             // 
-            tBStnAlmaCari.Location = new Point(130, 177);
+            tBStnAlmaCari.Location = new Point(165, 177);
             tBStnAlmaCari.Name = "tBStnAlmaCari";
             tBStnAlmaCari.Size = new Size(125, 27);
             tBStnAlmaCari.TabIndex = 12;
             // 
             // tBStnAlMiktar
             // 
-            tBStnAlMiktar.Location = new Point(130, 115);
+            tBStnAlMiktar.Location = new Point(165, 115);
             tBStnAlMiktar.Name = "tBStnAlMiktar";
             tBStnAlMiktar.Size = new Size(125, 27);
             tBStnAlMiktar.TabIndex = 11;
@@ -752,7 +732,7 @@
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(8, 493);
+            label34.Location = new Point(8, 442);
             label34.Name = "label34";
             label34.Size = new Size(77, 20);
             label34.TabIndex = 8;
@@ -761,7 +741,7 @@
             // label33
             // 
             label33.AutoSize = true;
-            label33.Location = new Point(8, 439);
+            label33.Location = new Point(8, 388);
             label33.Name = "label33";
             label33.Size = new Size(73, 20);
             label33.TabIndex = 7;
@@ -770,7 +750,7 @@
             // label32
             // 
             label32.AutoSize = true;
-            label32.Location = new Point(6, 390);
+            label32.Location = new Point(6, 339);
             label32.Name = "label32";
             label32.Size = new Size(83, 20);
             label32.TabIndex = 6;
@@ -779,7 +759,7 @@
             // label31
             // 
             label31.AutoSize = true;
-            label31.Location = new Point(17, 344);
+            label31.Location = new Point(17, 293);
             label31.Name = "label31";
             label31.Size = new Size(34, 20);
             label31.TabIndex = 5;
@@ -788,7 +768,7 @@
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(8, 291);
+            label30.Location = new Point(8, 240);
             label30.Name = "label30";
             label30.Size = new Size(82, 20);
             label30.TabIndex = 4;
@@ -808,9 +788,9 @@
             label28.AutoSize = true;
             label28.Location = new Point(8, 122);
             label28.Name = "label28";
-            label28.Size = new Size(54, 20);
+            label28.Size = new Size(151, 20);
             label28.TabIndex = 2;
-            label28.Text = "Miktar:";
+            label28.Text = "Sipariş Verilen Miktar:";
             // 
             // label27
             // 
@@ -912,8 +892,6 @@
         private TextBox tBSHPersonelId;
         private Label label16;
         private GroupBox groupBox4;
-        private TextBox tBStnAlmaGelen;
-        private Label label35;
         private DateTimePicker dTPStnAlma;
         private TextBox tBStnAlmaPersonelId;
         private TextBox tBStnAlmaAciklama;

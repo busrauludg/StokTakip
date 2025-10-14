@@ -76,8 +76,8 @@ namespace StokTakip
             int satinalmaMiktari = 0;
             int.TryParse(tBStnAlMiktar.Text, out satinalmaMiktari);
 
-            int gelenMiktar = 0;
-            int.TryParse(tBStnAlmaGelen.Text, out gelenMiktar);
+            //int gelenMiktar = 0;
+            //int.TryParse(tBStnAlmaGelen.Text, out gelenMiktar);
 
             int birimFiyat = 0;
             int.TryParse(tBStnAlmaBirim.Text, out birimFiyat);
@@ -120,7 +120,7 @@ namespace StokTakip
                 SiparisTarihi = DateTime.Now,
                 StnAlmaMiktar = satinalmaMiktari, //int parse yap
                 CariAdi = tBStnAlmaCari.Text,
-                GelenMiktar = gelenMiktar,
+                //GelenMiktar = gelenMiktar,
                 BirimFiyat = birimFiyat,
                 Kur = kur,
                 ParaBirimi = tBStnAlmaParaBirm.Text,

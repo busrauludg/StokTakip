@@ -1,4 +1,5 @@
 ﻿using StokTakip.Data;
+using StokTakip.Helpers;
 using StokTakip.Services;
 using StokTakip.StokTakip.Data;
 using System;
@@ -33,6 +34,7 @@ namespace StokTakip
             string pEposta= tBPrsnlEposta.Text;
             string pSifre= tBPrsnlSifre.Text;
 
+
             PersonelRepository prepo = new PersonelRepository(new StokTakipContext());
             PersonelServices pservices = new PersonelServices(prepo);
 
@@ -40,6 +42,11 @@ namespace StokTakip
 
             if (prsnlGirisBasarili)
             {
+                // Giriş yapan personeli al 08.10.2025
+                var girisYapanKullanici = pservices.GetByEposta(pEposta);
+                YetkiliKontrol.Rol = girisYapanKullanici.Rol; // Rolü sakla
+
+
                 var bolumForm = new BolumSec();
                 bolumForm.ShowDialog();
                 this.Hide();

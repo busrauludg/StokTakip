@@ -29,14 +29,18 @@
         private void InitializeComponent()
         {
             pAnaSayfa = new Panel();
+            btnSiparisDetay = new Button();
+            btnProjeDetay = new Button();
+            btnPersonelBilgi = new Button();
             btnProje = new Button();
             StkEkle = new Button();
-            btnPersonelBilgi = new Button();
             pAnaSayfa.SuspendLayout();
             SuspendLayout();
             // 
             // pAnaSayfa
             // 
+            pAnaSayfa.Controls.Add(btnSiparisDetay);
+            pAnaSayfa.Controls.Add(btnProjeDetay);
             pAnaSayfa.Controls.Add(btnPersonelBilgi);
             pAnaSayfa.Controls.Add(btnProje);
             pAnaSayfa.Controls.Add(StkEkle);
@@ -47,35 +51,55 @@
             pAnaSayfa.TabIndex = 0;
             pAnaSayfa.Paint += pAnaSayfa_Paint;
             // 
-            // btnProje
+            // btnSiparisDetay
             // 
-            btnProje.Location = new Point(410, 340);
-            btnProje.Name = "btnProje";
-            btnProje.Size = new Size(261, 107);
-            btnProje.TabIndex = 1;
-            btnProje.Text = "Proje";
-            btnProje.UseVisualStyleBackColor = true;
-            btnProje.Click += btnProje_Click;
+            btnSiparisDetay.Location = new Point(1068, 59);
+            btnSiparisDetay.Name = "btnSiparisDetay";
+            btnSiparisDetay.Size = new Size(244, 118);
+            btnSiparisDetay.TabIndex = 4;
+            btnSiparisDetay.Text = "Sipariş İşlemleri";
+            btnSiparisDetay.UseVisualStyleBackColor = true;
+            btnSiparisDetay.Click += btnSiparisDetay_Click;
             // 
-            // StkEkle
+            // btnProjeDetay
             // 
-            StkEkle.Location = new Point(44, 340);
-            StkEkle.Name = "StkEkle";
-            StkEkle.Size = new Size(230, 99);
-            StkEkle.TabIndex = 0;
-            StkEkle.Text = "Stok Ekle";
-            StkEkle.UseVisualStyleBackColor = true;
-            StkEkle.Click += StkEkle_Click;
+            btnProjeDetay.Location = new Point(720, 63);
+            btnProjeDetay.Name = "btnProjeDetay";
+            btnProjeDetay.Size = new Size(278, 114);
+            btnProjeDetay.TabIndex = 3;
+            btnProjeDetay.Text = "Proje Detayları";
+            btnProjeDetay.UseVisualStyleBackColor = true;
+            btnProjeDetay.Click += btnProjeDetay_Click;
             // 
             // btnPersonelBilgi
             // 
-            btnPersonelBilgi.Location = new Point(798, 336);
+            btnPersonelBilgi.Location = new Point(1068, 569);
             btnPersonelBilgi.Name = "btnPersonelBilgi";
             btnPersonelBilgi.Size = new Size(278, 107);
             btnPersonelBilgi.TabIndex = 2;
             btnPersonelBilgi.Text = "Personel";
             btnPersonelBilgi.UseVisualStyleBackColor = true;
             btnPersonelBilgi.Click += btnPersonelBilgi_Click;
+            // 
+            // btnProje
+            // 
+            btnProje.Location = new Point(356, 59);
+            btnProje.Name = "btnProje";
+            btnProje.Size = new Size(261, 107);
+            btnProje.TabIndex = 1;
+            btnProje.Text = "Proje Oluştur";
+            btnProje.UseVisualStyleBackColor = true;
+            btnProje.Click += btnProje_Click;
+            // 
+            // StkEkle
+            // 
+            StkEkle.Location = new Point(47, 63);
+            StkEkle.Name = "StkEkle";
+            StkEkle.Size = new Size(230, 99);
+            StkEkle.TabIndex = 0;
+            StkEkle.Text = "Stok Ekle";
+            StkEkle.UseVisualStyleBackColor = true;
+            StkEkle.Click += StkEkle_Click;
             // 
             // AnaSayfa
             // 
@@ -96,5 +120,7 @@
         private Button StkEkle;
         private Button btnProje;
         private Button btnPersonelBilgi;
+        private Button btnProjeDetay;
+        private Button btnSiparisDetay;
     }
 }

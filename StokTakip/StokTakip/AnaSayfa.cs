@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StokTakip.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace StokTakip
 {
     public partial class AnaSayfa : Form
     {
+
         public AnaSayfa()
         {
             InitializeComponent();
@@ -19,6 +21,7 @@ namespace StokTakip
 
         private void AnaSayfa_Load(object sender, EventArgs e)
         {
+            btnPersonelBilgi.Visible = YetkiliKontrol.Rol;
         }
 
 
@@ -46,10 +49,30 @@ namespace StokTakip
 
         private void btnPersonelBilgi_Click(object sender, EventArgs e)
         {
+
             pAnaSayfa.Controls.Clear();
             PersonelControl pr = new PersonelControl();
             pr.Dock = DockStyle.Fill;
             pAnaSayfa.Controls.Add(pr);
+        }
+
+        private void btnProjeDetay_Click(object sender, EventArgs e)
+        {
+            pAnaSayfa.Controls.Clear();
+            ProjeDetayControl pd = new ProjeDetayControl();
+            pd.Dock = DockStyle.Fill;
+            pAnaSayfa.Controls.Add(pd);
+        }
+
+        private void btnSiparisDetay_Click(object sender, EventArgs e)
+        {
+            //pAnaSayfa.Controls.Clear();
+            //SiparisListesiControl sl=new SiparisListesiControl();
+            //sl.Dock = DockStyle.Fill;
+            //pAnaSayfa.Controls.Add(sl);
+
+            Siparisİslemleri spfrm = new Siparisİslemleri();
+            spfrm.ShowDialog();
         }
     }
 }
