@@ -27,6 +27,9 @@ namespace StokTakip
 
         private void Siparisİslemleri_Load(object sender, EventArgs e)
         {
+            //formla eşit olsun 
+            tabControl1.Dock = DockStyle.Fill;
+
             // ListView ayarları
             lVlSiparisListesi.View = View.Details;
             lVlSiparisListesi.FullRowSelect = true;
@@ -34,7 +37,7 @@ namespace StokTakip
             lVlSiparisListesi.Columns.Clear();
 
             lVlSiparisListesi.Columns.Add("Sipariş Tarihi", 120);
-            lVlSiparisListesi.Columns.Add("Cari Adı", 150);
+            lVlSiparisListesi.Columns.Add("Sipariş Verilen Firma", 150);
             lVlSiparisListesi.Columns.Add("Ürün", 150);
             lVlSiparisListesi.Columns.Add("Sipariş Edilen Miktar", 95);
             lVlSiparisListesi.Columns.Add("Gelen Miktar", 85);
@@ -42,8 +45,11 @@ namespace StokTakip
             lVlSiparisListesi.Columns.Add("Kur", 80);
             lVlSiparisListesi.Columns.Add("Para Birimi", 80);
             lVlSiparisListesi.Columns.Add("Personel", 120);
+            lVlSiparisListesi.Columns.Add("Durum", 100);//otomatik
+            lVlSiparisListesi.Columns.Add("Grup Adı", 100);//grup adı
 
             lVlSiparisListesi.ContextMenuStrip = cMSPrjListe;
+            lVlSiparisListesi.MouseUp += lVlSiparisListesi_MouseUp;
 
             // Verileri çek ve ekle
             using (var context = new StokTakipContext())
@@ -60,6 +66,14 @@ namespace StokTakip
 
                     var urun = context.StokKartis.Find(s.StokKartiId);
 
+                    // Ürünün grup adını al
+                    string grupAd = "";
+                    if (urun != null && urun.GrupId != null)
+                    {
+                        var grup = context.Gruplars.Find(urun.GrupId);
+                        grupAd = grup?.GrupAdi ?? "";
+                    }
+
                     ListViewItem item = new ListViewItem(s.SiparisTarihi.ToString("dd.MM.yyyy"));
                     item.SubItems.Add(s.CariAdi);
                     item.SubItems.Add(urun?.UrunAdi ?? ""); // Ürün adı yoksa boş göster
@@ -70,6 +84,20 @@ namespace StokTakip
                     item.SubItems.Add(s.ParaBirimi);
                     var personel = context.Personels.Find(s.PersonelId);
                     item.SubItems.Add(personel?.Ad ?? "");
+
+
+                    // DURUM - veritabanına eklemeden sadece UI için
+                    // ---------- DURUM HESAPLAMA EKLENDİ ----------
+                    string durum;
+                    if (s.GelenMiktar == 0) durum = "Beklemede";
+                    else if (s.GelenMiktar >= s.Miktar) durum = "Geldi";
+                    else durum = "Kısmi Geldi";
+                    item.SubItems.Add(durum); // sadece ListView’de görünecek
+
+                    // Grup adı eklendi
+                    item.SubItems.Add(grupAd);//bunu gruptan sonra yaptık cünkü iki veri karışıyordu 
+                 
+
 
                     // BURASI EKLENDİ: Her satıra sipariş ID'yi Tag olarak ata
                     item.Tag = s.SiparisId;
@@ -94,15 +122,11 @@ namespace StokTakip
             }
 
             //sipariş girişi 
-            cBParaBirimi.Items.Add("Dolar");
-            cBParaBirimi.Items.Add("TL");
-            cBParaBirimi.Items.Add("Euro");
+            // Para birimi comboBox
+            cBParaBirimi.Items.AddRange(new string[] { "Dolar", "TL", "Euro" });
 
 
-            lVlSiparisListesi.MouseUp += lVlSiparisListesi_MouseUp;
 
-            //formla eşit olsun 
-            tabControl1.Dock = DockStyle.Fill;
 
         }
         private void lVlSiparisListesi_MouseUp(object sender, MouseEventArgs e)
@@ -158,9 +182,34 @@ namespace StokTakip
                             {
                                 siparis.GelenMiktar = gelenMiktar;
                                 ctx.SaveChanges();
+
+
+                                // ---------- DURUM GÜNCELLEME EKLENDİ ----------
+                                string durum;
+                                if (gelenMiktar == 0) durum = "Beklemede";
+                                else if (gelenMiktar >= siparis.Miktar) durum = "Geldi";
+                                else durum = "Kısmi Geldi";
+                                secilenItem.SubItems[9].Text = durum; // 9 = Durum sütunu index
+                                                                      // -------------------------------------------
+
                                 MessageBox.Show("Güncelleme başarılı!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
+                    }
+
+                    // BURASI EKLENDİ: Durum otomatik (veritabanına dokunmadan sadece ListView’de güncelliyor)
+                    int siparisMiktar = int.Parse(secilenItem.SubItems[3].Text); // 3: Sipariş Edilen Miktar
+                    string yeniDurum;
+                    if (int.TryParse(secilenSubItem.Text, out int gelenMiktar2))
+                    {
+                        if (gelenMiktar2 == 0) yeniDurum = "Beklemede";
+                        else if (gelenMiktar2 >= siparisMiktar) yeniDurum = "Geldi";
+                        else yeniDurum = "Kısmi Geldi";
+
+                        if (secilenItem.SubItems.Count < 11)
+                            secilenItem.SubItems.Add(yeniDurum);
+                        else
+                            secilenItem.SubItems[10].Text = yeniDurum;
                     }
                 }
             };
