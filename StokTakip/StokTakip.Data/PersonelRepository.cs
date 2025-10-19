@@ -34,16 +34,18 @@ namespace StokTakip.Data
             _context.SaveChanges();
 
         }
-        public void YetkiliEkle(Personel yetki)
+        //15.10.2025
+        public Personel? GetByRol()
         {
-            // Rol = 1 olan satırı bul
-            var personel = _context.Personels.FirstOrDefault(p => p.Rol == true);//bool oldugu için 1 yaparsan int değer vermekten hata alırsın 
-            if (personel != null)
-            {
-                personel.YetkiliSifre = yetki.YetkiliSifre; // DTO’dan gelen hash
-                _context.SaveChanges();
-            }
+            return _context.Personels.FirstOrDefault(p => p.Rol == true);
         }
+
+        public void YetkiliEkle(Personel p)
+        {
+            _context.SaveChanges(); // sadece güncellenen personeli kaydet
+        }
+
+        //}
         //15.09.20025 personel giriş için 
         public bool PersonelVarMi(string eposta,string sifre)
         {

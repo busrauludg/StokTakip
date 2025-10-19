@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             pAnaSayfa = new Panel();
+            btnPersonelBilgi = new Button();
             btnSiparisDetay = new Button();
             btnProjeDetay = new Button();
-            btnPersonelBilgi = new Button();
             btnProje = new Button();
             StkEkle = new Button();
             pAnaSayfa.SuspendLayout();
@@ -50,6 +50,16 @@
             pAnaSayfa.Size = new Size(1346, 915);
             pAnaSayfa.TabIndex = 0;
             pAnaSayfa.Paint += pAnaSayfa_Paint;
+            // 
+            // btnPersonelBilgi
+            // 
+            btnPersonelBilgi.Location = new Point(1068, 569);
+            btnPersonelBilgi.Name = "btnPersonelBilgi";
+            btnPersonelBilgi.Size = new Size(278, 107);
+            btnPersonelBilgi.TabIndex = 2;
+            btnPersonelBilgi.Text = "Personel";
+            btnPersonelBilgi.UseVisualStyleBackColor = true;
+            btnPersonelBilgi.Click += btnPersonelBilgi_Click;
             // 
             // btnSiparisDetay
             // 
@@ -70,16 +80,6 @@
             btnProjeDetay.Text = "Proje Detayları";
             btnProjeDetay.UseVisualStyleBackColor = true;
             btnProjeDetay.Click += btnProjeDetay_Click;
-            // 
-            // btnPersonelBilgi
-            // 
-            btnPersonelBilgi.Location = new Point(1068, 569);
-            btnPersonelBilgi.Name = "btnPersonelBilgi";
-            btnPersonelBilgi.Size = new Size(278, 107);
-            btnPersonelBilgi.TabIndex = 2;
-            btnPersonelBilgi.Text = "Personel";
-            btnPersonelBilgi.UseVisualStyleBackColor = true;
-            btnPersonelBilgi.Click += btnPersonelBilgi_Click;
             // 
             // btnProje
             // 
@@ -117,10 +117,10 @@
         #endregion
 
         private Panel pAnaSayfa;
-        private Button StkEkle;
-        private Button btnProje;
-        private Button btnPersonelBilgi;
-        private Button btnProjeDetay;
         private Button btnSiparisDetay;
+        private Button btnProjeDetay;
+        private Button btnPersonelBilgi;
+        private Button btnProje;
+        private Button StkEkle;
     }
 }

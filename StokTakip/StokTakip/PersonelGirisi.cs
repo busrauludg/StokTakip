@@ -16,6 +16,7 @@ namespace StokTakip
 {
     public partial class PersonelGirisi : Form
     {
+
         public PersonelGirisi()
         {
             InitializeComponent();
@@ -31,14 +32,14 @@ namespace StokTakip
 
         private void PrsnlGiris_Click(object sender, EventArgs e)
         {
-            string pEposta= tBPrsnlEposta.Text;
-            string pSifre= tBPrsnlSifre.Text;
+            string pEposta = tBPrsnlEposta.Text;
+            string pSifre = tBPrsnlSifre.Text;
 
 
             PersonelRepository prepo = new PersonelRepository(new StokTakipContext());
             PersonelServices pservices = new PersonelServices(prepo);
 
-            bool prsnlGirisBasarili= pservices.PrsnlGirisKontrol(pEposta, pSifre);
+            bool prsnlGirisBasarili = pservices.PrsnlGirisKontrol(pEposta, pSifre);
 
             if (prsnlGirisBasarili)
             {
@@ -50,12 +51,12 @@ namespace StokTakip
                 var bolumForm = new BolumSec();
                 bolumForm.ShowDialog();
                 this.Hide();
-                
+
             }
 
-            if(string.IsNullOrWhiteSpace(tBPrsnlEposta.Text)||string.IsNullOrWhiteSpace(tBPrsnlSifre.Text))
+            if (string.IsNullOrWhiteSpace(tBPrsnlEposta.Text) || string.IsNullOrWhiteSpace(tBPrsnlSifre.Text))
             {
-                MessageBox.Show("Eposta ve sifre boş bırakılamaz","Uyarı",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Eposta ve sifre boş bırakılamaz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -63,8 +64,14 @@ namespace StokTakip
             {
                 // Giriş başarısız → kullanıcıya mesaj göster ve PersonelEkle formuna yönlendir
                 MessageBox.Show("E-posta veya şifre bulunamadı.Şifre ve epostanızı kontrol ediniz.");
-             
+
             }
+
+        }
+
+        private void PersonelGirisi_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
 
         }
     }

@@ -20,6 +20,9 @@ namespace StokTakip.Validations
             if (string.IsNullOrWhiteSpace(dto.Soyad))
                 errors.Add("Soyad boş bırakılamaz.");
 
+            if (string.IsNullOrWhiteSpace(dto.Telefon) || !System.Text.RegularExpressions.Regex.IsMatch(dto.Telefon, @"^0\d{10}$"))
+                errors.Add("Telefon numarası 11 haneli ve 0 ile başlamalıdır.");
+
             if (string.IsNullOrWhiteSpace(dto.Eposta) || !dto.Eposta.Contains("@"))
                 errors.Add("Geçerli bir e-posta giriniz.");
             else
@@ -29,11 +32,15 @@ namespace StokTakip.Validations
                     errors.Add("E-posta sadece gmail.com olabilir.");
             }
 
-            if (string.IsNullOrWhiteSpace(dto.Telefon) || !System.Text.RegularExpressions.Regex.IsMatch(dto.Telefon, @"^0\d{10}$"))
-                errors.Add("Telefon numarası Türkiye standardına göre 11 haneli ve 0 ile başlamalıdır.");
-
             if (string.IsNullOrWhiteSpace(dto.Sifre) || dto.Sifre.Length < 6)
                 errors.Add("Şifre en az 6 karakter olmalıdır.");
+            if (dto.Sifre.Length < 6)
+                errors.Add("Şifre en az 6 karakter olmalı.");
+            if (!dto.Sifre.Any(char.IsUpper))
+                errors.Add("Şifre en az 1 büyük harf içermeli.");
+            if (!dto.Sifre.Any(ch => "!@#$%^&*".Contains(ch)))
+                errors.Add("Şifre en az 1 özel karakter içermeli.");
+
 
             if (dto.Sifre != dto.SifreTekrari)
                 errors.Add("Şifre ve şifre tekrarı eşleşmiyor.");

@@ -28,8 +28,8 @@ namespace StokTakip
         private void ElektrikUrunListesiForm_Load(object sender, EventArgs e)
         {
            
-            var urunler =_services.GetStokKartiElektrik();
-            dGVElektrikListesi.DataSource=urunler;
+            var urunlers =_services.GetStokKartiElektrik();
+            dGVElektrikListesi.DataSource=urunlers;
 
             //eğer columlar urunadi ve stokmiktari değilse gösterme dedik
             foreach(DataGridViewColumn col in dGVElektrikListesi.Columns)

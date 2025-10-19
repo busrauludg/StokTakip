@@ -35,11 +35,10 @@
             // dGVElektrikListesi
             // 
             dGVElektrikListesi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVElektrikListesi.Dock = DockStyle.Fill;
             dGVElektrikListesi.Location = new Point(0, 0);
             dGVElektrikListesi.Name = "dGVElektrikListesi";
             dGVElektrikListesi.RowHeadersWidth = 51;
-            dGVElektrikListesi.Size = new Size(800, 450);
+            dGVElektrikListesi.Size = new Size(692, 450);
             dGVElektrikListesi.TabIndex = 0;
             dGVElektrikListesi.CellClick += dGVElektrikListesi_CellClick;
             // 

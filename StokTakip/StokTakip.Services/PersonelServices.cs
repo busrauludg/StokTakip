@@ -45,15 +45,20 @@ namespace StokTakip.Services
             };
             _services.PrsnlKydt(entity);
         }
-        //11.09.2025persembe
-        public void YetkiliOlustur(PersonelDto dto2)
+
+
+        public void YetkiliOlustur(PersonelDto dto)
         {
-            var yetkili = new Personel()
+            // Rol = true olan personeli bul
+            var personel = _services.GetByRol(); // Repo'da bu metodu oluştur: Rol = true döndürsün
+
+            if (personel != null)
             {
-                YetkiliSifre = dto2.YetkiliSifre,
-            };
-            _services.YetkiliEkle(yetkili);
+                personel.YetkiliSifre = dto.YetkiliSifre; // Hashlenmiş şifreyi ata
+                _services.YetkiliEkle(personel); // Repo'da save işlemi
+            }
         }
+
         public bool PrsnlGirisKontrol(string eposta,string sifre)=>
              _services.PersonelVarMi(eposta, sifre);
         

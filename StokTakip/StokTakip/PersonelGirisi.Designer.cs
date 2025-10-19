@@ -34,14 +34,16 @@
             tBPrsnlEposta = new TextBox();
             tBPrsnlSifre = new TextBox();
             PrsnlGiris = new Button();
+            label3 = new Label();
             SuspendLayout();
             // 
             // lblPersonelEkle
             // 
             lblPersonelEkle.AutoSize = true;
+            lblPersonelEkle.Font = new Font("Yu Gothic UI Semibold", 9F);
             lblPersonelEkle.Location = new Point(661, 21);
             lblPersonelEkle.Name = "lblPersonelEkle";
-            lblPersonelEkle.Size = new Size(95, 20);
+            lblPersonelEkle.Size = new Size(100, 20);
             lblPersonelEkle.TabIndex = 0;
             lblPersonelEkle.Text = "Personel Ekle";
             lblPersonelEkle.Click += lblPersonelEkle_Click;
@@ -49,50 +51,66 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(119, 171);
+            label1.Font = new Font("Yu Gothic UI Semibold", 10F);
+            label1.Location = new Point(166, 152);
             label1.Name = "label1";
-            label1.Size = new Size(122, 20);
+            label1.Size = new Size(72, 23);
             label1.TabIndex = 1;
-            label1.Text = "Personel E-posta:";
+            label1.Text = "E-posta:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(119, 214);
+            label2.Font = new Font("Yu Gothic UI Semibold", 10F);
+            label2.Location = new Point(166, 223);
             label2.Name = "label2";
-            label2.Size = new Size(101, 20);
+            label2.Size = new Size(50, 23);
             label2.TabIndex = 2;
-            label2.Text = "Personel Sifre:";
+            label2.Text = "Şifre:";
             // 
             // tBPrsnlEposta
             // 
-            tBPrsnlEposta.Location = new Point(259, 164);
+            tBPrsnlEposta.Location = new Point(265, 152);
+            tBPrsnlEposta.Multiline = true;
             tBPrsnlEposta.Name = "tBPrsnlEposta";
             tBPrsnlEposta.Size = new Size(160, 27);
             tBPrsnlEposta.TabIndex = 3;
             // 
             // tBPrsnlSifre
             // 
-            tBPrsnlSifre.Location = new Point(247, 211);
+            tBPrsnlSifre.Location = new Point(265, 226);
+            tBPrsnlSifre.Multiline = true;
             tBPrsnlSifre.Name = "tBPrsnlSifre";
-            tBPrsnlSifre.Size = new Size(172, 27);
+            tBPrsnlSifre.Size = new Size(160, 27);
             tBPrsnlSifre.TabIndex = 4;
             // 
             // PrsnlGiris
             // 
+            PrsnlGiris.Font = new Font("Yu Gothic UI Semibold", 9F);
             PrsnlGiris.Location = new Point(588, 329);
             PrsnlGiris.Name = "PrsnlGiris";
-            PrsnlGiris.Size = new Size(112, 38);
+            PrsnlGiris.Size = new Size(117, 45);
             PrsnlGiris.TabIndex = 5;
             PrsnlGiris.Text = "Giriş Yap";
             PrsnlGiris.UseVisualStyleBackColor = true;
             PrsnlGiris.Click += PrsnlGiris_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI Semibold", 15F);
+            label3.Location = new Point(265, 21);
+            label3.Name = "label3";
+            label3.Size = new Size(179, 35);
+            label3.TabIndex = 6;
+            label3.Text = "Personel Girişi";
             // 
             // PersonelGirisi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
             Controls.Add(PrsnlGiris);
             Controls.Add(tBPrsnlSifre);
             Controls.Add(tBPrsnlEposta);
@@ -100,7 +118,8 @@
             Controls.Add(label1);
             Controls.Add(lblPersonelEkle);
             Name = "PersonelGirisi";
-            Text = "PersonelGirisi";
+            Text = "Personel Giriş Sayfası";
+            Load += PersonelGirisi_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -113,5 +132,6 @@
         private TextBox tBPrsnlEposta;
         private TextBox tBPrsnlSifre;
         private Button PrsnlGiris;
+        private Label label3;
     }
 }

@@ -118,8 +118,12 @@ namespace StokTakip
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show("Hata: " + ex.Message);
-                // Validator hatalarını göster
+                MessageBox.Show(
+                    "Personel eklerken hata oluştu:\n" + ex.Message,
+                    "Uyarı",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
             }
         }
 
@@ -128,11 +132,6 @@ namespace StokTakip
         private void tBYetkiliSifre_TextChanged(object sender, EventArgs e)
         {
             // Yetkili şifre eşleşme kontrolü
-
-        }
-
-        private void PersonelEkle_Load(object sender, EventArgs e)
-        {
 
         }
     }

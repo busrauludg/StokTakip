@@ -46,8 +46,9 @@ namespace StokTakip
                 };
 
                 _yetkiliServices.YetkiliOlustur(dto2); // void metod çağır
-                        MessageBox.Show("Yetkili şifre başarıyla kaydedildi.");
-                        this.Close();
+
+                 MessageBox.Show("Yetkili şifre başarıyla kaydedildi.");
+                 this.Close();
 
             }
             catch (Exception ex)

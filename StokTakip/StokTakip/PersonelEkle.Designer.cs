@@ -49,93 +49,100 @@
             label1 = new Label();
             label2 = new Label();
             lblYetkiliSİfre = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // lblPrsAd
             // 
             lblPrsAd.AutoSize = true;
-            lblPrsAd.Location = new Point(130, 99);
+            lblPrsAd.Font = new Font("Yu Gothic UI Semibold", 9F);
+            lblPrsAd.Location = new Point(50, 143);
             lblPrsAd.Name = "lblPrsAd";
-            lblPrsAd.Size = new Size(94, 20);
+            lblPrsAd.Size = new Size(99, 20);
             lblPrsAd.TabIndex = 0;
             lblPrsAd.Text = "Personel Adı:";
             // 
             // lblPrsSoyadı
             // 
             lblPrsSoyadı.AutoSize = true;
-            lblPrsSoyadı.Location = new Point(130, 165);
+            lblPrsSoyadı.Font = new Font("Yu Gothic UI Semibold", 9F);
+            lblPrsSoyadı.Location = new Point(50, 215);
             lblPrsSoyadı.Name = "lblPrsSoyadı";
-            lblPrsSoyadı.Size = new Size(116, 20);
+            lblPrsSoyadı.Size = new Size(122, 20);
             lblPrsSoyadı.TabIndex = 1;
             lblPrsSoyadı.Text = "Personel Soyadı:";
             // 
             // lblPrsGorev
             // 
             lblPrsGorev.AutoSize = true;
-            lblPrsGorev.Location = new Point(130, 241);
+            lblPrsGorev.Font = new Font("Yu Gothic UI Semibold", 9F);
+            lblPrsGorev.Location = new Point(457, 262);
             lblPrsGorev.Name = "lblPrsGorev";
-            lblPrsGorev.Size = new Size(114, 20);
+            lblPrsGorev.Size = new Size(121, 20);
             lblPrsGorev.TabIndex = 2;
             lblPrsGorev.Text = "Personel Görevi:";
             // 
             // lblPrsSifre
             // 
             lblPrsSifre.AutoSize = true;
-            lblPrsSifre.Location = new Point(130, 313);
+            lblPrsSifre.Font = new Font("Yu Gothic UI Semibold", 9F);
+            lblPrsSifre.Location = new Point(457, 143);
             lblPrsSifre.Name = "lblPrsSifre";
-            lblPrsSifre.Size = new Size(111, 20);
+            lblPrsSifre.Size = new Size(119, 20);
             lblPrsSifre.TabIndex = 3;
             lblPrsSifre.Text = "Personel Şifresi:";
             // 
             // lblSifreTekrari
             // 
             lblSifreTekrari.AutoSize = true;
-            lblSifreTekrari.Location = new Point(130, 378);
+            lblSifreTekrari.Font = new Font("Yu Gothic UI Semibold", 9F);
+            lblSifreTekrari.Location = new Point(462, 203);
             lblSifreTekrari.Name = "lblSifreTekrari";
-            lblSifreTekrari.Size = new Size(90, 20);
+            lblSifreTekrari.Size = new Size(96, 20);
             lblSifreTekrari.TabIndex = 4;
             lblSifreTekrari.Text = "Şifre Tekrarı:";
             // 
             // lblPrsRol
             // 
             lblPrsRol.AutoSize = true;
-            lblPrsRol.Location = new Point(130, 441);
+            lblPrsRol.Font = new Font("Yu Gothic UI Semibold", 9F);
+            lblPrsRol.Location = new Point(457, 322);
             lblPrsRol.Name = "lblPrsRol";
-            lblPrsRol.Size = new Size(34, 20);
+            lblPrsRol.Size = new Size(35, 20);
             lblPrsRol.TabIndex = 5;
             lblPrsRol.Text = "Rol:";
             // 
             // tBPrsAdi
             // 
-            tBPrsAdi.Location = new Point(252, 96);
+            tBPrsAdi.Location = new Point(188, 136);
             tBPrsAdi.Name = "tBPrsAdi";
             tBPrsAdi.Size = new Size(195, 27);
             tBPrsAdi.TabIndex = 6;
             // 
             // tBPrsSoyadi
             // 
-            tBPrsSoyadi.Location = new Point(252, 158);
+            tBPrsSoyadi.Location = new Point(188, 208);
             tBPrsSoyadi.Name = "tBPrsSoyadi";
             tBPrsSoyadi.Size = new Size(195, 27);
             tBPrsSoyadi.TabIndex = 7;
             // 
             // tBPrsGorev
             // 
-            tBPrsGorev.Location = new Point(252, 234);
+            tBPrsGorev.Location = new Point(595, 255);
             tBPrsGorev.Name = "tBPrsGorev";
             tBPrsGorev.Size = new Size(195, 27);
             tBPrsGorev.TabIndex = 8;
             // 
             // tBPrsSifre
             // 
-            tBPrsSifre.Location = new Point(252, 306);
+            tBPrsSifre.Location = new Point(595, 136);
             tBPrsSifre.Name = "tBPrsSifre";
             tBPrsSifre.Size = new Size(195, 27);
             tBPrsSifre.TabIndex = 9;
             // 
             // tBSifreTekrari
             // 
-            tBSifreTekrari.Location = new Point(252, 371);
+            tBSifreTekrari.Location = new Point(595, 196);
             tBSifreTekrari.Name = "tBSifreTekrari";
             tBSifreTekrari.Size = new Size(195, 27);
             tBSifreTekrari.TabIndex = 10;
@@ -143,9 +150,10 @@
             // rBPrsYetkili
             // 
             rBPrsYetkili.AutoSize = true;
-            rBPrsYetkili.Location = new Point(195, 437);
+            rBPrsYetkili.Font = new Font("Yu Gothic UI Semibold", 9F);
+            rBPrsYetkili.Location = new Point(526, 320);
             rBPrsYetkili.Name = "rBPrsYetkili";
-            rBPrsYetkili.Size = new Size(69, 24);
+            rBPrsYetkili.Size = new Size(71, 24);
             rBPrsYetkili.TabIndex = 12;
             rBPrsYetkili.TabStop = true;
             rBPrsYetkili.Text = "Yetkili";
@@ -155,9 +163,10 @@
             // rBPrsPersonel
             // 
             rBPrsPersonel.AutoSize = true;
-            rBPrsPersonel.Location = new Point(314, 437);
+            rBPrsPersonel.Font = new Font("Yu Gothic UI Semibold", 9F);
+            rBPrsPersonel.Location = new Point(645, 320);
             rBPrsPersonel.Name = "rBPrsPersonel";
-            rBPrsPersonel.Size = new Size(85, 24);
+            rBPrsPersonel.Size = new Size(89, 24);
             rBPrsPersonel.TabIndex = 13;
             rBPrsPersonel.TabStop = true;
             rBPrsPersonel.Text = "Personel";
@@ -165,7 +174,7 @@
             // 
             // tBYetkiliSifre
             // 
-            tBYetkiliSifre.Location = new Point(252, 481);
+            tBYetkiliSifre.Location = new Point(586, 369);
             tBYetkiliSifre.Name = "tBYetkiliSifre";
             tBYetkiliSifre.Size = new Size(204, 27);
             tBYetkiliSifre.TabIndex = 14;
@@ -174,15 +183,17 @@
             // lblYetkiliSifre
             // 
             lblYetkiliSifre.AutoSize = true;
-            lblYetkiliSifre.Location = new Point(125, 488);
+            lblYetkiliSifre.Font = new Font("Yu Gothic UI Semibold", 9F);
+            lblYetkiliSifre.Location = new Point(459, 376);
             lblYetkiliSifre.Name = "lblYetkiliSifre";
-            lblYetkiliSifre.Size = new Size(95, 20);
+            lblYetkiliSifre.Size = new Size(101, 20);
             lblYetkiliSifre.TabIndex = 15;
             lblYetkiliSifre.Text = "Yetkili Şifresi:";
             // 
             // btnPersonelKayit
             // 
-            btnPersonelKayit.Location = new Point(757, 526);
+            btnPersonelKayit.Font = new Font("Yu Gothic UI Semibold", 9F, FontStyle.Italic);
+            btnPersonelKayit.Location = new Point(713, 455);
             btnPersonelKayit.Name = "btnPersonelKayit";
             btnPersonelKayit.Size = new Size(128, 52);
             btnPersonelKayit.TabIndex = 16;
@@ -192,14 +203,14 @@
             // 
             // tBPrsEposta
             // 
-            tBPrsEposta.Location = new Point(706, 237);
+            tBPrsEposta.Location = new Point(188, 334);
             tBPrsEposta.Name = "tBPrsEposta";
             tBPrsEposta.Size = new Size(195, 27);
             tBPrsEposta.TabIndex = 20;
             // 
             // tBPrsTelNo
             // 
-            tBPrsTelNo.Location = new Point(778, 169);
+            tBPrsTelNo.Location = new Point(188, 271);
             tBPrsTelNo.Name = "tBPrsTelNo";
             tBPrsTelNo.Size = new Size(195, 27);
             tBPrsTelNo.TabIndex = 19;
@@ -207,36 +218,50 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(568, 244);
+            label1.Font = new Font("Yu Gothic UI Semibold", 9F);
+            label1.Location = new Point(50, 341);
             label1.Name = "label1";
-            label1.Size = new Size(132, 20);
+            label1.Size = new Size(137, 20);
             label1.TabIndex = 18;
             label1.Text = "Personel E-postası:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(568, 172);
+            label2.Font = new Font("Yu Gothic UI Semibold", 9F);
+            label2.Location = new Point(50, 278);
             label2.Name = "label2";
-            label2.Size = new Size(187, 20);
+            label2.Size = new Size(132, 20);
             label2.TabIndex = 17;
-            label2.Text = "Personel Telefon Numarası:";
+            label2.Text = "Telefon Numarası:";
             // 
             // lblYetkiliSİfre
             // 
             lblYetkiliSİfre.AutoSize = true;
-            lblYetkiliSİfre.Location = new Point(936, 27);
+            lblYetkiliSİfre.Font = new Font("Yu Gothic UI Semibold", 9F);
+            lblYetkiliSİfre.Location = new Point(799, 29);
             lblYetkiliSİfre.Name = "lblYetkiliSİfre";
-            lblYetkiliSİfre.Size = new Size(82, 20);
+            lblYetkiliSİfre.Size = new Size(87, 20);
             lblYetkiliSİfre.TabIndex = 21;
             lblYetkiliSİfre.Text = "Yetkili Şifre";
             lblYetkiliSİfre.Click += lblYetkiliSifre_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI Semibold", 20F, FontStyle.Bold);
+            label3.Location = new Point(309, 29);
+            label3.Name = "label3";
+            label3.Size = new Size(224, 46);
+            label3.TabIndex = 22;
+            label3.Text = "Personel Ekle";
             // 
             // PersonelEkle
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1096, 653);
+            ClientSize = new Size(977, 549);
+            Controls.Add(label3);
             Controls.Add(lblYetkiliSİfre);
             Controls.Add(tBPrsEposta);
             Controls.Add(tBPrsTelNo);
@@ -260,7 +285,6 @@
             Controls.Add(lblPrsAd);
             Name = "PersonelEkle";
             Text = "PersonelEkle";
-            Load += PersonelEkle_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -289,5 +313,6 @@
         private Label label1;
         private Label label2;
         private Label lblYetkiliSİfre;
+        private Label label3;
     }
 }
