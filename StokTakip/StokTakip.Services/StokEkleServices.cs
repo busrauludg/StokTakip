@@ -41,7 +41,7 @@ namespace StokTakip.Services
             {
                 DepoAdi = eklemodel.DepoAdi,
                 SerbestMiktar = (int)eklemodel.SerbestMiktar,
-                KaliteMiktar = (int)eklemodel.KaliteMiktar,
+               // KaliteMiktar = (int)eklemodel.KaliteMiktar,
                 BlokeMiktar = eklemodel.BlokeMiktar,
             };
 

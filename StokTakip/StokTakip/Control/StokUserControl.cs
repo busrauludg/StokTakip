@@ -18,6 +18,8 @@ namespace StokTakip
     public partial class StokUserControl : UserControl
     {
         private readonly StokEkleServices _stokEkleServices;
+
+        public event EventHandler GeriClick;
         public StokUserControl()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace StokTakip
             // Service'i repository ile başlat
             _stokEkleServices = new StokEkleServices(repository);
         }
-
+      
         private void nUDMinStok_ValueChanged(object sender, EventArgs e)
         {
             nUDMinStok.Maximum = 10000;
@@ -55,14 +57,11 @@ namespace StokTakip
             nUDSerbestM.Maximum = 10000;
         }
 
-        private void nUDKM_ValueChanged(object sender, EventArgs e)
-        {
-            nUDKM.Maximum = 10000;
-        }
-
-
+        
         private void btnStokEkle_Click(object sender, EventArgs e)
         {
+           
+
             int personelId = 0;
             int.TryParse(tBPersonelId.Text, out personelId);
 
@@ -76,8 +75,7 @@ namespace StokTakip
             int satinalmaMiktari = 0;
             int.TryParse(tBStnAlMiktar.Text, out satinalmaMiktari);
 
-            //int gelenMiktar = 0;
-            //int.TryParse(tBStnAlmaGelen.Text, out gelenMiktar);
+          
 
             int birimFiyat = 0;
             int.TryParse(tBStnAlmaBirim.Text, out birimFiyat);
@@ -105,7 +103,7 @@ namespace StokTakip
 
                 DepoAdi = tBDepoAdi.Text,
                 SerbestMiktar = (int)nUDSerbestM.Value,
-                KaliteMiktar = (int)nUDKM.Value,
+               // KaliteMiktar = (int)nUDKM.Value,
                 BlokeMiktar = tBBlokeM.Text,
 
                 ProjeId = projeId,
@@ -134,9 +132,9 @@ namespace StokTakip
                 _stokEkleServices.StokEkle(kaydet);
                 MessageBox.Show("Kayıt başarılı!");
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Kayıt sırasında bir hata oluştu!");
+                MessageBox.Show("Hata: " + ex.InnerException?.Message ?? ex.Message);
             }
 
 
@@ -157,5 +155,15 @@ namespace StokTakip
         {
 
         }
+
+        private void btnGeri_Click(object sender, EventArgs e)
+        { 
+        
+            GeriClick?.Invoke(this, EventArgs.Empty);
+        }
+        
+
+        
     }
 }
+

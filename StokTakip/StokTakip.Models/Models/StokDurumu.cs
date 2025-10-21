@@ -13,7 +13,7 @@ public partial class StokDurumu
 
     public int SerbestMiktar { get; set; }
 
-    public int KaliteMiktar { get; set; }
+   // public int KaliteMiktar { get; set; }
 
     public string BlokeMiktar { get; set; } = null!;
 

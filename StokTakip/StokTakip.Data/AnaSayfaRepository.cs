@@ -38,16 +38,6 @@ namespace StokTakip.Data
             _context.Add(proje);
             _context.SaveChanges();
         }
-        //public void ProjeKullanilanUrunEkle(ProjedeKullanilanUrunler aktifPrjEkle)
-        //{
-        //    _context.ProjedeKullanilanUrunlers.Add(aktifPrjEkle);
-        //    _context.SaveChanges();
-        ////}
-        //public void ProjeKullanilanUrunEkle(ProjedeKullanilanUrunler projeKullanilan)
-        //{
-        //    _context.ProjedeKullanilanUrunlers.Add(projeKullanilan);
-        //    _context.SaveChanges();
-        //}
-
+        
     }
 }

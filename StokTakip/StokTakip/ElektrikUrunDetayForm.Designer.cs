@@ -51,6 +51,8 @@
             txtFirmaSiparisKodu = new TextBox();
             txtStokKodu = new TextBox();
             panel2 = new Panel();
+            tBToplmTutar = new TextBox();
+            label19 = new Label();
             dTPElektrik = new DateTimePicker();
             txtSprsAciklama = new TextBox();
             txtGlnMktr = new TextBox();
@@ -62,14 +64,19 @@
             label13 = new Label();
             label12 = new Label();
             label17 = new Label();
-            dGVMekStokDurum = new DataGridView();
+            dGVElStokDurum = new DataGridView();
             label18 = new Label();
             pBElektrikResim = new PictureBox();
             lVAktifProje = new ListView();
             label20 = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            label21 = new Label();
+            label22 = new Label();
+            tBElStokMiktari = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dGVMekStokDurum).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dGVElStokDurum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pBElektrikResim).BeginInit();
             SuspendLayout();
             // 
@@ -84,6 +91,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label22);
+            panel1.Controls.Add(tBElStokMiktari);
             panel1.Controls.Add(label11);
             panel1.Controls.Add(label10);
             panel1.Controls.Add(label9);
@@ -106,13 +115,13 @@
             panel1.Controls.Add(txtStokKodu);
             panel1.Location = new Point(21, 58);
             panel1.Name = "panel1";
-            panel1.Size = new Size(481, 532);
+            panel1.Size = new Size(481, 595);
             panel1.TabIndex = 3;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(23, 476);
+            label11.Location = new Point(23, 515);
             label11.Name = "label11";
             label11.Size = new Size(73, 20);
             label11.TabIndex = 22;
@@ -121,7 +130,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(20, 424);
+            label10.Location = new Point(20, 463);
             label10.Name = "label10";
             label10.Size = new Size(94, 20);
             label10.TabIndex = 21;
@@ -130,7 +139,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(23, 369);
+            label9.Location = new Point(23, 408);
             label9.Name = "label9";
             label9.Size = new Size(76, 20);
             label9.TabIndex = 20;
@@ -139,7 +148,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(21, 314);
+            label8.Location = new Point(21, 353);
             label8.Name = "label8";
             label8.Size = new Size(71, 20);
             label8.TabIndex = 19;
@@ -147,28 +156,28 @@
             // 
             // txtAciklama
             // 
-            txtAciklama.Location = new Point(210, 476);
+            txtAciklama.Location = new Point(210, 515);
             txtAciklama.Name = "txtAciklama";
             txtAciklama.Size = new Size(125, 27);
             txtAciklama.TabIndex = 18;
             // 
             // txtPersonelAdi
             // 
-            txtPersonelAdi.Location = new Point(210, 424);
+            txtPersonelAdi.Location = new Point(210, 463);
             txtPersonelAdi.Name = "txtPersonelAdi";
             txtPersonelAdi.Size = new Size(125, 27);
             txtPersonelAdi.TabIndex = 17;
             // 
             // txtGrupAdi
             // 
-            txtGrupAdi.Location = new Point(210, 314);
+            txtGrupAdi.Location = new Point(210, 353);
             txtGrupAdi.Name = "txtGrupAdi";
             txtGrupAdi.Size = new Size(125, 27);
             txtGrupAdi.TabIndex = 16;
             // 
             // txtFirmaAdi
             // 
-            txtFirmaAdi.Location = new Point(210, 369);
+            txtFirmaAdi.Location = new Point(210, 408);
             txtFirmaAdi.Name = "txtFirmaAdi";
             txtFirmaAdi.Size = new Size(125, 27);
             txtFirmaAdi.TabIndex = 15;
@@ -271,6 +280,8 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(tBToplmTutar);
+            panel2.Controls.Add(label19);
             panel2.Controls.Add(dTPElektrik);
             panel2.Controls.Add(txtSprsAciklama);
             panel2.Controls.Add(txtGlnMktr);
@@ -283,8 +294,24 @@
             panel2.Controls.Add(label12);
             panel2.Location = new Point(557, 68);
             panel2.Name = "panel2";
-            panel2.Size = new Size(481, 219);
+            panel2.Size = new Size(481, 295);
             panel2.TabIndex = 4;
+            // 
+            // tBToplmTutar
+            // 
+            tBToplmTutar.Location = new Point(219, 214);
+            tBToplmTutar.Name = "tBToplmTutar";
+            tBToplmTutar.Size = new Size(125, 27);
+            tBToplmTutar.TabIndex = 11;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(20, 214);
+            label19.Name = "label19";
+            label19.Size = new Size(100, 20);
+            label19.TabIndex = 10;
+            label19.Text = "Toplam Tutar:";
             // 
             // dTPElektrik
             // 
@@ -344,9 +371,9 @@
             label14.AutoSize = true;
             label14.Location = new Point(20, 91);
             label14.Name = "label14";
-            label14.Size = new Size(65, 20);
+            label14.Size = new Size(76, 20);
             label14.TabIndex = 2;
-            label14.Text = "Cari Adi:";
+            label14.Text = "Firma Adı:";
             // 
             // label13
             // 
@@ -375,19 +402,19 @@
             label17.TabIndex = 5;
             label17.Text = "Satın Alma";
             // 
-            // dGVMekStokDurum
+            // dGVElStokDurum
             // 
-            dGVMekStokDurum.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVMekStokDurum.Location = new Point(518, 339);
-            dGVMekStokDurum.Name = "dGVMekStokDurum";
-            dGVMekStokDurum.RowHeadersWidth = 51;
-            dGVMekStokDurum.Size = new Size(711, 72);
-            dGVMekStokDurum.TabIndex = 6;
+            dGVElStokDurum.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dGVElStokDurum.Location = new Point(524, 421);
+            dGVElStokDurum.Name = "dGVElStokDurum";
+            dGVElStokDurum.RowHeadersWidth = 51;
+            dGVElStokDurum.Size = new Size(661, 93);
+            dGVElStokDurum.TabIndex = 6;
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(815, 306);
+            label18.Location = new Point(821, 388);
             label18.Name = "label18";
             label18.Size = new Size(98, 20);
             label18.TabIndex = 7;
@@ -395,7 +422,7 @@
             // 
             // pBElektrikResim
             // 
-            pBElektrikResim.Location = new Point(1162, 58);
+            pBElektrikResim.Location = new Point(1165, 73);
             pBElektrikResim.Name = "pBElektrikResim";
             pBElektrikResim.Size = new Size(283, 229);
             pBElektrikResim.TabIndex = 8;
@@ -403,7 +430,7 @@
             // 
             // lVAktifProje
             // 
-            lVAktifProje.Location = new Point(577, 496);
+            lVAktifProje.Location = new Point(1195, 525);
             lVAktifProje.Name = "lVAktifProje";
             lVAktifProje.Size = new Size(438, 283);
             lVAktifProje.TabIndex = 14;
@@ -412,22 +439,68 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(577, 453);
+            label20.Location = new Point(1231, 485);
             label20.Name = "label20";
             label20.Size = new Size(146, 20);
             label20.TabIndex = 13;
             label20.Text = "Aktif Proje İhtiyacları";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(262, 693);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 15;
+            button1.Text = "Stok Çıkışı";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(67, 693);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 16;
+            button2.Text = "Stok Arttır";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(1165, 34);
+            label21.Name = "label21";
+            label21.Size = new Size(53, 20);
+            label21.TabIndex = 12;
+            label21.Text = "Resim ";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(21, 308);
+            label22.Name = "label22";
+            label22.Size = new Size(91, 20);
+            label22.TabIndex = 24;
+            label22.Text = "Stok Miktarı:";
+            // 
+            // tBElStokMiktari
+            // 
+            tBElStokMiktari.Location = new Point(210, 308);
+            tBElStokMiktari.Name = "tBElStokMiktari";
+            tBElStokMiktari.Size = new Size(125, 27);
+            tBElStokMiktari.TabIndex = 23;
             // 
             // ElektrikUrunDetayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1645, 830);
+            Controls.Add(label21);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(lVAktifProje);
             Controls.Add(label20);
             Controls.Add(pBElektrikResim);
             Controls.Add(label18);
-            Controls.Add(dGVMekStokDurum);
+            Controls.Add(dGVElStokDurum);
             Controls.Add(label17);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -439,7 +512,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dGVMekStokDurum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dGVElStokDurum).EndInit();
             ((System.ComponentModel.ISupportInitialize)pBElektrikResim).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -480,10 +553,17 @@
         private Label label13;
         private Label label12;
         private Label label17;
-        private DataGridView dGVMekStokDurum;
+        private DataGridView dGVElStokDurum;
         private Label label18;
         private PictureBox pBElektrikResim;
         private ListView lVAktifProje;
         private Label label20;
+        private TextBox tBToplmTutar;
+        private Label label19;
+        private Button button1;
+        private Button button2;
+        private Label label21;
+        private Label label22;
+        private TextBox tBElStokMiktari;
     }
 }

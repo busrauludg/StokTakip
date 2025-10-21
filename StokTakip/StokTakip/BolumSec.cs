@@ -1,4 +1,5 @@
 ﻿using StokTakip.Helpers;
+using StokTakip.Models;
 using StokTakip.Services;
 using StokTakip.StokTakip.Data;
 using System;
@@ -85,7 +86,7 @@ namespace StokTakip
             }
 
             //yetkili işlemleri
-           // btnPersonelBilgi.Visible = YetkiliKontrol.Rol;//yetkili yoksa gözükmein değilse 
+            btnPersonelİslem.Visible = YetkiliKontrol.Rol;//yetkili yoksa gözükmein değilse 
 
         }
 
@@ -124,16 +125,70 @@ namespace StokTakip
 
                 if (secilenUrun != null)
                 {
-                    var durum = _elektrikServices.GetStokDurumElektrik(secilenUrun.StokKartiId);
-                    var alim = _elektrikServices.GetSatinAlmaElektrik(secilenUrun.StokKartiId);
+                    var stokDurum = _elektrikServices.GetStokDurumElektrik(secilenUrun.StokKartiId);
+                    var sipAlim = _elektrikServices.GetSatinAlmaElektrik(secilenUrun.StokKartiId);
 
                     // Detay formunu aç
-                    MekanikUrunDetayForm detayForm = new MekanikUrunDetayForm(secilenUrun, durum, alim);
+                    ElektrikUrunDetayForm detayForm = new ElektrikUrunDetayForm(secilenUrun, sipAlim, stokDurum);
                     detayForm.ShowDialog();
+
                 }
             }
         }
 
-      
+        private void btnStokEkle_Click(object sender, EventArgs e)
+        {
+
+
+            // Paneli temizle
+            pStokEkle.Controls.Clear();
+
+            // UserControl oluştur
+            var sc = new StokUserControl();
+            sc.Dock = DockStyle.Fill;
+
+
+            // Geri event
+            sc.GeriClick += (s, ev) =>
+            {
+                pStokEkle.Controls.Clear(); // UserControl’ü kaldır
+            };
+
+            // Panel içine ekle
+            pStokEkle.Controls.Add(sc);
+
+        }
+
+        private void btnProjeOlustur_Click(object sender, EventArgs e)
+        {
+            pStokEkle.Controls.Clear();
+            ProjeControl uc = new ProjeControl();
+            uc.Dock = DockStyle.Fill;                  // paneli doldur
+            pStokEkle.Controls.Add(uc);
+        }
+
+        private void btnProjeDetay_Click(object sender, EventArgs e)
+        {
+            pStokEkle.Controls.Clear();
+            ProjeDetayControl pd = new ProjeDetayControl();
+            pd.Dock = DockStyle.Fill;
+            pStokEkle.Controls.Add(pd);
+        }
+
+        private void btnSiparisİslem_Click(object sender, EventArgs e)
+        {
+            Siparisİslemleri spfrm = new Siparisİslemleri();
+            spfrm.ShowDialog();
+        }
+
+        private void btnPersonelİslem_Click(object sender, EventArgs e)
+        {
+
+            pStokEkle.Controls.Clear();
+            PersonelControl pr = new PersonelControl();
+            pr.Dock = DockStyle.Fill;
+            pStokEkle.Controls.Add(pr);
+        }
     }
+
 }

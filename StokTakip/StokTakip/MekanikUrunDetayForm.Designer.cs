@@ -54,11 +54,15 @@
             txtMFirmaSiparisKodu = new TextBox();
             txtMStokKodu = new TextBox();
             panel2 = new Panel();
+            label21 = new Label();
+            textBox1 = new TextBox();
             dTPMekanik = new DateTimePicker();
             txtMSprsAciklama = new TextBox();
+            txtMGlnMktr = new TextBox();
             txtMCari = new TextBox();
             txtMMiktar = new TextBox();
             label16 = new Label();
+            label15 = new Label();
             label14 = new Label();
             label17 = new Label();
             label18 = new Label();
@@ -68,8 +72,8 @@
             lVAktifProje = new ListView();
             button1 = new Button();
             button2 = new Button();
-            label15 = new Label();
-            txtMGlnMktr = new TextBox();
+            label22 = new Label();
+            tBMStokMiktari = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dGVMknStkDurum).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -79,10 +83,10 @@
             // dGVMknStkDurum
             // 
             dGVMknStkDurum.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVMknStkDurum.Location = new Point(516, 342);
+            dGVMknStkDurum.Location = new Point(541, 399);
             dGVMknStkDurum.Name = "dGVMknStkDurum";
             dGVMknStkDurum.RowHeadersWidth = 51;
-            dGVMknStkDurum.Size = new Size(669, 74);
+            dGVMknStkDurum.Size = new Size(611, 74);
             dGVMknStkDurum.TabIndex = 1;
             // 
             // label1
@@ -97,7 +101,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(546, 310);
+            label2.Location = new Point(571, 367);
             label2.Name = "label2";
             label2.Size = new Size(95, 20);
             label2.TabIndex = 4;
@@ -108,12 +112,14 @@
             label3.AutoSize = true;
             label3.Location = new Point(564, 14);
             label3.Name = "label3";
-            label3.Size = new Size(77, 20);
+            label3.Size = new Size(117, 20);
             label3.TabIndex = 5;
-            label3.Text = "SatınAlma";
+            label3.Text = "Sipariş Detayları";
             // 
             // panel1
             // 
+            panel1.Controls.Add(label22);
+            panel1.Controls.Add(tBMStokMiktari);
             panel1.Controls.Add(label11);
             panel1.Controls.Add(label10);
             panel1.Controls.Add(label9);
@@ -136,13 +142,13 @@
             panel1.Controls.Add(txtMStokKodu);
             panel1.Location = new Point(12, 45);
             panel1.Name = "panel1";
-            panel1.Size = new Size(481, 532);
+            panel1.Size = new Size(481, 606);
             panel1.TabIndex = 6;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(23, 476);
+            label11.Location = new Point(23, 516);
             label11.Name = "label11";
             label11.Size = new Size(73, 20);
             label11.TabIndex = 22;
@@ -151,7 +157,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(20, 424);
+            label10.Location = new Point(20, 464);
             label10.Name = "label10";
             label10.Size = new Size(94, 20);
             label10.TabIndex = 21;
@@ -160,7 +166,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(23, 369);
+            label9.Location = new Point(23, 409);
             label9.Name = "label9";
             label9.Size = new Size(76, 20);
             label9.TabIndex = 20;
@@ -169,7 +175,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(21, 314);
+            label8.Location = new Point(20, 361);
             label8.Name = "label8";
             label8.Size = new Size(71, 20);
             label8.TabIndex = 19;
@@ -177,28 +183,28 @@
             // 
             // txtMAciklama
             // 
-            txtMAciklama.Location = new Point(210, 476);
+            txtMAciklama.Location = new Point(210, 516);
             txtMAciklama.Name = "txtMAciklama";
             txtMAciklama.Size = new Size(125, 27);
             txtMAciklama.TabIndex = 18;
             // 
             // txtMPersonelAdi
             // 
-            txtMPersonelAdi.Location = new Point(210, 424);
+            txtMPersonelAdi.Location = new Point(210, 464);
             txtMPersonelAdi.Name = "txtMPersonelAdi";
             txtMPersonelAdi.Size = new Size(125, 27);
             txtMPersonelAdi.TabIndex = 17;
             // 
             // txtMGrupAdi
             // 
-            txtMGrupAdi.Location = new Point(210, 314);
+            txtMGrupAdi.Location = new Point(210, 354);
             txtMGrupAdi.Name = "txtMGrupAdi";
             txtMGrupAdi.Size = new Size(125, 27);
             txtMGrupAdi.TabIndex = 16;
             // 
             // txtMFirmaAdi
             // 
-            txtMFirmaAdi.Location = new Point(210, 369);
+            txtMFirmaAdi.Location = new Point(210, 409);
             txtMFirmaAdi.Name = "txtMFirmaAdi";
             txtMFirmaAdi.Size = new Size(125, 27);
             txtMFirmaAdi.TabIndex = 15;
@@ -301,6 +307,8 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(label21);
+            panel2.Controls.Add(textBox1);
             panel2.Controls.Add(dTPMekanik);
             panel2.Controls.Add(txtMSprsAciklama);
             panel2.Controls.Add(txtMGlnMktr);
@@ -313,8 +321,24 @@
             panel2.Controls.Add(label18);
             panel2.Location = new Point(541, 45);
             panel2.Name = "panel2";
-            panel2.Size = new Size(481, 219);
+            panel2.Size = new Size(481, 310);
             panel2.TabIndex = 7;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(23, 209);
+            label21.Name = "label21";
+            label21.Size = new Size(100, 20);
+            label21.TabIndex = 11;
+            label21.Text = "Toplam Tutar:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(219, 212);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(125, 27);
+            textBox1.TabIndex = 10;
             // 
             // dTPMekanik
             // 
@@ -329,6 +353,13 @@
             txtMSprsAciklama.Name = "txtMSprsAciklama";
             txtMSprsAciklama.Size = new Size(125, 27);
             txtMSprsAciklama.TabIndex = 8;
+            // 
+            // txtMGlnMktr
+            // 
+            txtMGlnMktr.Location = new Point(219, 127);
+            txtMGlnMktr.Name = "txtMGlnMktr";
+            txtMGlnMktr.Size = new Size(125, 27);
+            txtMGlnMktr.TabIndex = 7;
             // 
             // txtMCari
             // 
@@ -353,14 +384,23 @@
             label16.TabIndex = 4;
             label16.Text = "Sipariş Açıklama:";
             // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(20, 127);
+            label15.Name = "label15";
+            label15.Size = new Size(96, 20);
+            label15.TabIndex = 3;
+            label15.Text = "Gelen Miktar:";
+            // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Location = new Point(20, 91);
             label14.Name = "label14";
-            label14.Size = new Size(65, 20);
+            label14.Size = new Size(76, 20);
             label14.TabIndex = 2;
-            label14.Text = "Cari Adi:";
+            label14.Text = "Firma Adı:";
             // 
             // label17
             // 
@@ -416,7 +456,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(622, 531);
+            button1.Location = new Point(647, 588);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 13;
@@ -425,34 +465,34 @@
             // 
             // button2
             // 
-            button2.Location = new Point(836, 531);
+            button2.Location = new Point(861, 588);
             button2.Name = "button2";
             button2.Size = new Size(94, 29);
             button2.TabIndex = 14;
             button2.Text = "Stok Cıkışı";
             button2.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // label22
             // 
-            label15.AutoSize = true;
-            label15.Location = new Point(20, 127);
-            label15.Name = "label15";
-            label15.Size = new Size(96, 20);
-            label15.TabIndex = 3;
-            label15.Text = "Gelen Miktar:";
+            label22.AutoSize = true;
+            label22.Location = new Point(18, 315);
+            label22.Name = "label22";
+            label22.Size = new Size(91, 20);
+            label22.TabIndex = 24;
+            label22.Text = "Stok Miktarı:";
             // 
-            // txtMGlnMktr
+            // tBMStokMiktari
             // 
-            txtMGlnMktr.Location = new Point(219, 127);
-            txtMGlnMktr.Name = "txtMGlnMktr";
-            txtMGlnMktr.Size = new Size(125, 27);
-            txtMGlnMktr.TabIndex = 7;
+            tBMStokMiktari.Location = new Point(210, 308);
+            tBMStokMiktari.Name = "tBMStokMiktari";
+            tBMStokMiktari.Size = new Size(125, 27);
+            tBMStokMiktari.TabIndex = 23;
             // 
             // MekanikUrunDetayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1739, 663);
+            ClientSize = new Size(1739, 786);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(lVAktifProje);
@@ -521,5 +561,9 @@
         private Button button2;
         private TextBox txtMGlnMktr;
         private Label label15;
+        private Label label21;
+        private TextBox textBox1;
+        private Label label22;
+        private TextBox tBMStokMiktari;
     }
 }

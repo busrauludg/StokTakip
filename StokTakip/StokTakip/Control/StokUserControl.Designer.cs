@@ -44,7 +44,6 @@
             label15 = new Label();
             label17 = new Label();
             label18 = new Label();
-            label19 = new Label();
             label20 = new Label();
             label22 = new Label();
             label23 = new Label();
@@ -71,7 +70,6 @@
             groupBox2 = new GroupBox();
             tBBlokeM = new TextBox();
             tBDepoAdi = new TextBox();
-            nUDKM = new NumericUpDown();
             nUDSerbestM = new NumericUpDown();
             groupBox3 = new GroupBox();
             tBSHPersonelId = new TextBox();
@@ -102,12 +100,12 @@
             label29 = new Label();
             label28 = new Label();
             label27 = new Label();
+            btnGeri = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nUDSMiktar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nUDMaxStok).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nUDMinStok).BeginInit();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nUDKM).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nUDSerbestM).BeginInit();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nUDHareketM).BeginInit();
@@ -254,27 +252,18 @@
             label18.AutoSize = true;
             label18.Location = new Point(18, 98);
             label18.Name = "label18";
-            label18.Size = new Size(111, 20);
+            label18.Size = new Size(145, 20);
             label18.TabIndex = 17;
-            label18.Text = "Serbest Miktar: ";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new Point(18, 162);
-            label19.Name = "label19";
-            label19.Size = new Size(96, 20);
-            label19.TabIndex = 18;
-            label19.Text = "Kalite Miktar:";
+            label18.Text = "Kullanılabilir Miktar: ";
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(19, 219);
+            label20.Location = new Point(19, 154);
             label20.Name = "label20";
-            label20.Size = new Size(95, 20);
+            label20.Size = new Size(237, 20);
             label20.TabIndex = 19;
-            label20.Text = "Bloke Miktar:";
+            label20.Text = "Başka Projelerde Kullanılan Miktar:";
             // 
             // label22
             // 
@@ -491,11 +480,9 @@
             // 
             groupBox2.Controls.Add(tBBlokeM);
             groupBox2.Controls.Add(tBDepoAdi);
-            groupBox2.Controls.Add(nUDKM);
             groupBox2.Controls.Add(label17);
             groupBox2.Controls.Add(nUDSerbestM);
             groupBox2.Controls.Add(label18);
-            groupBox2.Controls.Add(label19);
             groupBox2.Controls.Add(label20);
             groupBox2.Location = new Point(717, 69);
             groupBox2.Name = "groupBox2";
@@ -506,7 +493,7 @@
             // 
             // tBBlokeM
             // 
-            tBBlokeM.Location = new Point(135, 212);
+            tBBlokeM.Location = new Point(135, 203);
             tBBlokeM.Name = "tBBlokeM";
             tBBlokeM.Size = new Size(125, 27);
             tBBlokeM.TabIndex = 32;
@@ -518,17 +505,9 @@
             tBDepoAdi.Size = new Size(190, 27);
             tBDepoAdi.TabIndex = 30;
             // 
-            // nUDKM
-            // 
-            nUDKM.Location = new Point(135, 157);
-            nUDKM.Name = "nUDKM";
-            nUDKM.Size = new Size(57, 27);
-            nUDKM.TabIndex = 31;
-            nUDKM.ValueChanged += nUDKM_ValueChanged;
-            // 
             // nUDSerbestM
             // 
-            nUDSerbestM.Location = new Point(135, 91);
+            nUDSerbestM.Location = new Point(181, 86);
             nUDSerbestM.Name = "nUDSerbestM";
             nUDSerbestM.Size = new Size(52, 27);
             nUDSerbestM.TabIndex = 30;
@@ -801,10 +780,22 @@
             label27.TabIndex = 1;
             label27.Text = "Sipariş Tarihi:";
             // 
+            // btnGeri
+            // 
+            btnGeri.BackColor = Color.FromArgb(192, 0, 0);
+            btnGeri.Location = new Point(1328, 17);
+            btnGeri.Name = "btnGeri";
+            btnGeri.Size = new Size(48, 29);
+            btnGeri.TabIndex = 38;
+            btnGeri.Text = "X";
+            btnGeri.UseVisualStyleBackColor = false;
+            btnGeri.Click += btnGeri_Click;
+            // 
             // StokUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnGeri);
             Controls.Add(groupBox4);
             Controls.Add(btnStokEkle);
             Controls.Add(label10);
@@ -821,7 +812,6 @@
             ((System.ComponentModel.ISupportInitialize)nUDMinStok).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nUDKM).EndInit();
             ((System.ComponentModel.ISupportInitialize)nUDSerbestM).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
@@ -850,7 +840,6 @@
         private Label label15;
         private Label label17;
         private Label label18;
-        private Label label19;
         private Label label20;
         private Label label22;
         private Label label23;
@@ -883,7 +872,6 @@
         private RadioButton rBTip;
         private TextBox tBProjeId;
         private TextBox tBDepoAdi;
-        private NumericUpDown nUDKM;
         private NumericUpDown nUDSerbestM;
         private Button btnGozAta;
         private OpenFileDialog openFileDialog1;
@@ -908,5 +896,6 @@
         private Label label29;
         private Label label28;
         private Label label27;
+        private Button btnGeri;
     }
 }

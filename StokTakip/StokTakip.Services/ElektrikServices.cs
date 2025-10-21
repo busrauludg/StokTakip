@@ -68,7 +68,7 @@ namespace StokTakip.Services
                     StokKartId = s.StokKartiId,
                     DepoAdi = s.DepoAdi,
                     SerbestMiktar = s.SerbestMiktar,
-                    KaliteMiktar = s.KaliteMiktar,
+                   // KaliteMiktar = s.KaliteMiktar,
                     BlokeMiktar = s.BlokeMiktar.ToString()
                 })
                 .FirstOrDefault();

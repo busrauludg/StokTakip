@@ -42,6 +42,7 @@ namespace StokTakip
                 txtMDepoAdresi.Text = _secilenUrun.DepoAdresi;
                 txtMMinStok.Text = _secilenUrun.MinStok.ToString();
                 txtMMaxStok.Text = _secilenUrun.MaxStok.ToString();
+                tBMStokMiktari.Text = _secilenUrun.StokMiktari.ToString();
                 txtMGrupAdi.Text = _secilenUrun.GrupAdi;
                 txtMFirmaAdi.Text = _secilenUrun.FirmaAdi;
                 txtMPersonelAdi.Text = _secilenUrun.PersonelAdi;
@@ -62,6 +63,13 @@ namespace StokTakip
             {
                 var mdurum = new List<StokDurumuViewModel> { _durum };
                 dGVMknStkDurum.DataSource = mdurum;
+
+                // 👇 Başlıkları burada değiştir
+                // kolon adını DataSource atandıktan sonra kullan
+                dGVMknStkDurum.Columns["StokKartId"].Visible = false;
+                dGVMknStkDurum.Columns["DepoAdi"].HeaderText = "Depo Adı";
+                dGVMknStkDurum.Columns["SerbestMiktar"].HeaderText = "Kullanılabilir Miktar";
+                dGVMknStkDurum.Columns["BlokeMiktar"].HeaderText = "Kullanılan Miktar";
             }
             //picturebox
             if (_secilenUrun != null)

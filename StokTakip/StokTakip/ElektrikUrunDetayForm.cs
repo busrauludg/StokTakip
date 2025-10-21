@@ -28,7 +28,7 @@ namespace StokTakip
             InitializeComponent();
             _secilenUrun = secilenUrun;
             _sipAlim = sipAlim;
-            _stokDurum=stokDurum;
+            _stokDurum = stokDurum;
         }
 
         private void ElektrikForm_Load(object sender, EventArgs e)
@@ -41,6 +41,7 @@ namespace StokTakip
                 txtDepoAdresi.Text = _secilenUrun.DepoAdresi;
                 txtMinStok.Text = _secilenUrun.MinStok.ToString();
                 txtMaxStok.Text = _secilenUrun.MaxStok.ToString();
+                tBElStokMiktari.Text = _secilenUrun.StokMiktari.ToString();
                 txtGrupAdi.Text = _secilenUrun.GrupAdi;
                 txtFirmaAdi.Text = _secilenUrun.FirmaAdi;
                 txtPersonelAdi.Text = _secilenUrun.PersonelAdi;
@@ -55,12 +56,18 @@ namespace StokTakip
                 txtGlnMktr.Text = _sipAlim.GelenMiktar?.ToString() ?? ""; // nullable int için
                 txtSprsAciklama.Text = _sipAlim.Aciklama;
             }
-            if(_stokDurum!=null)
+            if (_stokDurum != null)
             {
-                var stkdurum=new List<StokDurumuViewModel> { _stokDurum};
-                dGVMekStokDurum.DataSource = stkdurum;
+                var stkdurum = new List<StokDurumuViewModel> { _stokDurum };
+                dGVElStokDurum.DataSource = stkdurum;
+
+                // kolon adını DataSource atandıktan sonra kullan
+                dGVElStokDurum.Columns["StokKartId"].Visible = false;
+                dGVElStokDurum.Columns["DepoAdi"].HeaderText = "Depo Adı";
+                dGVElStokDurum.Columns["SerbestMiktar"].HeaderText = "Kullanılabilir Miktar";
+                dGVElStokDurum.Columns["BlokeMiktar"].HeaderText = "Kullanılan Miktar";
             }
-            if(_secilenUrun!=null)
+            if (_secilenUrun != null)
             {
                 // diğer alanlar
                 if (File.Exists(_secilenUrun.ResimYolu))

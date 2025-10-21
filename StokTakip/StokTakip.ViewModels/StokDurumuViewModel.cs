@@ -11,7 +11,7 @@ namespace StokTakip.ViewModels
         public int StokKartId { get; set; }
         public string DepoAdi { get; set; }
         public int SerbestMiktar { get; set; }
-        public int KaliteMiktar { get; set; }
+        //public int KaliteMiktar { get; set; } //21.10
         public string BlokeMiktar { get; set; }
     }
 }
