@@ -65,6 +65,7 @@ namespace StokTakip.Services
                 Kur = eklemodel.Kur,
                 ParaBirimi = eklemodel.ParaBirimi,
                 Aciklama = eklemodel.Aciklama,
+                ToplamMaliyet=eklemodel.ToplamMaliyet,
                 PersonelId = eklemodel.PersonelId,
             };
             stokHareketi.PersonelId = eklemodel.PersonelIdSh;//kendi stokharekiti tablosunda normal personelıd oldugu için hata alıyor 

@@ -33,6 +33,8 @@
             label2 = new Label();
             label3 = new Label();
             panel1 = new Panel();
+            label22 = new Label();
+            tBMStokMiktari = new TextBox();
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
@@ -55,7 +57,7 @@
             txtMStokKodu = new TextBox();
             panel2 = new Panel();
             label21 = new Label();
-            textBox1 = new TextBox();
+            tBMekTopTutar = new TextBox();
             dTPMekanik = new DateTimePicker();
             txtMSprsAciklama = new TextBox();
             txtMGlnMktr = new TextBox();
@@ -70,14 +72,22 @@
             label19 = new Label();
             label20 = new Label();
             lVAktifProje = new ListView();
-            button1 = new Button();
-            button2 = new Button();
-            label22 = new Label();
-            tBMStokMiktari = new TextBox();
+            btnMSArtirPanel = new Button();
+            btnStokCikis = new Button();
+            pMStokCikis = new Panel();
+            btnMStokCikisi = new Button();
+            tBMCikicakMiktar = new TextBox();
+            label23 = new Label();
+            pMStokArtir = new Panel();
+            label24 = new Label();
+            btnMStokArttir = new Button();
+            tBMArtirMiktar = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dGVMknStkDurum).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBMekanikResim).BeginInit();
+            pMStokCikis.SuspendLayout();
+            pMStokArtir.SuspendLayout();
             SuspendLayout();
             // 
             // dGVMknStkDurum
@@ -144,6 +154,22 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(481, 606);
             panel1.TabIndex = 6;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(18, 315);
+            label22.Name = "label22";
+            label22.Size = new Size(91, 20);
+            label22.TabIndex = 24;
+            label22.Text = "Stok Miktarı:";
+            // 
+            // tBMStokMiktari
+            // 
+            tBMStokMiktari.Location = new Point(210, 308);
+            tBMStokMiktari.Name = "tBMStokMiktari";
+            tBMStokMiktari.Size = new Size(125, 27);
+            tBMStokMiktari.TabIndex = 23;
             // 
             // label11
             // 
@@ -308,7 +334,7 @@
             // panel2
             // 
             panel2.Controls.Add(label21);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(tBMekTopTutar);
             panel2.Controls.Add(dTPMekanik);
             panel2.Controls.Add(txtMSprsAciklama);
             panel2.Controls.Add(txtMGlnMktr);
@@ -333,12 +359,12 @@
             label21.TabIndex = 11;
             label21.Text = "Toplam Tutar:";
             // 
-            // textBox1
+            // tBMekTopTutar
             // 
-            textBox1.Location = new Point(219, 212);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 10;
+            tBMekTopTutar.Location = new Point(219, 212);
+            tBMekTopTutar.Name = "tBMekTopTutar";
+            tBMekTopTutar.Size = new Size(125, 27);
+            tBMekTopTutar.TabIndex = 10;
             // 
             // dTPMekanik
             // 
@@ -454,47 +480,107 @@
             lVAktifProje.TabIndex = 12;
             lVAktifProje.UseCompatibleStateImageBehavior = false;
             // 
-            // button1
+            // btnMSArtirPanel
             // 
-            button1.Location = new Point(647, 588);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 13;
-            button1.Text = "Stok Arttır";
-            button1.UseVisualStyleBackColor = true;
+            btnMSArtirPanel.Location = new Point(67, 696);
+            btnMSArtirPanel.Name = "btnMSArtirPanel";
+            btnMSArtirPanel.Size = new Size(94, 29);
+            btnMSArtirPanel.TabIndex = 13;
+            btnMSArtirPanel.Text = "Stok Arttır";
+            btnMSArtirPanel.UseVisualStyleBackColor = true;
+            btnMSArtirPanel.Click += btnMSArtirPanel_Click;
             // 
-            // button2
+            // btnStokCikis
             // 
-            button2.Location = new Point(861, 588);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 14;
-            button2.Text = "Stok Cıkışı";
-            button2.UseVisualStyleBackColor = true;
+            btnStokCikis.Location = new Point(571, 571);
+            btnStokCikis.Name = "btnStokCikis";
+            btnStokCikis.Size = new Size(94, 29);
+            btnStokCikis.TabIndex = 14;
+            btnStokCikis.Text = "Stok Cıkışı";
+            btnStokCikis.UseVisualStyleBackColor = true;
+            btnStokCikis.Click += btnStokCikis_Click;
             // 
-            // label22
+            // pMStokCikis
             // 
-            label22.AutoSize = true;
-            label22.Location = new Point(18, 315);
-            label22.Name = "label22";
-            label22.Size = new Size(91, 20);
-            label22.TabIndex = 24;
-            label22.Text = "Stok Miktarı:";
+            pMStokCikis.Controls.Add(btnMStokCikisi);
+            pMStokCikis.Controls.Add(tBMCikicakMiktar);
+            pMStokCikis.Controls.Add(label23);
+            pMStokCikis.Location = new Point(700, 571);
+            pMStokCikis.Name = "pMStokCikis";
+            pMStokCikis.Size = new Size(250, 188);
+            pMStokCikis.TabIndex = 18;
             // 
-            // tBMStokMiktari
+            // btnMStokCikisi
             // 
-            tBMStokMiktari.Location = new Point(210, 308);
-            tBMStokMiktari.Name = "tBMStokMiktari";
-            tBMStokMiktari.Size = new Size(125, 27);
-            tBMStokMiktari.TabIndex = 23;
+            btnMStokCikisi.Location = new Point(121, 108);
+            btnMStokCikisi.Name = "btnMStokCikisi";
+            btnMStokCikisi.Size = new Size(94, 29);
+            btnMStokCikisi.TabIndex = 2;
+            btnMStokCikisi.Text = "Stok Düşür";
+            btnMStokCikisi.UseVisualStyleBackColor = true;
+            btnMStokCikisi.Click += btnMStokCikisi_Click;
+            // 
+            // tBMCikicakMiktar
+            // 
+            tBMCikicakMiktar.Location = new Point(62, 45);
+            tBMCikicakMiktar.Name = "tBMCikicakMiktar";
+            tBMCikicakMiktar.Size = new Size(125, 27);
+            tBMCikicakMiktar.TabIndex = 1;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(31, 22);
+            label23.Name = "label23";
+            label23.Size = new Size(96, 20);
+            label23.TabIndex = 0;
+            label23.Text = "Miktar giriniz";
+            // 
+            // pMStokArtir
+            // 
+            pMStokArtir.Controls.Add(label24);
+            pMStokArtir.Controls.Add(btnMStokArttir);
+            pMStokArtir.Controls.Add(tBMArtirMiktar);
+            pMStokArtir.Location = new Point(204, 696);
+            pMStokArtir.Name = "pMStokArtir";
+            pMStokArtir.Size = new Size(211, 183);
+            pMStokArtir.TabIndex = 20;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(27, 9);
+            label24.Name = "label24";
+            label24.Size = new Size(96, 20);
+            label24.TabIndex = 2;
+            label24.Text = "Miktar giriniz";
+            // 
+            // btnMStokArttir
+            // 
+            btnMStokArttir.Location = new Point(89, 122);
+            btnMStokArttir.Name = "btnMStokArttir";
+            btnMStokArttir.Size = new Size(94, 29);
+            btnMStokArttir.TabIndex = 1;
+            btnMStokArttir.Text = "Stok Artır";
+            btnMStokArttir.UseVisualStyleBackColor = true;
+            btnMStokArttir.Click += btnMStokArttir_Click;
+            // 
+            // tBMArtirMiktar
+            // 
+            tBMArtirMiktar.Location = new Point(27, 48);
+            tBMArtirMiktar.Name = "tBMArtirMiktar";
+            tBMArtirMiktar.Size = new Size(125, 27);
+            tBMArtirMiktar.TabIndex = 0;
             // 
             // MekanikUrunDetayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1739, 786);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            ClientSize = new Size(1739, 896);
+            Controls.Add(pMStokArtir);
+            Controls.Add(pMStokCikis);
+            Controls.Add(btnStokCikis);
+            Controls.Add(btnMSArtirPanel);
             Controls.Add(lVAktifProje);
             Controls.Add(label20);
             Controls.Add(label19);
@@ -514,6 +600,10 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pBMekanikResim).EndInit();
+            pMStokCikis.ResumeLayout(false);
+            pMStokCikis.PerformLayout();
+            pMStokArtir.ResumeLayout(false);
+            pMStokArtir.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -557,13 +647,21 @@
         private Label label19;
         private Label label20;
         private ListView lVAktifProje;
-        private Button button1;
-        private Button button2;
+        private Button btnMSArtirPanel;
+        private Button btnStokCikis;
         private TextBox txtMGlnMktr;
         private Label label15;
         private Label label21;
-        private TextBox textBox1;
+        private TextBox tBMekTopTutar;
         private Label label22;
         private TextBox tBMStokMiktari;
+        private Panel pMStokCikis;
+        private Button btnMStokCikisi;
+        private TextBox tBMCikicakMiktar;
+        private Label label23;
+        private Panel pMStokArtir;
+        private Label label24;
+        private Button btnMStokArttir;
+        private TextBox tBMArtirMiktar;
     }
 }

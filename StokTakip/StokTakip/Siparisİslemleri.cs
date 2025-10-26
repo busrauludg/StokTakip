@@ -23,7 +23,7 @@ namespace StokTakip
             InitializeComponent();
         }
 
-        
+
 
         private void Siparisİslemleri_Load(object sender, EventArgs e)
         {
@@ -96,7 +96,7 @@ namespace StokTakip
 
                     // Grup adı eklendi
                     item.SubItems.Add(grupAd);//bunu gruptan sonra yaptık cünkü iki veri karışıyordu 
-                 
+
 
 
                     // BURASI EKLENDİ: Her satıra sipariş ID'yi Tag olarak ata
@@ -283,7 +283,17 @@ namespace StokTakip
             // isteğe bağlı: liste sekmesine geç
             // tabControl1.SelectedTab = tpListe;
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lVlSiparisListesi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
-    
+
 
 }

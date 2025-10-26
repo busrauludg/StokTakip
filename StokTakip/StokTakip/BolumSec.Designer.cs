@@ -35,12 +35,12 @@
             tabPage2 = new TabPage();
             lVlElektrikListesi = new ListView();
             tabPage3 = new TabPage();
+            btnPersonelİslem = new Button();
             btnSiparisİslem = new Button();
             btnProjeDetay = new Button();
             pStokEkle = new Panel();
             btnProjeOlustur = new Button();
             btnStokEkle = new Button();
-            btnPersonelİslem = new Button();
             tbCBolumSec.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -127,6 +127,16 @@
             tabPage3.Text = "Ana Sayfa";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnPersonelİslem
+            // 
+            btnPersonelİslem.Location = new Point(601, 0);
+            btnPersonelİslem.Name = "btnPersonelİslem";
+            btnPersonelİslem.Size = new Size(123, 48);
+            btnPersonelİslem.TabIndex = 8;
+            btnPersonelİslem.Text = "Personel";
+            btnPersonelİslem.UseVisualStyleBackColor = true;
+            btnPersonelİslem.Click += btnPersonelİslem_Click;
+            // 
             // btnSiparisİslem
             // 
             btnSiparisİslem.Location = new Point(442, 0);
@@ -173,16 +183,6 @@
             btnStokEkle.Text = "Stok Ekle";
             btnStokEkle.UseVisualStyleBackColor = true;
             btnStokEkle.Click += btnStokEkle_Click;
-            // 
-            // btnPersonelİslem
-            // 
-            btnPersonelİslem.Location = new Point(601, 0);
-            btnPersonelİslem.Name = "btnPersonelİslem";
-            btnPersonelİslem.Size = new Size(123, 48);
-            btnPersonelİslem.TabIndex = 8;
-            btnPersonelİslem.Text = "Personel";
-            btnPersonelİslem.UseVisualStyleBackColor = true;
-            btnPersonelİslem.Click += btnPersonelİslem_Click;
             // 
             // BolumSec
             // 

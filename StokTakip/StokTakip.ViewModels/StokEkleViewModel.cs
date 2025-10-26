@@ -25,10 +25,11 @@ namespace StokTakip.ViewModels
        // public string PersonelAdi { get; set; }
         public int PersonelId { get; set; }
         public string Aciklama { get; set; }
+
         //Stok durumu 
         public string DepoAdi { get; set; }
         public int SerbestMiktar { get; set; }
-        public int KaliteMiktar { get; set; }
+        //public int KaliteMiktar { get; set; }
         public string BlokeMiktar { get; set; }
 
         //Stok Hareket
@@ -50,6 +51,8 @@ namespace StokTakip.ViewModels
         public decimal BirimFiyat { get; set; }
         public decimal Kur { get; set; }
         public string ParaBirimi { get; set; }
+        //23.10
+        public decimal ToplamMaliyet { get; set; }
         public string StnAlmaAciklama { get; set; }
         public int StnAlmaPersonelId { get; set; }
     }

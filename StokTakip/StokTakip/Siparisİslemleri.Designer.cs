@@ -84,6 +84,7 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Sipariş Listesi ";
             tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Click += tabPage1_Click;
             // 
             // lVlSiparisListesi
             // 
@@ -93,6 +94,7 @@
             lVlSiparisListesi.Size = new Size(786, 697);
             lVlSiparisListesi.TabIndex = 1;
             lVlSiparisListesi.UseCompatibleStateImageBehavior = false;
+            lVlSiparisListesi.SelectedIndexChanged += lVlSiparisListesi_SelectedIndexChanged;
             // 
             // tabPage2
             // 

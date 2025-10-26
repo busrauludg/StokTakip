@@ -12,10 +12,13 @@ namespace StokTakip.ViewModels
         public DateTime SiparisTarihi { get; set; }
         public int Miktar { get; set; }
         public string CariAdi { get; set; }
-        public int? GelenMiktar { get; set; }
-        //public decimal? BirimFiyat { get; set; }
-        //public decimal? Kur { get; set; }
+        public int GelenMiktar { get; set; }
+        //public decimal BirimFiyat { get; set; }
+        //public decimal Kur { get; set; }
         //public string ParaBirimi { get; set; }
+
+        //23.10
+        public decimal ToplamMaliyet { get; set; }
         public string Aciklama { get; set; }
         //public int? PersonelId { get; set; }
 

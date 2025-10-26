@@ -13,17 +13,18 @@ public partial class SatinAlma
 
     public int Miktar { get; set; }
 
-    public string? CariAdi { get; set; }
+    public string CariAdi { get; set; }//bu
 
-    public int? GelenMiktar { get; set; }
+    public int GelenMiktar { get; set; }//bu
 
-    public decimal? BirimFiyat { get; set; }
+    public decimal BirimFiyat { get; set; }//bu
 
-    public decimal? Kur { get; set; }
+    public decimal Kur { get; set; }//bu
 
-    public string? ParaBirimi { get; set; }
+    public string ParaBirimi { get; set; }//bu
 
     public string? Aciklama { get; set; }
+    public decimal ToplamMaliyet { get; set; }
 
     public int? PersonelId { get; set; }
 

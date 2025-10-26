@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StokTakip.StokTakip.Data;
 
@@ -11,9 +12,11 @@ using StokTakip.StokTakip.Data;
 namespace StokTakip.Data.Migrations
 {
     [DbContext(typeof(StokTakipContext))]
-    partial class StokTakipContextModelSnapshot : ModelSnapshot
+    [Migration("20251023080234_ToplamMaliyet")]
+    partial class ToplamMaliyet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -210,25 +213,23 @@ namespace StokTakip.Data.Migrations
                     b.Property<string>("Aciklama")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("BirimFiyat")
+                    b.Property<decimal?>("BirimFiyat")
                         .HasColumnType("decimal(18, 4)");
 
                     b.Property<string>("CariAdi")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("GelenMiktar")
+                    b.Property<int?>("GelenMiktar")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Kur")
+                    b.Property<decimal?>("Kur")
                         .HasColumnType("decimal(18, 4)");
 
                     b.Property<int>("Miktar")
                         .HasColumnType("int");
 
                     b.Property<string>("ParaBirimi")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
@@ -242,9 +243,6 @@ namespace StokTakip.Data.Migrations
 
                     b.Property<int>("StokKartiId")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("ToplamMaliyet")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("SiparisId")
                         .HasName("PK__SatinAlm__C3F03BFDE33C702A");

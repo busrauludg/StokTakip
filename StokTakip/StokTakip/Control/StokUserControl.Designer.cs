@@ -84,21 +84,25 @@
             openFileDialog1 = new OpenFileDialog();
             btnStokEkle = new Button();
             groupBox4 = new GroupBox();
+            pHesaplama = new Panel();
+            cBParaBirimi = new ComboBox();
+            tBTopTutar = new TextBox();
+            label19 = new Label();
+            btnHesapla = new Button();
+            tBStnAlmaKur = new TextBox();
+            tBStnAlmaBirim = new TextBox();
+            tBStnAlMiktar = new TextBox();
+            label28 = new Label();
+            label30 = new Label();
+            label31 = new Label();
+            label32 = new Label();
             dTPStnAlma = new DateTimePicker();
             tBStnAlmaPersonelId = new TextBox();
             tBStnAlmaAciklama = new TextBox();
-            tBStnAlmaParaBirm = new TextBox();
-            tBStnAlmaKur = new TextBox();
-            tBStnAlmaBirim = new TextBox();
             tBStnAlmaCari = new TextBox();
-            tBStnAlMiktar = new TextBox();
             label34 = new Label();
             label33 = new Label();
-            label32 = new Label();
-            label31 = new Label();
-            label30 = new Label();
             label29 = new Label();
-            label28 = new Label();
             label27 = new Label();
             btnGeri = new Button();
             groupBox1.SuspendLayout();
@@ -110,6 +114,7 @@
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nUDHareketM).BeginInit();
             groupBox4.SuspendLayout();
+            pHesaplama.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -629,28 +634,131 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(pHesaplama);
+            groupBox4.Controls.Add(tBTopTutar);
+            groupBox4.Controls.Add(label19);
             groupBox4.Controls.Add(dTPStnAlma);
             groupBox4.Controls.Add(tBStnAlmaPersonelId);
             groupBox4.Controls.Add(tBStnAlmaAciklama);
-            groupBox4.Controls.Add(tBStnAlmaParaBirm);
-            groupBox4.Controls.Add(tBStnAlmaKur);
-            groupBox4.Controls.Add(tBStnAlmaBirim);
             groupBox4.Controls.Add(tBStnAlmaCari);
-            groupBox4.Controls.Add(tBStnAlMiktar);
             groupBox4.Controls.Add(label34);
             groupBox4.Controls.Add(label33);
-            groupBox4.Controls.Add(label32);
-            groupBox4.Controls.Add(label31);
-            groupBox4.Controls.Add(label30);
             groupBox4.Controls.Add(label29);
-            groupBox4.Controls.Add(label28);
             groupBox4.Controls.Add(label27);
             groupBox4.Location = new Point(1066, 69);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(316, 535);
+            groupBox4.Size = new Size(316, 609);
             groupBox4.TabIndex = 37;
             groupBox4.TabStop = false;
             groupBox4.Text = "Satın Alma";
+            // 
+            // pHesaplama
+            // 
+            pHesaplama.Controls.Add(cBParaBirimi);
+            pHesaplama.Controls.Add(btnHesapla);
+            pHesaplama.Controls.Add(tBStnAlmaKur);
+            pHesaplama.Controls.Add(tBStnAlmaBirim);
+            pHesaplama.Controls.Add(tBStnAlMiktar);
+            pHesaplama.Controls.Add(label28);
+            pHesaplama.Controls.Add(label30);
+            pHesaplama.Controls.Add(label31);
+            pHesaplama.Controls.Add(label32);
+            pHesaplama.Location = new Point(6, 145);
+            pHesaplama.Name = "pHesaplama";
+            pHesaplama.Size = new Size(304, 311);
+            pHesaplama.TabIndex = 24;
+            // 
+            // cBParaBirimi
+            // 
+            cBParaBirimi.FormattingEnabled = true;
+            cBParaBirimi.Location = new Point(143, 91);
+            cBParaBirimi.Name = "cBParaBirimi";
+            cBParaBirimi.Size = new Size(131, 28);
+            cBParaBirimi.TabIndex = 23;
+            // 
+            // tBTopTutar
+            // 
+            tBTopTutar.Location = new Point(165, 462);
+            tBTopTutar.Name = "tBTopTutar";
+            tBTopTutar.Size = new Size(125, 27);
+            tBTopTutar.TabIndex = 20;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(0, 478);
+            label19.Name = "label19";
+            label19.Size = new Size(100, 20);
+            label19.TabIndex = 19;
+            label19.Text = "Toplam Tutar:";
+            label19.Click += label19_Click;
+            // 
+            // btnHesapla
+            // 
+            btnHesapla.Location = new Point(164, 255);
+            btnHesapla.Name = "btnHesapla";
+            btnHesapla.Size = new Size(94, 29);
+            btnHesapla.TabIndex = 22;
+            btnHesapla.Text = "Hesapla";
+            btnHesapla.UseVisualStyleBackColor = true;
+            btnHesapla.Click += btnHesapla_Click;
+            // 
+            // tBStnAlmaKur
+            // 
+            tBStnAlmaKur.Location = new Point(149, 208);
+            tBStnAlmaKur.Name = "tBStnAlmaKur";
+            tBStnAlmaKur.Size = new Size(125, 27);
+            tBStnAlmaKur.TabIndex = 14;
+            // 
+            // tBStnAlmaBirim
+            // 
+            tBStnAlmaBirim.Location = new Point(149, 156);
+            tBStnAlmaBirim.Name = "tBStnAlmaBirim";
+            tBStnAlmaBirim.Size = new Size(125, 27);
+            tBStnAlmaBirim.TabIndex = 13;
+            // 
+            // tBStnAlMiktar
+            // 
+            tBStnAlMiktar.Location = new Point(159, 25);
+            tBStnAlMiktar.Name = "tBStnAlMiktar";
+            tBStnAlMiktar.Size = new Size(125, 27);
+            tBStnAlMiktar.TabIndex = 11;
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.Location = new Point(8, 32);
+            label28.Name = "label28";
+            label28.Size = new Size(151, 20);
+            label28.TabIndex = 2;
+            label28.Text = "Sipariş Verilen Miktar:";
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Location = new Point(16, 159);
+            label30.Name = "label30";
+            label30.Size = new Size(82, 20);
+            label30.TabIndex = 4;
+            label30.Text = "Birim Fiyat:";
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Location = new Point(16, 211);
+            label31.Name = "label31";
+            label31.Size = new Size(34, 20);
+            label31.TabIndex = 5;
+            label31.Text = "Kur:";
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Location = new Point(14, 90);
+            label32.Name = "label32";
+            label32.Size = new Size(83, 20);
+            label32.TabIndex = 6;
+            label32.Text = "Para Birimi:";
             // 
             // dTPStnAlma
             // 
@@ -661,57 +769,29 @@
             // 
             // tBStnAlmaPersonelId
             // 
-            tBStnAlmaPersonelId.Location = new Point(165, 431);
+            tBStnAlmaPersonelId.Location = new Point(165, 555);
             tBStnAlmaPersonelId.Name = "tBStnAlmaPersonelId";
             tBStnAlmaPersonelId.Size = new Size(125, 27);
             tBStnAlmaPersonelId.TabIndex = 17;
             // 
             // tBStnAlmaAciklama
             // 
-            tBStnAlmaAciklama.Location = new Point(165, 385);
+            tBStnAlmaAciklama.Location = new Point(165, 509);
             tBStnAlmaAciklama.Name = "tBStnAlmaAciklama";
             tBStnAlmaAciklama.Size = new Size(125, 27);
             tBStnAlmaAciklama.TabIndex = 16;
             // 
-            // tBStnAlmaParaBirm
-            // 
-            tBStnAlmaParaBirm.Location = new Point(165, 336);
-            tBStnAlmaParaBirm.Name = "tBStnAlmaParaBirm";
-            tBStnAlmaParaBirm.Size = new Size(125, 27);
-            tBStnAlmaParaBirm.TabIndex = 15;
-            // 
-            // tBStnAlmaKur
-            // 
-            tBStnAlmaKur.Location = new Point(165, 290);
-            tBStnAlmaKur.Name = "tBStnAlmaKur";
-            tBStnAlmaKur.Size = new Size(125, 27);
-            tBStnAlmaKur.TabIndex = 14;
-            // 
-            // tBStnAlmaBirim
-            // 
-            tBStnAlmaBirim.Location = new Point(165, 233);
-            tBStnAlmaBirim.Name = "tBStnAlmaBirim";
-            tBStnAlmaBirim.Size = new Size(125, 27);
-            tBStnAlmaBirim.TabIndex = 13;
-            // 
             // tBStnAlmaCari
             // 
-            tBStnAlmaCari.Location = new Point(165, 177);
+            tBStnAlmaCari.Location = new Point(165, 102);
             tBStnAlmaCari.Name = "tBStnAlmaCari";
             tBStnAlmaCari.Size = new Size(125, 27);
             tBStnAlmaCari.TabIndex = 12;
             // 
-            // tBStnAlMiktar
-            // 
-            tBStnAlMiktar.Location = new Point(165, 115);
-            tBStnAlMiktar.Name = "tBStnAlMiktar";
-            tBStnAlMiktar.Size = new Size(125, 27);
-            tBStnAlMiktar.TabIndex = 11;
-            // 
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(8, 442);
+            label34.Location = new Point(8, 566);
             label34.Name = "label34";
             label34.Size = new Size(77, 20);
             label34.TabIndex = 8;
@@ -720,56 +800,20 @@
             // label33
             // 
             label33.AutoSize = true;
-            label33.Location = new Point(8, 388);
+            label33.Location = new Point(8, 512);
             label33.Name = "label33";
             label33.Size = new Size(73, 20);
             label33.TabIndex = 7;
             label33.Text = "Açıklama:";
             // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.Location = new Point(6, 339);
-            label32.Name = "label32";
-            label32.Size = new Size(83, 20);
-            label32.TabIndex = 6;
-            label32.Text = "Para Birimi:";
-            // 
-            // label31
-            // 
-            label31.AutoSize = true;
-            label31.Location = new Point(17, 293);
-            label31.Name = "label31";
-            label31.Size = new Size(34, 20);
-            label31.TabIndex = 5;
-            label31.Text = "Kur:";
-            // 
-            // label30
-            // 
-            label30.AutoSize = true;
-            label30.Location = new Point(8, 240);
-            label30.Name = "label30";
-            label30.Size = new Size(82, 20);
-            label30.TabIndex = 4;
-            label30.Text = "Birim Fiyat:";
-            // 
             // label29
             // 
             label29.AutoSize = true;
-            label29.Location = new Point(6, 184);
+            label29.Location = new Point(6, 109);
             label29.Name = "label29";
-            label29.Size = new Size(65, 20);
+            label29.Size = new Size(76, 20);
             label29.TabIndex = 3;
-            label29.Text = "Cari Adi:";
-            // 
-            // label28
-            // 
-            label28.AutoSize = true;
-            label28.Location = new Point(8, 122);
-            label28.Name = "label28";
-            label28.Size = new Size(151, 20);
-            label28.TabIndex = 2;
-            label28.Text = "Sipariş Verilen Miktar:";
+            label29.Text = "Firma Adi:";
             // 
             // label27
             // 
@@ -818,6 +862,8 @@
             ((System.ComponentModel.ISupportInitialize)nUDHareketM).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
+            pHesaplama.ResumeLayout(false);
+            pHesaplama.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -883,7 +929,6 @@
         private DateTimePicker dTPStnAlma;
         private TextBox tBStnAlmaPersonelId;
         private TextBox tBStnAlmaAciklama;
-        private TextBox tBStnAlmaParaBirm;
         private TextBox tBStnAlmaKur;
         private TextBox tBStnAlmaBirim;
         private TextBox tBStnAlmaCari;
@@ -897,5 +942,10 @@
         private Label label28;
         private Label label27;
         private Button btnGeri;
+        private Button btnHesapla;
+        private TextBox tBTopTutar;
+        private Label label19;
+        private ComboBox cBParaBirimi;
+        private Panel pHesaplama;
     }
 }
