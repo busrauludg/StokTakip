@@ -34,13 +34,13 @@
             silToolStripMenuItem = new ToolStripMenuItem();
             düzenleToolStripMenuItem = new ToolStripMenuItem();
             pnlDuzenle = new Panel();
+            cBRol = new ComboBox();
             btnDuzen = new Button();
             tBTelNo = new TextBox();
             tBGorev = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            cBRol = new ComboBox();
             cmsPersonel.SuspendLayout();
             pnlDuzenle.SuspendLayout();
             SuspendLayout();
@@ -52,7 +52,7 @@
             lVlPersonel.GridLines = true;
             lVlPersonel.Location = new Point(0, 0);
             lVlPersonel.Name = "lVlPersonel";
-            lVlPersonel.Size = new Size(1102, 503);
+            lVlPersonel.Size = new Size(1102, 635);
             lVlPersonel.TabIndex = 0;
             lVlPersonel.UseCompatibleStateImageBehavior = false;
             lVlPersonel.View = View.Details;
@@ -91,6 +91,15 @@
             pnlDuzenle.Name = "pnlDuzenle";
             pnlDuzenle.Size = new Size(281, 299);
             pnlDuzenle.TabIndex = 1;
+            // 
+            // cBRol
+            // 
+            cBRol.FormattingEnabled = true;
+            cBRol.Items.AddRange(new object[] { "Yetkili", "Personel" });
+            cBRol.Location = new Point(85, 83);
+            cBRol.Name = "cBRol";
+            cBRol.Size = new Size(151, 28);
+            cBRol.TabIndex = 7;
             // 
             // btnDuzen
             // 
@@ -143,15 +152,6 @@
             label1.TabIndex = 0;
             label1.Text = "Görev:";
             // 
-            // cBRol
-            // 
-            cBRol.FormattingEnabled = true;
-            cBRol.Items.AddRange(new object[] { "Yetkili", "Personel" });
-            cBRol.Location = new Point(85, 83);
-            cBRol.Name = "cBRol";
-            cBRol.Size = new Size(151, 28);
-            cBRol.TabIndex = 7;
-            // 
             // PersonelControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -159,7 +159,7 @@
             Controls.Add(pnlDuzenle);
             Controls.Add(lVlPersonel);
             Name = "PersonelControl";
-            Size = new Size(1102, 503);
+            Size = new Size(1102, 635);
             Load += PersonelControl_Load;
             cmsPersonel.ResumeLayout(false);
             pnlDuzenle.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             tbCBolumSec = new TabControl();
             tabPage1 = new TabPage();
@@ -41,10 +42,13 @@
             pStokEkle = new Panel();
             btnProjeOlustur = new Button();
             btnStokEkle = new Button();
+            cMSSagTik = new ContextMenuStrip(components);
+            silToolStripMenuItem = new ToolStripMenuItem();
             tbCBolumSec.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            cMSSagTik.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -62,10 +66,10 @@
             tbCBolumSec.Controls.Add(tabPage1);
             tbCBolumSec.Controls.Add(tabPage2);
             tbCBolumSec.Controls.Add(tabPage3);
-            tbCBolumSec.Location = new Point(2, 1);
+            tbCBolumSec.Location = new Point(2, 37);
             tbCBolumSec.Name = "tbCBolumSec";
             tbCBolumSec.SelectedIndex = 0;
-            tbCBolumSec.Size = new Size(1743, 958);
+            tbCBolumSec.Size = new Size(1746, 922);
             tbCBolumSec.TabIndex = 3;
             // 
             // tabPage1
@@ -74,7 +78,7 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1735, 925);
+            tabPage1.Size = new Size(1738, 889);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Mekanik Ürün Listesi";
             tabPage1.UseVisualStyleBackColor = true;
@@ -84,7 +88,7 @@
             lVMekanikListesi.Dock = DockStyle.Fill;
             lVMekanikListesi.Location = new Point(3, 3);
             lVMekanikListesi.Name = "lVMekanikListesi";
-            lVMekanikListesi.Size = new Size(1729, 919);
+            lVMekanikListesi.Size = new Size(1732, 883);
             lVMekanikListesi.TabIndex = 1;
             lVMekanikListesi.UseCompatibleStateImageBehavior = false;
             lVMekanikListesi.DoubleClick += lVMekanikListesi_DoubleClick;
@@ -184,6 +188,20 @@
             btnStokEkle.UseVisualStyleBackColor = true;
             btnStokEkle.Click += btnStokEkle_Click;
             // 
+            // cMSSagTik
+            // 
+            cMSSagTik.ImageScalingSize = new Size(20, 20);
+            cMSSagTik.Items.AddRange(new ToolStripItem[] { silToolStripMenuItem });
+            cMSSagTik.Name = "cMSSagTik";
+            cMSSagTik.Size = new Size(95, 28);
+            // 
+            // silToolStripMenuItem
+            // 
+            silToolStripMenuItem.Name = "silToolStripMenuItem";
+            silToolStripMenuItem.Size = new Size(94, 24);
+            silToolStripMenuItem.Text = "Sil";
+            silToolStripMenuItem.Click += silToolStripMenuItem_Click;
+            // 
             // BolumSec
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -198,6 +216,7 @@
             tabPage2.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            cMSSagTik.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -215,5 +234,7 @@
         private Button btnSiparisİslem;
         private Button btnProjeDetay;
         private Button btnPersonelİslem;
+        private ContextMenuStrip cMSSagTik;
+        private ToolStripMenuItem silToolStripMenuItem;
     }
 }

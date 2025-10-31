@@ -83,7 +83,7 @@
             label3.Name = "label3";
             label3.Size = new Size(114, 20);
             label3.TabIndex = 2;
-            label3.Text = "Başlangıc Tarihi:";
+            label3.Text = "Başlangıç Tarihi:";
             // 
             // label4
             // 
@@ -99,9 +99,9 @@
             label5.AutoSize = true;
             label5.Location = new Point(17, 305);
             label5.Name = "label5";
-            label5.Size = new Size(84, 20);
+            label5.Size = new Size(94, 20);
             label5.TabIndex = 4;
-            label5.Text = "Personel Id:";
+            label5.Text = "Personel Adı:";
             // 
             // label6
             // 
@@ -161,7 +161,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(24, 250);
+            label7.Location = new Point(17, 250);
             label7.Name = "label7";
             label7.Size = new Size(73, 20);
             label7.TabIndex = 15;
@@ -186,16 +186,16 @@
             gBProjeKullanilanUrunler.Controls.Add(label9);
             gBProjeKullanilanUrunler.Controls.Add(lblProjeEkle);
             gBProjeKullanilanUrunler.Controls.Add(cBProjSec);
-            gBProjeKullanilanUrunler.Location = new Point(765, 80);
+            gBProjeKullanilanUrunler.Location = new Point(765, 35);
             gBProjeKullanilanUrunler.Name = "gBProjeKullanilanUrunler";
-            gBProjeKullanilanUrunler.Size = new Size(618, 506);
+            gBProjeKullanilanUrunler.Size = new Size(618, 551);
             gBProjeKullanilanUrunler.TabIndex = 17;
             gBProjeKullanilanUrunler.TabStop = false;
             gBProjeKullanilanUrunler.Text = "Proje Kullanılıcak Ürünler";
             // 
             // btnUrunEkle
             // 
-            btnUrunEkle.Location = new Point(392, 357);
+            btnUrunEkle.Location = new Point(392, 429);
             btnUrunEkle.Name = "btnUrunEkle";
             btnUrunEkle.Size = new Size(176, 29);
             btnUrunEkle.TabIndex = 20;
@@ -206,7 +206,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(17, 174);
+            label8.Location = new Point(18, 215);
             label8.Name = "label8";
             label8.Size = new Size(111, 20);
             label8.TabIndex = 19;
@@ -214,7 +214,7 @@
             // 
             // lVSecilenUrunler
             // 
-            lVSecilenUrunler.Location = new Point(96, 204);
+            lVSecilenUrunler.Location = new Point(97, 245);
             lVSecilenUrunler.Name = "lVSecilenUrunler";
             lVSecilenUrunler.Size = new Size(272, 247);
             lVSecilenUrunler.TabIndex = 18;
@@ -240,7 +240,7 @@
             // cBUrunSec
             // 
             cBUrunSec.FormattingEnabled = true;
-            cBUrunSec.Location = new Point(97, 109);
+            cBUrunSec.Location = new Point(97, 146);
             cBUrunSec.Name = "cBUrunSec";
             cBUrunSec.Size = new Size(170, 28);
             cBUrunSec.TabIndex = 4;
@@ -257,7 +257,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(17, 94);
+            label9.Location = new Point(17, 131);
             label9.Name = "label9";
             label9.Size = new Size(74, 20);
             label9.TabIndex = 2;
@@ -266,7 +266,7 @@
             // lblProjeEkle
             // 
             lblProjeEkle.AutoSize = true;
-            lblProjeEkle.Location = new Point(17, 34);
+            lblProjeEkle.Location = new Point(17, 71);
             lblProjeEkle.Name = "lblProjeEkle";
             lblProjeEkle.Size = new Size(77, 20);
             lblProjeEkle.TabIndex = 1;
@@ -275,7 +275,7 @@
             // cBProjSec
             // 
             cBProjSec.FormattingEnabled = true;
-            cBProjSec.Location = new Point(96, 31);
+            cBProjSec.Location = new Point(96, 68);
             cBProjSec.Name = "cBProjSec";
             cBProjSec.Size = new Size(170, 28);
             cBProjSec.TabIndex = 0;

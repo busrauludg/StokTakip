@@ -82,6 +82,8 @@
             label24 = new Label();
             btnMStokArttir = new Button();
             tBMArtirMiktar = new TextBox();
+            cBPMProjeSec = new ComboBox();
+            label25 = new Label();
             ((System.ComponentModel.ISupportInitialize)dGVMknStkDurum).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -502,17 +504,19 @@
             // 
             // pMStokCikis
             // 
+            pMStokCikis.Controls.Add(label25);
+            pMStokCikis.Controls.Add(cBPMProjeSec);
             pMStokCikis.Controls.Add(btnMStokCikisi);
             pMStokCikis.Controls.Add(tBMCikicakMiktar);
             pMStokCikis.Controls.Add(label23);
             pMStokCikis.Location = new Point(700, 571);
             pMStokCikis.Name = "pMStokCikis";
-            pMStokCikis.Size = new Size(250, 188);
+            pMStokCikis.Size = new Size(250, 292);
             pMStokCikis.TabIndex = 18;
             // 
             // btnMStokCikisi
             // 
-            btnMStokCikisi.Location = new Point(121, 108);
+            btnMStokCikisi.Location = new Point(112, 204);
             btnMStokCikisi.Name = "btnMStokCikisi";
             btnMStokCikisi.Size = new Size(94, 29);
             btnMStokCikisi.TabIndex = 2;
@@ -571,6 +575,23 @@
             tBMArtirMiktar.Name = "tBMArtirMiktar";
             tBMArtirMiktar.Size = new Size(125, 27);
             tBMArtirMiktar.TabIndex = 0;
+            // 
+            // cBPMProjeSec
+            // 
+            cBPMProjeSec.FormattingEnabled = true;
+            cBPMProjeSec.Location = new Point(62, 146);
+            cBPMProjeSec.Name = "cBPMProjeSec";
+            cBPMProjeSec.Size = new Size(151, 28);
+            cBPMProjeSec.TabIndex = 3;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(31, 106);
+            label25.Name = "label25";
+            label25.Size = new Size(70, 20);
+            label25.TabIndex = 4;
+            label25.Text = "Proje Seç";
             // 
             // MekanikUrunDetayForm
             // 
@@ -663,5 +684,7 @@
         private Label label24;
         private Button btnMStokArttir;
         private TextBox tBMArtirMiktar;
+        private Label label25;
+        private ComboBox cBPMProjeSec;
     }
 }

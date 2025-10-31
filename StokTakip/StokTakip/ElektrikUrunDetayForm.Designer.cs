@@ -82,6 +82,8 @@
             btnStokArtir = new Button();
             tBStkArtir = new TextBox();
             label24 = new Label();
+            label25 = new Label();
+            cBPProjeSec = new ComboBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dGVElStokDurum).BeginInit();
@@ -461,6 +463,7 @@
             lVAktifProje.Size = new Size(438, 283);
             lVAktifProje.TabIndex = 14;
             lVAktifProje.UseCompatibleStateImageBehavior = false;
+            lVAktifProje.SelectedIndexChanged += lVAktifProje_SelectedIndexChanged;
             // 
             // label20
             // 
@@ -502,17 +505,19 @@
             // 
             // pStokCikis
             // 
+            pStokCikis.Controls.Add(cBPProjeSec);
+            pStokCikis.Controls.Add(label25);
             pStokCikis.Controls.Add(btnStokCikisi);
             pStokCikis.Controls.Add(tBCikicakMiktar);
             pStokCikis.Controls.Add(label23);
             pStokCikis.Location = new Point(669, 566);
             pStokCikis.Name = "pStokCikis";
-            pStokCikis.Size = new Size(250, 188);
+            pStokCikis.Size = new Size(250, 290);
             pStokCikis.TabIndex = 17;
             // 
             // btnStokCikisi
             // 
-            btnStokCikisi.Location = new Point(121, 108);
+            btnStokCikisi.Location = new Point(138, 181);
             btnStokCikisi.Name = "btnStokCikisi";
             btnStokCikisi.Size = new Size(94, 29);
             btnStokCikisi.TabIndex = 2;
@@ -571,6 +576,23 @@
             label24.Size = new Size(96, 20);
             label24.TabIndex = 0;
             label24.Text = "Miktar giriniz";
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(31, 97);
+            label25.Name = "label25";
+            label25.Size = new Size(93, 20);
+            label25.TabIndex = 3;
+            label25.Text = "Proje Seçiniz";
+            // 
+            // cBPProjeSec
+            // 
+            cBPProjeSec.FormattingEnabled = true;
+            cBPProjeSec.Location = new Point(65, 128);
+            cBPProjeSec.Name = "cBPProjeSec";
+            cBPProjeSec.Size = new Size(151, 28);
+            cBPProjeSec.TabIndex = 4;
             // 
             // ElektrikUrunDetayForm
             // 
@@ -663,5 +685,7 @@
         private Button btnStokArtir;
         private TextBox tBStkArtir;
         private Label label24;
+        private Label label25;
+        private ComboBox cBPProjeSec;
     }
 }

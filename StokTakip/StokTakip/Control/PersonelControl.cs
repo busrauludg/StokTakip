@@ -160,6 +160,6 @@ namespace StokTakip
 
         //        pnlDuzenle.Visible = false;
         //        PersonelControl_Load(null, null);
+        }
     }
-}
 }

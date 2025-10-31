@@ -45,11 +45,6 @@
             label17 = new Label();
             label18 = new Label();
             label20 = new Label();
-            label22 = new Label();
-            label23 = new Label();
-            label24 = new Label();
-            label25 = new Label();
-            label26 = new Label();
             groupBox1 = new GroupBox();
             btnGozAta = new Button();
             tBPersonelId = new TextBox();
@@ -71,23 +66,12 @@
             tBBlokeM = new TextBox();
             tBDepoAdi = new TextBox();
             nUDSerbestM = new NumericUpDown();
-            groupBox3 = new GroupBox();
-            tBSHPersonelId = new TextBox();
-            label16 = new Label();
-            tBShAciklama = new TextBox();
-            dateTimePicker2 = new DateTimePicker();
-            nUDHareketM = new NumericUpDown();
-            radioButton4 = new RadioButton();
-            rBTip = new RadioButton();
-            tBProjeId = new TextBox();
             label10 = new Label();
             openFileDialog1 = new OpenFileDialog();
             btnStokEkle = new Button();
             groupBox4 = new GroupBox();
             pHesaplama = new Panel();
             cBParaBirimi = new ComboBox();
-            tBTopTutar = new TextBox();
-            label19 = new Label();
             btnHesapla = new Button();
             tBStnAlmaKur = new TextBox();
             tBStnAlmaBirim = new TextBox();
@@ -96,6 +80,8 @@
             label30 = new Label();
             label31 = new Label();
             label32 = new Label();
+            tBTopTutar = new TextBox();
+            label19 = new Label();
             dTPStnAlma = new DateTimePicker();
             tBStnAlmaPersonelId = new TextBox();
             tBStnAlmaAciklama = new TextBox();
@@ -111,8 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)nUDMinStok).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nUDSerbestM).BeginInit();
-            groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nUDHareketM).BeginInit();
             groupBox4.SuspendLayout();
             pHesaplama.SuspendLayout();
             SuspendLayout();
@@ -120,7 +104,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 33);
+            label1.Location = new Point(10, 29);
             label1.Name = "label1";
             label1.Size = new Size(70, 20);
             label1.TabIndex = 0;
@@ -129,7 +113,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(10, 102);
+            label2.Location = new Point(9, 90);
             label2.Name = "label2";
             label2.Size = new Size(80, 20);
             label2.TabIndex = 1;
@@ -138,7 +122,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(11, 164);
+            label3.Location = new Point(11, 145);
             label3.Name = "label3";
             label3.Size = new Size(71, 20);
             label3.TabIndex = 2;
@@ -156,7 +140,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(16, 324);
+            label5.Location = new Point(9, 324);
             label5.Name = "label5";
             label5.Size = new Size(70, 20);
             label5.TabIndex = 4;
@@ -165,7 +149,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(16, 395);
+            label6.Location = new Point(9, 395);
             label6.Name = "label6";
             label6.Size = new Size(73, 20);
             label6.TabIndex = 5;
@@ -174,7 +158,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(16, 460);
+            label7.Location = new Point(9, 460);
             label7.Name = "label7";
             label7.Size = new Size(95, 20);
             label7.TabIndex = 6;
@@ -183,7 +167,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(16, 531);
+            label8.Location = new Point(11, 531);
             label8.Name = "label8";
             label8.Size = new Size(95, 20);
             label8.TabIndex = 7;
@@ -192,7 +176,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(11, 598);
+            label9.Location = new Point(11, 594);
             label9.Name = "label9";
             label9.Size = new Size(84, 20);
             label9.TabIndex = 8;
@@ -201,7 +185,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(355, 233);
+            label11.Location = new Point(352, 219);
             label11.Name = "label11";
             label11.Size = new Size(73, 20);
             label11.TabIndex = 10;
@@ -210,7 +194,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(16, 666);
+            label12.Location = new Point(10, 659);
             label12.Name = "label12";
             label12.Size = new Size(84, 20);
             label12.TabIndex = 11;
@@ -270,51 +254,6 @@
             label20.TabIndex = 19;
             label20.Text = "Başka Projelerde Kullanılan Miktar:";
             // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Location = new Point(19, 33);
-            label22.Name = "label22";
-            label22.Size = new Size(73, 20);
-            label22.TabIndex = 21;
-            label22.Text = "Proje Adı:";
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Location = new Point(17, 129);
-            label23.Name = "label23";
-            label23.Size = new Size(33, 20);
-            label23.TabIndex = 22;
-            label23.Text = "Tip:";
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Location = new Point(17, 194);
-            label24.Name = "label24";
-            label24.Size = new Size(54, 20);
-            label24.TabIndex = 23;
-            label24.Text = "Miktar:";
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Location = new Point(17, 247);
-            label25.Name = "label25";
-            label25.Size = new Size(43, 20);
-            label25.TabIndex = 24;
-            label25.Text = "Tarih:";
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Location = new Point(17, 298);
-            label26.Name = "label26";
-            label26.Size = new Size(73, 20);
-            label26.TabIndex = 25;
-            label26.Text = "Açıklama:";
-            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(btnGozAta);
@@ -349,7 +288,7 @@
             groupBox1.Controls.Add(label15);
             groupBox1.Location = new Point(3, 69);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(678, 712);
+            groupBox1.Size = new Size(678, 760);
             groupBox1.TabIndex = 30;
             groupBox1.TabStop = false;
             groupBox1.Text = "Stok Kartı Bilgisi";
@@ -366,14 +305,14 @@
             // 
             // tBPersonelId
             // 
-            tBPersonelId.Location = new Point(452, 157);
+            tBPersonelId.Location = new Point(446, 157);
             tBPersonelId.Name = "tBPersonelId";
             tBPersonelId.Size = new Size(190, 27);
             tBPersonelId.TabIndex = 29;
             // 
             // tBAciklama
             // 
-            tBAciklama.Location = new Point(434, 226);
+            tBAciklama.Location = new Point(446, 226);
             tBAciklama.Multiline = true;
             tBAciklama.Name = "tBAciklama";
             tBAciklama.Size = new Size(190, 189);
@@ -388,7 +327,7 @@
             // 
             // tBFirmaAdi
             // 
-            tBFirmaAdi.Location = new Point(446, 16);
+            tBFirmaAdi.Location = new Point(446, 20);
             tBFirmaAdi.Name = "tBFirmaAdi";
             tBFirmaAdi.Size = new Size(190, 27);
             tBFirmaAdi.TabIndex = 26;
@@ -448,7 +387,7 @@
             // rBMekanik
             // 
             rBMekanik.AutoSize = true;
-            rBMekanik.Location = new Point(205, 204);
+            rBMekanik.Location = new Point(50, 201);
             rBMekanik.Name = "rBMekanik";
             rBMekanik.Size = new Size(85, 24);
             rBMekanik.TabIndex = 18;
@@ -459,7 +398,7 @@
             // rBElektrik
             // 
             rBElektrik.AutoSize = true;
-            rBElektrik.Location = new Point(43, 204);
+            rBElektrik.Location = new Point(216, 201);
             rBElektrik.Name = "rBElektrik";
             rBElektrik.Size = new Size(78, 24);
             rBElektrik.TabIndex = 17;
@@ -489,9 +428,9 @@
             groupBox2.Controls.Add(nUDSerbestM);
             groupBox2.Controls.Add(label18);
             groupBox2.Controls.Add(label20);
-            groupBox2.Location = new Point(717, 69);
+            groupBox2.Location = new Point(1089, 84);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(310, 270);
+            groupBox2.Size = new Size(300, 264);
             groupBox2.TabIndex = 31;
             groupBox2.TabStop = false;
             groupBox2.Text = "Stok Durumu";
@@ -518,96 +457,6 @@
             nUDSerbestM.TabIndex = 30;
             nUDSerbestM.ValueChanged += nUDSerbestM_ValueChanged;
             // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(tBSHPersonelId);
-            groupBox3.Controls.Add(label16);
-            groupBox3.Controls.Add(tBShAciklama);
-            groupBox3.Controls.Add(dateTimePicker2);
-            groupBox3.Controls.Add(nUDHareketM);
-            groupBox3.Controls.Add(radioButton4);
-            groupBox3.Controls.Add(rBTip);
-            groupBox3.Controls.Add(tBProjeId);
-            groupBox3.Controls.Add(label22);
-            groupBox3.Controls.Add(label23);
-            groupBox3.Controls.Add(label24);
-            groupBox3.Controls.Add(label25);
-            groupBox3.Controls.Add(label26);
-            groupBox3.Location = new Point(717, 360);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(343, 392);
-            groupBox3.TabIndex = 32;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Stok Hareketi";
-            // 
-            // tBSHPersonelId
-            // 
-            tBSHPersonelId.Location = new Point(135, 75);
-            tBSHPersonelId.Name = "tBSHPersonelId";
-            tBSHPersonelId.Size = new Size(125, 27);
-            tBSHPersonelId.TabIndex = 34;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(23, 82);
-            label16.Name = "label16";
-            label16.Size = new Size(99, 20);
-            label16.TabIndex = 33;
-            label16.Text = "SHPersonelId:";
-            // 
-            // tBShAciklama
-            // 
-            tBShAciklama.Location = new Point(96, 310);
-            tBShAciklama.Multiline = true;
-            tBShAciklama.Name = "tBShAciklama";
-            tBShAciklama.Size = new Size(190, 73);
-            tBShAciklama.TabIndex = 32;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(78, 243);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(208, 27);
-            dateTimePicker2.TabIndex = 30;
-            // 
-            // nUDHareketM
-            // 
-            nUDHareketM.Location = new Point(96, 187);
-            nUDHareketM.Name = "nUDHareketM";
-            nUDHareketM.Size = new Size(57, 27);
-            nUDHareketM.TabIndex = 30;
-            nUDHareketM.ValueChanged += nUDHareketM_ValueChanged;
-            // 
-            // radioButton4
-            // 
-            radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(174, 141);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(59, 24);
-            radioButton4.TabIndex = 31;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "Çıktı";
-            radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // rBTip
-            // 
-            rBTip.AutoSize = true;
-            rBTip.Location = new Point(80, 141);
-            rBTip.Name = "rBTip";
-            rBTip.Size = new Size(62, 24);
-            rBTip.TabIndex = 30;
-            rBTip.TabStop = true;
-            rBTip.Text = "Girdi";
-            rBTip.UseVisualStyleBackColor = true;
-            // 
-            // tBProjeId
-            // 
-            tBProjeId.Location = new Point(98, 26);
-            tBProjeId.Name = "tBProjeId";
-            tBProjeId.Size = new Size(190, 27);
-            tBProjeId.TabIndex = 30;
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -624,7 +473,7 @@
             // 
             // btnStokEkle
             // 
-            btnStokEkle.Location = new Point(797, 758);
+            btnStokEkle.Location = new Point(702, 649);
             btnStokEkle.Name = "btnStokEkle";
             btnStokEkle.Size = new Size(122, 46);
             btnStokEkle.TabIndex = 35;
@@ -645,9 +494,9 @@
             groupBox4.Controls.Add(label33);
             groupBox4.Controls.Add(label29);
             groupBox4.Controls.Add(label27);
-            groupBox4.Location = new Point(1066, 69);
+            groupBox4.Location = new Point(702, 78);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(316, 609);
+            groupBox4.Size = new Size(381, 551);
             groupBox4.TabIndex = 37;
             groupBox4.TabStop = false;
             groupBox4.Text = "Satın Alma";
@@ -663,39 +512,22 @@
             pHesaplama.Controls.Add(label30);
             pHesaplama.Controls.Add(label31);
             pHesaplama.Controls.Add(label32);
-            pHesaplama.Location = new Point(6, 145);
+            pHesaplama.Location = new Point(0, 145);
             pHesaplama.Name = "pHesaplama";
-            pHesaplama.Size = new Size(304, 311);
+            pHesaplama.Size = new Size(365, 253);
             pHesaplama.TabIndex = 24;
             // 
             // cBParaBirimi
             // 
             cBParaBirimi.FormattingEnabled = true;
-            cBParaBirimi.Location = new Point(143, 91);
+            cBParaBirimi.Location = new Point(164, 59);
             cBParaBirimi.Name = "cBParaBirimi";
             cBParaBirimi.Size = new Size(131, 28);
             cBParaBirimi.TabIndex = 23;
             // 
-            // tBTopTutar
-            // 
-            tBTopTutar.Location = new Point(165, 462);
-            tBTopTutar.Name = "tBTopTutar";
-            tBTopTutar.Size = new Size(125, 27);
-            tBTopTutar.TabIndex = 20;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new Point(0, 478);
-            label19.Name = "label19";
-            label19.Size = new Size(100, 20);
-            label19.TabIndex = 19;
-            label19.Text = "Toplam Tutar:";
-            label19.Click += label19_Click;
-            // 
             // btnHesapla
             // 
-            btnHesapla.Location = new Point(164, 255);
+            btnHesapla.Location = new Point(164, 202);
             btnHesapla.Name = "btnHesapla";
             btnHesapla.Size = new Size(94, 29);
             btnHesapla.TabIndex = 22;
@@ -705,21 +537,21 @@
             // 
             // tBStnAlmaKur
             // 
-            tBStnAlmaKur.Location = new Point(149, 208);
+            tBStnAlmaKur.Location = new Point(164, 152);
             tBStnAlmaKur.Name = "tBStnAlmaKur";
             tBStnAlmaKur.Size = new Size(125, 27);
             tBStnAlmaKur.TabIndex = 14;
             // 
             // tBStnAlmaBirim
             // 
-            tBStnAlmaBirim.Location = new Point(149, 156);
+            tBStnAlmaBirim.Location = new Point(165, 107);
             tBStnAlmaBirim.Name = "tBStnAlmaBirim";
             tBStnAlmaBirim.Size = new Size(125, 27);
             tBStnAlmaBirim.TabIndex = 13;
             // 
             // tBStnAlMiktar
             // 
-            tBStnAlMiktar.Location = new Point(159, 25);
+            tBStnAlMiktar.Location = new Point(165, 23);
             tBStnAlMiktar.Name = "tBStnAlMiktar";
             tBStnAlMiktar.Size = new Size(125, 27);
             tBStnAlMiktar.TabIndex = 11;
@@ -727,7 +559,7 @@
             // label28
             // 
             label28.AutoSize = true;
-            label28.Location = new Point(8, 32);
+            label28.Location = new Point(8, 26);
             label28.Name = "label28";
             label28.Size = new Size(151, 20);
             label28.TabIndex = 2;
@@ -736,7 +568,7 @@
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(16, 159);
+            label30.Location = new Point(8, 115);
             label30.Name = "label30";
             label30.Size = new Size(82, 20);
             label30.TabIndex = 4;
@@ -745,7 +577,7 @@
             // label31
             // 
             label31.AutoSize = true;
-            label31.Location = new Point(16, 211);
+            label31.Location = new Point(8, 152);
             label31.Name = "label31";
             label31.Size = new Size(34, 20);
             label31.TabIndex = 5;
@@ -754,36 +586,52 @@
             // label32
             // 
             label32.AutoSize = true;
-            label32.Location = new Point(14, 90);
+            label32.Location = new Point(8, 74);
             label32.Name = "label32";
             label32.Size = new Size(83, 20);
             label32.TabIndex = 6;
             label32.Text = "Para Birimi:";
             // 
+            // tBTopTutar
+            // 
+            tBTopTutar.Location = new Point(164, 404);
+            tBTopTutar.Name = "tBTopTutar";
+            tBTopTutar.Size = new Size(125, 27);
+            tBTopTutar.TabIndex = 20;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(8, 411);
+            label19.Name = "label19";
+            label19.Size = new Size(100, 20);
+            label19.TabIndex = 19;
+            label19.Text = "Toplam Tutar:";
+            // 
             // dTPStnAlma
             // 
             dTPStnAlma.Location = new Point(115, 56);
             dTPStnAlma.Name = "dTPStnAlma";
-            dTPStnAlma.Size = new Size(195, 27);
+            dTPStnAlma.Size = new Size(222, 27);
             dTPStnAlma.TabIndex = 18;
             // 
             // tBStnAlmaPersonelId
             // 
-            tBStnAlmaPersonelId.Location = new Point(165, 555);
+            tBStnAlmaPersonelId.Location = new Point(164, 502);
             tBStnAlmaPersonelId.Name = "tBStnAlmaPersonelId";
             tBStnAlmaPersonelId.Size = new Size(125, 27);
             tBStnAlmaPersonelId.TabIndex = 17;
             // 
             // tBStnAlmaAciklama
             // 
-            tBStnAlmaAciklama.Location = new Point(165, 509);
+            tBStnAlmaAciklama.Location = new Point(164, 457);
             tBStnAlmaAciklama.Name = "tBStnAlmaAciklama";
             tBStnAlmaAciklama.Size = new Size(125, 27);
             tBStnAlmaAciklama.TabIndex = 16;
             // 
             // tBStnAlmaCari
             // 
-            tBStnAlmaCari.Location = new Point(165, 102);
+            tBStnAlmaCari.Location = new Point(170, 112);
             tBStnAlmaCari.Name = "tBStnAlmaCari";
             tBStnAlmaCari.Size = new Size(125, 27);
             tBStnAlmaCari.TabIndex = 12;
@@ -791,16 +639,16 @@
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(8, 566);
+            label34.Location = new Point(8, 502);
             label34.Name = "label34";
-            label34.Size = new Size(77, 20);
+            label34.Size = new Size(94, 20);
             label34.TabIndex = 8;
-            label34.Text = "PersonelId";
+            label34.Text = "Personel Adı:";
             // 
             // label33
             // 
             label33.AutoSize = true;
-            label33.Location = new Point(8, 512);
+            label33.Location = new Point(8, 460);
             label33.Name = "label33";
             label33.Size = new Size(73, 20);
             label33.TabIndex = 7;
@@ -809,11 +657,11 @@
             // label29
             // 
             label29.AutoSize = true;
-            label29.Location = new Point(6, 109);
+            label29.Location = new Point(8, 106);
             label29.Name = "label29";
             label29.Size = new Size(76, 20);
             label29.TabIndex = 3;
-            label29.Text = "Firma Adi:";
+            label29.Text = "Firma Adı:";
             // 
             // label27
             // 
@@ -843,11 +691,10 @@
             Controls.Add(groupBox4);
             Controls.Add(btnStokEkle);
             Controls.Add(label10);
-            Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "StokUserControl";
-            Size = new Size(1684, 818);
+            Size = new Size(1392, 948);
             Load += StokUserControl_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -857,9 +704,6 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nUDSerbestM).EndInit();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nUDHareketM).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             pHesaplama.ResumeLayout(false);
@@ -887,14 +731,8 @@
         private Label label17;
         private Label label18;
         private Label label20;
-        private Label label22;
-        private Label label23;
-        private Label label24;
-        private Label label25;
-        private Label label26;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private GroupBox groupBox3;
         private Label label10;
         private TextBox tBUrunAdi;
         private TextBox tBStokBirimi;
@@ -911,20 +749,12 @@
         private TextBox tBAciklama;
         private TextBox tBFirmaKodu;
         private TextBox tBFirmaAdi;
-        private TextBox tBShAciklama;
-        private DateTimePicker dateTimePicker2;
-        private NumericUpDown nUDHareketM;
-        private RadioButton radioButton4;
-        private RadioButton rBTip;
-        private TextBox tBProjeId;
         private TextBox tBDepoAdi;
         private NumericUpDown nUDSerbestM;
         private Button btnGozAta;
         private OpenFileDialog openFileDialog1;
         private TextBox tBBlokeM;
         private Button btnStokEkle;
-        private TextBox tBSHPersonelId;
-        private Label label16;
         private GroupBox groupBox4;
         private DateTimePicker dTPStnAlma;
         private TextBox tBStnAlmaPersonelId;

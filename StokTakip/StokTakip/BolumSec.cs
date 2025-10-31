@@ -88,6 +88,10 @@ namespace StokTakip
             //yetkili işlemleri
             btnPersonelİslem.Visible = YetkiliKontrol.Rol;//yetkili yoksa gözükmein değilse 
 
+
+            lVlElektrikListesi.ContextMenuStrip = cMSSagTik;
+
+            lVMekanikListesi.ContextMenuStrip = cMSSagTik;
         }
 
         private void lVMekanikListesi_DoubleClick(object sender, EventArgs e)
@@ -189,6 +193,147 @@ namespace StokTakip
             pr.Dock = DockStyle.Fill;
             pStokEkle.Controls.Add(pr);
         }
-    }
 
+        private void silToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            //ListView aktifListe = cMSSagTik.SourceControl as ListView;
+
+            //if (aktifListe != null && aktifListe.SelectedItems.Count > 0)
+            //{
+            //    var secilen = aktifListe.SelectedItems[0];
+
+            //    // Silme onayı
+            //    DialogResult onay = MessageBox.Show(
+            //        "Bu ürünü listeden kaldırmak istediğinize emin misiniz?",
+            //        "Silme Onayı",
+            //        MessageBoxButtons.YesNo,
+            //        MessageBoxIcon.Warning
+            //    );
+
+            //    if (onay == DialogResult.Yes)
+            //    {
+            //        // Sadece ListView'den sil (veritabanına dokunmadan)
+            //        aktifListe.Items.Remove(secilen);
+
+            //        MessageBox.Show("Ürün listeden kaldırıldı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Silme işlemi iptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Lütfen silmek istediğiniz ürünü seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+
+            //ListView aktifListe = cMSSagTik.SourceControl as ListView;
+
+            //if (aktifListe != null && aktifListe.SelectedItems.Count > 0)
+            //{
+            //    var secilen = aktifListe.SelectedItems[0];
+            //    int urunId = Convert.ToInt32(secilen.SubItems[0].Text);
+
+            //    // Silme onayı
+            //    DialogResult onay = MessageBox.Show(
+            //        "Bu ürünü kalıcı olarak silmek istediğinize emin misiniz?",
+            //        "Silme Onayı",
+            //        MessageBoxButtons.YesNo,
+            //        MessageBoxIcon.Warning
+            //    );
+
+            //    if (onay == DialogResult.Yes)
+            //    {
+            //        using (var db = new StokTakipContext())
+            //        {
+            //            // Önce bağlı SatinAlma kayıtlarını sil
+            //            var satinAlmalar = db.SatinAlmas.Where(x => x.StokKartiId == urunId).ToList();
+            //            db.SatinAlmas.RemoveRange(satinAlmalar);
+
+            //            // Sonra ürünü sil
+            //            var urun = db.StokKartis.FirstOrDefault(x => x.StokKartiId == urunId);
+            //            if (urun != null)
+            //            {
+            //                db.StokKartis.Remove(urun);
+            //            }
+
+            //            db.SaveChanges();
+            //        }
+
+            //        // ListView'den de kaldır
+            //        aktifListe.Items.Remove(secilen);
+            //        MessageBox.Show("Ürün ve bağlı kayıtları veritabanından silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Silme işlemi iptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Lütfen silmek istediğiniz ürünü seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+
+            //ListView aktifListe = cMSSagTik.SourceControl as ListView;
+
+            //if (aktifListe != null && aktifListe.SelectedItems.Count > 0)
+            //{
+            //    var secilen = aktifListe.SelectedItems[0];
+            //    int urunId = Convert.ToInt32(secilen.SubItems[0].Text);
+
+            //    // Silme onayı
+            //    DialogResult onay = MessageBox.Show(
+            //        "Bu ürünü ve bağlı tüm kayıtlarını kalıcı olarak silmek istediğinize emin misiniz?",
+            //        "Silme Onayı",
+            //        MessageBoxButtons.YesNo,
+            //        MessageBoxIcon.Warning
+            //    );
+
+            //    if (onay == DialogResult.Yes)
+            //    {
+            //        using (var db = new StokTakipContext())
+            //        {
+            //            // 1. SatinAlma kayıtlarını sil
+            //            var satinAlmalar = db.SatinAlmas.Where(x => x.StokKartiId == urunId).ToList();
+            //            db.SatinAlmas.RemoveRange(satinAlmalar);
+
+            //            // 2. ProjedeKullanilanUrunler kayıtlarını sil
+            //            var projedeKullanilan = db.ProjedeKullanilanUrunlers.Where(p => p.StokKartiId == urunId).ToList();
+            //            db.ProjedeKullanilanUrunlers.RemoveRange(projedeKullanilan);
+
+            //            // 3. Ana StokKartis kaydını sil
+            //            var urun = db.StokKartis.FirstOrDefault(x => x.StokKartiId == urunId);
+            //            if (urun != null)
+            //            {
+            //                db.StokKartis.Remove(urun);
+            //            }
+
+            //            db.SaveChanges();
+            //        }
+
+            //        // ListView'den de kaldır
+            //        aktifListe.Items.Remove(secilen);
+            //        MessageBox.Show("Ürün ve bağlı tüm kayıtları veritabanından silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Silme işlemi iptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Lütfen silmek istediğiniz ürünü seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+
+
+           
+
+
+        }
+
+    }
 }
+
+

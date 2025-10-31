@@ -15,6 +15,8 @@ using System.Windows.Forms;
 
 namespace StokTakip
 {
+    //sol tarafta proje ekleme işlemi yapılırken sağ tarafta projeyi veritabanından cekip projeye ürün ekle kısmı ile
+        //stokdetay sayfasına veri ekleniyor akitf proje ihtiyacı kısmı 
     public partial class ProjeControl : UserControl
     {
         private readonly ProjeServices _projeServices;
@@ -29,7 +31,22 @@ namespace StokTakip
         private void btnProjeEkle_Click(object sender, EventArgs e)
         {
             int personelId = 0;
-            int.TryParse(tBPersonelId.Text, out personelId);
+         
+
+            using(var context=new StokTakipContext())
+            {
+                var personel=context.Personels.
+                    FirstOrDefault(p=>p.Ad==tBPersonelId.Text.Trim());
+                if (personel != null)
+                    personelId = personel.PersonelId;
+                else
+                {
+                    MessageBox.Show("Girilen ada ait personel bulunamadı!");
+                    return;
+                }
+            }
+
+
             var projeEkle = new ProjeEkleViewModel
             {
                 ProjeAdi = tBProjeAdi.Text,

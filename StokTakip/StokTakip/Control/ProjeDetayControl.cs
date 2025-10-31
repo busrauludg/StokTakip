@@ -19,7 +19,7 @@ namespace StokTakip
         {
             InitializeComponent();
         }
-
+        //bu projede temel olarak sol alandaki list view tıklayınca sağ tarfta ki detay sayfası doluyor ve aşağıda toplam maliyeti gözükücek yani bu basit bir rapor gibi
         private void ProjeDetayControl_Load(object sender, EventArgs e)
         {
             // Durum combobox doldur
@@ -62,7 +62,7 @@ namespace StokTakip
 
         private void lVlPrjListele_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
             if (lVlPrjListele.SelectedItems.Count == 0) return;
 
             int projeId = (int)lVlPrjListele.SelectedItems[0].Tag;
@@ -99,7 +99,5 @@ namespace StokTakip
             }
 
         }
-
-        
     }
 }

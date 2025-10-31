@@ -1,4 +1,5 @@
-﻿using StokTakip.Models;
+﻿using StokTakip.Helpers;
+using StokTakip.Models;
 using StokTakip.Services;
 using StokTakip.StokTakip.Data;
 using StokTakip.ViewModels;
@@ -95,23 +96,28 @@ namespace StokTakip
             lVAktifProje.View = View.Details;
             lVAktifProje.Columns.Add("Ürün Adı", 150);
             lVAktifProje.Columns.Add("Miktar", 70);
+            lVAktifProje.Columns.Add("Durum", 70);
             if (_secilenUrun != null)
             {
                 using (var context = new StokTakipContext())
                 {
-                    var liste = context.ProjedeKullanilanUrunlers
-                        .Where(p => p.StokKartiId == _secilenUrun.StokKartiId) // seçilen ürün
-                        .Select(p => new
-                        {
-                            p.Proje.ProjeAdi,
-                            p.Miktar
-                        }).ToList();
+                      var liste = context.ProjedeKullanilanUrunlers
+                     .Where(p => p.StokKartiId == _secilenUrun.StokKartiId && p.Proje.Durum)
+                     .Select(p => new
+                     {
+                         p.Proje.ProjeAdi,
+                         p.Miktar,
+                         Durum = p.Proje.Durum ? "Aktif" : "Pasif"
+                     })
+                     .ToList();
+
 
                     lVAktifProje.Items.Clear();
                     foreach (var item in liste)
                     {
                         var lvi = new ListViewItem(item.ProjeAdi);
                         lvi.SubItems.Add(item.Miktar.ToString());
+                        lvi.SubItems.Add(item.Durum);
                         lVAktifProje.Items.Add(lvi);
                     }
                 }
@@ -120,8 +126,20 @@ namespace StokTakip
             pStokCikis.Visible = false;
             pStokArtir.Visible = false;
 
-
-
+            btnStokCik.Enabled = YetkiliKontrol.Rol;
+            btnStokArttir.Enabled = YetkiliKontrol.Rol;
+           
+            //proje sec
+            using (var context =new StokTakipContext())
+            {
+                var projeler=context.Projes
+                    .OrderBy(p=>p.ProjeAdi)
+                    .ToList();
+                cBPProjeSec.DataSource = projeler;
+                cBPProjeSec.DisplayMember = "ProjeAdi";
+                cBPProjeSec.ValueMember = "ProjeId";
+                cBPProjeSec.SelectedIndex = -1;
+            }
         }
 
 
@@ -138,7 +156,7 @@ namespace StokTakip
         }
 
         private void btnStokCikisi_Click(object sender, EventArgs e)
-        { // Girilen miktarı al
+        {
             if (!int.TryParse(tBCikicakMiktar.Text, out int cikisMiktari) || cikisMiktari <= 0)
             {
                 MessageBox.Show("Lütfen geçerli bir miktar girin.");
@@ -175,26 +193,51 @@ namespace StokTakip
             // Veritabanına kaydet
             using (var context = new StokTakipContext())
             {
-                var dbStokD = context.StokDurumus
-                    .FirstOrDefault(s => s.StokKartiId == secilenStok.StokKartId); // DurumId yerine StokKartId
-                if (dbStokD != null)
-                {
-                    dbStokD.SerbestMiktar = secilenStok.SerbestMiktar;
-                    context.SaveChanges();
-                }
-            }
+                var dbStok = context.StokDurumus
+                    .FirstOrDefault(s => s.StokKartiId == secilenStok.StokKartId);
 
+                if (dbStok != null)
+                {
+                    dbStok.SerbestMiktar = secilenStok.SerbestMiktar;
+                }
+
+                // 🔹 PROJEYE MİKTAR EKLEME İŞLEMİ 🔹
+                if (cBPProjeSec.SelectedValue != null)
+                {
+                    int projeId = Convert.ToInt32(cBPProjeSec.SelectedValue);
+                    var projeUrun = context.ProjedeKullanilanUrunlers
+                        .FirstOrDefault(p => p.ProjeId == projeId && p.StokKartiId == dbStok.StokKartiId);
+
+                    if (projeUrun != null)
+                    {
+                        // Proje zaten bu üründen kullanıyorsa miktarı artır
+                        projeUrun.Miktar += cikisMiktari;
+                    }
+                    else
+                    {
+                        // Proje bu ürünü ilk kez kullanıyorsa ekle
+                        context.ProjedeKullanilanUrunlers.Add(new ProjedeKullanilanUrunler
+                        {
+                            ProjeId = projeId,
+                            StokKartiId = dbStok.StokKartiId,
+                            Miktar = cikisMiktari
+                        });
+                    }
+                }
+
+                context.SaveChanges();
+            }
 
             // DataGrid’i güncelle
             dGVElStokDurum.DataSource = null;
             dGVElStokDurum.DataSource = new List<StokDurumuViewModel> { secilenStok };
-            // kolon adını DataSource atandıktan sonra kullan
             dGVElStokDurum.Columns["StokKartId"].Visible = false;
             dGVElStokDurum.Columns["DepoAdi"].HeaderText = "Depo Adı";
             dGVElStokDurum.Columns["SerbestMiktar"].HeaderText = "Kullanılabilir Miktar";
             dGVElStokDurum.Columns["BlokeMiktar"].HeaderText = "Kullanılan Miktar";
 
-            MessageBox.Show("Stok çıkışı başarılı!");
+            MessageBox.Show("Stok çıkışı ve proje güncellemesi başarılı!");
+
         }
 
         private void btnStokArtir_Click(object sender, EventArgs e)
@@ -272,6 +315,10 @@ namespace StokTakip
 
         }
 
+        private void lVAktifProje_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -45,15 +45,16 @@ namespace StokTakip.Services
                 BlokeMiktar = eklemodel.BlokeMiktar,
             };
 
-            var stokHareketi = new StokHareketi
-            {
-                //StokHarekti
-                ProjeId = eklemodel.ProjeId,
-                Tip = eklemodel.Tip,
-                Miktar = eklemodel.Miktar,
-                Tarih = DateTime.Now,
-                Aciklama = eklemodel.sHAciklama
-            };
+            //28.10
+            //var stokHareketi = new StokHareketi
+            //{
+            //    //StokHarekti
+            //    ProjeId = eklemodel.ProjeId,
+            //    Tip = eklemodel.Tip,
+            //    Miktar = eklemodel.Miktar,
+            //    Tarih = DateTime.Now,
+            //    Aciklama = eklemodel.sHAciklama
+            //};
             var satinAlma = new SatinAlma
             {
                 //sol taraftakiler entetiy(model)alanlar
@@ -68,8 +69,13 @@ namespace StokTakip.Services
                 ToplamMaliyet=eklemodel.ToplamMaliyet,
                 PersonelId = eklemodel.PersonelId,
             };
-            stokHareketi.PersonelId = eklemodel.PersonelIdSh;//kendi stokharekiti tablosunda normal personelıd oldugu için hata alıyor 
-            _anasayfa.StokEkle(stokEkle, stokDurum, stokHareketi, satinAlma);
+          //  stokHareketi.PersonelId = eklemodel.PersonelIdSh;//kendi stokharekiti tablosunda normal personelıd oldugu için hata alıyor 
+            _anasayfa.StokEkle(stokEkle, stokDurum,  satinAlma);
         }
+        //public List<Proje> GetProjeler()
+        //{
+        //    return _anasayfa.GetProjeler(); // AnaSayfaRepository içinde Projeleri çeken metod
+        //}
+
     }
 }

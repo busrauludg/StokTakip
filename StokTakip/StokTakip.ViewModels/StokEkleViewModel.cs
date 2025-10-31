@@ -32,14 +32,14 @@ namespace StokTakip.ViewModels
         //public int KaliteMiktar { get; set; }
         public string BlokeMiktar { get; set; }
 
-        //Stok Hareket
-        public int PersonelIdSh { get; set; }
-        public int ProjeId { get; set; }
-        public string ProjeAdi { get; set; }
-        public string Tip { get; set; }
-        public int Miktar { get; set; }
-        public DateTime Tarih { get; set; }
-        public string sHAciklama { get; set; }
+        //Stok Hareket 28.10
+        //public int PersonelIdSh { get; set; }
+        //public int ProjeId { get; set; }
+        //public string ProjeAdi { get; set; }
+        //public string Tip { get; set; }
+        //public int Miktar { get; set; }
+        //public DateTime Tarih { get; set; }
+        //public string sHAciklama { get; set; }
 
 
         //Satin Alma 
