@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lVlPrjListele = new ListView();
-            panel1 = new Panel();
+            pDetay = new Panel();
+            tBToplamMaliyet = new TextBox();
+            label9 = new Label();
             lVlKullanilanUrunler = new ListView();
             label8 = new Label();
             cBPrjDurum = new ComboBox();
@@ -45,7 +48,12 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            panel1.SuspendLayout();
+            btnBasla = new Button();
+            btnBitir = new Button();
+            cMSPrjeİslem = new ContextMenuStrip(components);
+            silToolStripMenuItem = new ToolStripMenuItem();
+            pDetay.SuspendLayout();
+            cMSPrjeİslem.SuspendLayout();
             SuspendLayout();
             // 
             // lVlPrjListele
@@ -58,32 +66,50 @@
             lVlPrjListele.View = View.Details;
             lVlPrjListele.SelectedIndexChanged += lVlPrjListele_SelectedIndexChanged;
             // 
-            // panel1
+            // pDetay
             // 
-            panel1.Controls.Add(lVlKullanilanUrunler);
-            panel1.Controls.Add(label8);
-            panel1.Controls.Add(cBPrjDurum);
-            panel1.Controls.Add(dTPBitisT);
-            panel1.Controls.Add(dTPPrjBaslingicT);
-            panel1.Controls.Add(tBPrjAciklama);
-            panel1.Controls.Add(tBPrjPersonel);
-            panel1.Controls.Add(tBProjeAdi);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Location = new Point(694, 61);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(536, 641);
-            panel1.TabIndex = 1;
+            pDetay.Controls.Add(tBToplamMaliyet);
+            pDetay.Controls.Add(label9);
+            pDetay.Controls.Add(lVlKullanilanUrunler);
+            pDetay.Controls.Add(label8);
+            pDetay.Controls.Add(cBPrjDurum);
+            pDetay.Controls.Add(dTPBitisT);
+            pDetay.Controls.Add(dTPPrjBaslingicT);
+            pDetay.Controls.Add(tBPrjAciklama);
+            pDetay.Controls.Add(tBPrjPersonel);
+            pDetay.Controls.Add(tBProjeAdi);
+            pDetay.Controls.Add(label7);
+            pDetay.Controls.Add(label6);
+            pDetay.Controls.Add(label5);
+            pDetay.Controls.Add(label4);
+            pDetay.Controls.Add(label3);
+            pDetay.Controls.Add(label2);
+            pDetay.Location = new Point(694, 61);
+            pDetay.Name = "pDetay";
+            pDetay.Size = new Size(536, 925);
+            pDetay.TabIndex = 1;
+            // 
+            // tBToplamMaliyet
+            // 
+            tBToplamMaliyet.Location = new Point(191, 726);
+            tBToplamMaliyet.Name = "tBToplamMaliyet";
+            tBToplamMaliyet.Size = new Size(125, 27);
+            tBToplamMaliyet.TabIndex = 15;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(70, 726);
+            label9.Name = "label9";
+            label9.Size = new Size(115, 20);
+            label9.TabIndex = 14;
+            label9.Text = "Toplam Maliyet:";
             // 
             // lVlKullanilanUrunler
             // 
             lVlKullanilanUrunler.Location = new Point(203, 433);
             lVlKullanilanUrunler.Name = "lVlKullanilanUrunler";
-            lVlKullanilanUrunler.Size = new Size(301, 205);
+            lVlKullanilanUrunler.Size = new Size(301, 257);
             lVlKullanilanUrunler.TabIndex = 13;
             lVlKullanilanUrunler.UseCompatibleStateImageBehavior = false;
             // 
@@ -202,18 +228,55 @@
             label1.TabIndex = 0;
             label1.Text = "Proj Detayları";
             // 
+            // btnBasla
+            // 
+            btnBasla.Location = new Point(285, 609);
+            btnBasla.Name = "btnBasla";
+            btnBasla.Size = new Size(94, 29);
+            btnBasla.TabIndex = 2;
+            btnBasla.Text = "Başla";
+            btnBasla.UseVisualStyleBackColor = true;
+            btnBasla.Click += btnBasla_Click;
+            // 
+            // btnBitir
+            // 
+            btnBitir.Location = new Point(465, 609);
+            btnBitir.Name = "btnBitir";
+            btnBitir.Size = new Size(94, 29);
+            btnBitir.TabIndex = 3;
+            btnBitir.Text = "Bitir";
+            btnBitir.UseVisualStyleBackColor = true;
+            btnBitir.Click += btnBitir_Click;
+            // 
+            // cMSPrjeİslem
+            // 
+            cMSPrjeİslem.ImageScalingSize = new Size(20, 20);
+            cMSPrjeİslem.Items.AddRange(new ToolStripItem[] { silToolStripMenuItem });
+            cMSPrjeİslem.Name = "cMSPrjeİslem";
+            cMSPrjeİslem.Size = new Size(95, 28);
+            // 
+            // silToolStripMenuItem
+            // 
+            silToolStripMenuItem.Name = "silToolStripMenuItem";
+            silToolStripMenuItem.Size = new Size(94, 24);
+            silToolStripMenuItem.Text = "Sil";
+            silToolStripMenuItem.Click += silToolStripMenuItem_Click;
+            // 
             // ProjeDetayControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnBitir);
+            Controls.Add(btnBasla);
             Controls.Add(label1);
-            Controls.Add(panel1);
+            Controls.Add(pDetay);
             Controls.Add(lVlPrjListele);
             Name = "ProjeDetayControl";
             Size = new Size(1279, 961);
             Load += ProjeDetayControl_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pDetay.ResumeLayout(false);
+            pDetay.PerformLayout();
+            cMSPrjeİslem.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -221,7 +284,7 @@
         #endregion
 
         private ListView lVlPrjListele;
-        private Panel panel1;
+        private Panel pDetay;
         private Label label7;
         private Label label6;
         private Label label5;
@@ -237,5 +300,11 @@
         private ComboBox cBPrjDurum;
         private ListView lVlKullanilanUrunler;
         private Label label8;
+        private Label label9;
+        private TextBox tBToplamMaliyet;
+        private Button btnBasla;
+        private Button btnBitir;
+        private ContextMenuStrip cMSPrjeİslem;
+        private ToolStripMenuItem silToolStripMenuItem;
     }
 }

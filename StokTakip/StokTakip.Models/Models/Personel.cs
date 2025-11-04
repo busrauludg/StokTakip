@@ -24,6 +24,8 @@ public partial class Personel
     public bool Rol { get; set; }
 
     public string? YetkiliSifre { get; set; }
+    //03.11 pzt
+    public bool Aktif { get; set; } = true;
 
     public virtual ICollection<Proje> Projes { get; set; } = new List<Proje>();
 

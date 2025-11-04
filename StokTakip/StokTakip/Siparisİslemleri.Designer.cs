@@ -56,6 +56,8 @@
             cMSPrjListe = new ContextMenuStrip(components);
             silToolStripMenuItem = new ToolStripMenuItem();
             düzenleToolStripMenuItem = new ToolStripMenuItem();
+            label1 = new Label();
+            tBTpMaliyet = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -109,6 +111,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(tBTpMaliyet);
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(dTPSiparisTarihi);
             panel1.Controls.Add(label12);
             panel1.Controls.Add(nudMiktar);
@@ -311,6 +315,23 @@
             düzenleToolStripMenuItem.Text = "Düzenle";
             düzenleToolStripMenuItem.Click += düzenleToolStripMenuItem_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(434, 267);
+            label1.Name = "label1";
+            label1.Size = new Size(115, 20);
+            label1.TabIndex = 62;
+            label1.Text = "Toplam Maliyet:";
+            // 
+            // tBTpMaliyet
+            // 
+            tBTpMaliyet.Location = new Point(555, 260);
+            tBTpMaliyet.Multiline = true;
+            tBTpMaliyet.Name = "tBTpMaliyet";
+            tBTpMaliyet.Size = new Size(136, 27);
+            tBTpMaliyet.TabIndex = 64;
+            // 
             // Siparisİslemleri
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -358,5 +379,7 @@
         private Label label6;
         private Label label5;
         private Label label4;
+        private Label label1;
+        private TextBox tBTpMaliyet;
     }
 }

@@ -64,6 +64,8 @@ public partial class StokTakipContext : DbContext
             entity.Property(e => e.Telefon).HasMaxLength(20);
             entity.Property(e => e.Rol).HasDefaultValue(false);//eğer kullanıcı rolü belirtmezse otomatik olarak false yani “Personel” olacak şekilde ayarlanıyor.
             entity.Property(e => e.YetkiliSifre).HasMaxLength(100);
+            // 🔹 Sadece Personel için
+            entity.HasQueryFilter(p => p.Aktif);
         });
 
         modelBuilder.Entity<Proje>(entity =>
@@ -202,6 +204,8 @@ public partial class StokTakipContext : DbContext
             entity.Property(e => e.StokKodu).HasMaxLength(50);
             entity.Property(e => e.UrunAdi).HasMaxLength(100);
 
+            // 🔹 Buraya ekle
+     
             entity.HasOne(d => d.Grup).WithMany(p => p.StokKartis)
                 .HasForeignKey(d => d.GrupId)
                 .OnDelete(DeleteBehavior.ClientSetNull)

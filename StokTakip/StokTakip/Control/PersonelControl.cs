@@ -32,6 +32,7 @@ namespace StokTakip
             using (var context = new StokTakipContext())
             {
                 var personeller = context.Personels
+                    .Where(p=>p.Aktif)
                     .Select(p => new { p.PersonelId, p.Ad, p.Soyad, p.Gorev, p.Rol, p.Telefon })
                     .ToList();
 
@@ -69,9 +70,33 @@ namespace StokTakip
         private void silToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            //if (lVlPersonel.SelectedItems.Count > 0)
+            //{
+            //    var result = MessageBox.Show("Bu personeli silmek istediğinizden emin misiniz?",
+            //                                 "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        int personelId = int.Parse(lVlPersonel.SelectedItems[0].Text);
+            //        using (var context = new StokTakipContext())
+            //        {
+            //            var pers = context.Personels.Find(personelId);
+            //            if (pers != null)
+            //            {
+            //                context.Personels.Remove(pers);
+            //                context.SaveChanges();
+            //            }
+            //        }
+            //        lVlPersonel.Items.Remove(lVlPersonel.SelectedItems[0]);
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Lütfen silmek için bir personel seçin!");
+            //}
+
             if (lVlPersonel.SelectedItems.Count > 0)
             {
-                var result = MessageBox.Show("Bu personeli silmek istediğinizden emin misiniz?",
+                var result = MessageBox.Show("Bu personeli pasif yapmak istediğinizden emin misiniz?",
                                              "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
@@ -79,24 +104,42 @@ namespace StokTakip
                     using (var context = new StokTakipContext())
                     {
                         var pers = context.Personels.Find(personelId);
-                        if (pers != null)
+                        if (pers != null && pers.Aktif) // sadece aktif olanı pasif yap
                         {
-                            context.Personels.Remove(pers);
+                            pers.Aktif = false;
                             context.SaveChanges();
                         }
                     }
-                    lVlPersonel.Items.Remove(lVlPersonel.SelectedItems[0]);
+                    lVlPersonel.Items.Remove(lVlPersonel.SelectedItems[0]); // UI’dan kaldır
                 }
             }
             else
             {
-                MessageBox.Show("Lütfen silmek için bir personel seçin!");
+                MessageBox.Show("Lütfen pasif yapmak için bir personel seçin!");
             }
         }
 
         private int seciliPersonelId; // global değişken
         private void düzenleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //if (lVlPersonel.SelectedItems.Count > 0)
+            //{
+            //    seciliPersonelId = int.Parse(lVlPersonel.SelectedItems[0].Text);
+
+            //    using (var context = new StokTakipContext())
+            //    {
+            //        var personel = context.Personels.Find(seciliPersonelId);
+            //        if (personel != null)
+            //        {
+            //            personel.Gorev = tBGorev.Text;
+            //            // Rol için combobox seçimi
+            //            cBRol.SelectedItem = personel.Rol ? "Yetkili" : "Personel";
+            //            personel.Telefon = tBTelNo.Text;// eğer sütun varsa
+            //            pnlDuzenle.Visible = true;
+            //        }
+            //    }
+            //}
+
             if (lVlPersonel.SelectedItems.Count > 0)
             {
                 seciliPersonelId = int.Parse(lVlPersonel.SelectedItems[0].Text);
@@ -106,19 +149,24 @@ namespace StokTakip
                     var personel = context.Personels.Find(seciliPersonelId);
                     if (personel != null)
                     {
-                        personel.Gorev = tBGorev.Text;
-                       // Rol için combobox seçimi
+                        // 🔹 Textbox ve combobox’ları personelin mevcut bilgileriyle doldur
+                        tBGorev.Text = personel.Gorev;
+                        tBTelNo.Text = personel.Telefon;
                         cBRol.SelectedItem = personel.Rol ? "Yetkili" : "Personel";
-                        personel.Telefon = tBTelNo.Text;// eğer sütun varsa
+
                         pnlDuzenle.Visible = true;
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen düzenlemek için bir personel seçin!");
             }
         }
 
         private void btnDuzen_Click(object sender, EventArgs e)
         {
-           
+
             using (var context = new StokTakipContext())
             {
                 var personel = context.Personels.Find(seciliPersonelId);
@@ -140,26 +188,26 @@ namespace StokTakip
             }
 
             pnlDuzenle.Visible = false;
-      
 
-        //        using(var context = new StokTakipContext())
-        //{
-        //            var personel = context.Personels.Find(seciliPersonelId);
-        //            if (personel != null)
-        //            {
-        //                personel.Gorev = tBGorev.Text;
-        //                personel.Telefon = tBTelNo.Text;
 
-        //                // ComboBox’tan gelen değere göre bool ata
-        //                personel.Rol = (cBRol.SelectedItem.ToString() == "");
+            //        using(var context = new StokTakipContext())
+            //{
+            //            var personel = context.Personels.Find(seciliPersonelId);
+            //            if (personel != null)
+            //            {
+            //                personel.Gorev = tBGorev.Text;
+            //                personel.Telefon = tBTelNo.Text;
 
-        //                context.SaveChanges();
-        //                MessageBox.Show("Personel bilgileri güncellendi.");
-        //            }
-        //        }
+            //                // ComboBox’tan gelen değere göre bool ata
+            //                personel.Rol = (cBRol.SelectedItem.ToString() == "");
 
-        //        pnlDuzenle.Visible = false;
-        //        PersonelControl_Load(null, null);
+            //                context.SaveChanges();
+            //                MessageBox.Show("Personel bilgileri güncellendi.");
+            //            }
+            //        }
+
+            //        pnlDuzenle.Visible = false;
+            //        PersonelControl_Load(null, null);
         }
     }
 }

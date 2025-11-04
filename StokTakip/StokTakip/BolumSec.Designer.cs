@@ -69,7 +69,7 @@
             tbCBolumSec.Location = new Point(2, 37);
             tbCBolumSec.Name = "tbCBolumSec";
             tbCBolumSec.SelectedIndex = 0;
-            tbCBolumSec.Size = new Size(1746, 922);
+            tbCBolumSec.Size = new Size(1746, 933);
             tbCBolumSec.TabIndex = 3;
             // 
             // tabPage1
@@ -99,7 +99,7 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1735, 925);
+            tabPage2.Size = new Size(1738, 889);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Elektrik Ürün Listesi";
             tabPage2.UseVisualStyleBackColor = true;
@@ -109,7 +109,7 @@
             lVlElektrikListesi.Dock = DockStyle.Fill;
             lVlElektrikListesi.Location = new Point(3, 3);
             lVlElektrikListesi.Name = "lVlElektrikListesi";
-            lVlElektrikListesi.Size = new Size(1729, 919);
+            lVlElektrikListesi.Size = new Size(1732, 883);
             lVlElektrikListesi.TabIndex = 2;
             lVlElektrikListesi.UseCompatibleStateImageBehavior = false;
             lVlElektrikListesi.DoubleClick += lVlElektrikListesi_DoubleClick;
@@ -126,7 +126,7 @@
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1735, 925);
+            tabPage3.Size = new Size(1738, 900);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Ana Sayfa";
             tabPage3.UseVisualStyleBackColor = true;
@@ -165,7 +165,7 @@
             // 
             pStokEkle.Location = new Point(0, 72);
             pStokEkle.Name = "pStokEkle";
-            pStokEkle.Size = new Size(1721, 803);
+            pStokEkle.Size = new Size(1721, 900);
             pStokEkle.TabIndex = 5;
             // 
             // btnProjeOlustur
@@ -206,7 +206,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1742, 893);
+            ClientSize = new Size(1742, 964);
             Controls.Add(tbCBolumSec);
             Name = "BolumSec";
             Text = "Ürünler";

@@ -34,6 +34,11 @@ namespace StokTakip
             _stokEkleServices = new StokEkleServices(repository);
         }
 
+        // ✅ Yeni metot: toplam maliyeti hesaplayan
+        public decimal HesaplaToplamMaliyet(int miktar, decimal birimFiyat, decimal kur)
+        {
+            return miktar * birimFiyat * kur;
+        }
         private void nUDMinStok_ValueChanged(object sender, EventArgs e)
         {
             nUDMinStok.Maximum = 10000;
@@ -88,11 +93,14 @@ namespace StokTakip
                 }
             }
 
-            //// Toplam hesaplama
-            decimal toplamFiyat = miktar * birimFiyat * kur;
-            tBTopTutar.Text = toplamFiyat.ToString("N2");/*cBParaBirimi.SelectedItem.ToString();*/
+            ////// Toplam hesaplama
+            //decimal toplamFiyat = miktar * birimFiyat * kur;
+            //tBTopTutar.Text = toplamFiyat.ToString("N2");/*cBParaBirimi.SelectedItem.ToString();*/
 
-  
+            // 🔹 Metodu kullanarak hesaplama
+            _hesaplananToplamMaliyet = HesaplaToplamMaliyet(miktar, birimFiyat, kur);
+            tBTopTutar.Text = _hesaplananToplamMaliyet.ToString("N2");
+
 
         }
         private void StokUserControl_Load(object sender, EventArgs e)

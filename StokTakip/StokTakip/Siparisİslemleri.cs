@@ -122,10 +122,25 @@ namespace StokTakip
             }
 
             //sipariş girişi 
-            // Para birimi comboBox
+            // Para birimi comboBox(sipariş girişi)
             cBParaBirimi.Items.AddRange(new string[] { "Dolar", "TL", "Euro" });
 
+            cBParaBirimi.SelectedIndex = 0;
 
+            // TL seçilirse kur textbox pasif, diğerlerinde aktif
+            cBParaBirimi.SelectedIndexChanged += (s, ev) =>
+            {
+                if (cBParaBirimi.SelectedItem?.ToString() == "TL")
+                {
+                    tBKur.Text = "1";
+                    tBKur.Enabled = false;
+                }
+                else
+                {
+                    tBKur.Text = "";
+                    tBKur.Enabled = true;
+                }
+            };
 
 
         }
@@ -218,29 +233,105 @@ namespace StokTakip
             txtEdit.Focus();
         }
 
+        //private void btnSiparisKayit_Click(object sender, EventArgs e)
+        //{
+        //    // 1) Ürün seçili mi kontrol et
+        //    if (cBSiparisAdi.SelectedValue == null)
+        //    {
+        //        MessageBox.Show("Lütfen bir ürün seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+        //    // 2) Seçilen StokKartiId'yi al (güvenli)
+        //    if (!int.TryParse(cBSiparisAdi.SelectedValue.ToString(), out int secilenStokKartiId))
+        //    {
+        //        MessageBox.Show("Seçilen ürünün ID'si okunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return;
+        //    }
+
+        //    // 3) Diğer alanlardan değerleri al / parse et
+        //    int miktar = (int)nudMiktar.Value;
+        //    decimal birimFiyat = decimal.TryParse(tBBirimFiyat.Text, out var bf) ? bf : 0m;
+        //    decimal kur = decimal.TryParse(tBKur.Text, out var k) ? k : 1m;
+        //    string paraBirimi = cBParaBirimi.SelectedItem?.ToString() ?? "TL";
+        //    //int personelId = int.TryParse(tBPersonelId.Text, out var pid) ? pid : 0; // ya da varsayılan chat personel ıd değil ad gelicek onu ada cevircez 
+
+        //    int personelId = 0;
+        //    using (var prsnl = new StokTakipContext())
+        //    {
+        //        var personel = prsnl.Personels.FirstOrDefault(p => p.Ad == tBSiparisiGirenPersonel.Text);
+        //        if (personel != null)
+        //            personelId = personel.PersonelId;
+        //        else
+        //        {
+        //            MessageBox.Show("Girilen personel bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
+        //    }
+
+
+        //    // 4) Yeni SatinAlma nesnesini oluşturup DB'ye ekle
+        //    using (var ctx = new StokTakipContext())
+        //    {
+        //        var yeniSiparis = new SatinAlma
+        //        {
+        //            SiparisTarihi = dTPSiparisTarihi.Value,
+        //            CariAdi = tBSiparisVerilenFirmaAdi.Text,
+        //            StokKartiId = secilenStokKartiId,
+        //            Miktar = miktar,
+        //            GelenMiktar = 0, // ilk etapta 0
+        //            BirimFiyat = birimFiyat,
+        //            Kur = kur,
+        //            ParaBirimi = paraBirimi,
+        //            PersonelId = personelId,
+        //            Aciklama = tBAciklama.Text
+        //        };
+
+        //        ctx.SatinAlmas.Add(yeniSiparis);
+        //        ctx.SaveChanges();
+        //    }
+
+        //    // 5) Listeyi yenile (metodun varsa çağır) ve isteğe bağlı kullanıcıya bilgi ver
+        //    // RefreshSiparisList();
+        //    MessageBox.Show("Sipariş kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        //    // isteğe bağlı: liste sekmesine geç
+        //    // tabControl1.SelectedTab = tpListe;
+        //}
+
         private void btnSiparisKayit_Click(object sender, EventArgs e)
         {
-            // 1) Ürün seçili mi kontrol et
+            // Ürün seçimi kontrolü
             if (cBSiparisAdi.SelectedValue == null)
             {
                 MessageBox.Show("Lütfen bir ürün seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2) Seçilen StokKartiId'yi al (güvenli)
             if (!int.TryParse(cBSiparisAdi.SelectedValue.ToString(), out int secilenStokKartiId))
             {
                 MessageBox.Show("Seçilen ürünün ID'si okunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // 3) Diğer alanlardan değerleri al / parse et
+            // Miktar ve birim fiyat
             int miktar = (int)nudMiktar.Value;
             decimal birimFiyat = decimal.TryParse(tBBirimFiyat.Text, out var bf) ? bf : 0m;
-            decimal kur = decimal.TryParse(tBKur.Text, out var k) ? k : 1m;
-            string paraBirimi = cBParaBirimi.SelectedItem?.ToString() ?? "TL";
-            //int personelId = int.TryParse(tBPersonelId.Text, out var pid) ? pid : 0; // ya da varsayılan chat personel ıd değil ad gelicek onu ada cevircez 
 
+            // Kur kontrolü: TL ise 1, diğerleri textbox'tan
+            decimal kur = 1m;
+            if (cBParaBirimi.SelectedItem?.ToString() != "TL")
+            {
+                if (!decimal.TryParse(tBKur.Text, out kur) || kur <= 0)
+                {
+                    MessageBox.Show("Lütfen geçerli bir kur değeri girin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            string paraBirimi = cBParaBirimi.SelectedItem?.ToString() ?? "TL";
+
+            // Personel kontrolü
             int personelId = 0;
             using (var prsnl = new StokTakipContext())
             {
@@ -254,8 +345,10 @@ namespace StokTakip
                 }
             }
 
+            // Toplam maliyet hesaplama
+            decimal toplamMaliyet = miktar * birimFiyat * kur;
 
-            // 4) Yeni SatinAlma nesnesini oluşturup DB'ye ekle
+            // Veritabanına ekle
             using (var ctx = new StokTakipContext())
             {
                 var yeniSiparis = new SatinAlma
@@ -264,25 +357,24 @@ namespace StokTakip
                     CariAdi = tBSiparisVerilenFirmaAdi.Text,
                     StokKartiId = secilenStokKartiId,
                     Miktar = miktar,
-                    GelenMiktar = 0, // ilk etapta 0
+                    GelenMiktar = 0,
                     BirimFiyat = birimFiyat,
                     Kur = kur,
                     ParaBirimi = paraBirimi,
                     PersonelId = personelId,
-                    Aciklama = tBAciklama.Text
+                    Aciklama = tBAciklama.Text,
+                    ToplamMaliyet=toplamMaliyet
                 };
 
                 ctx.SatinAlmas.Add(yeniSiparis);
                 ctx.SaveChanges();
             }
 
-            // 5) Listeyi yenile (metodun varsa çağır) ve isteğe bağlı kullanıcıya bilgi ver
-            // RefreshSiparisList();
-            MessageBox.Show("Sipariş kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // isteğe bağlı: liste sekmesine geç
-            // tabControl1.SelectedTab = tpListe;
+            // TextBox'a yaz ve kullanıcıya bilgi ver
+            tBTpMaliyet.Text = toplamMaliyet.ToString("N2");
+            MessageBox.Show($"Sipariş kaydedildi!\nToplam maliyet: {toplamMaliyet:N2} {paraBirimi}", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
         private void tabPage1_Click(object sender, EventArgs e)
         {

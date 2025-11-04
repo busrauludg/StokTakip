@@ -53,26 +53,46 @@ namespace StokTakip
                 txtPersonelAdi.Text = _secilenUrun.PersonelAdi;
                 txtAciklama.Text = _secilenUrun.Aciklama;
             }
-            if (_sipAlim != null)
+            //if (_sipAlim != null)
+            //{
+
+            //    dTPElektrik.Value = _sipAlim.SiparisTarihi;           // DateTimePicker için Value kullan
+            //    txtMiktar.Text = _sipAlim.Miktar.ToString();
+            //    txtCari.Text = _sipAlim.CariAdi;
+            //    txtGlnMktr.Text = _sipAlim.GelenMiktar.ToString() ?? ""; // nullable int için
+            //    // Burada toplam maliyeti veritabanından çek
+            //    using (var context = new StokTakipContext())
+            //    {
+            //        var sipAlimDb = context.SatinAlmas
+            //            .Where(a => a.StokKartiId == _secilenUrun.StokKartiId)
+            //            .OrderByDescending(a => a.SiparisId) // 🔹 En son girilen siparişi alır
+            //            .FirstOrDefault();
+
+            //        if (sipAlimDb != null)
+            //        {
+            //            tBToplmTutar.Text = sipAlimDb.ToplamMaliyet.ToString("N2");
+            //        }
+            //    }
+            //    txtSprsAciklama.Text = _sipAlim.Aciklama;
+            //}
+            using (var context = new StokTakipContext())
             {
+                var sipAlimDb = context.SatinAlmas
+                    .Where(a => a.StokKartiId == _secilenUrun.StokKartiId)
+                    .OrderByDescending(a => a.SiparisId)
+                    .FirstOrDefault();
 
-                dTPElektrik.Value = _sipAlim.SiparisTarihi;           // DateTimePicker için Value kullan
-                txtMiktar.Text = _sipAlim.Miktar.ToString();
-                txtCari.Text = _sipAlim.CariAdi;
-                txtGlnMktr.Text = _sipAlim.GelenMiktar.ToString() ?? ""; // nullable int için
-                // Burada toplam maliyeti veritabanından çek
-                using (var context = new StokTakipContext())
+                if (sipAlimDb != null)
                 {
-                    var sipAlimDb = context.SatinAlmas
-                        .FirstOrDefault(a => a.StokKartiId == _secilenUrun.StokKartiId);
-
-                    if (sipAlimDb != null)
-                    {
-                        tBToplmTutar.Text = sipAlimDb.ToplamMaliyet.ToString("N2");
-                    }
+                    dTPElektrik.Value = sipAlimDb.SiparisTarihi;
+                    txtMiktar.Text = sipAlimDb.Miktar.ToString();
+                    txtCari.Text = sipAlimDb.CariAdi;
+                    txtGlnMktr.Text = sipAlimDb.GelenMiktar.ToString() ?? "";
+                    tBToplmTutar.Text = sipAlimDb.ToplamMaliyet.ToString("N2");
+                    txtSprsAciklama.Text = sipAlimDb.Aciklama;
                 }
-                txtSprsAciklama.Text = _sipAlim.Aciklama;
             }
+
             if (_stokDurum != null)
             {
                 var stkdurum = new List<StokDurumuViewModel> { _stokDurum };

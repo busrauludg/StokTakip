@@ -46,7 +46,7 @@
             btnUrunEkle = new Button();
             label8 = new Label();
             lVSecilenUrunler = new ListView();
-            button1 = new Button();
+            btnUrunEkleListe = new Button();
             nUDMiktarSec = new NumericUpDown();
             cBUrunSec = new ComboBox();
             label10 = new Label();
@@ -179,7 +179,7 @@
             gBProjeKullanilanUrunler.Controls.Add(btnUrunEkle);
             gBProjeKullanilanUrunler.Controls.Add(label8);
             gBProjeKullanilanUrunler.Controls.Add(lVSecilenUrunler);
-            gBProjeKullanilanUrunler.Controls.Add(button1);
+            gBProjeKullanilanUrunler.Controls.Add(btnUrunEkleListe);
             gBProjeKullanilanUrunler.Controls.Add(nUDMiktarSec);
             gBProjeKullanilanUrunler.Controls.Add(cBUrunSec);
             gBProjeKullanilanUrunler.Controls.Add(label10);
@@ -195,7 +195,7 @@
             // 
             // btnUrunEkle
             // 
-            btnUrunEkle.Location = new Point(392, 429);
+            btnUrunEkle.Location = new Point(407, 516);
             btnUrunEkle.Name = "btnUrunEkle";
             btnUrunEkle.Size = new Size(176, 29);
             btnUrunEkle.TabIndex = 20;
@@ -216,23 +216,23 @@
             // 
             lVSecilenUrunler.Location = new Point(97, 245);
             lVSecilenUrunler.Name = "lVSecilenUrunler";
-            lVSecilenUrunler.Size = new Size(272, 247);
+            lVSecilenUrunler.Size = new Size(373, 247);
             lVSecilenUrunler.TabIndex = 18;
             lVSecilenUrunler.UseCompatibleStateImageBehavior = false;
             // 
-            // button1
+            // btnUrunEkleListe
             // 
-            button1.Location = new Point(437, 170);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 6;
-            button1.Text = "Ürün ekle";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnUrunEkleListe.Location = new Point(439, 206);
+            btnUrunEkleListe.Name = "btnUrunEkleListe";
+            btnUrunEkleListe.Size = new Size(94, 29);
+            btnUrunEkleListe.TabIndex = 6;
+            btnUrunEkleListe.Text = "Ürün ekle";
+            btnUrunEkleListe.UseVisualStyleBackColor = true;
+            btnUrunEkleListe.Click += btnUrunEkleListe_Click;
             // 
             // nUDMiktarSec
             // 
-            nUDMiktarSec.Location = new Point(381, 110);
+            nUDMiktarSec.Location = new Point(383, 146);
             nUDMiktarSec.Name = "nUDMiktarSec";
             nUDMiktarSec.Size = new Size(150, 27);
             nUDMiktarSec.TabIndex = 5;
@@ -248,7 +248,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(338, 86);
+            label10.Location = new Point(340, 122);
             label10.Name = "label10";
             label10.Size = new Size(130, 20);
             label10.TabIndex = 3;
@@ -336,5 +336,6 @@
         private NumericUpDown nUDMiktarSec;
         private Label label8;
         private Button btnUrunEkle;
+        private Button btnUrunEkleListe;
     }
 }
