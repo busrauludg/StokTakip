@@ -205,7 +205,8 @@ public partial class StokTakipContext : DbContext
             entity.Property(e => e.UrunAdi).HasMaxLength(100);
 
             // 🔹 Buraya ekle
-     
+            entity.HasQueryFilter(s => s.AktifMi); // sadece aktif ürünler gelir
+
             entity.HasOne(d => d.Grup).WithMany(p => p.StokKartis)
                 .HasForeignKey(d => d.GrupId)
                 .OnDelete(DeleteBehavior.ClientSetNull)

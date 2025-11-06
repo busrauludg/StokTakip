@@ -66,7 +66,7 @@
             tbCBolumSec.Controls.Add(tabPage1);
             tbCBolumSec.Controls.Add(tabPage2);
             tbCBolumSec.Controls.Add(tabPage3);
-            tbCBolumSec.Location = new Point(2, 37);
+            tbCBolumSec.Location = new Point(12, 3);
             tbCBolumSec.Name = "tbCBolumSec";
             tbCBolumSec.SelectedIndex = 0;
             tbCBolumSec.Size = new Size(1746, 933);
@@ -78,7 +78,7 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1738, 889);
+            tabPage1.Size = new Size(1738, 900);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Mekanik Ürün Listesi";
             tabPage1.UseVisualStyleBackColor = true;
@@ -88,9 +88,10 @@
             lVMekanikListesi.Dock = DockStyle.Fill;
             lVMekanikListesi.Location = new Point(3, 3);
             lVMekanikListesi.Name = "lVMekanikListesi";
-            lVMekanikListesi.Size = new Size(1732, 883);
+            lVMekanikListesi.Size = new Size(1732, 894);
             lVMekanikListesi.TabIndex = 1;
             lVMekanikListesi.UseCompatibleStateImageBehavior = false;
+            lVMekanikListesi.SelectedIndexChanged += lVMekanikListesi_SelectedIndexChanged;
             lVMekanikListesi.DoubleClick += lVMekanikListesi_DoubleClick;
             // 
             // tabPage2
@@ -99,7 +100,7 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1738, 889);
+            tabPage2.Size = new Size(1738, 900);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Elektrik Ürün Listesi";
             tabPage2.UseVisualStyleBackColor = true;
@@ -109,7 +110,7 @@
             lVlElektrikListesi.Dock = DockStyle.Fill;
             lVlElektrikListesi.Location = new Point(3, 3);
             lVlElektrikListesi.Name = "lVlElektrikListesi";
-            lVlElektrikListesi.Size = new Size(1732, 883);
+            lVlElektrikListesi.Size = new Size(1732, 894);
             lVlElektrikListesi.TabIndex = 2;
             lVlElektrikListesi.UseCompatibleStateImageBehavior = false;
             lVlElektrikListesi.DoubleClick += lVlElektrikListesi_DoubleClick;

@@ -34,6 +34,7 @@ public partial class StokKarti
     public int PersonelId { get; set; }
     //18.09
     public int StokMiktari { get; set; }
+    public bool AktifMi { get; set; } = true;
 
     public virtual Gruplar Grup { get; set; } = null!;
 

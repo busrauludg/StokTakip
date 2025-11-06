@@ -22,7 +22,7 @@ namespace StokTakip.Services
                 var liste = _context.StokKartis
              .Include(u => u.Grup)
              .Include(u => u.Personel)
-             .Where(u => u.GrupId == 2) // sabit mekanik grubu
+             .Where(u => u.GrupId == 2&&u.AktifMi) // sabit mekanik grubu
              .Select(u => new StokKartiViewModel
              {
                  StokKartiId=u.StokKartiId,

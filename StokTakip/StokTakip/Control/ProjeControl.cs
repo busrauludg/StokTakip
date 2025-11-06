@@ -52,8 +52,12 @@ namespace StokTakip
             var projeEkle = new ProjeEkleViewModel
             {
                 ProjeAdi = tBProjeAdi.Text,
-                BaslangicTarihi = DateTime.Now,
-                BitisTarihi = dTPBitisTarihi.Value,
+                //BaslangicTarihi = DateTime.Now,
+               // BitisTarihi = dTPBitisTarihi.Value,
+
+                BaslangicTarihi=dTPBaslangic.MinDate = DateTime.Today, // Bugünden önce seçilemez
+                BitisTarihi=dTPBitisTarihi.MinDate = DateTime.Today.AddDays(1), // Bitiş başlangıçtan en az 1 gün sonra olmalı
+
                 PersonelId = personelId,
                 Durum = cBDurum.SelectedItem.ToString() == "Aktif",
                 Aciklama = tBAciklama.Text,
@@ -73,6 +77,11 @@ namespace StokTakip
         private void ProjeControl_Load(object sender, EventArgs e)
         {
             cBDurum.Items.AddRange(new string[] { "Aktif", "Pasif" });
+
+            // Tarihler için MinDate
+            dTPBaslangic.MinDate = DateTime.Today;
+            dTPBitisTarihi.MinDate = DateTime.Today.AddDays(1);
+
             using (var context = new StokTakipContext())
             {
                 // Projeleri getir
@@ -81,12 +90,19 @@ namespace StokTakip
                 cBProjSec.ValueMember = "ProjeId";
 
                 // Ürünleri getir
-                cBUrunSec.DataSource = context.StokKartis.ToList();
+                //cBUrunSec.DataSource = context.StokKartis.ToList();
+                //cBUrunSec.DisplayMember = "UrunAdi";
+                //cBUrunSec.ValueMember = "StokKartiId";
+
+                cBUrunSec.DataSource = context.StokKartis
+                               .Where(u => u.AktifMi) // sadece aktif ürünler
+                               .ToList();
                 cBUrunSec.DisplayMember = "UrunAdi";
                 cBUrunSec.ValueMember = "StokKartiId";
+                cBUrunSec.SelectedIndex = -1;
 
                 cBProjSec.SelectedIndex = -1;
-                cBUrunSec.SelectedIndex = -1;
+               // cBUrunSec.SelectedIndex = -1;
 
 
                 lVSecilenUrunler.View = View.Details;
@@ -98,6 +114,87 @@ namespace StokTakip
             ProjeSecComboDoldur();
 
         }
+       
+
+
+        private void btnUrunEkleListe_Click(object sender, EventArgs e)
+        {
+            if (cBProjSec.SelectedIndex == -1)
+            {
+                MessageBox.Show("Lütfen bir proje seçin!");
+                return;
+            }
+
+            int stokId = (int)cBUrunSec.SelectedValue;
+            int secilenMiktar = (int)nUDMiktarSec.Value;
+            //5.11
+            int projeId = (int)cBProjSec.SelectedValue;
+
+            using (var context = new StokTakipContext())
+            {
+                var stok = context.StokDurumus.FirstOrDefault(s => s.StokKartiId == stokId);
+                var stokKart = context.StokKartis.FirstOrDefault(sk => sk.StokKartiId == stokId);
+
+                if (stok == null || stokKart == null)
+                {
+                    MessageBox.Show("Seçilen ürün stokta bulunamadı!");
+                    return;
+                }
+
+                // Liste üzerindeki toplam miktarı kontrol et
+                int listeToplam = 0;
+                ListViewItem mevcutItem = null;//5.11
+                foreach (ListViewItem i in lVSecilenUrunler.Items)
+                {
+                    //    if ((int)i.Tag == stokId)
+                    //        listeToplam += int.Parse(i.SubItems[1].Text);
+
+                    var tagData = (Tuple<int, int>)i.Tag;
+                    int tagStokId = tagData.Item1;
+                    int tagProjeId = tagData.Item2;
+
+                    if (tagStokId == stokId && tagProjeId == projeId)
+                    {
+                        mevcutItem = i;
+                        listeToplam += int.Parse(i.SubItems[1].Text);
+                    }
+                }
+
+                int kalanMiktar = stok.SerbestMiktar - listeToplam;
+                if (secilenMiktar > kalanMiktar)
+                {
+                    MessageBox.Show($"Girilen miktar, kalan kullanılabilir miktardan fazla! Kalan: {kalanMiktar}");
+                    return;
+                }
+                if (mevcutItem != null)
+                {
+                    int mevcutMiktar = int.Parse(mevcutItem.SubItems[1].Text);
+                    mevcutItem.SubItems[1].Text = (mevcutMiktar + secilenMiktar).ToString();
+                }
+                else
+                {
+                    // Listeye ekle
+                    ListViewItem item = new ListViewItem(cBUrunSec.Text);
+                item.SubItems.Add(secilenMiktar.ToString());
+                item.Tag = stokId;
+                lVSecilenUrunler.Items.Add(item);
+
+
+                }
+
+
+                // 🔹 Kalan miktarı ve min stok uyarısı
+                int yeniKalan = kalanMiktar - secilenMiktar;
+                string mesaj = $"{cBUrunSec.Text} için kalan miktar: {yeniKalan}";
+                if (yeniKalan < stokKart.MinStok)
+                {
+                    mesaj += $"\n⚠ Uyarı: Minimum stoğun altına düştü! (MinStok: {stokKart.MinStok})";
+                }
+
+                MessageBox.Show(mesaj);
+            }
+        }
+
         //private void btnUrunEkle_Click(object sender, EventArgs e)
         //{
         //    if (cBProjSec.SelectedIndex == -1)
@@ -117,7 +214,6 @@ namespace StokTakip
         //                int stokId = (int)item.Tag;
         //                int miktar = int.Parse(item.SubItems[1].Text);
 
-        //                // Veritabanına ekle
         //                var entity = new ProjedeKullanilanUrunler
         //                {
         //                    ProjeId = projeId,
@@ -128,28 +224,27 @@ namespace StokTakip
 
         //                // Stok güncellemesi
         //                var stok = context.StokDurumus.FirstOrDefault(s => s.StokKartiId == stokId);
-        //                if (stok != null)
+        //                var stokKart = context.StokKartis.FirstOrDefault(sk => sk.StokKartiId == stokId);
+
+        //                if (stok != null && stokKart != null)
         //                {
         //                    int mevcutBloke = 0;
         //                    int.TryParse(stok.BlokeMiktar, out mevcutBloke);
         //                    mevcutBloke += miktar;
         //                    stok.BlokeMiktar = mevcutBloke.ToString();
         //                    stok.SerbestMiktar -= miktar;
+
+        //                    //// 🔹 Kalan miktar ve min stok kontrolü
+        //                    //string mesaj = $"{item.Text} için kalan miktar: {stok.SerbestMiktar}";
+        //                    //if (stok.SerbestMiktar < stokKart.MinStok)
+        //                    //{
+        //                    //    mesaj += $"\n⚠ Uyarı: Minimum stoğun altına düştü! (MinStok: {stokKart.MinStok})";
+        //                    //}
+        //                    //MessageBox.Show(mesaj);
         //                }
         //            }
 
         //            context.SaveChanges();
-
-        //            //// Kaydedilen ürünlerin kalan miktarını göster
-        //            //foreach (ListViewItem item in lVSecilenUrunler.Items)
-        //            //{
-        //            //    int stokId = (int)item.Tag;
-        //            //    var stok = context.StokDurumus.FirstOrDefault(s => s.StokKartiId == stokId);
-        //            //    if (stok != null)
-        //            //    {
-        //            //        MessageBox.Show($"{item.Text} için kalan miktar: {stok.SerbestMiktar}");
-        //            //    }
-        //            //}
         //        }
 
         //        MessageBox.Show("Kayıt başarılı!");
@@ -159,114 +254,7 @@ namespace StokTakip
         //    {
         //        MessageBox.Show("Hata oluştu: " + ex.Message);
         //    }
-
-
         //}
-
-        //private void btnUrunEkleListe_Click(object sender, EventArgs e)
-        //{
-
-        //    if (cBProjSec.SelectedIndex == -1)
-        //    {
-        //        MessageBox.Show("Lütfen bir proje seçin!");
-        //        return;
-        //    }
-
-        //    int stokId = (int)cBUrunSec.SelectedValue;
-        //    int secilenMiktar = (int)nUDMiktarSec.Value;
-
-        //    using (var context = new StokTakipContext())
-        //    {
-        //        var stok = context.StokDurumus.FirstOrDefault(s => s.StokKartiId == stokId);
-        //        if (stok == null)
-        //        {
-        //            MessageBox.Show("Seçilen ürün stokta bulunamadı!");
-        //            return;
-        //        }
-
-        //        // Liste üzerinde aynı ürünün toplamını kontrol et
-        //        int listeToplam = 0;
-        //        foreach (ListViewItem i in lVSecilenUrunler.Items)
-        //        {
-        //            if ((int)i.Tag == stokId)
-        //                listeToplam += int.Parse(i.SubItems[1].Text);
-        //        }
-
-        //        int kalanMiktar = stok.SerbestMiktar - listeToplam;
-        //        if (secilenMiktar > kalanMiktar)
-        //        {
-        //            MessageBox.Show($"Girilen miktar, kalan kullanılabilir miktardan fazla! Kalan: {kalanMiktar}");
-        //            return;
-        //        }
-
-        //        // Listeye ekle
-        //        ListViewItem item = new ListViewItem(cBUrunSec.Text);
-        //        item.SubItems.Add(secilenMiktar.ToString());
-        //        item.Tag = stokId;
-        //        lVSecilenUrunler.Items.Add(item);
-
-        //        // Kalan miktarı göster
-        //        MessageBox.Show($"{cBUrunSec.Text} için kalan miktar: {kalanMiktar - secilenMiktar}");
-        //    }
-
-
-        //}
-
-
-        private void btnUrunEkleListe_Click(object sender, EventArgs e)
-        {
-            if (cBProjSec.SelectedIndex == -1)
-            {
-                MessageBox.Show("Lütfen bir proje seçin!");
-                return;
-            }
-
-            int stokId = (int)cBUrunSec.SelectedValue;
-            int secilenMiktar = (int)nUDMiktarSec.Value;
-
-            using (var context = new StokTakipContext())
-            {
-                var stok = context.StokDurumus.FirstOrDefault(s => s.StokKartiId == stokId);
-                var stokKart = context.StokKartis.FirstOrDefault(sk => sk.StokKartiId == stokId);
-
-                if (stok == null || stokKart == null)
-                {
-                    MessageBox.Show("Seçilen ürün stokta bulunamadı!");
-                    return;
-                }
-
-                // Liste üzerindeki toplam miktarı kontrol et
-                int listeToplam = 0;
-                foreach (ListViewItem i in lVSecilenUrunler.Items)
-                {
-                    if ((int)i.Tag == stokId)
-                        listeToplam += int.Parse(i.SubItems[1].Text);
-                }
-
-                int kalanMiktar = stok.SerbestMiktar - listeToplam;
-                if (secilenMiktar > kalanMiktar)
-                {
-                    MessageBox.Show($"Girilen miktar, kalan kullanılabilir miktardan fazla! Kalan: {kalanMiktar}");
-                    return;
-                }
-
-                // Listeye ekle
-                ListViewItem item = new ListViewItem(cBUrunSec.Text);
-                item.SubItems.Add(secilenMiktar.ToString());
-                item.Tag = stokId;
-                lVSecilenUrunler.Items.Add(item);
-
-                // 🔹 Kalan miktarı ve min stok uyarısı
-                int yeniKalan = kalanMiktar - secilenMiktar;
-                string mesaj = $"{cBUrunSec.Text} için kalan miktar: {yeniKalan}";
-                if (yeniKalan < stokKart.MinStok)
-                {
-                    mesaj += $"\n⚠ Uyarı: Minimum stoğun altına düştü! (MinStok: {stokKart.MinStok})";
-                }
-
-                MessageBox.Show(mesaj);
-            }
-        }
 
         private void btnUrunEkle_Click(object sender, EventArgs e)
         {
@@ -287,13 +275,26 @@ namespace StokTakip
                         int stokId = (int)item.Tag;
                         int miktar = int.Parse(item.SubItems[1].Text);
 
-                        var entity = new ProjedeKullanilanUrunler
+                        // ❗ Mevcut kayıt kontrolü
+                        var mevcut = context.ProjedeKullanilanUrunlers
+                                            .FirstOrDefault(p => p.ProjeId == projeId && p.StokKartiId == stokId);
+
+                        if (mevcut != null)
                         {
-                            ProjeId = projeId,
-                            StokKartiId = stokId,
-                            Miktar = miktar
-                        };
-                        context.ProjedeKullanilanUrunlers.Add(entity);
+                            // Var olan miktara ekle
+                            mevcut.Miktar += miktar;
+                        }
+                        else
+                        {
+                            // Yoksa yeni kayıt ekle
+                            var entity = new ProjedeKullanilanUrunler
+                            {
+                                ProjeId = projeId,
+                                StokKartiId = stokId,
+                                Miktar = miktar
+                            };
+                            context.ProjedeKullanilanUrunlers.Add(entity);
+                        }
 
                         // Stok güncellemesi
                         var stok = context.StokDurumus.FirstOrDefault(s => s.StokKartiId == stokId);
@@ -306,14 +307,6 @@ namespace StokTakip
                             mevcutBloke += miktar;
                             stok.BlokeMiktar = mevcutBloke.ToString();
                             stok.SerbestMiktar -= miktar;
-
-                            // 🔹 Kalan miktar ve min stok kontrolü
-                            string mesaj = $"{item.Text} için kalan miktar: {stok.SerbestMiktar}";
-                            if (stok.SerbestMiktar < stokKart.MinStok)
-                            {
-                                mesaj += $"\n⚠ Uyarı: Minimum stoğun altına düştü! (MinStok: {stokKart.MinStok})";
-                            }
-                            MessageBox.Show(mesaj);
                         }
                     }
 
@@ -328,6 +321,7 @@ namespace StokTakip
                 MessageBox.Show("Hata oluştu: " + ex.Message);
             }
         }
+
 
         private void ProjeSecComboDoldur()
         {

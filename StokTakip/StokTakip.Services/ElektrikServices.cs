@@ -21,7 +21,7 @@ namespace StokTakip.Services
             var liste=_context.StokKartis
                 .Include(u=>u.Grup)
                 .Include(u=>u.Personel)
-                .Where(u=>u.GrupId==1)
+                .Where(u=>u.GrupId==1&&u.AktifMi)
                 .Select(u => new StokKartiViewModel
                 {
                     StokKartiId=u.StokKartiId,

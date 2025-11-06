@@ -35,6 +35,7 @@ namespace StokTakip
 
         private void BolumSec_Load(object sender, EventArgs e)
         {
+            //MEKANİK ALANI
             // Önce ListView ayarları (tek sefer yapılmalı, örn. form load'ta)
             tbCBolumSec.Dock = DockStyle.Fill;
             lVMekanikListesi.View = View.Details;
@@ -43,23 +44,47 @@ namespace StokTakip
 
             lVMekanikListesi.Columns.Clear();
             lVMekanikListesi.Columns.Add("Sıra No", 70);
+           // lVMekanikListesi.Columns.Add("Id",0);//pasif yapmak için
             lVMekanikListesi.Columns.Add("Ürün Adı", 150);
-            lVMekanikListesi.Columns.Add("Stok Miktarı", 100);
+            lVMekanikListesi.Columns.Add("Kullanılabilir Miktar", 150);
 
-            // Verileri doldur
             var urunler = _services.GetStokKartiListesi();
             lVMekanikListesi.Items.Clear();
 
             int mekanikSira = 1;
             foreach (var urun in urunler)
             {
-                var lvItem = new ListViewItem(mekanikSira.ToString()); // 🔹 Sıra No
-                lvItem.SubItems.Add(urun.UrunAdi);             // Ürün Adı
-                lvItem.SubItems.Add(urun.StokMiktari.ToString()); // Stok Miktarı
+                // Ürüne ait stok durumunu al
+                var stokDurum = _services.GetStokDurumMekanik(urun.StokKartiId);
+                var serbestMiktar = stokDurum?.SerbestMiktar ?? 0;
+
+                var lvItem = new ListViewItem(mekanikSira.ToString());
+                lvItem.SubItems.Add(urun.UrunAdi);                     // Ürün Adı
+                lvItem.SubItems.Add(serbestMiktar.ToString());         // Stok Miktarı
+
+                lvItem.Tag = urun.StokKartiId; // ❗ ID'yi Tag'de sakla
                 lVMekanikListesi.Items.Add(lvItem);
                 mekanikSira++;
             }
 
+
+            // Verileri doldur
+            //var urunler = _services.GetStokKartiListesi();
+            //lVMekanikListesi.Items.Clear();
+
+            //int mekanikSira = 1;
+            //foreach (var urun in urunler)
+            //{
+
+            //    var lvItem = new ListViewItem(mekanikSira.ToString()); // 🔹 Sıra No
+            //    lvItem.SubItems.Add(urun.UrunAdi);             // Ürün Adı
+            //    //lvItem.SubItems.Add(serbestMiktar.ToString()); // Stok Miktarı
+            //    lVMekanikListesi.Items.Add(lvItem);
+            //    mekanikSira++;
+            //}
+
+
+            //ELEKTRİK ALANI
             //elektirik alanı
 
             lVlElektrikListesi.View = View.Details;
@@ -69,7 +94,7 @@ namespace StokTakip
             lVlElektrikListesi.Columns.Clear();
             lVlElektrikListesi.Columns.Add("Sıra No", 70);
             lVlElektrikListesi.Columns.Add("Ürün Adı", 150);
-            lVlElektrikListesi.Columns.Add("Stok Miktarı", 100);
+            lVlElektrikListesi.Columns.Add("Kullanılabir Miktar", 120);
 
             // Verileri doldur
             var urunlers = _elektrikServices.GetStokKartiElektrik();
@@ -78,9 +103,14 @@ namespace StokTakip
             int elektrikSira = 1;
             foreach (var urun in urunlers)
             {
+                var stokDurum = _elektrikServices.GetStokDurumElektrik(urun.StokKartiId);
+                var serbestMiktar = stokDurum?.SerbestMiktar ?? 0;
+
                 var lvItem = new ListViewItem(elektrikSira.ToString());  // 🔹 Sıra No
                 lvItem.SubItems.Add(urun.UrunAdi);// Ürün Adı
-                lvItem.SubItems.Add(urun.StokMiktari.ToString()); // Stok Miktarı
+                lvItem.SubItems.Add(serbestMiktar.ToString()); // Stok Miktarı
+
+                lvItem.Tag = urun.StokKartiId; // ❗ ID'yi Tag'de sakla
                 lVlElektrikListesi.Items.Add(lvItem);
                 elektrikSira++;
             }
@@ -196,143 +226,58 @@ namespace StokTakip
 
         private void silToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ListView aktifListe = cMSSagTik.SourceControl as ListView;
+
+            if (aktifListe != null && aktifListe.SelectedItems.Count > 0)
+            {
+                var secilen = aktifListe.SelectedItems[0];
+                //  string urunAdi = secilen.SubItems[1].Text; // Ürün adını al
+                //int urunId = Convert.ToInt32(secilen.SubItems[0].Text); // ID al
+
+                int urunId = (int)secilen.Tag; // ❗ Tag üzerinden doğru ID al
 
 
-            //ListView aktifListe = cMSSagTik.SourceControl as ListView;
+                DialogResult onay = MessageBox.Show(
+                    "Bu ürünü pasif hale getirmek istediğinize emin misiniz?",
+                    "Ürünü Pasif Et",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
-            //if (aktifListe != null && aktifListe.SelectedItems.Count > 0)
-            //{
-            //    var secilen = aktifListe.SelectedItems[0];
+                if (onay == DialogResult.Yes)
+                {
+                    using (var db = new StokTakipContext())
+                    {
+                        // var urun = db.StokKartis.FirstOrDefault(x => x.UrunAdi == urunAdi);
+                        var urun = db.StokKartis.FirstOrDefault(x => x.StokKartiId == urunId);
 
-            //    // Silme onayı
-            //    DialogResult onay = MessageBox.Show(
-            //        "Bu ürünü listeden kaldırmak istediğinize emin misiniz?",
-            //        "Silme Onayı",
-            //        MessageBoxButtons.YesNo,
-            //        MessageBoxIcon.Warning
-            //    );
+                        if (urun != null)
+                        {
+                            urun.AktifMi = false; // ❗ Soft delete işlemi
+                            db.SaveChanges();
+                        }
+                    }
 
-            //    if (onay == DialogResult.Yes)
-            //    {
-            //        // Sadece ListView'den sil (veritabanına dokunmadan)
-            //        aktifListe.Items.Remove(secilen);
+                    // ListView'den kaldır
+                    aktifListe.Items.Remove(secilen);
+                    MessageBox.Show("Ürün pasif hale getirildi. Artık listede görünmeyecek.",
+                        "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen pasif hale getirmek istediğiniz ürünü seçin.",
+                    "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
-            //        MessageBox.Show("Ürün listeden kaldırıldı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Silme işlemi iptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Lütfen silmek istediğiniz ürünü seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-
-            //ListView aktifListe = cMSSagTik.SourceControl as ListView;
-
-            //if (aktifListe != null && aktifListe.SelectedItems.Count > 0)
-            //{
-            //    var secilen = aktifListe.SelectedItems[0];
-            //    int urunId = Convert.ToInt32(secilen.SubItems[0].Text);
-
-            //    // Silme onayı
-            //    DialogResult onay = MessageBox.Show(
-            //        "Bu ürünü kalıcı olarak silmek istediğinize emin misiniz?",
-            //        "Silme Onayı",
-            //        MessageBoxButtons.YesNo,
-            //        MessageBoxIcon.Warning
-            //    );
-
-            //    if (onay == DialogResult.Yes)
-            //    {
-            //        using (var db = new StokTakipContext())
-            //        {
-            //            // Önce bağlı SatinAlma kayıtlarını sil
-            //            var satinAlmalar = db.SatinAlmas.Where(x => x.StokKartiId == urunId).ToList();
-            //            db.SatinAlmas.RemoveRange(satinAlmalar);
-
-            //            // Sonra ürünü sil
-            //            var urun = db.StokKartis.FirstOrDefault(x => x.StokKartiId == urunId);
-            //            if (urun != null)
-            //            {
-            //                db.StokKartis.Remove(urun);
-            //            }
-
-            //            db.SaveChanges();
-            //        }
-
-            //        // ListView'den de kaldır
-            //        aktifListe.Items.Remove(secilen);
-            //        MessageBox.Show("Ürün ve bağlı kayıtları veritabanından silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Silme işlemi iptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Lütfen silmek istediğiniz ürünü seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-
-            //ListView aktifListe = cMSSagTik.SourceControl as ListView;
-
-            //if (aktifListe != null && aktifListe.SelectedItems.Count > 0)
-            //{
-            //    var secilen = aktifListe.SelectedItems[0];
-            //    int urunId = Convert.ToInt32(secilen.SubItems[0].Text);
-
-            //    // Silme onayı
-            //    DialogResult onay = MessageBox.Show(
-            //        "Bu ürünü ve bağlı tüm kayıtlarını kalıcı olarak silmek istediğinize emin misiniz?",
-            //        "Silme Onayı",
-            //        MessageBoxButtons.YesNo,
-            //        MessageBoxIcon.Warning
-            //    );
-
-            //    if (onay == DialogResult.Yes)
-            //    {
-            //        using (var db = new StokTakipContext())
-            //        {
-            //            // 1. SatinAlma kayıtlarını sil
-            //            var satinAlmalar = db.SatinAlmas.Where(x => x.StokKartiId == urunId).ToList();
-            //            db.SatinAlmas.RemoveRange(satinAlmalar);
-
-            //            // 2. ProjedeKullanilanUrunler kayıtlarını sil
-            //            var projedeKullanilan = db.ProjedeKullanilanUrunlers.Where(p => p.StokKartiId == urunId).ToList();
-            //            db.ProjedeKullanilanUrunlers.RemoveRange(projedeKullanilan);
-
-            //            // 3. Ana StokKartis kaydını sil
-            //            var urun = db.StokKartis.FirstOrDefault(x => x.StokKartiId == urunId);
-            //            if (urun != null)
-            //            {
-            //                db.StokKartis.Remove(urun);
-            //            }
-
-            //            db.SaveChanges();
-            //        }
-
-            //        // ListView'den de kaldır
-            //        aktifListe.Items.Remove(secilen);
-            //        MessageBox.Show("Ürün ve bağlı tüm kayıtları veritabanından silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Silme işlemi iptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Lütfen silmek istediğiniz ürünü seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-
-
-           
 
 
         }
 
+        private void lVMekanikListesi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

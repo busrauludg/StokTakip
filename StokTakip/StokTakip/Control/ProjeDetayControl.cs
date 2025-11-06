@@ -35,6 +35,7 @@ namespace StokTakip
             lVlPrjListele.Columns.Clear();
             lVlPrjListele.Columns.Add("Sıra", 50); // Proje sırası
             lVlPrjListele.Columns.Add("Proje Adı", 200);
+            lVlPrjListele.Columns.Add("Durum", 200);//durum için
 
             // Kullanılan ürünler listview ayarları
             lVlKullanilanUrunler.View = View.Details;
@@ -55,6 +56,7 @@ namespace StokTakip
                     ListViewItem item = new ListViewItem(sıra.ToString()); // sıra numarası göster
                     item.SubItems.Add(proje.ProjeAdi);
                     item.Tag = proje.ProjeId; // ID’yi arka planda tut
+                    item.SubItems.Add(proje.Durum? "Aktif" : "Pasif");
                     lVlPrjListele.Items.Add(item);
                     sıra++;
                 }
