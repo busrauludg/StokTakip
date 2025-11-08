@@ -265,6 +265,12 @@ namespace StokTakip
 
             // Kullanılabilir miktarı düş
             int yeniKullanilabilir = secilenStok.SerbestMiktar - cikisMiktari;
+            if (yeniKullanilabilir < 0)
+            {
+                MessageBox.Show("Stok yetersiz!");
+                return;
+            }
+
 
             // Min stok kontrolü
             if (yeniKullanilabilir < _secilenUrun.MinStok)
@@ -332,12 +338,50 @@ namespace StokTakip
             MessageBox.Show("Stok çıkışı ve proje güncellemesi başarılı!");
         }
 
-        private void btnMStokArttir_Click(object sender, EventArgs e)
-        {
+        //private void btnMStokArttir_Click(object sender, EventArgs e)
+        //{
+        //    //    if (!int.TryParse(tBMArtirMiktar.Text, out int artisMiktari) || artisMiktari <= 0)
+        //    //    {
+        //    //        MessageBox.Show("Lütfen geçerli bir miktar girin.");
+        //    //        return;
+        //    //    }
+
+        //    //    using (var context = new StokTakipContext())
+        //    //    {
+        //    //        var satinAlma = context.SatinAlmas
+        //    //            .FirstOrDefault(x => x.StokKartiId == _secilenUrun.StokKartiId);
+        //    //        if (satinAlma != null)
+        //    //        {
+        //    //            satinAlma.GelenMiktar = (satinAlma.GelenMiktar ?? 0) + artisMiktari;
+        //    //        }
+
+        //    //        var stokDurum = context.StokDurumus
+        //    //            .FirstOrDefault(x => x.StokKartiId == _secilenUrun.StokKartiId);
+        //    //        if (stokDurum != null)
+        //    //        {
+        //    //            stokDurum.SerbestMiktar += artisMiktari;
+        //    //        }
+
+        //    //        context.SaveChanges();
+        //    //    }
+
+        //    //    MessageBox.Show("Stok başarıyla artırıldı!");
+
+        //    //    // UI'da durum güncellemesi sadece Form üzerinden
+        //    //    MekanikForm_Load(null, null);
+
         //    if (!int.TryParse(tBMArtirMiktar.Text, out int artisMiktari) || artisMiktari <= 0)
         //    {
         //        MessageBox.Show("Lütfen geçerli bir miktar girin.");
         //        return;
+        //    }
+
+        //    // Max stok kontrolü
+        //    int yeniStok = _secilenUrun.StokMiktari + artisMiktari;
+        //    if (yeniStok > _secilenUrun.MaxStok)
+        //    {
+        //        MessageBox.Show($"Uyarı: Maksimum stok miktarı {_secilenUrun.MaxStok}. Şu an stok: {_secilenUrun.StokMiktari}, girilen miktar: {artisMiktari}");
+        //        return; // Uyarı verip işlemi durduruyor
         //    }
 
         //    using (var context = new StokTakipContext())
@@ -346,7 +390,9 @@ namespace StokTakip
         //            .FirstOrDefault(x => x.StokKartiId == _secilenUrun.StokKartiId);
         //        if (satinAlma != null)
         //        {
-        //            satinAlma.GelenMiktar = (satinAlma.GelenMiktar ?? 0) + artisMiktari;
+        //            //satinAlma.GelenMiktar = (satinAlma.GelenMiktar ?? 0) + artisMiktari;
+        //            satinAlma.GelenMiktar += artisMiktari;
+
         //        }
 
         //        var stokDurum = context.StokDurumus
@@ -364,47 +410,256 @@ namespace StokTakip
         //    // UI'da durum güncellemesi sadece Form üzerinden
         //    MekanikForm_Load(null, null);
 
+        //}
+
+
+
+
+        //private void btnMStokArttir_Click(object sender, EventArgs e)
+        //{
+        //    if (!int.TryParse(tBMArtirMiktar.Text, out int artisMiktari) || artisMiktari <= 0)
+        //    {
+        //        MessageBox.Show("Lütfen geçerli bir miktar girin.");
+        //        return;
+        //    }
+
+        //    using (var context = new StokTakipContext())
+        //    {
+        //        var satinAlma = context.SatinAlmas
+        //            .FirstOrDefault(x => x.StokKartiId == _secilenUrun.StokKartiId);
+
+        //        if (satinAlma == null)
+        //        {
+        //            MessageBox.Show("Bu ürüne ait satınalma kaydı bulunamadı!");
+        //            return;
+        //        }
+
+        //        int mevcutGelen = satinAlma.GelenMiktar;
+        //        //burda sürekli hata alıyorum
+        //        if (mevcutGelen >= satinAlma.Miktar)
+        //        {
+        //            MessageBox.Show("Bu ürünün tüm siparişi sisteme girilmiş. Yeni giriş yapılamaz.");
+        //            return;
+        //        }
+        //        //burası elektirikte bjyle değil
+        //        int toplam = mevcutGelen + artisMiktari;
+
+        //        if (toplam > satinAlma.Miktar)
+        //        {
+        //            MessageBox.Show($"Girilen miktar fazla! Satınalma miktarı: {satinAlma.Miktar}, " +
+        //                             $"şu ana kadar gelen: {mevcutGelen}, " +
+        //                             $"eklenmek istenen: {artisMiktari}");
+        //            return;
+        //        }
+
+        //        // 🔹 Maksimum stok kontrolü
+        //        int yeniStok = _secilenUrun.StokMiktari + artisMiktari;
+        //        if (yeniStok > _secilenUrun.MaxStok)
+        //        {
+        //            MessageBox.Show($"Uyarı: Maksimum stok miktarı {_secilenUrun.MaxStok}. " +
+        //                            $"Şu an stok: {_secilenUrun.StokMiktari}, girilen miktar: {artisMiktari}");
+        //            return;
+        //        }
+
+        //        // 🔹 Değerleri güncelle
+        //        satinAlma.GelenMiktar = toplam;
+
+        //        // 🔹 Stok durumunu al
+        //        if (_durum != null)
+        //        {
+        //            _durum.SerbestMiktar += artisMiktari;
+        //        }
+
+        //        //// 🔹 Kullanılabilir (serbest) miktar azaldıysa ve stokta yer varsa giriş yapılabilir
+        //        //if (stokDurum.SerbestMiktar < _secilenUrun.MaxStok)
+        //        //{
+        //        //    int fark = _secilenUrun.MaxStok - stoktaMevcut;
+
+        //        //    // Eğer fark kadar yer varsa o kadar giriş yapılabilir
+        //        //    if (fark > 0 && yeniStok > _secilenUrun.MaxStok)
+        //        //    {
+        //        //        artisMiktari = fark;
+        //        //        yeniStok = _secilenUrun.MaxStok;
+        //        //        MessageBox.Show($"Maksimum stok kapasitesine ulaşıldı. Sadece {fark} adet giriş yapıldı, kalan miktar eklenmedi.");
+        //        //    }
+
+        //        //    // 🔹 Serbest miktar azaldıysa, ekleme yapılabilir
+        //        //    if (stokDurum.SerbestMiktar < _secilenUrun.StokMiktari)
+        //        //    {
+        //        //        int telafi = _secilenUrun.StokMiktari - stokDurum.SerbestMiktar;
+        //        //        stokDurum.SerbestMiktar += telafi;
+        //        //    }
+        //        //}
+        //        //else if (yeniStok > _secilenUrun.MaxStok)
+        //        //{
+        //        //    int fark = _secilenUrun.MaxStok - stoktaMevcut;
+        //        //    if (fark <= 0)
+        //        //    {
+        //        //        MessageBox.Show($"Stok zaten maksimum seviyede ({_secilenUrun.MaxStok}). Yeni giriş yapılamaz.");
+        //        //        return;
+        //        //    }
+
+        //        //    artisMiktari = fark;
+        //        //    yeniStok = _secilenUrun.MaxStok;
+        //        //    MessageBox.Show($"Maksimum stok kapasitesine ulaşıldı. Sadece {fark} adet giriş yapıldı, kalan miktar eklenmedi.");
+        //        //}
+
+        //        //// 🔹 Değerleri güncelle
+        //        //satinAlma.GelenMiktar = mevcutGelen + artisMiktari;
+        //        //stokDurum.SerbestMiktar += artisMiktari;
+        //        //_secilenUrun.StokMiktari = yeniStok;
+
+        //        context.SaveChanges();
+        //    }
+
+        //    MessageBox.Show("Stok başarıyla artırıldı!");
+        //    MekanikForm_Load(null, null);
+        //}
+
+
+        //private void btnMStokArttir_Click(object sender, EventArgs e)
+        //{
+        //    if (!int.TryParse(tBMArtirMiktar.Text, out int artisMiktari) || artisMiktari <= 0)
+        //    {
+        //        MessageBox.Show("Lütfen geçerli bir miktar girin.");
+        //        return;
+        //    }
+
+        //    using (var context = new StokTakipContext())
+        //    {
+        //        // 🔹 1. Satınalma kaydını al
+        //        var satinAlma = context.SatinAlmas
+        //            .FirstOrDefault(x => x.StokKartiId == _secilenUrun.StokKartiId);
+
+        //        if (satinAlma == null)
+        //        {
+        //            MessageBox.Show("Bu ürüne ait satınalma kaydı bulunamadı!");
+        //            return;
+        //        }
+
+        //        int mevcutGelen = satinAlma.GelenMiktar;
+
+        //        // 🔹 2. Yeni gelen miktar toplamı
+        //        int toplam = mevcutGelen + artisMiktari;
+
+        //        // 🔹 3. Satınalma miktarını geçmesin
+        //        if (toplam > satinAlma.Miktar)
+        //        {
+        //            MessageBox.Show($"Girilen miktar fazla! Satınalma miktarı: {satinAlma.Miktar}, " +
+        //                            $"şu ana kadar gelen: {mevcutGelen}, " +
+        //                            $"eklenmek istenen: {artisMiktari}");
+        //            return;
+        //        }
+
+        //        // 🔹 4. Maksimum stok kontrolü
+        //        int yeniStok = _secilenUrun.StokMiktari + artisMiktari;
+        //        if (yeniStok > _secilenUrun.MaxStok)
+        //        {
+        //            MessageBox.Show($"Uyarı: Maksimum stok miktarı {_secilenUrun.MaxStok}. " +
+        //                            $"Şu an stok: {_secilenUrun.StokMiktari}, girilen miktar: {artisMiktari}");
+        //            return;
+        //        }
+
+        //        // 🔹 5. Satınalma güncelle
+        //        satinAlma.GelenMiktar = toplam;
+
+        //        // 🔹 6. Stok durumunu güncelle
+        //        var stokDurum = context.StokDurumus
+        //            .FirstOrDefault(s => s.StokKartiId == _secilenUrun.StokKartiId);
+
+        //        if (stokDurum != null)
+        //        {
+        //            stokDurum.SerbestMiktar += artisMiktari;  // kullanılabilir miktar artar
+        //                                                      // Kullanılamaz (bloke) miktar sabit kalır
+        //        }
+
+        //        // 🔹 7. Stok kartındaki toplam miktarı da artır
+        //        var stokKart = context.StokKartis
+        //            .FirstOrDefault(s => s.StokKartiId == _secilenUrun.StokKartiId);
+
+        //        if (stokKart != null)
+        //        {
+        //            stokKart.StokMiktari += artisMiktari;
+        //        }
+
+        //        // 🔹 8. Kaydet
+        //        context.SaveChanges();
+        //    }
+
+        //    MessageBox.Show("Stok başarıyla artırıldı!");
+        //    MekanikForm_Load(null, null);
+        //}
+
+
+        private void btnMStokArttir_Click(object sender, EventArgs e)
+        {
             if (!int.TryParse(tBMArtirMiktar.Text, out int artisMiktari) || artisMiktari <= 0)
             {
                 MessageBox.Show("Lütfen geçerli bir miktar girin.");
                 return;
             }
 
-            // Max stok kontrolü
-            int yeniStok = _secilenUrun.StokMiktari + artisMiktari;
-            if (yeniStok > _secilenUrun.MaxStok)
-            {
-                MessageBox.Show($"Uyarı: Maksimum stok miktarı {_secilenUrun.MaxStok}. Şu an stok: {_secilenUrun.StokMiktari}, girilen miktar: {artisMiktari}");
-                return; // Uyarı verip işlemi durduruyor
-            }
-
             using (var context = new StokTakipContext())
             {
+                int urunId = _secilenUrun.StokKartiId;
+
                 var satinAlma = context.SatinAlmas
-                    .FirstOrDefault(x => x.StokKartiId == _secilenUrun.StokKartiId);
-                if (satinAlma != null)
-                {
-                    //satinAlma.GelenMiktar = (satinAlma.GelenMiktar ?? 0) + artisMiktari;
-                    satinAlma.GelenMiktar += artisMiktari;
+                    .Where(x => x.StokKartiId == urunId)
+                    .OrderByDescending(x => x.SiparisTarihi)
+                    .FirstOrDefault();
 
+                if (satinAlma == null)
+                {
+                    MessageBox.Show("Bu ürüne ait satınalma kaydı bulunamadı!");
+                    return;
                 }
 
-                var stokDurum = context.StokDurumus
-                    .FirstOrDefault(x => x.StokKartiId == _secilenUrun.StokKartiId);
-                if (stokDurum != null)
+                var stokDurum = context.StokDurumus.FirstOrDefault(x => x.StokKartiId == urunId);
+                var stokKarti = context.StokKartis.FirstOrDefault(x => x.StokKartiId == urunId);
+
+                if (stokDurum == null || stokKarti == null)
                 {
-                    stokDurum.SerbestMiktar += artisMiktari;
+                    MessageBox.Show("Stok bilgileri bulunamadı!");
+                    return;
                 }
+
+                // 🔹 1. Satınalma kontrolü
+                if (satinAlma.GelenMiktar + artisMiktari > satinAlma.Miktar)
+                {
+                    MessageBox.Show($"Gelen miktar sipariş verilen miktarı aşamaz! (Sipariş: {satinAlma.Miktar}, Gelen: {satinAlma.GelenMiktar})");
+                    return;
+                }
+
+                // 🔹 2. Maksimum stok kontrolü
+                int yeniStok = stokKarti.StokMiktari + artisMiktari;
+
+                if (yeniStok >= _secilenUrun.MaxStok - 3 && yeniStok < _secilenUrun.MaxStok)
+                {
+                    MessageBox.Show("Uyarı: Maksimum stoğa 3-4 ürün kaldı!");
+                }
+
+                if (yeniStok > _secilenUrun.MaxStok)
+                {
+                    var onay = MessageBox.Show(
+                        $"Maksimum stoğu ({_secilenUrun.MaxStok}) aşıyorsunuz. Yine de eklemek istiyor musunuz?",
+                        "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (onay == DialogResult.No)
+                        return;
+                }
+
+                // 🔹 3. Güncellemeler
+                satinAlma.GelenMiktar += artisMiktari;
+                stokDurum.SerbestMiktar += artisMiktari;
+                stokKarti.StokMiktari += artisMiktari;
 
                 context.SaveChanges();
             }
 
             MessageBox.Show("Stok başarıyla artırıldı!");
-
-            // UI'da durum güncellemesi sadece Form üzerinden
             MekanikForm_Load(null, null);
-
         }
+
 
     }
 }

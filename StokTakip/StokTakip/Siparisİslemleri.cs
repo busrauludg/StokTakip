@@ -51,12 +51,24 @@ namespace StokTakip
             lVlSiparisListesi.ContextMenuStrip = cMSPrjListe;
             lVlSiparisListesi.MouseUp += lVlSiparisListesi_MouseUp;
 
+            lVlSiparisListesi.Dock = DockStyle.Fill;
+
+
             // Verileri çek ve ekle
             using (var context = new StokTakipContext())
             {
+                //var siparisler = context.SatinAlmas
+                //                        .Include(s => s.Personel)
+                //                        .ToList();
+
                 var siparisler = context.SatinAlmas
-                                        .Include(s => s.Personel)
-                                        .ToList();
+                   .Include(s => s.Personel)
+                   .ToList() // önce siparişleri al
+                   .Where(s => context.StokKartis.Any(u => u.StokKartiId == s.StokKartiId)) // aktif ürün varsa al
+                   .OrderByDescending(s => s.SiparisTarihi)
+                   .ThenByDescending(s => s.SiparisId)
+                   .ToList();
+
 
                 lVlSiparisListesi.Items.Clear();
 
@@ -141,6 +153,23 @@ namespace StokTakip
                     tBKur.Enabled = true;
                 }
             };
+            using (var liste = new StokTakipContext())
+            {
+                var urunler = liste.SatinAlmas
+                                   .Include(s => s.StokKarti)
+                                   .Select(s => s.StokKarti)
+                                   .Where(u => u != null)
+                                   .Distinct()
+                                   .Select(u => new { u.StokKartiId, u.UrunAdi })
+                                   .ToList();
+
+                cBUrunAra.DisplayMember = "UrunAdi";
+                cBUrunAra.ValueMember = "StokKartiId";
+                cBUrunAra.DataSource = urunler;
+
+                cBUrunAra.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                cBUrunAra.AutoCompleteSource = AutoCompleteSource.ListItems;
+            }
 
 
         }
@@ -363,7 +392,7 @@ namespace StokTakip
                     ParaBirimi = paraBirimi,
                     PersonelId = personelId,
                     Aciklama = tBAciklama.Text,
-                    ToplamMaliyet=toplamMaliyet
+                    ToplamMaliyet = toplamMaliyet
                 };
 
                 ctx.SatinAlmas.Add(yeniSiparis);
@@ -385,7 +414,66 @@ namespace StokTakip
         {
 
         }
+        private void btnUrunAra_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnUrunAra_Click_1(object sender, EventArgs e)
+        {
+            if (cBUrunAra.SelectedValue == null)
+            {
+                MessageBox.Show("Lütfen bir ürün seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int secilenUrunId = Convert.ToInt32(cBUrunAra.SelectedValue);
+
+            using (var ctx = new StokTakipContext())
+            {
+                var siparisler = ctx.SatinAlmas
+                    .Include(s => s.Personel)
+                    .Include(s => s.StokKarti)
+                    .Where(s => s.StokKartiId == secilenUrunId)
+                    .OrderByDescending(s => s.SiparisTarihi)
+                    .ToList();
+
+                lVlSiparisListesi.Items.Clear();
+
+                foreach (var s in siparisler)
+                {
+                    var urun = s.StokKarti;
+                    string grupAd = "";
+                    if (urun?.GrupId != null)
+                    {
+                        var grup = ctx.Gruplars.Find(urun.GrupId);
+                        grupAd = grup?.GrupAdi ?? "";
+                    }
+
+                    ListViewItem item = new ListViewItem(s.SiparisTarihi.ToString("dd.MM.yyyy"));
+                    item.SubItems.Add(s.CariAdi);
+                    item.SubItems.Add(urun?.UrunAdi ?? "");
+                    item.SubItems.Add(s.Miktar.ToString());
+                    item.SubItems.Add(s.GelenMiktar.ToString());
+                    item.SubItems.Add(s.BirimFiyat.ToString());
+                    item.SubItems.Add(s.Kur.ToString());
+                    item.SubItems.Add(s.ParaBirimi);
+                    item.SubItems.Add(s.Personel?.Ad ?? "");
+
+                    string durum = s.GelenMiktar == 0 ? "Beklemede" :
+                                   (s.GelenMiktar >= s.Miktar ? "Geldi" : "Kısmi Geldi");
+                    item.SubItems.Add(durum);
+                    item.SubItems.Add(grupAd);
+
+                    item.Tag = s.SiparisId;
+                    lVlSiparisListesi.Items.Add(item);
+                }
+
+                if (siparisler.Count == 0)
+                    MessageBox.Show("Bu ürüne ait sipariş bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
+
+
     }
-
-
 }

@@ -75,6 +75,8 @@
             btnMSArtirPanel = new Button();
             btnStokCikis = new Button();
             pMStokCikis = new Panel();
+            label25 = new Label();
+            cBPMProjeSec = new ComboBox();
             btnMStokCikisi = new Button();
             tBMCikicakMiktar = new TextBox();
             label23 = new Label();
@@ -82,8 +84,6 @@
             label24 = new Label();
             btnMStokArttir = new Button();
             tBMArtirMiktar = new TextBox();
-            cBPMProjeSec = new ComboBox();
-            label25 = new Label();
             ((System.ComponentModel.ISupportInitialize)dGVMknStkDurum).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -514,6 +514,23 @@
             pMStokCikis.Size = new Size(250, 292);
             pMStokCikis.TabIndex = 18;
             // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(31, 106);
+            label25.Name = "label25";
+            label25.Size = new Size(70, 20);
+            label25.TabIndex = 4;
+            label25.Text = "Proje Seç";
+            // 
+            // cBPMProjeSec
+            // 
+            cBPMProjeSec.FormattingEnabled = true;
+            cBPMProjeSec.Location = new Point(62, 146);
+            cBPMProjeSec.Name = "cBPMProjeSec";
+            cBPMProjeSec.Size = new Size(151, 28);
+            cBPMProjeSec.TabIndex = 3;
+            // 
             // btnMStokCikisi
             // 
             btnMStokCikisi.Location = new Point(112, 204);
@@ -575,23 +592,6 @@
             tBMArtirMiktar.Name = "tBMArtirMiktar";
             tBMArtirMiktar.Size = new Size(125, 27);
             tBMArtirMiktar.TabIndex = 0;
-            // 
-            // cBPMProjeSec
-            // 
-            cBPMProjeSec.FormattingEnabled = true;
-            cBPMProjeSec.Location = new Point(62, 146);
-            cBPMProjeSec.Name = "cBPMProjeSec";
-            cBPMProjeSec.Size = new Size(151, 28);
-            cBPMProjeSec.TabIndex = 3;
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Location = new Point(31, 106);
-            label25.Name = "label25";
-            label25.Size = new Size(70, 20);
-            label25.TabIndex = 4;
-            label25.Text = "Proje Seç";
             // 
             // MekanikUrunDetayForm
             // 
