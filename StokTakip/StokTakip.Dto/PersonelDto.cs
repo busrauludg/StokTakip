@@ -16,7 +16,7 @@ namespace StokTakip.Dto
         public string Sifre { get; set; } = null!;
         public string SifreTekrari { get; set; } = null!;
         public bool Rol { get; set; }
-        public string? YetkiliSifre { get; set; }
+        public string? YetkiliSifre1 { get; set; }
     }
     
 }

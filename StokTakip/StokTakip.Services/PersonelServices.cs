@@ -1,14 +1,15 @@
 ﻿using Humanizer;
 using StokTakip.Data;
+using StokTakip.Dto;
 using StokTakip.Helpers;
 using StokTakip.Models;
+using StokTakip.StokTakip.Data;
+using StokTakip.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StokTakip.Dto;
-using StokTakip.Validations;
 
 namespace StokTakip.Services
 {
@@ -41,7 +42,7 @@ namespace StokTakip.Services
                 Eposta = dto.Eposta,
                 Sifre = dto.Sifre, // normal personel şifresi ilerde buraya hashhelper yapılıcak 
                 Rol = dto.Rol,
-                YetkiliSifre =  null
+                YetkiliSifre1 =  null
             };
             _services.PrsnlKydt(entity);
         }
@@ -49,13 +50,31 @@ namespace StokTakip.Services
 
         public void YetkiliOlustur(PersonelDto dto)
         {
-            // Rol = true olan personeli bul
-            var personel = _services.GetByRol(); // Repo'da bu metodu oluştur: Rol = true döndürsün
+            //// Rol = true olan personeli bul
+            //var personel = _services.GetByRol(); // Repo'da bu metodu oluştur: Rol = true döndürsün
 
-            if (personel != null)
+            //if (personel != null)
+            //{
+            //    personel.YetkiliSifre1 = dto.YetkiliSifre1; // Hashlenmiş şifreyi ata
+            //    _services.YetkiliEkle(personel); // Repo'da save işlemi
+            //}
+            //// Manuel girilen yetkili şifresini ata 10.11
+            //personel.YetkiliSifre1 = dto.YetkiliSifre1;
+            //_services.YetkiliEkle(personel); // veritabanına kaydet
+
+            using (var context = new StokTakipContext())
             {
-                personel.YetkiliSifre = dto.YetkiliSifre; // Hashlenmiş şifreyi ata
-                _services.YetkiliEkle(personel); // Repo'da save işlemi
+                // Tüm personelleri al
+                var personeller = context.Personels.ToList();
+
+                // Hepsine şifreyi ata
+                foreach (var p in personeller)
+                {
+                    p.YetkiliSifre1 = dto.YetkiliSifre1;
+                }
+
+                // Değişiklikleri kaydet
+                context.SaveChanges();
             }
         }
 

@@ -42,7 +42,7 @@ namespace StokTakip
             {
                 var dto2 = new PersonelDto
                 { 
-                  YetkiliSifre = HashHelper.HashSha256(sifre),
+                  YetkiliSifre1 = HashHelper.HashSha256(sifre),
                 };
 
                 _yetkiliServices.YetkiliOlustur(dto2); // void metod çağır

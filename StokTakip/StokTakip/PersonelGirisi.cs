@@ -73,6 +73,17 @@ namespace StokTakip
         {
             this.MaximizeBox = false;
 
+            using (var context = new StokTakipContext())
+            {
+                var services = new PersonelServices(new PersonelRepository(context));
+
+                if (string.IsNullOrEmpty(services.GetYetkiliSifreHash()))
+                {
+                    var yetkiliForm = new YetkiliSifreForm();
+                    yetkiliForm.ShowDialog();
+                }
+            }
+
         }
     }
 }
