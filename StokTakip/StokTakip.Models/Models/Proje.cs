@@ -18,6 +18,7 @@ public partial class Proje
     public string? Aciklama { get; set; }
 
     public bool Durum { get; set; }
+    public bool PasifMi { get; set; } = true;
 
     public virtual Personel Personel { get; set; } = null!;
 

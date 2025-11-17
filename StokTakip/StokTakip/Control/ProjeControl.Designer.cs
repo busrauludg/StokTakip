@@ -150,7 +150,7 @@
             // 
             // btnProjeEkle
             // 
-            btnProjeEkle.Location = new Point(318, 422);
+            btnProjeEkle.Location = new Point(406, 381);
             btnProjeEkle.Name = "btnProjeEkle";
             btnProjeEkle.Size = new Size(185, 58);
             btnProjeEkle.TabIndex = 14;

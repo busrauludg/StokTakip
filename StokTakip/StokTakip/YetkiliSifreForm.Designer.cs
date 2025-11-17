@@ -31,27 +31,29 @@
             lblYetkiliSifreGiris = new Label();
             tBYetkiliGirisSifre = new TextBox();
             btnPerKaydet = new Button();
+            tBMevcutYetkili = new TextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // lblYetkiliSifreGiris
             // 
             lblYetkiliSifreGiris.AutoSize = true;
-            lblYetkiliSifreGiris.Location = new Point(147, 180);
+            lblYetkiliSifreGiris.Location = new Point(165, 242);
             lblYetkiliSifreGiris.Name = "lblYetkiliSifreGiris";
-            lblYetkiliSifreGiris.Size = new Size(85, 20);
+            lblYetkiliSifreGiris.Size = new Size(116, 20);
             lblYetkiliSifreGiris.TabIndex = 0;
-            lblYetkiliSifreGiris.Text = "Yetkili Şifre:";
+            lblYetkiliSifreGiris.Text = "Yeni Yetkili Şifre:";
             // 
             // tBYetkiliGirisSifre
             // 
-            tBYetkiliGirisSifre.Location = new Point(238, 173);
+            tBYetkiliGirisSifre.Location = new Point(308, 239);
             tBYetkiliGirisSifre.Name = "tBYetkiliGirisSifre";
             tBYetkiliGirisSifre.Size = new Size(178, 27);
             tBYetkiliGirisSifre.TabIndex = 1;
             // 
             // btnPerKaydet
             // 
-            btnPerKaydet.Location = new Point(457, 252);
+            btnPerKaydet.Location = new Point(475, 314);
             btnPerKaydet.Name = "btnPerKaydet";
             btnPerKaydet.Size = new Size(82, 34);
             btnPerKaydet.TabIndex = 2;
@@ -59,11 +61,29 @@
             btnPerKaydet.UseVisualStyleBackColor = true;
             btnPerKaydet.Click += btnPerKaydet_Click;
             // 
+            // tBMevcutYetkili
+            // 
+            tBMevcutYetkili.Location = new Point(308, 157);
+            tBMevcutYetkili.Name = "tBMevcutYetkili";
+            tBMevcutYetkili.Size = new Size(178, 27);
+            tBMevcutYetkili.TabIndex = 4;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(165, 164);
+            label1.Name = "label1";
+            label1.Size = new Size(137, 20);
+            label1.TabIndex = 3;
+            label1.Text = "Mevcut Yetkili Şifre:";
+            // 
             // YetkiliSifreForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(tBMevcutYetkili);
+            Controls.Add(label1);
             Controls.Add(btnPerKaydet);
             Controls.Add(tBYetkiliGirisSifre);
             Controls.Add(lblYetkiliSifreGiris);
@@ -78,5 +98,7 @@
         private Label lblYetkiliSifreGiris;
         private TextBox tBYetkiliGirisSifre;
         private Button btnPerKaydet;
+        private TextBox tBMevcutYetkili;
+        private Label label1;
     }
 }

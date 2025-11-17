@@ -19,6 +19,10 @@ namespace StokTakip
         private readonly StokTakipContext _context;
         private readonly MekanikServices _services;
         private readonly ElektrikServices _elektrikServices;
+
+        // Sınıf seviyesi değişkenler
+        private IEnumerable<StokKarti> mekanikUrunler;
+        private IEnumerable<StokKarti> elektrikUrunler;
         public BolumSec()
         {
             InitializeComponent();
@@ -44,7 +48,7 @@ namespace StokTakip
 
             lVMekanikListesi.Columns.Clear();
             lVMekanikListesi.Columns.Add("Sıra No", 70);
-           // lVMekanikListesi.Columns.Add("Id",0);//pasif yapmak için
+            // lVMekanikListesi.Columns.Add("Id",0);//pasif yapmak için
             lVMekanikListesi.Columns.Add("Ürün Adı", 150);
             lVMekanikListesi.Columns.Add("Kullanılabilir Miktar", 150);
 
@@ -238,8 +242,8 @@ namespace StokTakip
 
 
                 DialogResult onay = MessageBox.Show(
-                    "Bu ürünü pasif hale getirmek istediğinize emin misiniz?",
-                    "Ürünü Pasif Et",
+                    "Bu ürünü silmek istediğinize emin misiniz?",
+                    "Ürünü Sil Et",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
                 );
@@ -260,13 +264,13 @@ namespace StokTakip
 
                     // ListView'den kaldır
                     aktifListe.Items.Remove(secilen);
-                    MessageBox.Show("Ürün pasif hale getirildi. Artık listede görünmeyecek.",
+                    MessageBox.Show("Ürün silindi. Artık listede görünmeyecek.",
                         "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Lütfen pasif hale getirmek istediğiniz ürünü seçin.",
+                MessageBox.Show("Lütfen silmek istediğiniz ürünü seçin.",
                     "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
@@ -276,6 +280,42 @@ namespace StokTakip
 
         private void lVMekanikListesi_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void cMSSagTik_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+        private void ListeDoldur<T>(ListView listView, IEnumerable<T> urunler, Func<T, int?> serbestMiktarFunc)
+        {
+            listView.Items.Clear();
+            int sira = 1;
+
+            foreach (var urun in urunler)
+            {
+                var serbestMiktar = serbestMiktarFunc(urun) ?? 0;
+
+                var lvItem = new ListViewItem(sira.ToString());
+                lvItem.SubItems.Add((urun as dynamic).UrunAdi);
+                lvItem.SubItems.Add(serbestMiktar.ToString());
+
+                lvItem.Tag = (urun as dynamic).StokKartiId;
+                listView.Items.Add(lvItem);
+
+                sira++;
+            }
+        }
+
+        private void btnYenile_Click(object sender, EventArgs e)
+        {
+            // Mekanik listeyi güncelle
+            var mekanikUrunler = _services.GetStokKartiListesi();
+            ListeDoldur(lVMekanikListesi, mekanikUrunler, u => _services.GetStokDurumMekanik(u.StokKartiId)?.SerbestMiktar);
+
+            // Elektrik listeyi güncelle
+            var elektrikUrunler = _elektrikServices.GetStokKartiElektrik();
+            ListeDoldur(lVlElektrikListesi, elektrikUrunler, u => _elektrikServices.GetStokDurumElektrik(u.StokKartiId)?.SerbestMiktar);
 
         }
     }

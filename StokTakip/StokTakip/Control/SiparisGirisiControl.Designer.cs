@@ -205,6 +205,7 @@
             btnSiparisKayit.TabIndex = 18;
             btnSiparisKayit.Text = "Siparişi Kaydet";
             btnSiparisKayit.UseVisualStyleBackColor = true;
+            btnSiparisKayit.Click += btnSiparisKayit_Click;
             // 
             // SiparisGirisiControl
             // 
@@ -231,6 +232,7 @@
             Controls.Add(label1);
             Name = "SiparisGirisiControl";
             Size = new Size(960, 894);
+            Load += SiparisGirisiControl_Load;
             ((System.ComponentModel.ISupportInitialize)nUDSiparisEdilenMiktar).EndInit();
             ResumeLayout(false);
             PerformLayout();

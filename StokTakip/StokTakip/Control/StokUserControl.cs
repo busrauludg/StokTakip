@@ -8,8 +8,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -151,7 +153,7 @@ namespace StokTakip
             if (string.IsNullOrWhiteSpace(tBStokKodu.Text)) eksikAlanlar.Add("Stok Kodu");
             if (!rBElektrik.Checked && !rBMekanik.Checked) eksikAlanlar.Add("Grup Seçimi");
             if (string.IsNullOrWhiteSpace(tBStokBirimi.Text)) eksikAlanlar.Add("Stok Birimi");
-            if (string.IsNullOrWhiteSpace(tBFirmaAdi.Text)) eksikAlanlar.Add("Firma Adı"); 
+            if (string.IsNullOrWhiteSpace(tBFirmaAdi.Text)) eksikAlanlar.Add("Firma Adı");
             if (string.IsNullOrWhiteSpace(tBFirmaKodu.Text)) eksikAlanlar.Add("Firma Kodu");
 
             //if (string.IsNullOrWhiteSpace(tBStnAlmaCari.Text)) eksikAlanlar.Add("Cari Adı");
@@ -173,6 +175,100 @@ namespace StokTakip
                 MessageBox.Show(mesaj, "Eksik Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            // Satın Alma Miktarı (tam sayı)
+            if (!int.TryParse(tBStnAlMiktar.Text, out int satinalmaMiktari) || satinalmaMiktari <= 0)
+            {
+                MessageBox.Show("Satın Alma Miktarı için sadece pozitif tam sayı girin!");
+                return;
+            }
+
+            //// Birim Fiyat (decimal, virgül kabul)
+            //if (!decimal.TryParse(tBStnAlmaBirim.Text, NumberStyles.Number, CultureInfo.GetCultureInfo("tr-TR"), out decimal birimFiyat) || birimFiyat <= 0)
+            //{
+            //    MessageBox.Show("Birim Fiyat için geçerli bir sayı girin (örn: 12,50)!");
+            //    return;
+            //}
+
+            //// Kur (decimal, virgül kabul)
+            //if (!decimal.TryParse(tBStnAlmaKur.Text, NumberStyles.Number, CultureInfo.GetCultureInfo("tr-TR"), out decimal kur) || kur <= 0)
+            //{
+            //    MessageBox.Show("Kur için geçerli bir sayı girin (örn: 1,25)!");
+            //    return;
+            //}
+
+
+            string birimText = tBStnAlmaBirim.Text.Trim();
+
+            // Nokta varsa direkt reddet
+            if (birimText.Contains("."))
+            {
+                MessageBox.Show("Birim fiyat '.' değil ',' ile yazılmalı!");
+                return;
+            }
+
+            // Virgülden önceki ve sonraki kısımları ayırıyoruz
+            string[] parts = birimText.Split(',');
+
+            // Tam sayı kısmı > 3 hane ise reddet
+            if (parts[0].Length == 0 || parts[0].Length > 3)
+            {
+                MessageBox.Show("Birim fiyat 0 ile 999 arasında olmalı!");
+                return;
+            }
+
+            // Virgülden sonra fazlalık varsa reddet
+            if (parts.Length == 2 && parts[1].Length > 2)
+            {
+                MessageBox.Show("Virgülden sonra en fazla 2 basamak olabilir!");
+                return;
+            }
+
+            // 2'den fazla virgül varsa reddet
+            if (parts.Length > 2)
+            {
+                MessageBox.Show("Geçersiz sayı formatı!");
+                return;
+            }
+
+            // Artık güvenle parse edebiliriz
+            decimal birimFiyat = decimal.Parse(birimText.Replace(',', '.'),
+                                               CultureInfo.InvariantCulture);
+
+
+            string kurText = tBStnAlmaKur.Text.Trim();
+
+            if (kurText.Contains("."))
+            {
+                MessageBox.Show("Kur '.' değil ',' ile yazılmalı!");
+                return;
+            }
+
+            string[] p = kurText.Split(',');
+
+            if (p[0].Length == 0 || p[0].Length > 3)
+            {
+                MessageBox.Show("Kur 0 ile 999 arasında olmalı!");
+                return;
+            }
+
+            if (p.Length == 2 && p[1].Length > 2)
+            {
+                MessageBox.Show("Virgülden sonra en fazla 2 basamak olabilir!");
+                return;
+            }
+
+            if (p.Length > 2)
+            {
+                MessageBox.Show("Geçersiz sayı formatı!");
+                return;
+            }
+
+            decimal kur = decimal.Parse(kurText.Replace(',', '.'),
+                                         CultureInfo.InvariantCulture);
+
+
+
 
             // Diğer validasyonlar
             int minStok = (int)nUDMinStok.Value;
@@ -214,20 +310,40 @@ namespace StokTakip
                     return;
                 }
             }
-            int satinalmaMiktari = 0;
+            int satinalmaMiktariK = 0;
             int.TryParse(tBStnAlMiktar.Text, out satinalmaMiktari);
 
 
-            int birimFiyat = 0;
-            int.TryParse(tBStnAlmaBirim.Text, out birimFiyat);
+            int birimFiyatK = 0;
+            int.TryParse(tBStnAlmaBirim.Text, out birimFiyatK);
 
-            int kur = 0;
-            int.TryParse(tBStnAlmaKur.Text, out kur);
+            int kurK = 0;
+            int.TryParse(tBStnAlmaKur.Text, out kurK);
 
             decimal toplamMaliyet = 0;
             decimal.TryParse(tBTopTutar.Text, out toplamMaliyet);
 
+            // ViewModel oluşturma kodundan hemen önce kontrol geliyor
 
+            using (var context = new StokTakipContext())
+            {
+                string stokKodu = tBStokKodu.Text.Trim();
+
+                bool urunZatenVarMi = context.StokKartis
+                    .Any(x => x.StokKodu == stokKodu);
+
+                if (urunZatenVarMi)
+                {
+                    MessageBox.Show(
+                        "Bu stok koduna sahip ürün zaten sistemde kayıtlı!\n\n" +
+                        "Aynı ürünü tekrar ekleyemezsiniz.",
+                        "Hata",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+            }
 
             var kaydet = new StokEkleViewModel
             {
@@ -270,7 +386,7 @@ namespace StokTakip
                 StnAlmaAciklama = tBStnAlmaAciklama.Text,
                 StnAlmaPersonelId = personelId,
 
-                
+
             };
             try
             {

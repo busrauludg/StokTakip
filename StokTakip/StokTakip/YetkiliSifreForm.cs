@@ -32,6 +32,7 @@ namespace StokTakip
 
         private void btnPerKaydet_Click(object sender, EventArgs e)
         {
+            string mevcutSifre = tBMevcutYetkili.Text;
             string sifre=tBYetkiliGirisSifre.Text;
             if (string.IsNullOrEmpty(sifre) || sifre.Length < 6)
             {
@@ -40,12 +41,19 @@ namespace StokTakip
             }
             try
             {
+                // Mevcut şifreyi kontrol et
+                var mevcutHash = _yetkiliServices.GetYetkiliSifreHash();
+                if (mevcutHash != HashHelper.HashSha256(mevcutSifre))
+                {
+                    MessageBox.Show("Mevcut şifre doğru değil.");
+                    return;
+                }
                 var dto2 = new PersonelDto
                 { 
                   YetkiliSifre1 = HashHelper.HashSha256(sifre),
                 };
 
-                _yetkiliServices.YetkiliOlustur(dto2); // void metod çağır
+                _yetkiliServices.YetkiliOlustur(dto2/*dto*/); // void metod çağır
 
                  MessageBox.Show("Yetkili şifre başarıyla kaydedildi.");
                  this.Close();

@@ -61,7 +61,6 @@
             label5 = new Label();
             label4 = new Label();
             cMSPrjListe = new ContextMenuStrip(components);
-            silToolStripMenuItem = new ToolStripMenuItem();
             düzenleToolStripMenuItem = new ToolStripMenuItem();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -372,20 +371,14 @@
             // cMSPrjListe
             // 
             cMSPrjListe.ImageScalingSize = new Size(20, 20);
-            cMSPrjListe.Items.AddRange(new ToolStripItem[] { silToolStripMenuItem, düzenleToolStripMenuItem });
+            cMSPrjListe.Items.AddRange(new ToolStripItem[] { düzenleToolStripMenuItem });
             cMSPrjListe.Name = "cMSPrjListe";
-            cMSPrjListe.Size = new Size(133, 52);
-            // 
-            // silToolStripMenuItem
-            // 
-            silToolStripMenuItem.Name = "silToolStripMenuItem";
-            silToolStripMenuItem.Size = new Size(132, 24);
-            silToolStripMenuItem.Text = "Sil";
+            cMSPrjListe.Size = new Size(211, 56);
             // 
             // düzenleToolStripMenuItem
             // 
             düzenleToolStripMenuItem.Name = "düzenleToolStripMenuItem";
-            düzenleToolStripMenuItem.Size = new Size(132, 24);
+            düzenleToolStripMenuItem.Size = new Size(210, 24);
             düzenleToolStripMenuItem.Text = "Düzenle";
             düzenleToolStripMenuItem.Click += düzenleToolStripMenuItem_Click;
             // 
@@ -416,7 +409,6 @@
         private TabPage tabPage2;
         private ListView lVlSiparisListesi;
         private ContextMenuStrip cMSPrjListe;
-        private ToolStripMenuItem silToolStripMenuItem;
         private ToolStripMenuItem düzenleToolStripMenuItem;
         private Panel panel1;
         private DateTimePicker dTPSiparisTarihi;

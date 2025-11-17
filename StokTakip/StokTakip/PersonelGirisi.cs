@@ -35,7 +35,14 @@ namespace StokTakip
             string pEposta = tBPrsnlEposta.Text;
             string pSifre = tBPrsnlSifre.Text;
 
+            // 1️⃣ Önce boş alan kontrolü
+            if (string.IsNullOrWhiteSpace(tBPrsnlEposta.Text) || string.IsNullOrWhiteSpace(tBPrsnlSifre.Text))
+            {
+                MessageBox.Show("Eposta ve sifre boş bırakılamaz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // 2️⃣ Giriş kontrolü
             PersonelRepository prepo = new PersonelRepository(new StokTakipContext());
             PersonelServices pservices = new PersonelServices(prepo);
 
@@ -52,12 +59,6 @@ namespace StokTakip
                 bolumForm.ShowDialog();
                 this.Hide();
 
-            }
-
-            if (string.IsNullOrWhiteSpace(tBPrsnlEposta.Text) || string.IsNullOrWhiteSpace(tBPrsnlSifre.Text))
-            {
-                MessageBox.Show("Eposta ve sifre boş bırakılamaz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
             }
 
             else

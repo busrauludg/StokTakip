@@ -674,7 +674,7 @@
             // 
             // btnGeri
             // 
-            btnGeri.BackColor = Color.FromArgb(192, 0, 0);
+            btnGeri.BackColor = SystemColors.ActiveBorder;
             btnGeri.Location = new Point(1328, 17);
             btnGeri.Name = "btnGeri";
             btnGeri.Size = new Size(48, 29);

@@ -44,6 +44,7 @@
             btnStokEkle = new Button();
             cMSSagTik = new ContextMenuStrip(components);
             silToolStripMenuItem = new ToolStripMenuItem();
+            btnYenile = new Button();
             tbCBolumSec.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -74,6 +75,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(btnYenile);
             tabPage1.Controls.Add(lVMekanikListesi);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
@@ -195,6 +197,7 @@
             cMSSagTik.Items.AddRange(new ToolStripItem[] { silToolStripMenuItem });
             cMSSagTik.Name = "cMSSagTik";
             cMSSagTik.Size = new Size(95, 28);
+            cMSSagTik.Opening += cMSSagTik_Opening;
             // 
             // silToolStripMenuItem
             // 
@@ -202,6 +205,16 @@
             silToolStripMenuItem.Size = new Size(94, 24);
             silToolStripMenuItem.Text = "Sil";
             silToolStripMenuItem.Click += silToolStripMenuItem_Click;
+            // 
+            // btnYenile
+            // 
+            btnYenile.Location = new Point(1592, 845);
+            btnYenile.Name = "btnYenile";
+            btnYenile.Size = new Size(94, 29);
+            btnYenile.TabIndex = 4;
+            btnYenile.Text = "Yenile";
+            btnYenile.UseVisualStyleBackColor = true;
+            btnYenile.Click += btnYenile_Click;
             // 
             // BolumSec
             // 
@@ -237,5 +250,6 @@
         private Button btnPersonelİslem;
         private ContextMenuStrip cMSSagTik;
         private ToolStripMenuItem silToolStripMenuItem;
+        private Button btnYenile;
     }
 }

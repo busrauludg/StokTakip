@@ -16,5 +16,15 @@ namespace StokTakip
         {
             InitializeComponent();
         }
+
+        private void btnSiparisKayit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SiparisGirisiControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -47,7 +47,10 @@ namespace StokTakip
 
             using (var context = new StokTakipContext())
             {
-                var projeler = context.Projes.ToList();
+                var projeler = context.Projes
+                       .Where(p => !p.PasifMi) // sadece PasifMi = false olanları getir
+                       .ToList();
+
                 lVlPrjListele.Items.Clear();
 
                 int sıra = 1;
@@ -68,212 +71,31 @@ namespace StokTakip
             lVlPrjListele.MouseDown += lVlPrjListele_MouseDown;
 
             // Menü tıklama olayı bağla (ek olarak)
+            //silToolStripMenuItem.Click += silToolStripMenuItem_Click;
+
+
+            // Önce varsa eski event kaldır, sonra ekle
+            silToolStripMenuItem.Click -= silToolStripMenuItem_Click;
             silToolStripMenuItem.Click += silToolStripMenuItem_Click;
 
+            // 🔹 Tarih kontrollerini sadece Load'da ayarlıyoruz
+            AyarlaBugunTarihleri();
+        }
+        private void AyarlaBugunTarihleri()
+        {
+            // Başlangıç tarihi
+            dTPPrjBaslingicT.MinDate = DateTime.Today;
+           // dTPPrjBaslingicT.MaxDate = DateTime.Today;
+            dTPPrjBaslingicT.Value = DateTime.Today;
+           // dTPPrjBaslingicT.ShowUpDown = true; // Takvim açılmaz, sadece bugünü seçebilir
+
+            // Bitiş tarihi
+            dTPBitisT.MinDate = DateTime.Today;
+          //  dTPBitisT.MaxDate = DateTime.Today;
+            dTPBitisT.Value = DateTime.Today;
+           // dTPBitisT.ShowUpDown = true;
         }
 
-        //private void lVlPrjListele_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    //if (lVlPrjListele.SelectedItems.Count == 0) return;
-
-        //    //int projeId = (int)lVlPrjListele.SelectedItems[0].Tag;
-
-        //    //using (var context = new StokTakipContext())
-        //    //{
-        //    //    var proje = context.Projes
-        //    //                       .Include(p => p.Personel)
-        //    //                       .FirstOrDefault(p => p.ProjeId == projeId);
-
-        //    //    if (proje != null)
-        //    //    {
-        //    //        tBProjeAdi.Text = proje.ProjeAdi;
-        //    //        dTPPrjBaslingicT.Text = proje.BaslangicTarihi.ToString("dd.MM.yyyy");
-        //    //        dTPBitisT.Text = proje.BitisTarihi.ToString("dd.MM.yyyy");
-        //    //        tBPrjPersonel.Text = proje.Personel.Ad;
-        //    //        tBPrjAciklama.Text = proje.Aciklama;
-        //    //        cBPrjDurum.SelectedItem = proje.Durum ? "Aktif" : "Pasif";
-
-        //    //        // Kullanılan ürünleri listele
-        //    //        lVlKullanilanUrunler.Items.Clear();
-        //    //        var urunler = context.ProjedeKullanilanUrunlers
-        //    //                             .Include(pu => pu.StokKarti)
-        //    //                             .Where(pu => pu.ProjeId == projeId)
-        //    //                             .ToList();
-
-        //    //        decimal toplamMaliyet = 0;
-
-        //    //        foreach (var pu in urunler)
-        //    //        {
-        //    //            // Ürün adı ve miktarı sadece UI'ya eklenecek
-        //    //            var item = new ListViewItem(pu.StokKarti.UrunAdi);
-        //    //            item.SubItems.Add(pu.Miktar.ToString());
-        //    //            lVlKullanilanUrunler.Items.Add(item);
-
-        //    //            // Satın alma tablosundan birim fiyat ve kur değerlerini al
-        //    //            var satinAlma = context.SatinAlmas
-        //    //                .FirstOrDefault(sa => sa.StokKartiId == pu.StokKartiId);
-
-        //    //            decimal birimFiyat = satinAlma?.BirimFiyat ?? 0;
-        //    //            decimal kur = satinAlma?.Kur ?? 1;
-        //    //            decimal miktar = pu.Miktar;
-
-        //    //            // Ürün toplam maliyeti
-        //    //            decimal urunMaliyeti = birimFiyat * kur * miktar;
-
-        //    //            // 🔹 Maliyeti tabloya yaz
-        //    //            pu.Maliyet = urunMaliyeti;
-
-        //    //            toplamMaliyet += urunMaliyeti;
-        //    //        }
-
-        //    //        // 🔹 Veritabanına değişiklikleri kaydet
-        //    //        context.SaveChanges();
-
-        //    //        // 🔹 Toplam maliyeti textbox’a yaz
-        //    //        tBToplamMaliyet.Text = toplamMaliyet.ToString("N2");
-        //    //    }
-        //    //}
-
-
-        //    if (lVlPrjListele.SelectedItems.Count == 0) return;
-
-        //    int projeId = (int)lVlPrjListele.SelectedItems[0].Tag;
-
-        //    using (var context = new StokTakipContext())
-        //    {
-        //        var proje = context.Projes
-        //                           .Include(p => p.Personel)
-        //                           .FirstOrDefault(p => p.ProjeId == projeId);
-
-        //        if (proje != null)
-        //        {
-        //            // 🔹 Proje bilgilerini doldur
-        //            tBProjeAdi.Text = proje.ProjeAdi;
-        //            dTPPrjBaslingicT.Text = proje.BaslangicTarihi.ToString("dd.MM.yyyy");
-        //            dTPBitisT.Text = proje.BitisTarihi.ToString("dd.MM.yyyy");
-        //            tBPrjPersonel.Text = proje.Personel.Ad;
-        //            tBPrjAciklama.Text = proje.Aciklama;
-        //            cBPrjDurum.SelectedItem = proje.Durum ? "Aktif" : "Pasif";
-
-        //            // 🔹 Kullanılan ürünleri getir
-        //            lVlKullanilanUrunler.Items.Clear();
-        //            var urunler = context.ProjedeKullanilanUrunlers
-        //                                 .Include(pu => pu.StokKarti)
-        //                                 .Where(pu => pu.ProjeId == projeId)
-        //                                 .ToList();
-
-        //            decimal toplamMaliyet = 0;
-
-        //            foreach (var pu in urunler)
-        //            {
-        //                // Ürünleri listview'e ekle
-        //                var item = new ListViewItem(pu.StokKarti.UrunAdi);
-        //                item.SubItems.Add(pu.Miktar.ToString());
-        //                lVlKullanilanUrunler.Items.Add(item);
-
-        //                // Satın alma verilerini al
-        //                var satinAlma = context.SatinAlmas
-        //                    .FirstOrDefault(sa => sa.StokKartiId == pu.StokKartiId);
-
-        //                decimal birimFiyat = satinAlma?.BirimFiyat ?? 0;
-        //                decimal kur = satinAlma?.Kur ?? 1;
-        //                decimal miktar = pu.Miktar;
-
-        //                // Ürün maliyeti hesapla
-        //                decimal urunMaliyeti = birimFiyat * kur * miktar;
-        //                toplamMaliyet += urunMaliyeti;
-        //            }
-
-        //            // 🔹 Toplam maliyeti textbox'a yaz
-        //            tBToplamMaliyet.Text = toplamMaliyet.ToString("N2");
-
-        //            // 🔹 Toplam maliyeti veritabanındaki Maliyet sütununa kaydet
-        //            foreach (var pu in urunler)
-        //            {
-        //                pu.Maliyet = toplamMaliyet;
-        //            }
-
-        //            // 🔹 Değişiklikleri kaydet
-        //            context.SaveChanges();
-        //        }
-        //    }
-
-        //}
-        //private bool isLoading = false;
-
-        //private void lVlPrjListele_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (isLoading) return; // event tekrar tetiklenirse çık
-        //    isLoading = true;
-
-        //    try
-        //    {
-        //        if (lVlPrjListele.SelectedItems.Count == 0) return;
-
-        //        int projeId = (int)lVlPrjListele.SelectedItems[0].Tag;
-
-        //        using (var context = new StokTakipContext())
-        //        {
-        //            var proje = context.Projes
-        //                               .Include(p => p.Personel)
-        //                               .FirstOrDefault(p => p.ProjeId == projeId);
-
-        //            if (proje != null)
-        //            {
-        //                // 🔹 Proje bilgilerini UI'ya yaz
-        //                tBProjeAdi.Text = proje.ProjeAdi;
-        //                dTPPrjBaslingicT.Text = proje.BaslangicTarihi.ToString("dd.MM.yyyy");
-        //                dTPBitisT.Text = proje.BitisTarihi.ToString("dd.MM.yyyy");
-        //                tBPrjPersonel.Text = proje.Personel.Ad;
-        //                tBPrjAciklama.Text = proje.Aciklama;
-        //                cBPrjDurum.SelectedItem = proje.Durum ? "Aktif" : "Pasif";
-
-        //                // 🔹 Kullanılan ürünleri listele
-        //                lVlKullanilanUrunler.Items.Clear();
-        //                var urunler = context.ProjedeKullanilanUrunlers
-        //                                     .Include(pu => pu.StokKarti)
-        //                                     .Where(pu => pu.ProjeId == projeId)
-        //                                     .ToList();
-
-        //                decimal toplamMaliyet = 0;
-
-        //                foreach (var pu in urunler)
-        //                {
-        //                    // Ürünleri listele
-        //                    var item = new ListViewItem(pu.StokKarti.UrunAdi);
-        //                    item.SubItems.Add(pu.Miktar.ToString());
-        //                    lVlKullanilanUrunler.Items.Add(item);
-
-        //                    // Satın alma bilgilerini çek
-        //                    var satinAlma = context.SatinAlmas
-        //                        .FirstOrDefault(sa => sa.StokKartiId == pu.StokKartiId);
-
-        //                    decimal birimFiyat = satinAlma?.BirimFiyat ?? 0;
-        //                    decimal kur = satinAlma?.Kur ?? 1;
-        //                    decimal miktar = pu.Miktar;
-
-        //                    // Ürün maliyeti (her ürün için ayrı)
-        //                    decimal urunMaliyeti = birimFiyat * kur * miktar;
-
-        //                    // 🔹 Her ürünün kendi maliyetini tabloya yaz
-        //                    pu.Maliyet = urunMaliyeti;
-
-        //                    toplamMaliyet += urunMaliyeti;
-        //                }
-
-        //                // 🔹 Toplam maliyeti textbox’a yaz
-        //                tBToplamMaliyet.Text = toplamMaliyet.ToString("N2");
-
-        //                // 🔹 Veritabanına değişiklikleri kaydet
-        //                context.SaveChanges();
-        //            }
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        isLoading = false; // tekrar çalışmasına izin ver
-        //    }
-        //}
 
         private bool isLoading = false;
 
@@ -296,10 +118,8 @@ namespace StokTakip
 
                     if (proje != null)
                     {
-                        // 🔹 Proje bilgilerini doldur
-                        tBProjeAdi.Text = proje.ProjeAdi;
-                        dTPPrjBaslingicT.Text = proje.BaslangicTarihi.ToString("dd.MM.yyyy");
-                        dTPBitisT.Text = proje.BitisTarihi.ToString("dd.MM.yyyy");
+                       
+
                         tBPrjPersonel.Text = proje.Personel.Ad;
                         tBPrjAciklama.Text = proje.Aciklama;
                         cBPrjDurum.SelectedItem = proje.Durum ? "Aktif" : "Pasif";
@@ -494,7 +314,7 @@ namespace StokTakip
                 // 🔹 Aktif proje kontrolü
                 if (proje.Durum)
                 {
-                    MessageBox.Show("Aktif projeler silinemez! Lütfen önce projeyi pasif hale getirin.",
+                    MessageBox.Show("Aktif projeler pasif hale getirilmeden değiştirilemez!",
                                     "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -505,10 +325,11 @@ namespace StokTakip
 
                 if (sonuc == DialogResult.Yes)
                 {
-                    context.Projes.Remove(proje);
+                    // ❌ Silme yerine PasifMi = true
+                    proje.PasifMi = true;
                     context.SaveChanges();
 
-                    // ListView'den de kaldır
+                    // ListView'den kaldır
                     lVlPrjListele.Items.Remove(lVlPrjListele.SelectedItems[0]);
 
                     MessageBox.Show("Proje başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);

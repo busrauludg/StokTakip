@@ -38,7 +38,7 @@ namespace StokTakip.Validations
                 errors.Add("Şifre en az 6 karakter olmalı.");
             if (!dto.Sifre.Any(char.IsUpper))
                 errors.Add("Şifre en az 1 büyük harf içermeli.");
-            if (!dto.Sifre.Any(ch => "!@#$%^&*".Contains(ch)))
+            if (!dto.Sifre.Any(ch => "!@#$%^&*+-/".Contains(ch)))
                 errors.Add("Şifre en az 1 özel karakter içermeli.");
 
 

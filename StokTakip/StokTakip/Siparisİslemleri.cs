@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -52,7 +53,9 @@ namespace StokTakip
             lVlSiparisListesi.MouseUp += lVlSiparisListesi_MouseUp;
 
             lVlSiparisListesi.Dock = DockStyle.Fill;
-
+            // 🔹 17.11 BURASI EKLENDİ: Birim Fiyat ve Kur için sadece sayı ve ',' girilebilir
+            //tBBirimFiyat.KeyPress += DecimalTextBox_KeyPress;
+            //tBKur.KeyPress += DecimalTextBox_KeyPress;
 
             // Verileri çek ve ekle
             using (var context = new StokTakipContext())
@@ -74,8 +77,6 @@ namespace StokTakip
 
                 foreach (var s in siparisler)
                 {
-
-
                     var urun = context.StokKartis.Find(s.StokKartiId);
 
                     // Ürünün grup adını al
@@ -114,65 +115,169 @@ namespace StokTakip
                     // BURASI EKLENDİ: Her satıra sipariş ID'yi Tag olarak ata
                     item.Tag = s.SiparisId;
 
-                    lVlSiparisListesi.Items.Add(item);
+                    //17.11 🔹 BURASI EKLENDİ: Tamamlanan siparişleri gri italik yap ve alttan başlasın
+                    // 🔹 DEVAM EDENLER ÜSTTE, TAMAMLANANLAR ALTA
+                    if (s.GelenMiktar >= s.Miktar)
+                    {
+                        item.ForeColor = Color.Gray;
+                        item.Font = new Font(lVlSiparisListesi.Font, FontStyle.Italic);
+
+                        // Altına ekle
+                        lVlSiparisListesi.Items.Add(item);
+                    }
+                    else
+                    {
+                        item.ForeColor = Color.Black;
+                        item.Font = lVlSiparisListesi.Font;
+
+                        // Üste ekle
+                        lVlSiparisListesi.Items.Insert(0, item);
+                    }
+
+
                 }
+
+                using (var liste = new StokTakipContext())
+                {
+                    var urunler = liste.StokKartis
+                                     .Select(u => new { u.StokKartiId, u.UrunAdi })
+                                     .ToList();
+
+                    cBSiparisAdi.DisplayMember = "UrunAdi";
+                    cBSiparisAdi.ValueMember = "StokKartiId";
+                    cBSiparisAdi.DataSource = urunler;
+
+                    // Otomatik tamamlama özelliği
+                    cBSiparisAdi.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    cBSiparisAdi.AutoCompleteSource = AutoCompleteSource.ListItems;
+                }
+
+                //sipariş girişi 
+                // Para birimi comboBox(sipariş girişi)
+                cBParaBirimi.Items.AddRange(new string[] { "Dolar", "TL", "Euro" });
+
+                cBParaBirimi.SelectedIndex = 0;
+
+                // TL seçilirse kur textbox pasif, diğerlerinde aktif
+                cBParaBirimi.SelectedIndexChanged += (s, ev) =>
+                {
+                    if (cBParaBirimi.SelectedItem?.ToString() == "TL")
+                    {
+                        tBKur.Text = "1";
+                        tBKur.Enabled = false;
+                    }
+                    else
+                    {
+                        tBKur.Text = "";
+                        tBKur.Enabled = true;
+                    }
+                };
+                // 🔹 BURASI EKLENDİ: Kur ve Birim Fiyat inputları sadece geçerli karakter kabul eder
+                //tBKur.KeyPress += (s, e) =>
+                //{
+                //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+                //    {
+                //        e.Handled = true;
+                //        return;
+                //    }
+                //    if (e.KeyChar == ',' && tBKur.Text.Contains(',')) e.Handled = true;
+                //};
+                //tBKur.Leave += (s, e) =>
+                //{
+                //    string text = tBKur.Text.Replace('.', ',');
+                //    if (string.IsNullOrWhiteSpace(text)) return;
+
+                //    // 1-3 basamak tam sayı + isteğe bağlı 2 ondalık
+                //    if (!Regex.IsMatch(text, @"^\d{1,3}(,\d{1,2})?$"))
+                //    {
+                //        MessageBox.Show("Kur 0–999,99 arası olmalı. Lütfen kontrol edin!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //        tBKur.Focus();
+                //        return;
+                //    }
+                //};
+
+                // 🔹 BURASI EKLENDİ: Kur ve Birim Fiyat inputları sadece geçerli karakter kabul eder
+                tBKur.KeyPress += (s, e) =>
+                {
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                    if (e.KeyChar == ',' && tBKur.Text.Contains(',')) e.Handled = true;
+                };
+                tBKur.Leave += (s, e) =>
+                {
+                    string text = tBKur.Text.Replace('.', ',');
+                    if (string.IsNullOrWhiteSpace(text)) return;
+
+                    // 1-3 basamak tam sayı + isteğe bağlı 2 ondalık
+                    if (!Regex.IsMatch(text, @"^\d{1,3}(,\d{1,2})?$"))
+                    {
+                        MessageBox.Show("Kur 0–999,99 arası olmalı. Lütfen kontrol edin!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        tBKur.Focus();
+                        return;
+                    }
+                };
+
+                // 🔹 BURASI EKLENDİ: Birim Fiyat kontrolü (Kur ile aynı mantık)
+                tBBirimFiyat.KeyPress += (s, e) =>
+                {
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+                        e.Handled = true;
+
+                    if (e.KeyChar == ',' && tBBirimFiyat.Text.Contains(',')) e.Handled = true;
+                };
+                tBBirimFiyat.Leave += (s, e) =>
+                {
+                    string text = tBBirimFiyat.Text.Replace('.', ',');
+                    if (string.IsNullOrWhiteSpace(text)) return;
+
+                    // 1-3 basamak tam sayı + isteğe bağlı 2 ondalık
+                    if (!Regex.IsMatch(text, @"^\d{1,3}(,\d{1,2})?$"))
+                    {
+                        MessageBox.Show("Birim Fiyat 0–999,99 arası olmalı. Lütfen kontrol edin!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        tBBirimFiyat.Focus();
+                        return;
+                    }
+                };
+
             }
 
             using (var liste = new StokTakipContext())
-            {
-                var urunler = liste.StokKartis
-                                 .Select(u => new { u.StokKartiId, u.UrunAdi })
-                                 .ToList();
-
-                cBSiparisAdi.DisplayMember = "UrunAdi";
-                cBSiparisAdi.ValueMember = "StokKartiId";
-                cBSiparisAdi.DataSource = urunler;
-
-                // Otomatik tamamlama özelliği
-                cBSiparisAdi.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                cBSiparisAdi.AutoCompleteSource = AutoCompleteSource.ListItems;
-            }
-
-            //sipariş girişi 
-            // Para birimi comboBox(sipariş girişi)
-            cBParaBirimi.Items.AddRange(new string[] { "Dolar", "TL", "Euro" });
-
-            cBParaBirimi.SelectedIndex = 0;
-
-            // TL seçilirse kur textbox pasif, diğerlerinde aktif
-            cBParaBirimi.SelectedIndexChanged += (s, ev) =>
-            {
-                if (cBParaBirimi.SelectedItem?.ToString() == "TL")
                 {
-                    tBKur.Text = "1";
-                    tBKur.Enabled = false;
-                }
-                else
-                {
-                    tBKur.Text = "";
-                    tBKur.Enabled = true;
-                }
-            };
-            using (var liste = new StokTakipContext())
-            {
-                var urunler = liste.SatinAlmas
-                                   .Include(s => s.StokKarti)
-                                   .Select(s => s.StokKarti)
-                                   .Where(u => u != null)
-                                   .Distinct()
-                                   .Select(u => new { u.StokKartiId, u.UrunAdi })
-                                   .ToList();
+                    var urunler = liste.SatinAlmas
+                                       .Include(s => s.StokKarti)
+                                       .Select(s => s.StokKarti)
+                                       .Where(u => u != null)
+                                       .Distinct()
+                                       .Select(u => new { u.StokKartiId, u.UrunAdi })
+                                       .ToList();
 
-                cBUrunAra.DisplayMember = "UrunAdi";
-                cBUrunAra.ValueMember = "StokKartiId";
-                cBUrunAra.DataSource = urunler;
+                    cBUrunAra.DisplayMember = "UrunAdi";
+                    cBUrunAra.ValueMember = "StokKartiId";
+                    cBUrunAra.DataSource = urunler;
 
-                cBUrunAra.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                cBUrunAra.AutoCompleteSource = AutoCompleteSource.ListItems;
+                    cBUrunAra.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    cBUrunAra.AutoCompleteSource = AutoCompleteSource.ListItems;
+                }
+
+
             }
+        
+        //// 🔹 YARDIMCI METOT: Sadece rakam ve ',' girilebilsin
+        //private void DecimalTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+        //        e.Handled = true;
 
+        //    TextBox tb = sender as TextBox;
+        //    if (e.KeyChar == ',' && tb != null && tb.Text.Contains(","))
+        //        e.Handled = true;
+        //}
 
-        }
+       
+
         private void lVlSiparisListesi_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -417,7 +522,7 @@ namespace StokTakip
         private void btnUrunAra_Click(object sender, EventArgs e)
         {
         }
-
+        // Ürün arama listviewi
         private void btnUrunAra_Click_1(object sender, EventArgs e)
         {
             if (cBUrunAra.SelectedValue == null)
@@ -465,14 +570,85 @@ namespace StokTakip
                     item.SubItems.Add(grupAd);
 
                     item.Tag = s.SiparisId;
+
+                    // 🔹 RENK VE FONT AYARI
+                    if (s.GelenMiktar >= s.Miktar)
+                    {
+                        item.ForeColor = Color.Gray;
+                        item.Font = new Font(lVlSiparisListesi.Font, FontStyle.Italic);
+                    }
+                    else
+                    {
+                        item.ForeColor = Color.Black;
+                        item.Font = new Font(lVlSiparisListesi.Font, FontStyle.Regular);
+                    }
+
                     lVlSiparisListesi.Items.Add(item);
                 }
 
                 if (siparisler.Count == 0)
                     MessageBox.Show("Bu ürüne ait sipariş bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
         }
+
+        //private void btnUrunAra_Click_1(object sender, EventArgs e)
+        //{
+        //    if (cBUrunAra.SelectedValue == null)
+        //    {
+        //        MessageBox.Show("Lütfen bir ürün seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+        //    int secilenUrunId = Convert.ToInt32(cBUrunAra.SelectedValue);
+
+        //    using (var ctx = new StokTakipContext())
+        //    {
+        //        var siparisler = ctx.SatinAlmas
+        //            .Include(s => s.Personel)
+        //            .Include(s => s.StokKarti)
+        //            .Where(s => s.StokKartiId == secilenUrunId)
+        //            .OrderByDescending(s => s.SiparisTarihi)
+        //            .ToList();
+
+        //        lVlSiparisListesi.Items.Clear();
+
+        //        foreach (var s in siparisler)
+        //        {
+        //            var urun = s.StokKarti;
+        //            string grupAd = "";
+        //            if (urun?.GrupId != null)
+        //            {
+        //                var grup = ctx.Gruplars.Find(urun.GrupId);
+        //                grupAd = grup?.GrupAdi ?? "";
+        //            }
+
+        //            ListViewItem item = new ListViewItem(s.SiparisTarihi.ToString("dd.MM.yyyy"));
+        //            item.SubItems.Add(s.CariAdi);
+        //            item.SubItems.Add(urun?.UrunAdi ?? "");
+        //            item.SubItems.Add(s.Miktar.ToString());
+        //            item.SubItems.Add(s.GelenMiktar.ToString());
+        //            item.SubItems.Add(s.BirimFiyat.ToString());
+        //            item.SubItems.Add(s.Kur.ToString());
+        //            item.SubItems.Add(s.ParaBirimi);
+        //            item.SubItems.Add(s.Personel?.Ad ?? "");
+
+        //            string durum = s.GelenMiktar == 0 ? "Beklemede" :
+        //                           (s.GelenMiktar >= s.Miktar ? "Geldi" : "Kısmi Geldi");
+        //            item.SubItems.Add(durum);
+        //            item.SubItems.Add(grupAd);
+
+        //            item.Tag = s.SiparisId;
+
+
+
+        //            lVlSiparisListesi.Items.Add(item);
+        //        }
+
+        //        if (siparisler.Count == 0)
+        //            MessageBox.Show("Bu ürüne ait sipariş bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        //    }
+        //}
 
 
     }
