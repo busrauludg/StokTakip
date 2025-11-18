@@ -32,7 +32,7 @@
             tBYetkiliGirisSifre = new TextBox();
             btnPerKaydet = new Button();
             tBMevcutYetkili = new TextBox();
-            label1 = new Label();
+            lblMevcutSifre = new Label();
             SuspendLayout();
             // 
             // lblYetkiliSifreGiris
@@ -68,14 +68,14 @@
             tBMevcutYetkili.Size = new Size(178, 27);
             tBMevcutYetkili.TabIndex = 4;
             // 
-            // label1
+            // lblMevcutSifre
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(165, 164);
-            label1.Name = "label1";
-            label1.Size = new Size(137, 20);
-            label1.TabIndex = 3;
-            label1.Text = "Mevcut Yetkili Şifre:";
+            lblMevcutSifre.AutoSize = true;
+            lblMevcutSifre.Location = new Point(165, 164);
+            lblMevcutSifre.Name = "lblMevcutSifre";
+            lblMevcutSifre.Size = new Size(137, 20);
+            lblMevcutSifre.TabIndex = 3;
+            lblMevcutSifre.Text = "Mevcut Yetkili Şifre:";
             // 
             // YetkiliSifreForm
             // 
@@ -83,12 +83,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tBMevcutYetkili);
-            Controls.Add(label1);
+            Controls.Add(lblMevcutSifre);
             Controls.Add(btnPerKaydet);
             Controls.Add(tBYetkiliGirisSifre);
             Controls.Add(lblYetkiliSifreGiris);
             Name = "YetkiliSifreForm";
             Text = "YetkiliSifreForm";
+            Load += YetkiliSifreForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -99,6 +100,6 @@
         private TextBox tBYetkiliGirisSifre;
         private Button btnPerKaydet;
         private TextBox tBMevcutYetkili;
-        private Label label1;
+        private Label lblMevcutSifre;
     }
 }
