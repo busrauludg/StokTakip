@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StokTakip.Helpers;
 using StokTakip.Models;
 using StokTakip.StokTakip.Data;
 using System;
@@ -134,7 +135,11 @@ namespace StokTakip
                         lVlSiparisListesi.Items.Insert(0, item);
                     }
 
+                    // 🔹 Personel TextBox'ı readonly ve otomatik kullanıcı adı
+                    tBSiparisiGirenPersonel.ReadOnly = true;
 
+                    // Giriş yapan kullanıcıyı ata (senin kullanıcı yönetimine göre değiştir)
+                    tBSiparisiGirenPersonel.Text = GirisYapanKullanici.Ad; // veya Environment.UserName gibi
                 }
 
                 using (var liste = new StokTakipContext())

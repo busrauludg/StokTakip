@@ -83,7 +83,9 @@ public partial class StokTakipContext : DbContext
                 .HasForeignKey(d => d.PersonelId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Proje_Personel");
-            entity.HasQueryFilter(p => !p.PasifMi);
+            entity.HasQueryFilter(p => p.PasifMi); // PasifMi = true olanları getir
+
+
 
         });
 

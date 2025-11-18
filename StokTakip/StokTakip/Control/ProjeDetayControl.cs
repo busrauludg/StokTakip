@@ -48,8 +48,10 @@ namespace StokTakip
             using (var context = new StokTakipContext())
             {
                 var projeler = context.Projes
-                       .Where(p => !p.PasifMi) // sadece PasifMi = false olanları getir
-                       .ToList();
+                   .Where(p => p.PasifMi==true) // sadece PasifMi = true olanları getir
+                   .OrderBy(p => p.ProjeAdi)
+                   .ToList();
+
 
                 lVlPrjListele.Items.Clear();
 
@@ -118,8 +120,16 @@ namespace StokTakip
 
                     if (proje != null)
                     {
-                       
+                        // Proje detaylarını yüklerken textbox'ları readonly yap
+                        tBProjeAdi.ReadOnly = true;
+                        tBPrjPersonel.ReadOnly = true;
+                        tBPrjAciklama.ReadOnly = true;
+                        tBToplamMaliyet.ReadOnly = true;
 
+                        // ComboBox tamamen kilitlensin
+                        cBPrjDurum.Enabled = false;
+
+                        tBProjeAdi.Text = proje.ProjeAdi;
                         tBPrjPersonel.Text = proje.Personel.Ad;
                         tBPrjAciklama.Text = proje.Aciklama;
                         cBPrjDurum.SelectedItem = proje.Durum ? "Aktif" : "Pasif";
@@ -326,7 +336,7 @@ namespace StokTakip
                 if (sonuc == DialogResult.Yes)
                 {
                     // ❌ Silme yerine PasifMi = true
-                    proje.PasifMi = true;
+                    proje.PasifMi =false;//bu aslında false olucak cünkü ben önceden veritabanında bir mantık hatası yapmışım onu cözdüm şimdi 
                     context.SaveChanges();
 
                     // ListView'den kaldır

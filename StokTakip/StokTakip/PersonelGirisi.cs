@@ -53,6 +53,7 @@ namespace StokTakip
                 // Giriş yapan personeli al 08.10.2025
                 var girisYapanKullanici = pservices.GetByEposta(pEposta);
                 YetkiliKontrol.Rol = girisYapanKullanici.Rol; // Rolü sakla
+                GirisYapanKullanici.Ad = girisYapanKullanici.Ad;//adı al 
 
 
                 var bolumForm = new BolumSec();

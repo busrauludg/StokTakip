@@ -1,4 +1,5 @@
 ﻿using StokTakip.Data;
+using StokTakip.Helpers;
 using StokTakip.Models;
 using StokTakip.Services;
 using StokTakip.StokTakip.Data;
@@ -136,12 +137,28 @@ namespace StokTakip
             dTPBaslangic.MinDate = DateTime.Today;
             dTPBitisTarihi.MinDate = DateTime.Today.AddDays(1);
 
+            // 👇 Personel textbox sadece okunabilir ve değeri atanıyor
+            tBPersonelId.ReadOnly = true;
+            tBPersonelId.Text = GirisYapanKullanici.Ad;
+
             using (var context = new StokTakipContext())
             {
-                // Projeleri getir
-                cBProjSec.DataSource = context.Projes.ToList();
+                cBProjSec.DataSource = context.Projes
+                      .Where(p => p.PasifMi) // sadece PasifMi = true olanlar
+                      .OrderBy(p => p.ProjeAdi)
+                      .ToList();
                 cBProjSec.DisplayMember = "ProjeAdi";
                 cBProjSec.ValueMember = "ProjeId";
+                cBProjSec.SelectedIndex = -1;
+
+                //cBProjSec.DisplayMember = "ProjeAdi";
+                //cBProjSec.ValueMember = "ProjeId";
+                //cBProjSec.SelectedIndex = -1;
+
+                //// Projeleri getir
+                //cBProjSec.DataSource = context.Projes.ToList();
+                //cBProjSec.DisplayMember = "ProjeAdi";
+                //cBProjSec.ValueMember = "ProjeId";
 
                 // Ürünleri getir
                 //cBUrunSec.DataSource = context.StokKartis.ToList();
@@ -411,10 +428,16 @@ namespace StokTakip
         {
             using (var context = new StokTakipContext())
             {
+                //    var aktifProjeler = context.Projes
+                //                                .Where(p => p.Durum) // sadece aktif olanlar
+                //                                .OrderBy(p => p.ProjeAdi)
+                //                                .ToList();
+
                 var aktifProjeler = context.Projes
-                                            .Where(p => p.Durum) // sadece aktif olanlar
-                                            .OrderBy(p => p.ProjeAdi)
-                                            .ToList();
+                            .Where(p => p.Durum && p.PasifMi) // Durum = true ve PasifMi = true olanlar
+                            .OrderBy(p => p.ProjeAdi)
+                            .ToList();
+
 
                 cBProjSec.DataSource = aktifProjeler;
                 cBProjSec.DisplayMember = "ProjeAdi"; // combobox'ta gözükecek

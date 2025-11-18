@@ -1,4 +1,5 @@
 ﻿using StokTakip.Data;
+using StokTakip.Helpers;
 using StokTakip.Models;
 using StokTakip.Services;
 using StokTakip.StokTakip.Data;
@@ -127,6 +128,19 @@ namespace StokTakip
                     tBStnAlmaKur.Enabled = true;
                 }
             };
+
+            //// Giriş yapan personelin adı otomatik doldurulsun
+            //tBPersonelId.Text = GirisYapanKullanici.Ad;
+            //tBStnAlmaPersonelId.Text = GirisYapanKullanici.Ad;
+
+
+            // Giriş yapan personelin adı otomatik doldurulsun
+            tBPersonelId.Text = GirisYapanKullanici.Ad;
+            tBStnAlmaPersonelId.Text = GirisYapanKullanici.Ad;
+
+            // Kullanıcı adı artık değiştirilemez olsun
+            tBPersonelId.ReadOnly = true;
+            tBStnAlmaPersonelId.ReadOnly = true;
 
             //cBProjeSec.DataSource = _stokEkleServices.GetProjeler();
             //cBProjeSec.DisplayMember = "ProjeAdi";
@@ -299,14 +313,25 @@ namespace StokTakip
             int personelId = 0;
             using (var context = new StokTakipContext())
             {
+                //var personel = context.Personels
+                //    .FirstOrDefault(p => p.Ad == tBPersonelId.Text.Trim()
+                //             || p.Ad == tBStnAlmaPersonelId.Text.Trim());
+                //if (personel != null)
+                //    personelId = personel.PersonelId;
+                //else
+                //{
+                //    MessageBox.Show("Girilen ada ait personel bulunamadı!");
+                //    return;
+                //}
+
+
                 var personel = context.Personels
-                    .FirstOrDefault(p => p.Ad == tBPersonelId.Text.Trim()
-                             || p.Ad == tBStnAlmaPersonelId.Text.Trim());
+                     .FirstOrDefault(p => p.Ad == GirisYapanKullanici.Ad);
                 if (personel != null)
                     personelId = personel.PersonelId;
                 else
                 {
-                    MessageBox.Show("Girilen ada ait personel bulunamadı!");
+                    MessageBox.Show("Giriş yapan kullanıcı veritabanında bulunamadı!");
                     return;
                 }
             }
