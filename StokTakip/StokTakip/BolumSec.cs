@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace StokTakip
 {
     public partial class BolumSec : Form
@@ -33,8 +34,7 @@ namespace StokTakip
 
         private void label1_Click(object sender, EventArgs e)
         {
-            AnaSayfa anaSayf = new AnaSayfa();
-            anaSayf.ShowDialog();
+
         }
 
         private void BolumSec_Load(object sender, EventArgs e)
@@ -126,6 +126,10 @@ namespace StokTakip
             lVlElektrikListesi.ContextMenuStrip = cMSSagTik;
 
             lVMekanikListesi.ContextMenuStrip = cMSSagTik;
+
+
+        
+
         }
 
         private void lVMekanikListesi_DoubleClick(object sender, EventArgs e)
@@ -316,6 +320,11 @@ namespace StokTakip
             // Elektrik listeyi güncelle
             var elektrikUrunler = _elektrikServices.GetStokKartiElektrik();
             ListeDoldur(lVlElektrikListesi, elektrikUrunler, u => _elektrikServices.GetStokDurumElektrik(u.StokKartiId)?.SerbestMiktar);
+
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
 
         }
     }

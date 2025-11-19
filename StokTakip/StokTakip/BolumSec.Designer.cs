@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            label1 = new Label();
             tbCBolumSec = new TabControl();
             tabPage1 = new TabPage();
+            btnYenile = new Button();
             lVMekanikListesi = new ListView();
             tabPage2 = new TabPage();
             lVlElektrikListesi = new ListView();
@@ -44,7 +44,6 @@
             btnStokEkle = new Button();
             cMSSagTik = new ContextMenuStrip(components);
             silToolStripMenuItem = new ToolStripMenuItem();
-            btnYenile = new Button();
             tbCBolumSec.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -52,22 +51,12 @@
             cMSSagTik.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(846, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(75, 20);
-            label1.TabIndex = 2;
-            label1.Text = "Ana Sayfa";
-            label1.Click += label1_Click;
-            // 
             // tbCBolumSec
             // 
             tbCBolumSec.Controls.Add(tabPage1);
             tbCBolumSec.Controls.Add(tabPage2);
             tbCBolumSec.Controls.Add(tabPage3);
-            tbCBolumSec.Location = new Point(12, 3);
+            tbCBolumSec.Location = new Point(2, 1);
             tbCBolumSec.Name = "tbCBolumSec";
             tbCBolumSec.SelectedIndex = 0;
             tbCBolumSec.Size = new Size(1746, 933);
@@ -84,6 +73,16 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Mekanik Ürün Listesi";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnYenile
+            // 
+            btnYenile.Location = new Point(1592, 845);
+            btnYenile.Name = "btnYenile";
+            btnYenile.Size = new Size(94, 29);
+            btnYenile.TabIndex = 4;
+            btnYenile.Text = "Yenile";
+            btnYenile.UseVisualStyleBackColor = true;
+            btnYenile.Click += btnYenile_Click;
             // 
             // lVMekanikListesi
             // 
@@ -125,7 +124,6 @@
             tabPage3.Controls.Add(pStokEkle);
             tabPage3.Controls.Add(btnProjeOlustur);
             tabPage3.Controls.Add(btnStokEkle);
-            tabPage3.Controls.Add(label1);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
@@ -133,6 +131,7 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Ana Sayfa";
             tabPage3.UseVisualStyleBackColor = true;
+            tabPage3.Click += tabPage3_Click;
             // 
             // btnPersonelİslem
             // 
@@ -166,6 +165,7 @@
             // 
             // pStokEkle
             // 
+            pStokEkle.BackgroundImageLayout = ImageLayout.None;
             pStokEkle.Location = new Point(0, 72);
             pStokEkle.Name = "pStokEkle";
             pStokEkle.Size = new Size(1721, 900);
@@ -206,16 +206,6 @@
             silToolStripMenuItem.Text = "Sil";
             silToolStripMenuItem.Click += silToolStripMenuItem_Click;
             // 
-            // btnYenile
-            // 
-            btnYenile.Location = new Point(1592, 845);
-            btnYenile.Name = "btnYenile";
-            btnYenile.Size = new Size(94, 29);
-            btnYenile.TabIndex = 4;
-            btnYenile.Text = "Yenile";
-            btnYenile.UseVisualStyleBackColor = true;
-            btnYenile.Click += btnYenile_Click;
-            // 
             // BolumSec
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -229,13 +219,11 @@
             tabPage1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
             cMSSagTik.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private Label label1;
         private TabControl tbCBolumSec;
         private TabPage tabPage1;
         private TabPage tabPage2;
