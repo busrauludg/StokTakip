@@ -21,6 +21,7 @@ namespace StokTakip.Services
             var liste=_context.StokKartis
                 .Include(u=>u.Grup)
                 .Include(u=>u.Personel)
+                 .IgnoreQueryFilters()
                 .Where(u=>u.GrupId==1&&u.AktifMi)
                 .Select(u => new StokKartiViewModel
                 {
@@ -36,7 +37,7 @@ namespace StokTakip.Services
                     KayitTarihi = u.KayitTarihi,
                     FirmaAdi = u.FirmaAdi,
                     FirmaKodu = u.FirmaKodu,
-                    StokMiktari = u.StokMiktari,//22.09.20250
+                    StokMiktari = u.StokMiktari,
                     StokBirimi = u.StokBirimi,
                     PersonelAdi = u.Personel.Ad
                 })
@@ -59,7 +60,7 @@ namespace StokTakip.Services
                 .FirstOrDefault();
 
         }
-        public StokDurumuViewModel GetStokDurumElektrik(int stokKartId)//mekanikten kopyaladım
+        public StokDurumuViewModel GetStokDurumElektrik(int stokKartId)
         {
             return _context.StokDurumus
                 .Where(s => s.StokKartiId == stokKartId)
@@ -68,7 +69,6 @@ namespace StokTakip.Services
                     StokKartId = s.StokKartiId,
                     DepoAdi = s.DepoAdi,
                     SerbestMiktar = s.SerbestMiktar,
-                   // KaliteMiktar = s.KaliteMiktar,
                     BlokeMiktar = s.BlokeMiktar.ToString()
                 })
                 .FirstOrDefault();

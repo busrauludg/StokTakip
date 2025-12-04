@@ -81,6 +81,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = global::StokTakip.Properties.Resources.arkaplan;
+            BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(800, 450);
             Controls.Add(tBMevcutYetkili);
             Controls.Add(lblMevcutSifre);
@@ -88,7 +90,7 @@
             Controls.Add(tBYetkiliGirisSifre);
             Controls.Add(lblYetkiliSifreGiris);
             Name = "YetkiliSifreForm";
-            Text = "YetkiliSifreForm";
+            Text = "Yetkili Şifre Girişi";
             Load += YetkiliSifreForm_Load;
             ResumeLayout(false);
             PerformLayout();

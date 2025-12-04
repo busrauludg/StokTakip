@@ -95,10 +95,10 @@
             // dGVMknStkDurum
             // 
             dGVMknStkDurum.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVMknStkDurum.Location = new Point(541, 399);
+            dGVMknStkDurum.Location = new Point(648, 455);
             dGVMknStkDurum.Name = "dGVMknStkDurum";
             dGVMknStkDurum.RowHeadersWidth = 51;
-            dGVMknStkDurum.Size = new Size(611, 74);
+            dGVMknStkDurum.Size = new Size(428, 74);
             dGVMknStkDurum.TabIndex = 1;
             // 
             // label1
@@ -113,7 +113,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(571, 367);
+            label2.Location = new Point(790, 406);
             label2.Name = "label2";
             label2.Size = new Size(95, 20);
             label2.TabIndex = 4;
@@ -470,9 +470,9 @@
             label20.AutoSize = true;
             label20.Location = new Point(1263, 325);
             label20.Name = "label20";
-            label20.Size = new Size(146, 20);
+            label20.Size = new Size(95, 20);
             label20.TabIndex = 10;
-            label20.Text = "Aktif Proje İhtiyacları";
+            label20.Text = "Aktif Projeler";
             // 
             // lVAktifProje
             // 
@@ -484,7 +484,7 @@
             // 
             // btnMSArtirPanel
             // 
-            btnMSArtirPanel.Location = new Point(67, 696);
+            btnMSArtirPanel.Location = new Point(561, 581);
             btnMSArtirPanel.Name = "btnMSArtirPanel";
             btnMSArtirPanel.Size = new Size(94, 29);
             btnMSArtirPanel.TabIndex = 13;
@@ -494,7 +494,7 @@
             // 
             // btnStokCikis
             // 
-            btnStokCikis.Location = new Point(571, 571);
+            btnStokCikis.Location = new Point(859, 581);
             btnStokCikis.Name = "btnStokCikis";
             btnStokCikis.Size = new Size(94, 29);
             btnStokCikis.TabIndex = 14;
@@ -509,7 +509,7 @@
             pMStokCikis.Controls.Add(btnMStokCikisi);
             pMStokCikis.Controls.Add(tBMCikicakMiktar);
             pMStokCikis.Controls.Add(label23);
-            pMStokCikis.Location = new Point(700, 571);
+            pMStokCikis.Location = new Point(988, 581);
             pMStokCikis.Name = "pMStokCikis";
             pMStokCikis.Size = new Size(250, 292);
             pMStokCikis.TabIndex = 18;
@@ -562,7 +562,7 @@
             pMStokArtir.Controls.Add(label24);
             pMStokArtir.Controls.Add(btnMStokArttir);
             pMStokArtir.Controls.Add(tBMArtirMiktar);
-            pMStokArtir.Location = new Point(204, 696);
+            pMStokArtir.Location = new Point(571, 631);
             pMStokArtir.Name = "pMStokArtir";
             pMStokArtir.Size = new Size(211, 183);
             pMStokArtir.TabIndex = 20;
@@ -613,7 +613,7 @@
             Controls.Add(label1);
             Controls.Add(dGVMknStkDurum);
             Name = "MekanikUrunDetayForm";
-            Text = "MekanikForm";
+            Text = "Mekanik Ürün Detay";
             Load += MekanikForm_Load;
             ((System.ComponentModel.ISupportInitialize)dGVMknStkDurum).EndInit();
             panel1.ResumeLayout(false);

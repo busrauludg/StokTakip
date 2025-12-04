@@ -24,11 +24,9 @@ namespace StokTakip
         public PersonelEkle()
         {
             InitializeComponent();
-            // Form açılır açılmaz yetkili şifre alanını gizle
             tBYetkiliSifre.Visible = false;
             lblYetkiliSifre.Visible = false;
 
-            // Service örneği
             _personelService = new PersonelServices(new PersonelRepository(new StokTakipContext()));
 
         }
@@ -37,7 +35,7 @@ namespace StokTakip
             tBYetkiliSifre.Visible = rBPrsYetkili.Checked;
             lblYetkiliSifre.Visible = rBPrsYetkili.Checked;
         }
-        // Yetkili şifreyi formdan al
+      
         private void lblYetkiliSifre_Click(object sender, EventArgs e)
         {
             if (!rBPrsYetkili.Checked)
@@ -53,7 +51,7 @@ namespace StokTakip
         {
 
             bool rolYetkili = rBPrsYetkili.Checked;
-            string girdiSifre = tBYetkiliSifre.Text; // Yetkili seçilmişse girilen şifre
+            string girdiSifre = tBYetkiliSifre.Text;
 
             if (rolYetkili)
             {
@@ -71,7 +69,6 @@ namespace StokTakip
 
             }
 
-            // DTO için temel bilgileri al
             var dto = new PersonelDto
             {
                 Ad = tBPrsAdi.Text,
@@ -86,21 +83,21 @@ namespace StokTakip
             try
             {
 
-                // E-posta kontrolü
+               
                 if (_personelService.GetByEposta(dto.Eposta!) != null)
                 {
                     MessageBox.Show("Bu e-posta zaten kayıtlı.");
                     return;
                 }
 
-                // Şifre benzersiz kontrolü
+               
                 if (_personelService.GetBySifre(dto.Sifre) != null)
                 {
                     MessageBox.Show("Bu şifre zaten kullanımda.");
                     return;
                 }
 
-                // Yetkili ise şifre kontrolü
+              
                 if (rBPrsYetkili.Checked)
                 {
                     if (string.IsNullOrWhiteSpace(tBYetkiliSifre.Text))
@@ -111,7 +108,7 @@ namespace StokTakip
 
                 }
 
-                // Kayıt işlemi
+               
                 _personelService.PrsnlEkle(dto);
                 MessageBox.Show("Personel başarıyla eklendi.");
 
@@ -127,12 +124,5 @@ namespace StokTakip
             }
         }
 
-
-
-        private void tBYetkiliSifre_TextChanged(object sender, EventArgs e)
-        {
-            // Yetkili şifre eşleşme kontrolü
-
-        }
     }
 }

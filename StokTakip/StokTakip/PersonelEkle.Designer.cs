@@ -178,7 +178,6 @@
             tBYetkiliSifre.Name = "tBYetkiliSifre";
             tBYetkiliSifre.Size = new Size(204, 27);
             tBYetkiliSifre.TabIndex = 14;
-            tBYetkiliSifre.TextChanged += tBYetkiliSifre_TextChanged;
             // 
             // lblYetkiliSifre
             // 
@@ -260,6 +259,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage =global::StokTakip.Properties.Resources.arkaplan;
+            BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(977, 549);
             Controls.Add(label3);
             Controls.Add(lblYetkiliSİfre);
@@ -284,7 +285,7 @@
             Controls.Add(lblPrsSoyadı);
             Controls.Add(lblPrsAd);
             Name = "PersonelEkle";
-            Text = "PersonelEkle";
+            Text = "Personel Ekle";
             ResumeLayout(false);
             PerformLayout();
         }

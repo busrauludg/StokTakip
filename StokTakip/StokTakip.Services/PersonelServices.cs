@@ -21,10 +21,7 @@ namespace StokTakip.Services
         public Personel? GetByEposta(string eposta) => _services.GetByEposta(eposta);
 
         public Personel? GetBySifre(string sifre) => _services.GetBySifre(sifre);
-        //11.09.2025 persemeb deneme
-        //public Personel? GetYetkiliSifre(string yetkiliSifre) => _services.GetYetkiliSifre(yetkiliSifre);
-
-        //public string? GetSistemYetkiliSifre() => _services.GetSistemYetkiliSifre();
+       
 
         public void PrsnlEkle(PersonelDto dto)
         {
@@ -40,7 +37,7 @@ namespace StokTakip.Services
                 Gorev = dto.Gorev,
                 Telefon = dto.Telefon,
                 Eposta = dto.Eposta,
-                Sifre = dto.Sifre, // normal personel şifresi ilerde buraya hashhelper yapılıcak 
+                Sifre = dto.Sifre, 
                 Rol = dto.Rol,
                 YetkiliSifre1 =  null
             };
@@ -50,30 +47,20 @@ namespace StokTakip.Services
 
         public void YetkiliOlustur(PersonelDto dto)
         {
-            //// Rol = true olan personeli bul
-            //var personel = _services.GetByRol(); // Repo'da bu metodu oluştur: Rol = true döndürsün
-
-            //if (personel != null)
-            //{
-            //    personel.YetkiliSifre1 = dto.YetkiliSifre1; // Hashlenmiş şifreyi ata
-            //    _services.YetkiliEkle(personel); // Repo'da save işlemi
-            //}
-            //// Manuel girilen yetkili şifresini ata 10.11
-            //personel.YetkiliSifre1 = dto.YetkiliSifre1;
-            //_services.YetkiliEkle(personel); // veritabanına kaydet
+            
 
             using (var context = new StokTakipContext())
             {
-                // Tüm personelleri al
+       
                 var personeller = context.Personels.ToList();
 
-                // Hepsine şifreyi ata
+              
                 foreach (var p in personeller)
                 {
                     p.YetkiliSifre1 = dto.YetkiliSifre1;
                 }
 
-                // Değişiklikleri kaydet
+             
                 context.SaveChanges();
             }
         }

@@ -359,7 +359,6 @@
             nUDSMiktar.Name = "nUDSMiktar";
             nUDSMiktar.Size = new Size(57, 27);
             nUDSMiktar.TabIndex = 22;
-            nUDSMiktar.ValueChanged += nUDSMiktar_ValueChanged;
             // 
             // nUDMaxStok
             // 
@@ -367,7 +366,6 @@
             nUDMaxStok.Name = "nUDMaxStok";
             nUDMaxStok.Size = new Size(57, 27);
             nUDMaxStok.TabIndex = 21;
-            nUDMaxStok.ValueChanged += nUDMaxStok_ValueChanged;
             // 
             // nUDMinStok
             // 
@@ -375,7 +373,6 @@
             nUDMinStok.Name = "nUDMinStok";
             nUDMinStok.Size = new Size(52, 27);
             nUDMinStok.TabIndex = 20;
-            nUDMinStok.ValueChanged += nUDMinStok_ValueChanged;
             // 
             // tBStokBirimi
             // 
@@ -455,7 +452,6 @@
             nUDSerbestM.Name = "nUDSerbestM";
             nUDSerbestM.Size = new Size(52, 27);
             nUDSerbestM.TabIndex = 30;
-            nUDSerbestM.ValueChanged += nUDSerbestM_ValueChanged;
             // 
             // label10
             // 

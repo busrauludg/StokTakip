@@ -75,15 +75,15 @@
             btnStokArttir = new Button();
             label21 = new Label();
             pStokCikis = new Panel();
+            cBPProjeSec = new ComboBox();
+            label25 = new Label();
             btnStokCikisi = new Button();
             tBCikicakMiktar = new TextBox();
             label23 = new Label();
             pStokArtir = new Panel();
-            btnStokArtir = new Button();
+            btnStokArttirKullan = new Button();
             tBStkArtir = new TextBox();
             label24 = new Label();
-            label25 = new Label();
-            cBPProjeSec = new ComboBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dGVElStokDurum).BeginInit();
@@ -153,7 +153,7 @@
             label11.Name = "label11";
             label11.Size = new Size(73, 20);
             label11.TabIndex = 22;
-            label11.Text = "Acıklama:";
+            label11.Text = "Açıklama:";
             // 
             // label10
             // 
@@ -433,10 +433,10 @@
             // dGVElStokDurum
             // 
             dGVElStokDurum.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVElStokDurum.Location = new Point(524, 421);
+            dGVElStokDurum.Location = new Point(671, 412);
             dGVElStokDurum.Name = "dGVElStokDurum";
             dGVElStokDurum.RowHeadersWidth = 51;
-            dGVElStokDurum.Size = new Size(661, 93);
+            dGVElStokDurum.Size = new Size(428, 74);
             dGVElStokDurum.TabIndex = 6;
             // 
             // label18
@@ -444,9 +444,9 @@
             label18.AutoSize = true;
             label18.Location = new Point(821, 388);
             label18.Name = "label18";
-            label18.Size = new Size(98, 20);
+            label18.Size = new Size(95, 20);
             label18.TabIndex = 7;
-            label18.Text = "Stok Durumu:";
+            label18.Text = "Stok Durumu";
             // 
             // pBElektrikResim
             // 
@@ -463,20 +463,19 @@
             lVAktifProje.Size = new Size(438, 283);
             lVAktifProje.TabIndex = 14;
             lVAktifProje.UseCompatibleStateImageBehavior = false;
-            lVAktifProje.SelectedIndexChanged += lVAktifProje_SelectedIndexChanged;
             // 
             // label20
             // 
             label20.AutoSize = true;
             label20.Location = new Point(1231, 485);
             label20.Name = "label20";
-            label20.Size = new Size(146, 20);
+            label20.Size = new Size(95, 20);
             label20.TabIndex = 13;
-            label20.Text = "Aktif Proje İhtiyacları";
+            label20.Text = "Aktif Projeler\r\n";
             // 
             // btnStokCik
             // 
-            btnStokCik.Location = new Point(528, 588);
+            btnStokCik.Location = new Point(722, 673);
             btnStokCik.Name = "btnStokCik";
             btnStokCik.Size = new Size(94, 29);
             btnStokCik.TabIndex = 15;
@@ -486,7 +485,7 @@
             // 
             // btnStokArttir
             // 
-            btnStokArttir.Location = new Point(67, 693);
+            btnStokArttir.Location = new Point(337, 662);
             btnStokArttir.Name = "btnStokArttir";
             btnStokArttir.Size = new Size(94, 29);
             btnStokArttir.TabIndex = 16;
@@ -510,10 +509,27 @@
             pStokCikis.Controls.Add(btnStokCikisi);
             pStokCikis.Controls.Add(tBCikicakMiktar);
             pStokCikis.Controls.Add(label23);
-            pStokCikis.Location = new Point(669, 566);
+            pStokCikis.Location = new Point(863, 651);
             pStokCikis.Name = "pStokCikis";
             pStokCikis.Size = new Size(250, 290);
             pStokCikis.TabIndex = 17;
+            // 
+            // cBPProjeSec
+            // 
+            cBPProjeSec.FormattingEnabled = true;
+            cBPProjeSec.Location = new Point(65, 128);
+            cBPProjeSec.Name = "cBPProjeSec";
+            cBPProjeSec.Size = new Size(151, 28);
+            cBPProjeSec.TabIndex = 4;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(31, 97);
+            label25.Name = "label25";
+            label25.Size = new Size(93, 20);
+            label25.TabIndex = 3;
+            label25.Text = "Proje Seçiniz";
             // 
             // btnStokCikisi
             // 
@@ -543,23 +559,23 @@
             // 
             // pStokArtir
             // 
-            pStokArtir.Controls.Add(btnStokArtir);
+            pStokArtir.Controls.Add(btnStokArttirKullan);
             pStokArtir.Controls.Add(tBStkArtir);
             pStokArtir.Controls.Add(label24);
-            pStokArtir.Location = new Point(180, 682);
+            pStokArtir.Location = new Point(450, 651);
             pStokArtir.Name = "pStokArtir";
             pStokArtir.Size = new Size(250, 188);
             pStokArtir.TabIndex = 18;
             // 
-            // btnStokArtir
+            // btnStokArttirKullan
             // 
-            btnStokArtir.Location = new Point(121, 108);
-            btnStokArtir.Name = "btnStokArtir";
-            btnStokArtir.Size = new Size(94, 29);
-            btnStokArtir.TabIndex = 2;
-            btnStokArtir.Text = "Stok Arttırır";
-            btnStokArtir.UseVisualStyleBackColor = true;
-            btnStokArtir.Click += btnStokArtir_Click;
+            btnStokArttirKullan.Location = new Point(121, 108);
+            btnStokArttirKullan.Name = "btnStokArttirKullan";
+            btnStokArttirKullan.Size = new Size(94, 29);
+            btnStokArttirKullan.TabIndex = 2;
+            btnStokArttirKullan.Text = "Stok Arttır";
+            btnStokArttirKullan.UseVisualStyleBackColor = true;
+            btnStokArttirKullan.Click += btnStokArttirKullan_Click;
             // 
             // tBStkArtir
             // 
@@ -576,23 +592,6 @@
             label24.Size = new Size(96, 20);
             label24.TabIndex = 0;
             label24.Text = "Miktar giriniz";
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Location = new Point(31, 97);
-            label25.Name = "label25";
-            label25.Size = new Size(93, 20);
-            label25.TabIndex = 3;
-            label25.Text = "Proje Seçiniz";
-            // 
-            // cBPProjeSec
-            // 
-            cBPProjeSec.FormattingEnabled = true;
-            cBPProjeSec.Location = new Point(65, 128);
-            cBPProjeSec.Name = "cBPProjeSec";
-            cBPProjeSec.Size = new Size(151, 28);
-            cBPProjeSec.TabIndex = 4;
             // 
             // ElektrikUrunDetayForm
             // 
@@ -614,7 +613,7 @@
             Controls.Add(panel1);
             Controls.Add(label1);
             Name = "ElektrikUrunDetayForm";
-            Text = "ElektrikForm";
+            Text = "Elektrik Ürün Detay";
             Load += ElektrikForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -682,7 +681,7 @@
         private Button btnStokCikisi;
         private TextBox tBCikicakMiktar;
         private Panel pStokArtir;
-        private Button btnStokArtir;
+        private Button btnStokArttirKullan;
         private TextBox tBStkArtir;
         private Label label24;
         private Label label25;

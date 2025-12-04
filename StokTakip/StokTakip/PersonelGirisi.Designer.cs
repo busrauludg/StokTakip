@@ -35,13 +35,14 @@
             tBPrsnlSifre = new TextBox();
             PrsnlGiris = new Button();
             label3 = new Label();
+            pnlPrslEkle = new Panel();
             SuspendLayout();
             // 
             // lblPersonelEkle
             // 
             lblPersonelEkle.AutoSize = true;
             lblPersonelEkle.Font = new Font("Yu Gothic UI Semibold", 9F);
-            lblPersonelEkle.Location = new Point(661, 21);
+            lblPersonelEkle.Location = new Point(688, 73);
             lblPersonelEkle.Name = "lblPersonelEkle";
             lblPersonelEkle.Size = new Size(100, 20);
             lblPersonelEkle.TabIndex = 0;
@@ -105,13 +106,23 @@
             label3.TabIndex = 6;
             label3.Text = "Personel Girişi";
             // 
+            // pnlPrslEkle
+            // 
+            pnlPrslEkle.BackgroundImage = global::StokTakip.Properties.Resources.personelekle;
+            pnlPrslEkle.BackgroundImageLayout = ImageLayout.None;
+            pnlPrslEkle.Location = new Point(702, 13);
+            pnlPrslEkle.Name = "pnlPrslEkle";
+            pnlPrslEkle.Size = new Size(52, 57);
+            pnlPrslEkle.TabIndex = 7;
+            // 
             // PersonelGirisi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            this.BackgroundImage = global::StokTakip.Properties.Resources.arkaplan;
+            BackgroundImage = global::StokTakip.Properties.Resources.arkaplan;
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(800, 450);
+            Controls.Add(pnlPrslEkle);
             Controls.Add(label3);
             Controls.Add(PrsnlGiris);
             Controls.Add(tBPrsnlSifre);
@@ -136,5 +147,6 @@
         private TextBox tBPrsnlSifre;
         private Button PrsnlGiris;
         private Label label3;
+        private Panel pnlPrslEkle;
     }
 }

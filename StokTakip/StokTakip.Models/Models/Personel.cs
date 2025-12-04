@@ -22,10 +22,7 @@ public partial class Personel
     public DateTime KayitTarihi { get; set; }
 
     public bool Rol { get; set; }
-    //Eski yetkil sifre 08.11
-    //public string? YetkiliSifre { get; set; }
-
-    //Yeni yetkili Sifre08.11
+ 
     public string? YetkiliSifre1 { get; set; }
 
 

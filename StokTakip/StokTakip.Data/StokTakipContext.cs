@@ -62,9 +62,8 @@ public partial class StokTakipContext : DbContext
             entity.Property(e => e.Sifre).HasMaxLength(100);
             entity.Property(e => e.Soyad).HasMaxLength(50);
             entity.Property(e => e.Telefon).HasMaxLength(20);
-            entity.Property(e => e.Rol).HasDefaultValue(false);//eğer kullanıcı rolü belirtmezse otomatik olarak false yani “Personel” olacak şekilde ayarlanıyor.
+            entity.Property(e => e.Rol).HasDefaultValue(false);
             entity.Property(e => e.YetkiliSifre1).HasMaxLength(100);
-            // 🔹 Sadece Personel için
             entity.HasQueryFilter(p => p.Aktif);
         });
 
@@ -83,7 +82,7 @@ public partial class StokTakipContext : DbContext
                 .HasForeignKey(d => d.PersonelId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Proje_Personel");
-            entity.HasQueryFilter(p => p.PasifMi); // PasifMi = true olanları getir
+            entity.HasQueryFilter(p => p.PasifMi);
 
 
 
@@ -207,9 +206,7 @@ public partial class StokTakipContext : DbContext
             entity.Property(e => e.StokBirimi).HasMaxLength(20);
             entity.Property(e => e.StokKodu).HasMaxLength(50);
             entity.Property(e => e.UrunAdi).HasMaxLength(100);
-
-            // 🔹 Buraya ekle
-            entity.HasQueryFilter(s => s.AktifMi); // sadece aktif ürünler gelir
+            entity.HasQueryFilter(s => s.AktifMi); 
 
             entity.HasOne(d => d.Grup).WithMany(p => p.StokKartis)
                 .HasForeignKey(d => d.GrupId)

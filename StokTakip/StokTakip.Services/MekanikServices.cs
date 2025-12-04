@@ -12,7 +12,7 @@ namespace StokTakip.Services
 {
     public class MekanikServices
     {
-        private readonly StokTakipContext _context;//direk veritabanına bağladık repositr ihtiyac yok
+        private readonly StokTakipContext _context;
         public MekanikServices(StokTakipContext context)
         {
             _context = context;
@@ -22,7 +22,8 @@ namespace StokTakip.Services
                 var liste = _context.StokKartis
              .Include(u => u.Grup)
              .Include(u => u.Personel)
-             .Where(u => u.GrupId == 2&&u.AktifMi) // sabit mekanik grubu
+             .IgnoreQueryFilters() 
+             .Where(u => u.GrupId == 2&&u.AktifMi)
              .Select(u => new StokKartiViewModel
              {
                  StokKartiId=u.StokKartiId,
@@ -37,9 +38,10 @@ namespace StokTakip.Services
                  KayitTarihi = u.KayitTarihi,
                  FirmaAdi = u.FirmaAdi,
                  FirmaKodu = u.FirmaKodu,
-                 StokMiktari=u.StokMiktari,//22.09.20250
+                 StokMiktari=u.StokMiktari,
                  StokBirimi = u.StokBirimi,
                  PersonelAdi = u.Personel.Ad
+
              })
              .ToList();
 

@@ -11,8 +11,6 @@ namespace StokTakip.Helpers
 {
     public class HashHelper
     {
-      
- 
 
         public static string HashSha256(string text)
         {

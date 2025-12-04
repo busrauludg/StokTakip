@@ -8,23 +8,20 @@ namespace StokTakip.ViewModels
 {
     public class StokKartiViewModel
     {
-        //Uı ile uyumlu olmak zorunda dto yada veritabanı ile değil 
-
         public int StokKartiId { get; set; }
         public string UrunAdi { get; set; }
         public string StokKodu { get; set; }
-        public string GrupAdi { get; set; }//içinde bulundugu grup yazsın grupıd değil düzelt
+        public string GrupAdi { get; set; }
         public string StokBirimi { get; set; }
         public int MinStok { get; set; }
         public int MaxStok { get; set; }
         public string DepoAdresi { get; set; }
         public string ResimYolu { get; set; }
         public string Aciklama { get; set; }
-        public DateTime KayitTarihi { get; set; }//bu veritabanınad böyle olmaaybilir
+        public DateTime KayitTarihi { get; set; }
         public string FirmaKodu { get; set; }
         public int StokMiktari { get; set; }
-        // ID’lerden gelen ilişkili isimler (UI’de gösterilecek)
-        public string FirmaAdi { get; set; }       // FirmaKodu yerine firma adı
-        public string PersonelAdi { get; set; }    // PersonelId yerine personel adı
+        public string FirmaAdi { get; set; }   
+        public string PersonelAdi { get; set; }  
     }
 }

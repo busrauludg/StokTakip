@@ -19,42 +19,13 @@ namespace StokTakip.Data
         public Personel? GetBySifre(string sifre) =>
             _context.Personels.FirstOrDefault(p => p.Sifre == sifre);
 
-        //13.09 servicste boş bir referances var ve bu metotun amacı Veritabanındaki YetkiliSifre değerini gösterecek veya okuyacak kod, senin repository’de yazdığın getter metodu.
-        public string? GetSistemYetkiliSifre() =>
-            _context.Personels.FirstOrDefault(p => p.Rol)?.YetkiliSifre1;
-        //11.09.2025
-        //12.09 gerek yok denildi 
-        //13.09 serviceste boş bir referances var 
-        public Personel? GetYetkiliSifre(string yetkiliSifre) =>
-            _context.Personels.FirstOrDefault(p => p.YetkiliSifre1 == yetkiliSifre);
-
+    
         public void PrsnlKydt(Personel p)
         {
             _context.Personels.Add(p);
             _context.SaveChanges();
 
         }
-        //15.10.2025
-        public Personel? GetByRol()
-        {
-            return _context.Personels.FirstOrDefault(p => p.Rol == true);
-        }
-
-        public void YetkiliEkle(Personel p)
-        {//10.11
-            if (_context.Personels.Any(x => x.PersonelId == p.PersonelId))
-                _context.Personels.Update(p);
-            else
-                _context.Personels.Add(p);
-
-            _context.SaveChanges();
-
-            //    _context.Personels.Update(p); // değişikliği işaretle
-            //    _context.SaveChanges(); // sadece güncellenen personeli kaydet
-        }
-
-        //}
-        //15.09.20025 personel giriş için 
         public bool PersonelVarMi(string eposta,string sifre)
         {
             return _context.Personels.Any(p=>p.Eposta==eposta && p.Sifre==sifre);

@@ -20,24 +20,21 @@ namespace StokTakip
         {
             InitializeComponent();
         }
-        //bu projede temel olarak sol alandaki list view tıklayınca sağ tarfta ki detay sayfası doluyor ve aşağıda toplam maliyeti gözükücek yani bu basit bir rapor gibi
         private void ProjeDetayControl_Load(object sender, EventArgs e)
         {
-            // Durum combobox doldur
+          
             cBPrjDurum.Items.Clear();
             cBPrjDurum.Items.Add("Aktif");
             cBPrjDurum.Items.Add("Pasif");
 
-            // Projeler listview ayarları
             lVlPrjListele.View = View.Details;
             lVlPrjListele.FullRowSelect = true;
             lVlPrjListele.GridLines = true;
             lVlPrjListele.Columns.Clear();
-            lVlPrjListele.Columns.Add("Sıra", 50); // Proje sırası
+            lVlPrjListele.Columns.Add("Sıra", 50);
             lVlPrjListele.Columns.Add("Proje Adı", 200);
-            lVlPrjListele.Columns.Add("Durum", 200);//durum için
+            lVlPrjListele.Columns.Add("Durum", 200);
 
-            // Kullanılan ürünler listview ayarları
             lVlKullanilanUrunler.View = View.Details;
             lVlKullanilanUrunler.FullRowSelect = true;
             lVlKullanilanUrunler.GridLines = true;
@@ -48,7 +45,7 @@ namespace StokTakip
             using (var context = new StokTakipContext())
             {
                 var projeler = context.Projes
-                   .Where(p => p.PasifMi==true) // sadece PasifMi = true olanları getir
+                   .Where(p => p.PasifMi==true) 
                    .OrderBy(p => p.ProjeAdi)
                    .ToList();
 
@@ -58,44 +55,34 @@ namespace StokTakip
                 int sıra = 1;
                 foreach (var proje in projeler)
                 {
-                    ListViewItem item = new ListViewItem(sıra.ToString()); // sıra numarası göster
+                    ListViewItem item = new ListViewItem(sıra.ToString()); 
                     item.SubItems.Add(proje.ProjeAdi);
-                    item.Tag = proje.ProjeId; // ID’yi arka planda tut
+                    item.Tag = proje.ProjeId; 
                     item.SubItems.Add(proje.Durum? "Aktif" : "Pasif");
                     lVlPrjListele.Items.Add(item);
                     sıra++;
                 }
             }
-            // Menüyü bağla
+          
             lVlPrjListele.ContextMenuStrip = cMSPrjeİslem;
 
-            // Sağ tıklanan item seçilsin
+           
             lVlPrjListele.MouseDown += lVlPrjListele_MouseDown;
 
-            // Menü tıklama olayı bağla (ek olarak)
-            //silToolStripMenuItem.Click += silToolStripMenuItem_Click;
-
-
-            // Önce varsa eski event kaldır, sonra ekle
+       
             silToolStripMenuItem.Click -= silToolStripMenuItem_Click;
             silToolStripMenuItem.Click += silToolStripMenuItem_Click;
 
-            // 🔹 Tarih kontrollerini sadece Load'da ayarlıyoruz
+         
             AyarlaBugunTarihleri();
         }
         private void AyarlaBugunTarihleri()
         {
-            // Başlangıç tarihi
             dTPPrjBaslingicT.MinDate = DateTime.Today;
-           // dTPPrjBaslingicT.MaxDate = DateTime.Today;
             dTPPrjBaslingicT.Value = DateTime.Today;
-           // dTPPrjBaslingicT.ShowUpDown = true; // Takvim açılmaz, sadece bugünü seçebilir
 
-            // Bitiş tarihi
             dTPBitisT.MinDate = DateTime.Today;
-          //  dTPBitisT.MaxDate = DateTime.Today;
             dTPBitisT.Value = DateTime.Today;
-           // dTPBitisT.ShowUpDown = true;
         }
 
 
@@ -103,7 +90,7 @@ namespace StokTakip
 
         private void lVlPrjListele_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (isLoading) return; // event tekrar tetiklenirse çık
+            if (isLoading) return; 
             isLoading = true;
 
             try
@@ -120,13 +107,11 @@ namespace StokTakip
 
                     if (proje != null)
                     {
-                        // Proje detaylarını yüklerken textbox'ları readonly yap
                         tBProjeAdi.ReadOnly = true;
                         tBPrjPersonel.ReadOnly = true;
                         tBPrjAciklama.ReadOnly = true;
                         tBToplamMaliyet.ReadOnly = true;
 
-                        // ComboBox tamamen kilitlensin
                         cBPrjDurum.Enabled = false;
 
                         tBProjeAdi.Text = proje.ProjeAdi;
@@ -134,31 +119,9 @@ namespace StokTakip
                         tBPrjAciklama.Text = proje.Aciklama;
                         cBPrjDurum.SelectedItem = proje.Durum ? "Aktif" : "Pasif";
 
-                        //// 🔹 Duruma göre butonları ayarla
-                        //if(proje.Durum)
-                        //{
-                        //    btnBasla.Enabled = false; //aktifse başla pasif olur
-                        //    btnBitir.Enabled = true; //bitir aktif olur
-                        //    pDetay.Enabled = true;  //panel aktif
-                        //}
-                        //else
-                        //{
-                        //    btnBasla.Enabled = true;    // pasifse başla aktif olur
-                        //    btnBitir.Enabled = false;   // bitir pasif olur
-                        //    pDetay.Enabled = false;     // panel pasif
-                        //}
-
-                        //// 🔹 Eğer proje pasifse işlem yapma
-                        //if(!proje.Durum)
-                        //{
-                        //    lVlKullanilanUrunler.Items.Clear();
-                        //    tBToplamMaliyet.Text= "0.00";
-                        //    return;
-                        //}
-
+                     
                         DurumKontrol(proje);
 
-                        // 🔹 Kullanılan ürünleri listele
                         lVlKullanilanUrunler.Items.Clear();
                         var urunler = context.ProjedeKullanilanUrunlers
                                              .Include(pu => pu.StokKarti)
@@ -169,12 +132,12 @@ namespace StokTakip
 
                         foreach (var pu in urunler)
                         {
-                            // Ürünleri listeye ekle
+                           
                             var item = new ListViewItem(pu.StokKarti.UrunAdi);
                             item.SubItems.Add(pu.Miktar.ToString());
                             lVlKullanilanUrunler.Items.Add(item);
 
-                            // Satın alma bilgilerini getir
+                       
                             var satinAlma = context.SatinAlmas
                                 .FirstOrDefault(sa => sa.StokKartiId == pu.StokKartiId);
 
@@ -182,22 +145,20 @@ namespace StokTakip
                             decimal kur = satinAlma?.Kur ?? 1;
                             decimal miktar = pu.Miktar;
 
-                            // Ürün maliyeti hesapla
+                          
                             decimal urunMaliyeti = birimFiyat * kur * miktar;
 
-                            // 🔹 Maliyeti tabloya kaydet
+                          
                             pu.Maliyet = urunMaliyeti;
 
-                            // 🔹 EF'e bu nesnenin değiştiğini bildir
+                           
                             context.Entry(pu).State = EntityState.Modified;
 
                             toplamMaliyet += urunMaliyeti;
                         }
-
-                        // 🔹 Veritabanına değişiklikleri kaydet
                         context.SaveChanges();
 
-                        // 🔹 Toplam maliyeti textbox’a yaz
+                      
                         tBToplamMaliyet.Text = toplamMaliyet.ToString("N2");
                     }
                 }
@@ -214,13 +175,12 @@ namespace StokTakip
             if (proje == null) return;
             if (proje.Durum)
             {
-                // 🔹 Eğer proje aktifse
                 btnBasla.Enabled = false;
                 btnBitir.Enabled = true;
                 pDetay.Enabled = true;
             }
             else
-            {  // 🔹 Eğer proje pasifse
+            {  
                 btnBasla.Enabled = true;
                 btnBitir.Enabled = false;
                 pDetay.Enabled = false;
@@ -241,12 +201,12 @@ namespace StokTakip
                 var proje = context.Projes.FirstOrDefault(p => p.ProjeId == projeId);
                 if (proje != null)
                 {
-                    proje.Durum = true; // Aktif yap
+                    proje.Durum = true; 
                     context.SaveChanges();
 
                     MessageBox.Show("✅ Proje başlatıldı.");
 
-                    DurumKontrol(proje); // Butonları güncelle
+                    DurumKontrol(proje); 
                 }
             }
         }
@@ -267,9 +227,8 @@ namespace StokTakip
 
                 if (proje != null)
                 {
-                    proje.Durum = false; // Pasif yap
+                    proje.Durum = false; 
 
-                    // Toplam maliyeti hesapla
                     var urunler = context.ProjedeKullanilanUrunlers
                                          .Where(pu => pu.ProjeId == projeId)
                                          .ToList();
@@ -280,7 +239,7 @@ namespace StokTakip
 
                     MessageBox.Show($"🟢 Proje tamamlandı.\nToplam Maliyet: {toplamMaliyet:N2} TL");
 
-                    DurumKontrol(proje); // Butonları güncelle
+                    DurumKontrol(proje); 
                 }
             }
         }
@@ -298,9 +257,6 @@ namespace StokTakip
                 }
             }
         }
-
-
-
 
         private void silToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -320,26 +276,20 @@ namespace StokTakip
                     MessageBox.Show("Proje bulunamadı.");
                     return;
                 }
-
-                // 🔹 Aktif proje kontrolü
                 if (proje.Durum)
                 {
                     MessageBox.Show("Aktif projeler pasif hale getirilmeden değiştirilemez!",
                                     "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                // 🔹 Emin misiniz sorusu
                 var sonuc = MessageBox.Show($"{proje.ProjeAdi} adlı projeyi silmek istediğinize emin misiniz?",
                                             "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (sonuc == DialogResult.Yes)
                 {
-                    // ❌ Silme yerine PasifMi = true
-                    proje.PasifMi =false;//bu aslında false olucak cünkü ben önceden veritabanında bir mantık hatası yapmışım onu cözdüm şimdi 
+                    proje.PasifMi =false;
                     context.SaveChanges();
 
-                    // ListView'den kaldır
                     lVlPrjListele.Items.Remove(lVlPrjListele.SelectedItems[0]);
 
                     MessageBox.Show("Proje başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);

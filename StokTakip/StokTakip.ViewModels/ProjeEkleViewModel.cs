@@ -13,7 +13,7 @@ namespace StokTakip.ViewModels
         public DateTime BaslangicTarihi { get; set; }
         public DateTime BitisTarihi { get; set; }
         public string Aciklama { get; set; }
-        public int PersonelId { get; set; }//burda ıd değil ad olsun istiyorum 
+        public int PersonelId { get; set; }
         public bool Durum { get; set; }
     }
 }

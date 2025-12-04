@@ -8,7 +8,7 @@ using StokTakip.Dto;
 
 
 namespace StokTakip.Validations
-{//referneces verilmesi gereken bir durum yok zaten dto var 
+{
     public static class PersonelValidator
     {
         public static List<string> Validate(PersonelDto dto)

@@ -20,11 +20,9 @@ namespace StokTakip.Services
         {
             var stokEkle = new StokKarti
             {
-                //stokkarti
                 UrunAdi = eklemodel.UrunAdi,
                 StokKodu = eklemodel.StokKodu,
                 GrupId = eklemodel.GrupId,
-                //GrupAdi = eklemodel.GrupAdi,
                 StokBirimi = eklemodel.StokBirimi,
                 MinStok = eklemodel.MinStok,
                 MaxStok = eklemodel.MaxStok,
@@ -41,25 +39,12 @@ namespace StokTakip.Services
             {
                 DepoAdi = eklemodel.DepoAdi,
                 SerbestMiktar = (int)eklemodel.SerbestMiktar,
-               // KaliteMiktar = (int)eklemodel.KaliteMiktar,
                 BlokeMiktar = eklemodel.BlokeMiktar,
             };
-
-            //28.10
-            //var stokHareketi = new StokHareketi
-            //{
-            //    //StokHarekti
-            //    ProjeId = eklemodel.ProjeId,
-            //    Tip = eklemodel.Tip,
-            //    Miktar = eklemodel.Miktar,
-            //    Tarih = DateTime.Now,
-            //    Aciklama = eklemodel.sHAciklama
-            //};
             var satinAlma = new SatinAlma
             {
-                //sol taraftakiler entetiy(model)alanlar
                 SiparisTarihi = DateTime.Now,
-                Miktar = eklemodel.StnAlmaMiktar, //int parse yap
+                Miktar = eklemodel.StnAlmaMiktar, 
                 CariAdi = eklemodel.CariAdi,
                 GelenMiktar = eklemodel.GelenMiktar,
                 BirimFiyat = eklemodel.BirimFiyat,
@@ -69,13 +54,9 @@ namespace StokTakip.Services
                 ToplamMaliyet=eklemodel.ToplamMaliyet,
                 PersonelId = eklemodel.PersonelId,
             };
-          //  stokHareketi.PersonelId = eklemodel.PersonelIdSh;//kendi stokharekiti tablosunda normal personelıd oldugu için hata alıyor 
             _anasayfa.StokEkle(stokEkle, stokDurum,  satinAlma);
         }
-        //public List<Proje> GetProjeler()
-        //{
-        //    return _anasayfa.GetProjeler(); // AnaSayfaRepository içinde Projeleri çeken metod
-        //}
+        
 
     }
 }

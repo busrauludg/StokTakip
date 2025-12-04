@@ -56,7 +56,7 @@
             tbCBolumSec.Controls.Add(tabPage1);
             tbCBolumSec.Controls.Add(tabPage2);
             tbCBolumSec.Controls.Add(tabPage3);
-            tbCBolumSec.Location = new Point(2, 1);
+            tbCBolumSec.Location = new Point(1, 2);
             tbCBolumSec.Name = "tbCBolumSec";
             tbCBolumSec.SelectedIndex = 0;
             tbCBolumSec.Size = new Size(1746, 933);
@@ -92,7 +92,6 @@
             lVMekanikListesi.Size = new Size(1732, 894);
             lVMekanikListesi.TabIndex = 1;
             lVMekanikListesi.UseCompatibleStateImageBehavior = false;
-            lVMekanikListesi.SelectedIndexChanged += lVMekanikListesi_SelectedIndexChanged;
             lVMekanikListesi.DoubleClick += lVMekanikListesi_DoubleClick;
             // 
             // tabPage2
@@ -131,13 +130,14 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Ana Sayfa";
             tabPage3.UseVisualStyleBackColor = true;
-            tabPage3.Click += tabPage3_Click;
             // 
             // btnPersonelİslem
             // 
-            btnPersonelİslem.Location = new Point(601, 0);
+            btnPersonelİslem.BackgroundImage = global::StokTakip.Properties.Resources.personel;
+            btnPersonelİslem.BackgroundImageLayout = ImageLayout.None;
+            btnPersonelİslem.Location = new Point(963, 6);
             btnPersonelİslem.Name = "btnPersonelİslem";
-            btnPersonelİslem.Size = new Size(123, 48);
+            btnPersonelİslem.Size = new Size(233, 60);
             btnPersonelİslem.TabIndex = 8;
             btnPersonelİslem.Text = "Personel";
             btnPersonelİslem.UseVisualStyleBackColor = true;
@@ -145,9 +145,11 @@
             // 
             // btnSiparisİslem
             // 
-            btnSiparisİslem.Location = new Point(442, 0);
+            btnSiparisİslem.BackgroundImage = global::StokTakip.Properties.Resources.siparis;
+            btnSiparisİslem.BackgroundImageLayout = ImageLayout.None;
+            btnSiparisİslem.Location = new Point(708, 6);
             btnSiparisİslem.Name = "btnSiparisİslem";
-            btnSiparisİslem.Size = new Size(123, 48);
+            btnSiparisİslem.Size = new Size(233, 60);
             btnSiparisİslem.TabIndex = 7;
             btnSiparisİslem.Text = "Sipariş İşlemleri";
             btnSiparisİslem.UseVisualStyleBackColor = true;
@@ -155,9 +157,11 @@
             // 
             // btnProjeDetay
             // 
-            btnProjeDetay.Location = new Point(305, 0);
+            btnProjeDetay.BackgroundImage = global::StokTakip.Properties.Resources.projedetay;
+            btnProjeDetay.BackgroundImageLayout = ImageLayout.None;
+            btnProjeDetay.Location = new Point(488, 6);
             btnProjeDetay.Name = "btnProjeDetay";
-            btnProjeDetay.Size = new Size(104, 48);
+            btnProjeDetay.Size = new Size(214, 60);
             btnProjeDetay.TabIndex = 6;
             btnProjeDetay.Text = "Proje Detayları";
             btnProjeDetay.UseVisualStyleBackColor = true;
@@ -173,9 +177,11 @@
             // 
             // btnProjeOlustur
             // 
-            btnProjeOlustur.Location = new Point(168, 0);
+            btnProjeOlustur.BackgroundImage = global::StokTakip.Properties.Resources.proje1;
+            btnProjeOlustur.BackgroundImageLayout = ImageLayout.None;
+            btnProjeOlustur.Location = new Point(260, 6);
             btnProjeOlustur.Name = "btnProjeOlustur";
-            btnProjeOlustur.Size = new Size(112, 48);
+            btnProjeOlustur.Size = new Size(222, 60);
             btnProjeOlustur.TabIndex = 4;
             btnProjeOlustur.Text = "Proje Oluştur";
             btnProjeOlustur.UseVisualStyleBackColor = true;
@@ -183,9 +189,11 @@
             // 
             // btnStokEkle
             // 
-            btnStokEkle.Location = new Point(43, 0);
+            btnStokEkle.BackgroundImage = global::StokTakip.Properties.Resources.stokekle;
+            btnStokEkle.BackgroundImageLayout = ImageLayout.None;
+            btnStokEkle.Location = new Point(38, 6);
             btnStokEkle.Name = "btnStokEkle";
-            btnStokEkle.Size = new Size(106, 48);
+            btnStokEkle.Size = new Size(216, 60);
             btnStokEkle.TabIndex = 3;
             btnStokEkle.Text = "Stok Ekle";
             btnStokEkle.UseVisualStyleBackColor = true;
@@ -196,13 +204,12 @@
             cMSSagTik.ImageScalingSize = new Size(20, 20);
             cMSSagTik.Items.AddRange(new ToolStripItem[] { silToolStripMenuItem });
             cMSSagTik.Name = "cMSSagTik";
-            cMSSagTik.Size = new Size(95, 28);
-            cMSSagTik.Opening += cMSSagTik_Opening;
+            cMSSagTik.Size = new Size(211, 56);
             // 
             // silToolStripMenuItem
             // 
             silToolStripMenuItem.Name = "silToolStripMenuItem";
-            silToolStripMenuItem.Size = new Size(94, 24);
+            silToolStripMenuItem.Size = new Size(210, 24);
             silToolStripMenuItem.Text = "Sil";
             silToolStripMenuItem.Click += silToolStripMenuItem_Click;
             // 

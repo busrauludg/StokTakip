@@ -8,6 +8,6 @@ namespace StokTakip.Helpers
 {
     public static class GirisYapanKullanici
     {
-        public static string Ad { get; set; } //neden static yaptık ???
+        public static string Ad { get; set; } 
     }
 }

@@ -8,6 +8,6 @@ namespace StokTakip.Helpers
 {
     public static class YetkiliKontrol
     {
-        public static bool Rol { get; set; } // true = Yetkili, false = Personel
+        public static bool Rol { get; set; }
     }
 }

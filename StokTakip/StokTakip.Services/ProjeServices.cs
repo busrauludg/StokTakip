@@ -29,17 +29,6 @@ namespace StokTakip.Services
             };
             _projeEkle.ProjeEkle(prjEkle);
         }
-        //public void ProjeKullanilanEkle(AktifProjeİhtiyaclari projeUrunEkle)
-        //{
-        //    var prjUrunEkle = new ProjedeKullanilanUrunler
-        //    {
-        //        ProjeId= projeUrunEkle.ProjeId,
-        //        StokKartiId=projeUrunEkle.StokKartiId,
-        //        Miktar=projeUrunEkle.Miktar,
-
-        //    };
-        //    _projeEkle.ProjeKullanilanUrunEkle(prjUrunEkle);
-        //}
         
     }
 }
